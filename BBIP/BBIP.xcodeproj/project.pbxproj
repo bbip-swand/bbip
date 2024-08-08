@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDED2C64A2C1009DEC3C /* Example.swift */; };
 		C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */; };
 		C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C162C590A0E009AC4E2 /* ContentView.swift */; };
 		C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B00C182C590A10009AC4E2 /* Assets.xcassets */; };
@@ -14,6 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDEF2C64A2CF009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF02C64A2D1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF12C64A2D3009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF22C64A2DA009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF32C64A2DB009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF42C64A2DD009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF52C64A2DE009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		C695BDF62C64A2E0009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C6B00C112C590A0E009AC4E2 /* BBIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPApp.swift; sourceTree = "<group>"; };
 		C6B00C162C590A0E009AC4E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +42,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C695BDE02C649EDE009DEC3C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */,
+				C6B00C162C590A0E009AC4E2 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C695BDE12C649F06009DEC3C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDEA2C649FDD009DEC3C /* Service */,
+				C695BDEB2C649FE3009DEC3C /* Extension */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C695BDE22C649F0D009DEC3C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF02C64A2D1009DEC3C /* Example.swift */,
+				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		C695BDE32C649F15009DEC3C /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDE92C649F8B009DEC3C /* Onboarding */,
+				C695BDE82C649F67009DEC3C /* SignIn */,
+				C695BDE72C649F63009DEC3C /* Home */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		C695BDE42C649F1C009DEC3C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDE52C649F2C009DEC3C /* API */,
+				C695BDE62C649F30009DEC3C /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C695BDE52C649F2C009DEC3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF52C64A2DE009DEC3C /* Example.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C695BDE62C649F30009DEC3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF62C64A2E0009DEC3C /* Example.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C695BDE72C649F63009DEC3C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF42C64A2DD009DEC3C /* Example.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C695BDE82C649F67009DEC3C /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF32C64A2DB009DEC3C /* Example.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		C695BDE92C649F8B009DEC3C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF22C64A2DA009DEC3C /* Example.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C695BDEA2C649FDD009DEC3C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDED2C64A2C1009DEC3C /* Example.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C695BDEB2C649FE3009DEC3C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDEF2C64A2CF009DEC3C /* Example.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C695BDEC2C649FF0009DEC3C /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				C695BDF12C64A2D3009DEC3C /* Example.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		C6B00C082C590A0E009AC4E2 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +171,11 @@
 		C6B00C132C590A0E009AC4E2 /* BBIP */ = {
 			isa = PBXGroup;
 			children = (
-				C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */,
-				C6B00C162C590A0E009AC4E2 /* ContentView.swift */,
+				C695BDE02C649EDE009DEC3C /* App */,
+				C695BDE12C649F06009DEC3C /* Core */,
+				C695BDE22C649F0D009DEC3C /* Component */,
+				C695BDE32C649F15009DEC3C /* Feature */,
+				C695BDE42C649F1C009DEC3C /* Network */,
 				C6B00C182C590A10009AC4E2 /* Assets.xcassets */,
 				C6B00C1A2C590A10009AC4E2 /* Preview Content */,
 			);
@@ -139,6 +262,7 @@
 			files = (
 				C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
+				C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +402,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -291,6 +416,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -312,6 +438,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -325,6 +452,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
