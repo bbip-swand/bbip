@@ -29,7 +29,6 @@
 		C61A472D2C6686CA0016986D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C61A472F2C6687690016986D /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		C695BDEF2C64A2CF009DEC3C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		C695BDF02C64A2D1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF12C64A2D3009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF22C64A2DA009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -148,7 +147,6 @@
 		C695BDEB2C649FE3009DEC3C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C695BDEF2C64A2CF009DEC3C /* Color+Extension.swift */,
 				C61A472F2C6687690016986D /* Font+Extension.swift */,
 			);
 			path = Extension;
