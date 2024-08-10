@@ -12,6 +12,8 @@
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
 		C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47282C6686760016986D /* WantedSans-SemiBold.otf */; };
 		C61A47302C6687690016986D /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A472F2C6687690016986D /* Font+Extension.swift */; };
+		C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */; };
+		C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBAA2C679E1300E8FF83 /* MainButton.swift */; };
 		C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDED2C64A2C1009DEC3C /* Example.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
@@ -28,10 +30,10 @@
 		C61A47282C6686760016986D /* WantedSans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-SemiBold.otf"; sourceTree = "<group>"; };
 		C61A472D2C6686CA0016986D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C61A472F2C6687690016986D /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C61EDBAA2C679E1300E8FF83 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		C695BDF02C64A2D1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF12C64A2D3009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		C695BDF22C64A2DA009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF32C64A2DB009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF42C64A2DD009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF82C64CB63009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				C695BDF02C64A2D1009DEC3C /* Example.swift */,
+				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 			);
 			path = Component;
@@ -131,7 +133,7 @@
 		C695BDE92C649F8B009DEC3C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C695BDF22C64A2DA009DEC3C /* Example.swift */,
+				C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -378,7 +380,9 @@
 			files = (
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */,
+				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */,
 			);
