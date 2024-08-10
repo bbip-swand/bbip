@@ -45,6 +45,7 @@ struct OnboardingView: View {
                     .font(.bbip(family: .Regular, size: 28))
                 Text(onboardingData[selection].secondTitle)
                     .font(.bbip(.title1_sb28))
+                    .monospacedDigit()
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.top, 113)
