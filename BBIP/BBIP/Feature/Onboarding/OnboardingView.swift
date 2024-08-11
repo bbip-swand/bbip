@@ -9,22 +9,15 @@ import SwiftUI
 
 struct OnboardingView: View {
     @StateObject private var onboardingViewModel = OnboardingViewModel()
-    @State private var selectedIndex = 0
+    @State private var selectedIndex: Int = 0
     
     var body: some View {
         ZStack {
-            TabView(selection: $selectedIndex) {
-                
-                // 추후 이미지로 변경
-                ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
-                    RoundedRectangle(cornerRadius: 16)
-                        .foregroundStyle(Color.gray4)
-                        .padding(.horizontal, 58)
-                        .padding(.top, 230)
-                        .tag(index)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            
+            OnboardingContentView(
+                onboardingViewModel: onboardingViewModel,
+                selectedIndex: $selectedIndex
+            )
             
             HStack(spacing: 8) {
                 ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
@@ -71,6 +64,33 @@ struct OnboardingView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 39)
         }
+    }
+}
+
+private struct OnboardingContentView: View {
+    @ObservedObject private var onboardingViewModel: OnboardingViewModel
+    @Binding var selectedIndex: Int
+    
+    fileprivate init(
+        onboardingViewModel: OnboardingViewModel,
+        selectedIndex: Binding<Int>
+    ) {
+        self.onboardingViewModel = onboardingViewModel
+        self._selectedIndex = selectedIndex
+    }
+    
+    fileprivate var body: some View {
+        TabView(selection: $selectedIndex) {
+            // 추후 이미지로 변경
+            ForEach(Array(onboardingViewModel.onboardingContents.enumerated()), id: \.element) { index, content in
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundStyle(Color.gray4)
+                    .padding(.horizontal, 58)
+                    .padding(.top, 230)
+                    .tag(index)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
 }
 
