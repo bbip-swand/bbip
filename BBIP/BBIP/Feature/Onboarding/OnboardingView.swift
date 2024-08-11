@@ -8,19 +8,15 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State private var selection = 0
-    private let onboardingData: [OnboardingData]
-    
-    init() {
-        self.onboardingData = OnboardingView.generate()
-    }
+    @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @State private var selectedIndex = 0
     
     var body: some View {
         ZStack {
-            TabView(selection: $selection) {
+            TabView(selection: $selectedIndex) {
                 
                 // 추후 이미지로 변경
-                ForEach(0..<onboardingData.count, id: \.self) { index in
+                ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
                     RoundedRectangle(cornerRadius: 16)
                         .foregroundStyle(Color.gray4)
                         .padding(.horizontal, 58)
@@ -31,9 +27,9 @@ struct OnboardingView: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
             HStack(spacing: 8) {
-                ForEach(0..<onboardingData.count, id: \.self) { index in
+                ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
                     Circle()
-                        .fill(selection == index ? Color.gray7 : Color.gray3)
+                        .fill(selectedIndex == index ? Color.gray7 : Color.gray3)
                         .frame(width: 8, height: 8)
                 }
             }
@@ -41,9 +37,9 @@ struct OnboardingView: View {
             .padding(.top, 52)
             
             VStack(spacing: 5) {
-                Text(onboardingData[selection].firstTitle)
+                Text(onboardingViewModel.onboardingContents[selectedIndex].firstTitle)
                     .font(.bbip(family: .Regular, size: 28))
-                Text(onboardingData[selection].secondTitle)
+                Text(onboardingViewModel.onboardingContents[selectedIndex].secondTitle)
                     .font(.bbip(.title1_sb28))
                     .monospacedDigit()
             }
@@ -64,10 +60,10 @@ struct OnboardingView: View {
             
             MainButton(text: "다음") {
                 withAnimation {
-                    if selection < onboardingData.count - 1 {
-                        selection += 1
+                    if selectedIndex < onboardingViewModel.onboardingContents.count - 1 {
+                        selectedIndex += 1
                     } else {
-                        selection = 0
+                        selectedIndex = 0
                         // go login
                     }
                 }
@@ -75,23 +71,6 @@ struct OnboardingView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 39)
         }
-    }
-}
-
-private extension OnboardingView {
-    struct OnboardingData: Hashable {
-        let firstTitle: String
-        let secondTitle: String
-        let imageName: String
-    }
-    
-    static func generate() -> [OnboardingData] {
-        return [
-            OnboardingData(firstTitle: "한눈에 보이는 학습", secondTitle: "함께하는 도전1", imageName: "a"),
-            OnboardingData(firstTitle: "두눈에 보이는 학습", secondTitle: "함께하는 도전2", imageName: "b"),
-            OnboardingData(firstTitle: "세눈에 보이는 학습", secondTitle: "함께하는 도전3", imageName: "c"),
-            OnboardingData(firstTitle: "네눈에 보이는 학습", secondTitle: "함께하는 도전4", imageName: "d")
-        ]
     }
 }
 
