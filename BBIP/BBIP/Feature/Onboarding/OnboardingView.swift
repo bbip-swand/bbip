@@ -13,21 +13,15 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            
             OnboardingContentView(
                 onboardingViewModel: onboardingViewModel,
                 selectedIndex: $selectedIndex
             )
             
-            HStack(spacing: 8) {
-                ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
-                    Circle()
-                        .fill(selectedIndex == index ? Color.gray7 : Color.gray3)
-                        .frame(width: 8, height: 8)
-                }
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.top, 52)
+            TabViewPageIndicator(
+                onboardingViewModel: onboardingViewModel, 
+                selectedIndex: $selectedIndex
+            )
             
             VStack(spacing: 5) {
                 Text(onboardingViewModel.onboardingContents[selectedIndex].firstTitle)
@@ -64,6 +58,7 @@ struct OnboardingView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 39)
         }
+        .background(Color.gray1)
     }
 }
 
@@ -91,6 +86,31 @@ private struct OnboardingContentView: View {
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+}
+
+private struct TabViewPageIndicator: View {
+    @ObservedObject private var onboardingViewModel: OnboardingViewModel
+    @Binding var selectedIndex: Int
+    
+    fileprivate init(
+        onboardingViewModel: OnboardingViewModel,
+        selectedIndex: Binding<Int>
+    ) {
+        self.onboardingViewModel = onboardingViewModel
+        self._selectedIndex = selectedIndex
+    }
+    
+    fileprivate var body: some View {
+        HStack(spacing: 8) {
+            ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
+                Circle()
+                    .fill(selectedIndex == index ? Color.gray8 : Color.gray3)
+                    .frame(width: 8, height: 8)
+            }
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding(.top, 52)
     }
 }
 
