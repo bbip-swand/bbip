@@ -13,13 +13,13 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            OnboardingContentView(
-                onboardingViewModel: onboardingViewModel,
-                selectedIndex: $selectedIndex
-            )
+            TabView(selection: $selectedIndex) {
+                OnboardingContentView(onboardingViewModel: onboardingViewModel)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
             TabViewPageIndicator(
-                onboardingViewModel: onboardingViewModel, 
+                contentCount: onboardingViewModel.onboardingContents.count,
                 selectedIndex: $selectedIndex
             )
             
@@ -64,46 +64,38 @@ struct OnboardingView: View {
 
 private struct OnboardingContentView: View {
     @ObservedObject private var onboardingViewModel: OnboardingViewModel
-    @Binding var selectedIndex: Int
     
-    fileprivate init(
-        onboardingViewModel: OnboardingViewModel,
-        selectedIndex: Binding<Int>
-    ) {
+    fileprivate init(onboardingViewModel: OnboardingViewModel) {
         self.onboardingViewModel = onboardingViewModel
-        self._selectedIndex = selectedIndex
     }
     
     fileprivate var body: some View {
-        TabView(selection: $selectedIndex) {
-            // 추후 이미지로 변경
-            ForEach(Array(onboardingViewModel.onboardingContents.enumerated()), id: \.element) { index, content in
-                RoundedRectangle(cornerRadius: 16)
-                    .foregroundStyle(Color.gray4)
-                    .padding(.horizontal, 58)
-                    .padding(.top, 230)
-                    .tag(index)
-            }
+        // 추후 이미지로 변경
+        ForEach(Array(onboardingViewModel.onboardingContents.enumerated()), id: \.element) { index, content in
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(Color.gray4)
+                .padding(.horizontal, 58)
+                .padding(.top, 230)
+                .tag(index)
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
 }
 
 private struct TabViewPageIndicator: View {
-    @ObservedObject private var onboardingViewModel: OnboardingViewModel
+    @State private var contentCount: Int
     @Binding var selectedIndex: Int
     
     fileprivate init(
-        onboardingViewModel: OnboardingViewModel,
+        contentCount: Int,
         selectedIndex: Binding<Int>
     ) {
-        self.onboardingViewModel = onboardingViewModel
+        self.contentCount = contentCount
         self._selectedIndex = selectedIndex
     }
     
     fileprivate var body: some View {
         HStack(spacing: 8) {
-            ForEach(0..<onboardingViewModel.onboardingContents.count, id: \.self) { index in
+            ForEach(0..<contentCount, id: \.self) { index in
                 Circle()
                     .fill(selectedIndex == index ? Color.gray8 : Color.gray3)
                     .frame(width: 8, height: 8)
