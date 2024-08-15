@@ -19,6 +19,10 @@
 		C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDED2C64A2C1009DEC3C /* Example.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
+		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
+		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
+		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
+		C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */; };
 		C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */; };
 		C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C162C590A0E009AC4E2 /* ContentView.swift */; };
 		C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B00C182C590A10009AC4E2 /* Assets.xcassets */; };
@@ -37,7 +41,6 @@
 		C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
 		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		C695BDF12C64A2D3009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF32C64A2DB009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF42C64A2DD009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF82C64CB63009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -48,6 +51,10 @@
 		C695BE0B2C64CC57009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
+		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
+		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
+		C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupContent.swift; sourceTree = "<group>"; };
 		C6B00C112C590A0E009AC4E2 /* BBIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B00C142C590A0E009AC4E2 /* BBIPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPApp.swift; sourceTree = "<group>"; };
 		C6B00C162C590A0E009AC4E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C695BDE92C649F8B009DEC3C /* Onboarding */,
+				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
 				C695BDE82C649F67009DEC3C /* SignIn */,
 				C695BDE72C649F63009DEC3C /* Home */,
 			);
@@ -161,7 +169,7 @@
 		C695BDEC2C649FF0009DEC3C /* ViewModifier */ = {
 			isa = PBXGroup;
 			children = (
-				C695BDF12C64A2D3009DEC3C /* Example.swift */,
+				C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */,
+				C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -265,6 +274,15 @@
 			children = (
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */ = {
+			isa = PBXGroup;
+			children = (
+				C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */,
+				C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */,
+			);
+			path = UserInfoSetup;
 			sourceTree = "<group>";
 		};
 		C6B00C082C590A0E009AC4E2 = {
@@ -383,11 +401,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
+				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
+				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
+				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */,
+				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */,
