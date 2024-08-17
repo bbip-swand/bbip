@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08368B9C2C6E5AE1008EB44B /* OnboardingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* OnboardingProfileView.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08368B9B2C6E5AE1008EB44B /* OnboardingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProfileView.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				C61EDBA82C679C4600E8FF83 /* OnboardingView.swift */,
 				C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */,
+				08368B9B2C6E5AE1008EB44B /* OnboardingProfileView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
+				08368B9C2C6E5AE1008EB44B /* OnboardingProfileView.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
