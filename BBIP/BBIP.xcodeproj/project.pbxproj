@@ -28,9 +28,6 @@
 		C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B00C162C590A0E009AC4E2 /* ContentView.swift */; };
 		C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B00C182C590A10009AC4E2 /* Assets.xcassets */; };
 		C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B00C1B2C590A10009AC4E2 /* Preview Assets.xcassets */; };
-		C6B8CE2D2C7AA4650006E906 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE2C2C7AA4650006E906 /* SwiftUIIntrospect */; };
-		C6B8CE2F2C7AA4650006E906 /* SwiftUIIntrospect-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE2E2C7AA4650006E906 /* SwiftUIIntrospect-Dynamic */; };
-		C6B8CE312C7AA4650006E906 /* SwiftUIIntrospect-Static in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE302C7AA4650006E906 /* SwiftUIIntrospect-Static */; };
 		C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE332C7AA4BC0006E906 /* CombineMoya */; };
 		C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE352C7AA4BC0006E906 /* Moya */; };
 		C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE382C7AA5210006E906 /* Lottie */; };
@@ -75,11 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6B8CE2D2C7AA4650006E906 /* SwiftUIIntrospect in Frameworks */,
-				C6B8CE2F2C7AA4650006E906 /* SwiftUIIntrospect-Dynamic in Frameworks */,
 				C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */,
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
-				C6B8CE312C7AA4650006E906 /* SwiftUIIntrospect-Static in Frameworks */,
 				C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,9 +351,6 @@
 			);
 			name = BBIP;
 			packageProductDependencies = (
-				C6B8CE2C2C7AA4650006E906 /* SwiftUIIntrospect */,
-				C6B8CE2E2C7AA4650006E906 /* SwiftUIIntrospect-Dynamic */,
-				C6B8CE302C7AA4650006E906 /* SwiftUIIntrospect-Static */,
 				C6B8CE332C7AA4BC0006E906 /* CombineMoya */,
 				C6B8CE352C7AA4BC0006E906 /* Moya */,
 				C6B8CE382C7AA5210006E906 /* Lottie */,
@@ -393,7 +384,6 @@
 			);
 			mainGroup = C6B00C082C590A0E009AC4E2;
 			packageReferences = (
-				C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */,
 				C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
@@ -667,14 +657,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/swiftui-introspect.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
-			};
-		};
 		C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -694,21 +676,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C6B8CE2C2C7AA4650006E906 /* SwiftUIIntrospect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = SwiftUIIntrospect;
-		};
-		C6B8CE2E2C7AA4650006E906 /* SwiftUIIntrospect-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = "SwiftUIIntrospect-Dynamic";
-		};
-		C6B8CE302C7AA4650006E906 /* SwiftUIIntrospect-Static */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = "SwiftUIIntrospect-Static";
-		};
 		C6B8CE332C7AA4BC0006E906 /* CombineMoya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */;
