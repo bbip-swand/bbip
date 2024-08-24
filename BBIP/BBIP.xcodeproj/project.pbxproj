@@ -33,6 +33,7 @@
 		C6B8CE312C7AA4650006E906 /* SwiftUIIntrospect-Static in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE302C7AA4650006E906 /* SwiftUIIntrospect-Static */; };
 		C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE332C7AA4BC0006E906 /* CombineMoya */; };
 		C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE352C7AA4BC0006E906 /* Moya */; };
+		C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE382C7AA5210006E906 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 				C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */,
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
 				C6B8CE312C7AA4650006E906 /* SwiftUIIntrospect-Static in Frameworks */,
+				C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +362,7 @@
 				C6B8CE302C7AA4650006E906 /* SwiftUIIntrospect-Static */,
 				C6B8CE332C7AA4BC0006E906 /* CombineMoya */,
 				C6B8CE352C7AA4BC0006E906 /* Moya */,
+				C6B8CE382C7AA5210006E906 /* Lottie */,
 			);
 			productName = BBIP;
 			productReference = C6B00C112C590A0E009AC4E2 /* BBIP.app */;
@@ -392,6 +395,7 @@
 			packageReferences = (
 				C6B8CE2B2C7AA4650006E906 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */,
+				C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = C6B00C122C590A0E009AC4E2 /* Products */;
 			projectDirPath = "";
@@ -679,6 +683,14 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -706,6 +718,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		C6B8CE382C7AA5210006E906 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
