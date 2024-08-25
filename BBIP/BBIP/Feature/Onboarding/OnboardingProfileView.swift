@@ -17,9 +17,14 @@ struct OnboardingProfileView: View {
     @State private var hasStartedEditing: Bool = false
     
     var body: some View {
-        VStack(alignment:.leading) {
+        VStack(alignment: .leading) {
             // 상단문구
-            OnboardingHeaderView()
+            UISHeaderView(
+                title: "프로필을 꾸며보세요",
+                subTitle: "스터디원들에게 보일 프로필을 만들어주세요"
+            )
+            .padding(.top, 48)
+            .padding(.leading, 20)
             
             Spacer().frame(height:49)
             
@@ -38,34 +43,6 @@ struct OnboardingProfileView: View {
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(image: $selectedImage)
         }
-        
-        
-        MainButton(
-            text: "다음",
-            enable: isNameValid
-        ) {
-            // 다음 버튼 동작 수정필요
-        }
-        .padding(.bottom, 39)
-        .padding(.horizontal)
-    }
-}
-
-// 상단 안내 문구 뷰
-private struct OnboardingHeaderView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("프로필을 꾸며보세요")
-                .font(.bbip(family:.Regular, size: 24))
-                .fontWeight(.bold)
-                .padding(.top, 120) // 추후 헤더 간격 조정필요(Tabview영역이 120, 프로그래스바부터 40)
-            
-            Text("스터디원들에게 보일 프로필을 만들어주세요")
-                .font(.bbip(family: .Regular, size:16 ))
-                .foregroundColor(.gray)
-                .padding(.top, 10)
-        }
-        .padding(.leading)
     }
 }
 
