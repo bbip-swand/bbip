@@ -13,6 +13,7 @@ struct UISActiveAreaView: View {
     var body: some View {
         VStack(spacing: 0) {
             SelectedAreaStatusView(viewModel: viewModel)
+                .animation(nil)
                 .onTapGesture {
                     viewModel.showAreaSelectModal = true
                 }
