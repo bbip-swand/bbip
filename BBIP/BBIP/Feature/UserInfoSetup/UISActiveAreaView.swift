@@ -37,16 +37,22 @@ struct UISActiveAreaView: View {
 private struct SelectedAreaStatusView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
     
+    private var nonNilSelectedAreas: [String] {
+        let filteredAreas = viewModel.selectedArea.compactMap { $0 }
+        return filteredAreas.isEmpty ? Array(repeating: "선택", count: 3) : filteredAreas
+    }
+    
+    private var areaForDisplay: [String] {
+        viewModel.showAreaSelectModal 
+            ? viewModel.selectedArea.compactMap { $0 ?? "선택" }
+            : nonNilSelectedAreas
+    }
+    
     @ViewBuilder
     private func SpacerIfNeeded(for count: Int, condition: Int) -> some View {
         if count == condition {
             Spacer()
         }
-    }
-    
-    private var nonNilSelectedAreas: [String] {
-        let filteredAreas = viewModel.selectedArea.compactMap { $0 }
-        return filteredAreas.isEmpty ? Array(repeating: "선택", count: 3) : filteredAreas
     }
     
     var body: some View {
@@ -56,9 +62,9 @@ private struct SelectedAreaStatusView: View {
             .padding(.horizontal, 20)
             .overlay {
                 HStack {
-                    SpacerIfNeeded(for: nonNilSelectedAreas.count, condition: 2)
+                    SpacerIfNeeded(for: areaForDisplay.count, condition: 2)
                     
-                    ForEach(viewModel.showAreaSelectModal ? 0..<viewModel.selectedArea.count : 0..<nonNilSelectedAreas.count, id: \.self) { index in
+                    ForEach(areaForDisplay.indices, id: \.self) { index in
                         if index > 0 {
                             Spacer()
                             Image("rightArrow")
@@ -68,16 +74,11 @@ private struct SelectedAreaStatusView: View {
                             Spacer()
                         }
                         
-                        if let area = viewModel.selectedArea[index] {
-                            Text(area)
-                                .foregroundStyle(.mainBlack)
-                        } else {
-                            Text("선택")
-                                .foregroundStyle(.gray6)
-                        }
+                        Text(areaForDisplay[index])
+                            .foregroundStyle(areaForDisplay[index] == "선택" ? .gray6 : .mainBlack)
                     }
                     
-                    SpacerIfNeeded(for: nonNilSelectedAreas.count, condition: 2)
+                    SpacerIfNeeded(for: areaForDisplay.count, condition: 2)
                 }
                 .font(.bbip(.body1_m16))
                 .foregroundStyle(.gray6)
@@ -85,7 +86,6 @@ private struct SelectedAreaStatusView: View {
             }
     }
 }
-
 
 fileprivate struct AreaSelectView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
@@ -96,26 +96,25 @@ fileprivate struct AreaSelectView: View {
         switch currentIndex {
         case 0:
             viewModel.selectedCity = data
-            if !AreaDataManager.getDistricts(for: data).isEmpty {
-                withAnimation { currentIndex = 1 }
-            } else {
-                setDataComplete()
-            }
-            selectedData = nil
+            updateCurrentIndexIfNeeded(for: AreaDataManager.getDistricts(for: data), nextIndex: 1)
         case 1:
             viewModel.selectedDistrict = data
-            if !AreaDataManager.getSubDistricts(for: viewModel.selectedCity!, district: data).isEmpty {
-                withAnimation { currentIndex = 2 }
-            } else {
-                setDataComplete()
-            }
-            selectedData = nil
+            updateCurrentIndexIfNeeded(for: AreaDataManager.getSubDistricts(for: viewModel.selectedCity!, district: data), nextIndex: 2)
         case 2:
             viewModel.selectedsubDistricts = data
             setDataComplete()
         default:
             break
         }
+    }
+    
+    private func updateCurrentIndexIfNeeded(for data: [String], nextIndex: Int) {
+        if data.isEmpty {
+            setDataComplete()
+        } else {
+            currentIndex = nextIndex
+        }
+        selectedData = nil
     }
     
     private func setDataComplete() {
@@ -136,18 +135,14 @@ fileprivate struct AreaSelectView: View {
             
             TabView(selection: $currentIndex) {
                 AreaGridView(
-                    viewModel: viewModel,
                     data: AreaDataManager.getCities(),
-                    currentIndex: $currentIndex,
                     selectedData: $selectedData
                 )
                 .tag(0)
                 
                 if let city = viewModel.selectedCity {
                     AreaGridView(
-                        viewModel: viewModel,
                         data: AreaDataManager.getDistricts(for: city),
-                        currentIndex: $currentIndex,
                         selectedData: $selectedData
                     )
                     .tag(1)
@@ -156,9 +151,7 @@ fileprivate struct AreaSelectView: View {
                 if let city = viewModel.selectedCity,
                    let district = viewModel.selectedDistrict {
                     AreaGridView(
-                        viewModel: viewModel,
                         data: AreaDataManager.getSubDistricts(for: city, district: district),
-                        currentIndex: $currentIndex,
                         selectedData: $selectedData
                     )
                     .tag(2)
@@ -169,37 +162,18 @@ fileprivate struct AreaSelectView: View {
             
             MainButton(text: "선택", enable: selectedData != nil) {
                 if let data = selectedData {
-                    processSelection(data)
+                    withAnimation(.easeIn(duration: 0.1)) { processSelection(data) }
                 }
             }
         }
     }
 }
 
-
 fileprivate struct AreaGridView: View {
-    @ObservedObject var viewModel: UserInfoSetupViewModel
-    @Binding var currentIndex: Int
-    @Binding var selectedData: String?
     let data: [String]
+    @Binding var selectedData: String?
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-    
-    init(
-        viewModel: UserInfoSetupViewModel,
-        data: [String],
-        currentIndex: Binding<Int>,
-        selectedData: Binding<String?>
-    ) {
-        self.viewModel = viewModel
-        self.data = data
-        self._currentIndex = currentIndex
-        self._selectedData = selectedData
-    }
-    
-    private func updateSelectedData(_ data: String) {
-        selectedData = data
-    }
     
     var body: some View {
         ScrollView {
@@ -219,7 +193,7 @@ fileprivate struct AreaGridView: View {
                                 .stroke(selectedData == strData ? Color.primary2 : Color.gray2, lineWidth: 1)
                         )
                         .onTapGesture {
-                            updateSelectedData(strData)
+                            selectedData = strData
                         }
                         .padding(.vertical, 3)
                 }
