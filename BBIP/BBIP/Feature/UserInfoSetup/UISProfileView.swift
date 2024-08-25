@@ -10,11 +10,7 @@ import SwiftUI
 import PhotosUI
 
 struct UISProfileView: View {
-    @State private var userName: String = ""
-    @State private var isNameValid: Bool = false
-    @State private var selectedImage: UIImage? = nil
-    @State private var showImagePicker: Bool = false
-    @State private var hasStartedEditing: Bool = false
+    @StateObject private var viewModel = UserInfoSetupViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,36 +24,27 @@ struct UISProfileView: View {
             
             Spacer().frame(height:49)
             
-            UISProfileImageAndNameView(
-                selectedImage: $selectedImage,
-                showImagePicker: $showImagePicker,
-                userName: $userName,
-                isNameValid: $isNameValid,
-                hasStartedEditing: $hasStartedEditing
-            )
+            UISProfileImageAndNameView(viewModel: viewModel)
             
             Spacer().frame(height:216)
             
         }
         .navigationBarBackButtonHidden(false)
-        .sheet(isPresented: $showImagePicker) {
-            ImagePicker(image: $selectedImage)
+        .sheet(isPresented: $viewModel.showImagePicker) {
+            ImagePicker(image: $viewModel.selectedImage)
         }
     }
 }
 
 // 프로필 이미지 및 이름 입력 뷰
+
 private struct UISProfileImageAndNameView: View {
-    @Binding var selectedImage: UIImage?
-    @Binding var showImagePicker: Bool
-    @Binding var userName: String
-    @Binding var isNameValid: Bool
-    @Binding var hasStartedEditing: Bool // Track if editing has started
+    @ObservedObject var viewModel: UserInfoSetupViewModel
     
     var body: some View {
         VStack {
             ZStack {
-                if let image = selectedImage {
+                if let image = viewModel.selectedImage {
                     Image(uiImage: image)
                         .resizable()
                         .frame(width: 160, height: 160)
@@ -69,7 +56,7 @@ private struct UISProfileImageAndNameView: View {
                         .clipShape(Circle())
                     
                     Button(action: {
-                        showImagePicker = true
+                        viewModel.showImagePicker = true
                     }) {
                         Image(systemName: "plus")
                             .foregroundColor(.white)
@@ -80,32 +67,30 @@ private struct UISProfileImageAndNameView: View {
             .padding(.bottom, 40) // 간격 조정
             
             VStack(spacing: 0) {
-                TextField("실명을 입력해주세요", text: $userName)
-                    .onChange(of: userName) { newValue in
-                        hasStartedEditing = true
-                        validateName(newValue)
-                    }
+                TextField("실명을 입력해주세요", text: $viewModel.userName)
+                    .onChange(of: viewModel.userName) { oldValue,newValue in
+                            viewModel.hasStartedEditing = true
+                            validateName(newValue)
+                        }
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                     .overlay(
                         Rectangle()
                             .frame(height: 2)
-                            .foregroundColor(hasStartedEditing ? Color.red : Color.gray3),
+                            .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3),
                         alignment: .bottom
                     )
-                
-                
+    
                 HStack {
-                        Text(hasStartedEditing && !isNameValid ? "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다." : " ")
+                    Text(viewModel.hasStartedEditing && !viewModel.isNameValid ? "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다." : " ")
                             .foregroundColor(.red)
                             .font(.bbip(family:.Medium, size:12))
                             .multilineTextAlignment(.center)
-
-                        if hasStartedEditing && !isNameValid {
+                    if viewModel.hasStartedEditing && !viewModel.isNameValid {
                             Button(action: {
-                                userName = ""
+                                viewModel.userName = ""
                             }) {
-                                Image(systemName: "xmark.circle.fill")
+                                Image(systemName: "exclamationmark.triangle.fill")
                                     .foregroundColor(.red)
                             }
                         }
@@ -121,7 +106,7 @@ private struct UISProfileImageAndNameView: View {
     private func validateName(_ name: String) {
         let regex = "^[가-힣a-zA-Z]{2,15}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        isNameValid = predicate.evaluate(with: name)
+        viewModel.isNameValid = predicate.evaluate(with: name)
         
     }
 }
@@ -167,4 +152,8 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
         }
     }
+}
+
+#Preview{
+    UISProfileView()
 }

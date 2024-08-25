@@ -80,11 +80,6 @@ private struct TabViewProgressBar: View {
     }
 }
 
-
-
 #Preview {
     UserInfoSetupView()
 }
-
-
-

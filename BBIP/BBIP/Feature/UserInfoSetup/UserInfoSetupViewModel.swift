@@ -18,7 +18,6 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var showImagePicker: Bool = false
     @Published var hasStartedEditing: Bool = false
     
-    
     // MARK: - Birth Setting View
     @Published var yearDigits: [String] = ["", "", "", ""]
     @Published var isYearValid: Bool = true
