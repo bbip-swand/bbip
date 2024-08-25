@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var show = false
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,6 +18,12 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .onTapGesture {
+            show = true
+        }
+        .navigationDestination(isPresented: $show) {
+            UserInfoSetupView()
+        }
     }
 }
 

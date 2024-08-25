@@ -14,7 +14,7 @@ struct UserInfoSetupView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
-                UISProfileView()
+                UISActiveAreaView(viewModel: userInfoSetupViewModel)
                     .tag(0)
                 
                 UISBirthView()
@@ -38,7 +38,7 @@ struct UserInfoSetupView: View {
 
                 Spacer()
                    
-                MainButton(text: "다음") {
+                MainButton(text: "다음", enable: userInfoSetupViewModel.canGoNext[selectedIndex]) {
                     withAnimation {
                         if selectedIndex < userInfoSetupViewModel.contentData.count - 1 {
                             selectedIndex += 1
@@ -51,7 +51,7 @@ struct UserInfoSetupView: View {
             }
         }
         .background(Color.gray1)
-        .backButtonStyle()
+        .handlingBackButtonStyle(currentIndex: $selectedIndex)
     }
 }
 

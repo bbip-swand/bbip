@@ -34,3 +34,37 @@ extension View {
             .modifier(BackButtonModifier())
     }
 }
+
+struct BackButtonHandlingModifier: ViewModifier {
+    @Environment(\.presentationMode) var presentationMode
+    @Binding var currentIndex: Int
+    
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        if currentIndex > 0 {
+                            withAnimation { currentIndex -= 1 }
+                        } else {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    } label: {
+                        Image("backButton")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(.black)
+                    }
+                }
+            }
+    }
+}
+
+/// TabView에서 selectedIndex값을 handling할 수 있는 backButton
+extension View {
+    func handlingBackButtonStyle(currentIndex: Binding<Int>) -> some View {
+        self
+            .navigationBarBackButtonHidden(true)
+            .modifier(BackButtonHandlingModifier(currentIndex: currentIndex))
+    }
+}
