@@ -14,7 +14,7 @@ struct UserInfoSetupView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
-                Text("first")
+                OnboardingProfileView()
                     .tag(0)
                 
                 Text("second")

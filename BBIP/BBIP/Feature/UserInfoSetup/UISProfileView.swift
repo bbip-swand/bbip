@@ -1,5 +1,5 @@
 //
-//  OnboardingProfileView.swift
+//  UISProfileView.swift
 //  BBIP
 //
 //  Created by 조예린 on 8/16/24.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import PhotosUI
 
-struct OnboardingProfileView: View {
+struct UISProfileView: View {
     @State private var userName: String = ""
     @State private var isNameValid: Bool = false
     @State private var selectedImage: UIImage? = nil
@@ -28,7 +28,7 @@ struct OnboardingProfileView: View {
             
             Spacer().frame(height:49)
             
-            OnboardingProfileImageAndNameView(
+            UISProfileImageAndNameView(
                 selectedImage: $selectedImage,
                 showImagePicker: $showImagePicker,
                 userName: $userName,
@@ -47,7 +47,7 @@ struct OnboardingProfileView: View {
 }
 
 // 프로필 이미지 및 이름 입력 뷰
-private struct OnboardingProfileImageAndNameView: View {
+private struct UISProfileImageAndNameView: View {
     @Binding var selectedImage: UIImage?
     @Binding var showImagePicker: Bool
     @Binding var userName: String
