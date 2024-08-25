@@ -14,10 +14,10 @@ struct UserInfoSetupView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
-                OnboardingProfileView()
+                UISProfileView()
                     .tag(0)
                 
-                Text("second")
+                UISBirthView()
                     .tag(1)
                 
                 Text("thrid")
@@ -34,6 +34,7 @@ struct UserInfoSetupView: View {
             VStack {
                 TabViewProgressBar(value: bindingCalculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
                     .padding(.top, 20)
+                    .background(Color.mainWhite)
 
                 Spacer()
                    
@@ -79,6 +80,11 @@ private struct TabViewProgressBar: View {
     }
 }
 
+
+
 #Preview {
     UserInfoSetupView()
 }
+
+
+
