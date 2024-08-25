@@ -168,8 +168,3 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
-
-// Preview
-#Preview {
-    OnboardingProfileView()
-}
