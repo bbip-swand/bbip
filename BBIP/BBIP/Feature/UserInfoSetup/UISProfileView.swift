@@ -10,33 +10,21 @@ import SwiftUI
 import PhotosUI
 
 struct UISProfileView: View {
-    @StateObject private var viewModel = UserInfoSetupViewModel()
+    @ObservedObject var viewModel: UserInfoSetupViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            // 상단문구
-            UISHeaderView(
-                title: "프로필을 꾸며보세요",
-                subTitle: "스터디원들에게 보일 프로필을 만들어주세요"
-            )
-            .padding(.top, 48)
-            .padding(.leading, 20)
-            
-            Spacer().frame(height:49)
-            
+        VStack(spacing: 0) {
             UISProfileImageAndNameView(viewModel: viewModel)
+                .padding(.top, 181)
             
-            Spacer().frame(height:216)
+            Spacer()
             
         }
-        .navigationBarBackButtonHidden(false)
         .sheet(isPresented: $viewModel.showImagePicker) {
             ImagePicker(image: $viewModel.selectedImage)
         }
     }
 }
-
-// 프로필 이미지 및 이름 입력 뷰
 
 private struct UISProfileImageAndNameView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
@@ -152,8 +140,4 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
         }
     }
-}
-
-#Preview{
-    UISProfileView()
 }

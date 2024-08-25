@@ -12,18 +12,11 @@ struct UISActiveAreaView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            UISHeaderView(
-                title: viewModel.contentData[0].title,
-                subTitle: viewModel.contentData[0].subTitle ?? ""
-            )
-            .padding(.vertical, 72)
-            .padding(.leading, 20)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
             SelectedAreaStatusView(viewModel: viewModel)
                 .onTapGesture {
                     viewModel.showAreaSelectModal = true
                 }
+                .padding(.top, 180)
             
             Spacer()
         }

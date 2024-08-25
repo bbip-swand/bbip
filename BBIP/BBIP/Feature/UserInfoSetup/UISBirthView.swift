@@ -10,20 +10,11 @@ import SwiftUI
 
 struct UISBirthView: View {
     
-    @StateObject private var viewModel = UserInfoSetupViewModel()
+    @ObservedObject var viewModel: UserInfoSetupViewModel
     @FocusState private var focusedField: Int?
-    
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            UISHeaderView(
-                title: "태어난 연도를 입력해주세요"
-            )
-            .padding(.top, 72)
-            .padding(.leading, 20)
-            
-            Spacer().frame(height: 120)
-            
+        VStack(spacing: 0) {
             HStack(spacing: 8) {
                 Spacer(minLength: 40)
                 ForEach(0..<4, id: \.self) { index in
@@ -55,7 +46,7 @@ struct UISBirthView: View {
                 }
                 Spacer(minLength: 40)
             }
-            .frame(maxWidth: .infinity)
+            .padding(.top, 222)
             
             HStack{
                 if isYearComplete(){
@@ -128,8 +119,3 @@ extension View {
             )
     }
 }
-
-#Preview{
-    UISBirthView()
-}
-

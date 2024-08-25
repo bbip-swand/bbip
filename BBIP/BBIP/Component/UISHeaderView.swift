@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct UISHeaderView: View {
-    @State private var title: String
-    @State private var subTitle: String
+    var title: String
+    var subTitle: String
     
     init(
         title: String,

@@ -17,13 +17,13 @@ struct UserInfoSetupView: View {
                 UISActiveAreaView(viewModel: userInfoSetupViewModel)
                     .tag(0)
                 
-                UISBirthView()
+                Text("second")
                     .tag(1)
                 
-                Text("thrid")
+                UISProfileView(viewModel: userInfoSetupViewModel)
                     .tag(2)
                 
-                Text("fourth")
+                UISBirthView(viewModel: userInfoSetupViewModel)
                     .tag(3)
                 
                 Text("fifth")
@@ -31,10 +31,18 @@ struct UserInfoSetupView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
-            VStack {
+            VStack(spacing: 0) {
                 TabViewProgressBar(value: bindingCalculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
                     .padding(.top, 20)
-                    .background(Color.mainWhite)
+                    .background(Color.gray1)
+                
+                UISHeaderView(
+                    title: userInfoSetupViewModel.contentData[selectedIndex].title,
+                    subTitle: userInfoSetupViewModel.contentData[selectedIndex].subTitle ?? ""
+                )
+                .padding(.top, 48)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
 
                 Spacer()
                    
@@ -42,8 +50,10 @@ struct UserInfoSetupView: View {
                     withAnimation {
                         if selectedIndex < userInfoSetupViewModel.contentData.count - 1 {
                             selectedIndex += 1
+                            print(selectedIndex)
+                            print(userInfoSetupViewModel.contentData[selectedIndex].title)
                         } else {
-                            selectedIndex = 0
+                            // 회원가입 프로세스
                         }
                     }
                 }
