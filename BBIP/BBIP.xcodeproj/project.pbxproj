@@ -21,10 +21,10 @@
 		C668E9C62C7AABA300298B52 /* UISHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* UISHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
-		C668E9EB2C7B4D2C00298B52 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9EA2C7B4D2C00298B52 /* Example.swift */; };
 		C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDED2C64A2C1009DEC3C /* Example.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
+		C695CB4C2C7DE30100BB3952 /* TestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4B2C7DE30100BB3952 /* TestEntity.swift */; };
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
@@ -54,7 +54,6 @@
 		C668E9C52C7AABA300298B52 /* UISHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
-		C668E9EA2C7B4D2C00298B52 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF32C64A2DB009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BDF42C64A2DD009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		C695BE0B2C64CC57009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C695CB4B2C7DE30100BB3952 /* TestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEntity.swift; sourceTree = "<group>"; };
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		C695BE012C64CBC8009DEC3C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				C668E9EA2C7B4D2C00298B52 /* Example.swift */,
+				C695CB4B2C7DE30100BB3952 /* TestEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -449,12 +449,12 @@
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				C695CB4C2C7DE30100BB3952 /* TestEntity.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* ContentView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* UISHeaderView.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
-				C668E9EB2C7B4D2C00298B52 /* Example.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
@@ -590,12 +590,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
+				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BBIP/Info.plist;
@@ -616,7 +615,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = swand.BBIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development_Profile_BBIP;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
