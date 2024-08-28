@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @EnvironmentObject var appState: AppStateManager
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @State private var selectedIndex: Int = 0
     
@@ -51,7 +52,7 @@ struct OnboardingView: View {
                         selectedIndex += 1
                     } else {
                         selectedIndex = 0
-                        // go login
+//                        appState.goUIS()
                     }
                 }
             }
