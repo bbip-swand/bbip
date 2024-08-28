@@ -11,6 +11,12 @@ struct UserInfoSetupView: View {
     @StateObject private var userInfoSetupViewModel = UserInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
+    private func buttonText() -> String {
+        guard selectedIndex == 1 else { return "다음" }
+        guard !userInfoSetupViewModel.selectedInterestIndex.isEmpty else { return "다음" }
+        return "\(userInfoSetupViewModel.selectedInterestIndex.count)개 선택"
+    }
+    
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
@@ -46,7 +52,10 @@ struct UserInfoSetupView: View {
 
                 Spacer()
                    
-                MainButton(text: "다음", enable: userInfoSetupViewModel.canGoNext[selectedIndex]) {
+                MainButton(
+                    text: buttonText(),
+                    enable: userInfoSetupViewModel.canGoNext[selectedIndex]
+                ) {
                     withAnimation {
                         if selectedIndex < userInfoSetupViewModel.contentData.count - 1 {
                             selectedIndex += 1
@@ -61,7 +70,7 @@ struct UserInfoSetupView: View {
         }
         .background(Color.gray1)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
-        .skipButton(selectedIndex: $selectedIndex)
+        .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
     }
 }
 
@@ -93,13 +102,15 @@ private struct TabViewProgressBar: View {
 fileprivate extension View {
     /// 관심사 선택시에만 보여지는 건너뛰기 버튼
     func skipButton(
-        selectedIndex: Binding<Int>
+        selectedIndex: Binding<Int>,
+        viewModel: UserInfoSetupViewModel
     ) -> some View {
         self.toolbar {
             if selectedIndex.wrappedValue == 1 {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         withAnimation { selectedIndex.wrappedValue += 1 }
+                        viewModel.selectedInterestIndex.removeAll()
                     } label: {
                         Text("건너뛰기")
                             .font(.bbip(.caption1_m16))

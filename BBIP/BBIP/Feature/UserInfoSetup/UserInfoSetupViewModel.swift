@@ -12,7 +12,7 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var contentData: [UserInfoSetupContent]
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
-        true,   // 관심사 (스킵 가능)
+        false,  // 관심사 (스킵 가능)
         false,  // 프로필 사진
         false,  // 생년월일
         false   // 직업
@@ -44,7 +44,7 @@ class UserInfoSetupViewModel: ObservableObject {
     }
     
     // MARK: - Interest Setting View
-    @Published var selectedInterestIndex: [Int] = [-1]
+    @Published var selectedInterestIndex: [Int] = []
     
     // MARK: - Profile Setting View
     @Published var userName: String = ""

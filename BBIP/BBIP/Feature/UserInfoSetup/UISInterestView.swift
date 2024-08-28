@@ -15,6 +15,9 @@ struct UISInterestView: View {
             type: .interest,
             selectedIndex: $viewModel.selectedInterestIndex
         )
+        .onChange(of: viewModel.selectedInterestIndex) { _, newValue in
+            viewModel.canGoNext[1] = !newValue.isEmpty
+        }
         .padding(.top, 186)
         .padding(.horizontal, 20)
     }
