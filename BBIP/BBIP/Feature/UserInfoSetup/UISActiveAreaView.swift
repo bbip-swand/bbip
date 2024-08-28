@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct UISActiveAreaView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
@@ -152,6 +153,9 @@ fileprivate struct AreaSelectView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+                tabView.isScrollEnabled = false
+            }
             .padding(.bottom, 26)
             
             MainButton(text: "선택", enable: selectedData != nil) {
