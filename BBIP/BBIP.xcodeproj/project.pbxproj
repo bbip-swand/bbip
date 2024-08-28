@@ -29,6 +29,7 @@
 		C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */; };
 		C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */; };
 		C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */; };
+		C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB572C7EF80500BB3952 /* HideKeyboard.swift */; };
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
@@ -74,6 +75,7 @@
 		C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridButtonView.swift; sourceTree = "<group>"; };
 		C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridButtonContent.swift; sourceTree = "<group>"; };
 		C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusBorder.swift; sourceTree = "<group>"; };
+		C695CB572C7EF80500BB3952 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */,
 				C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */,
+				C695CB572C7EF80500BB3952 /* HideKeyboard.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
+				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,

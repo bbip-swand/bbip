@@ -89,6 +89,7 @@ private struct UISProfileImageAndNameView: View {
             }
         }
         .padding(.horizontal, 20)
+        .hideKeyboard()
     }
     
     private func validateName(_ name: String) {
