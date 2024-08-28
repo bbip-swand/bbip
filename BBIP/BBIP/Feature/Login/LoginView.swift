@@ -9,6 +9,7 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
+    @EnvironmentObject private var appState: AppStateManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     var body: some View {
@@ -36,6 +37,9 @@ struct LoginView: View {
             
             AppleSigninButton(viewModel: viewModel)
                 .padding(.bottom, 38)
+        }
+        .onChange(of: viewModel.loginSuccess) { _, newValue in
+            if newValue { appState.goUIS() }
         }
         .navigationBarBackButtonHidden()
     }
