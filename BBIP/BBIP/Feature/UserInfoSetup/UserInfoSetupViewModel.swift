@@ -44,7 +44,7 @@ class UserInfoSetupViewModel: ObservableObject {
     }
     
     // MARK: - Interest Setting View
-    @Published var selectedInterestIndex: Int = -1
+    @Published var selectedInterestIndex: [Int] = [-1]
     
     // MARK: - Profile Setting View
     @Published var userName: String = ""

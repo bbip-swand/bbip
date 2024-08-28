@@ -8,11 +8,12 @@
 import SwiftUI
 
 enum GridButtonViewType {
-    case interest, job
+    case interest   // 관심사 (중복 선택 가능)
+    case job        // 직업
 }
 
 struct GridButtonView: View {
-    @Binding var selectedIndex: Int
+    @Binding var selectedIndices: [Int]
     
     private let type: GridButtonViewType
     private var contents: [GridButtonContent] {
@@ -41,12 +42,25 @@ struct GridButtonView: View {
         }
     }
     
+    private func process(with index: Int) {
+        switch type {
+        case .interest:
+            if selectedIndices.contains(index) {
+                selectedIndices.removeAll { $0 == index }
+            } else {
+                selectedIndices.append(index)
+            }
+        case .job:
+            selectedIndices = [index]
+        }
+    }
+    
     init(
         type: GridButtonViewType,
-        selectedIndex: Binding<Int>
+        selectedIndex: Binding<[Int]>
     ) {
         self.type = type
-        self._selectedIndex = selectedIndex
+        self._selectedIndices = selectedIndex
     }
     
     var body: some View {
@@ -66,12 +80,12 @@ struct GridButtonView: View {
                     let content = contents[index]
                     
                     Button {
-                        selectedIndex = index
+                       process(with: index)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
                                 .fill(
-                                    selectedIndex == index
+                                    selectedIndices.contains(index)
                                     ? .primary1
                                     : .mainWhite
                                 )
@@ -90,10 +104,10 @@ struct GridButtonView: View {
                     }
                     .radiusBorder(
                         cornerRadius: 12,
-                        color: selectedIndex == index
+                        color: selectedIndices.contains(index)
                         ? .primary3
                         : .gray2,
-                        lineWidth: selectedIndex == index
+                        lineWidth: selectedIndices.contains(index)
                         ? 2
                         : 1
                     )
