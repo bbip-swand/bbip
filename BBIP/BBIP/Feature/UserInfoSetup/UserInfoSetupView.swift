@@ -32,7 +32,7 @@ struct UserInfoSetupView: View {
                 UISBirthView(viewModel: userInfoSetupViewModel)
                     .tag(3)
                 
-                Text("fifth")
+                UISJobView(viewModel: userInfoSetupViewModel)
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

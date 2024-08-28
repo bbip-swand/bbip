@@ -57,7 +57,9 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var yearDigits: [String] = ["", "", "", ""]
     @Published var isYearValid: Bool = true
     @Published var combinedYear: String = ""
-
+    
+    // MARK: - Job Setting View
+    @Published var selectedJobIndex: [Int] = []
     
     init() {
         self.contentData = UserInfoSetupContent.generate()

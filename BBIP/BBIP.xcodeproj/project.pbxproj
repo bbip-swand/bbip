@@ -31,6 +31,7 @@
 		C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */; };
 		C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB572C7EF80500BB3952 /* HideKeyboard.swift */; };
 		C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB592C7EFBE900BB3952 /* WarningLabel.swift */; };
+		C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5B2C7F061A00BB3952 /* UISJobView.swift */; };
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
@@ -78,6 +79,7 @@
 		C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusBorder.swift; sourceTree = "<group>"; };
 		C695CB572C7EF80500BB3952 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C695CB592C7EFBE900BB3952 /* WarningLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningLabel.swift; sourceTree = "<group>"; };
+		C695CB5B2C7F061A00BB3952 /* UISJobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISJobView.swift; sourceTree = "<group>"; };
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */,
 				08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */,
 				0865DA732C7AB56B00779741 /* UISBirthView.swift */,
+				C695CB5B2C7F061A00BB3952 /* UISJobView.swift */,
 			);
 			path = UserInfoSetup;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
