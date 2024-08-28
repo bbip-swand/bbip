@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
+		08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* MainStudyCell.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
+		08469F482C7E044A00675792 /* MainStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStudyCell.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				08469F482C7E044A00675792 /* MainStudyCell.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* UISHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
@@ -475,6 +478,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */,
 				C695CB4C2C7DE30100BB3952 /* TestEntity.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
