@@ -1,10 +1,3 @@
-//
-//  UISbirthyear.swift
-//  BBIP
-//
-//  Created by 조예린 on 8/25/24.
-//
-
 import Foundation
 import SwiftUI
 
@@ -12,81 +5,76 @@ struct UISBirthView: View {
     
     @ObservedObject var viewModel: UserInfoSetupViewModel
     @FocusState private var focusedField: Int?
-
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 8) {
                 Spacer(minLength: 40)
                 ForEach(0..<4, id: \.self) { index in
-                    TextField("", text: $viewModel.yearDigits[index])
-                        .font(.bbip(family: .Regular, size: 48))
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.numberPad)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.clear)
-                        .focused($focusedField, equals:index)
-                        .onChange(of: viewModel.yearDigits[index]) { oldValue,newValue in
-
-                             if newValue.isEmpty{
-                                moveToPreviousField(index: index)
-                                
-                            } else {
-                                viewModel.yearDigits[index] = String(newValue.prefix(1))
-                                moveToNextField(index: index)
-                               
-                            }
-                            
-                            updateCombinedYear()
-                            if isYearComplete() {
-                                validateYear()
-                            }
-                        }
-                        .underlineView(isActive: !viewModel.yearDigits[index].isEmpty || focusedField == index, isError: !viewModel.isYearValid)
+                    createTextField(for: index)
                 }
                 Spacer(minLength: 40)
             }
             .padding(.top, 222)
             
-            HStack{
-                if isYearComplete(){
-                    if !viewModel.isYearValid {
-                        Text("유효한 년도를 입력해주세요.")
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .foregroundColor(.red)
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 23)
-            .padding(.top, 23)
+            createWarningLabel()
             
             Spacer()
         }
-        .contentShape(Rectangle()) // Allows the whole VStack to be tappable
+        .contentShape(Rectangle())
         .onTapGesture {
             focusedField = nil
         }
     }
     
-    private func moveToNextField(index: Int) {
-        if index <= 3 {
-            focusedField = index+1
+    private func createTextField(for index: Int) -> some View {
+        TextField("", text: $viewModel.yearDigits[index])
+            .font(.bbip(family: .SemiBold, size: 48))
+            .fontWeight(.bold)
+            .multilineTextAlignment(.center)
+            .keyboardType(.numberPad)
+            .frame(maxWidth: .infinity)
+            .background(Color.clear)
+            .focused($focusedField, equals: index)
+            .onChange(of: viewModel.yearDigits[index]) { _, newValue in
+                handleTextFieldChange(index: index, newValue: newValue)
+            }
+            .underlineView(isActive: !viewModel.yearDigits[index].isEmpty || focusedField == index, isError: !viewModel.isYearValid)
+    }
+    
+    private func handleTextFieldChange(index: Int, newValue: String) {
+        if newValue.isEmpty {
+            moveToPreviousField(index: index)
         } else {
-            focusedField = nil
+            viewModel.yearDigits[index] = String(newValue.prefix(1))
+            moveToNextField(index: index)
         }
         
+        updateCombinedYear()
+        if isYearComplete() { validateYear() }
+        
+        // update can go next status
+        viewModel.canGoNext[3] = isYearComplete() && viewModel.isYearValid
+    }
+    
+    private func createWarningLabel() -> some View {
+        HStack(spacing: 6) {
+            if isYearComplete() && !viewModel.isYearValid {
+                WarningLabel(errorText: "유효한 년도를 입력해주세요.")
+            }
+        }
+        .foregroundStyle(.primary3)
+        .frame(maxWidth: .infinity)
+        .frame(height: 23)
+        .padding(.top, 23)
+    }
+    
+    private func moveToNextField(index: Int) {
+        focusedField = (index < 3) ? index + 1 : nil
     }
     
     private func moveToPreviousField(index: Int) {
-        if index > 0 {
-            focusedField = index-1
-        } else {
-            focusedField = 0
-        }
-        
+        focusedField = (index > 0) ? index - 1 : 0
     }
     
     private func isYearComplete() -> Bool {
@@ -104,17 +92,18 @@ struct UISBirthView: View {
     
     private func updateCombinedYear() {
         viewModel.combinedYear = viewModel.yearDigits.joined()
-        print("CombinedYear: ",viewModel.combinedYear)
+        print("CombinedYear: ", viewModel.combinedYear)
     }
 }
 
-extension View {
+fileprivate extension View {
     func underlineView(isActive: Bool, isError: Bool) -> some View {
         self
+            .padding(.bottom, 10)
             .overlay(
                 Rectangle()
                     .frame(height: 2)
-                    .foregroundColor(isActive ? .red : .gray3),
+                    .foregroundColor(isActive ? .primary3 : .gray3),
                 alignment: .bottom
             )
     }

@@ -73,14 +73,9 @@ private struct UISProfileImageAndNameView: View {
                     .frame(height: 2)
                     .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3)
                 
-                HStack(spacing: 7) {
+                HStack {
                     if viewModel.hasStartedEditing && !viewModel.isNameValid {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .resizable()
-                            .frame(width: 10, height: 10)
-                        
-                        Text("실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다.")
-                            .font(.bbip(.caption2_m12))
+                        WarningLabel(errorText: "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다.")
                     }
                 }
                 .foregroundColor(.red)
