@@ -37,6 +37,9 @@ struct LoginView: View {
             
             AppleSigninButton(viewModel: viewModel)
                 .padding(.bottom, 38)
+                .onTapGesture {
+                    HapticManager.shared.homeButtonTouchDown()
+                }
         }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
             if newValue { appState.goUIS() }
