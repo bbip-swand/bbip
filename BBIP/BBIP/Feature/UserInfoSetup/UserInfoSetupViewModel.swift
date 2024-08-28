@@ -12,14 +12,15 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var contentData: [UserInfoSetupContent]
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
-        true,   // 관심사 (스킵 가능)
+        false,  // 관심사 (스킵 가능)
         false,  // 프로필 사진
         false,  // 생년월일
         false   // 직업
     ]
+    @Published var showCompleteView: Bool = false
     
     
-    // MARK: - Active Area View
+    // MARK: - Active Area Setting View
     // 지역 재 선택시 기존의 데이터 리셋
     @Published var showAreaSelectModal: Bool = false {
         didSet {
@@ -43,6 +44,9 @@ class UserInfoSetupViewModel: ObservableObject {
         [selectedCity, selectedDistrict, selectedsubDistricts]
     }
     
+    // MARK: - Interest Setting View
+    @Published var selectedInterestIndex: [Int] = []
+    
     // MARK: - Profile Setting View
     @Published var userName: String = ""
     @Published var isNameValid: Bool = false
@@ -54,7 +58,9 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var yearDigits: [String] = ["", "", "", ""]
     @Published var isYearValid: Bool = true
     @Published var combinedYear: String = ""
-
+    
+    // MARK: - Job Setting View
+    @Published var selectedJobIndex: [Int] = []
     
     init() {
         self.contentData = UserInfoSetupContent.generate()

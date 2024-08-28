@@ -11,13 +11,19 @@ struct UserInfoSetupView: View {
     @StateObject private var userInfoSetupViewModel = UserInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
+    private func buttonText() -> String {
+        guard selectedIndex == 1 else { return "다음" }
+        guard !userInfoSetupViewModel.selectedInterestIndex.isEmpty else { return "다음" }
+        return "\(userInfoSetupViewModel.selectedInterestIndex.count)개 선택"
+    }
+    
     var body: some View {
         ZStack {
             TabView(selection: $selectedIndex) {
                 UISActiveAreaView(viewModel: userInfoSetupViewModel)
                     .tag(0)
                 
-                Text("second")
+                UISInterestView(viewModel: userInfoSetupViewModel)
                     .tag(1)
                 
                 UISProfileView(viewModel: userInfoSetupViewModel)
@@ -26,7 +32,7 @@ struct UserInfoSetupView: View {
                 UISBirthView(viewModel: userInfoSetupViewModel)
                     .tag(3)
                 
-                Text("fifth")
+                UISJobView(viewModel: userInfoSetupViewModel)
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -46,14 +52,17 @@ struct UserInfoSetupView: View {
 
                 Spacer()
                    
-                MainButton(text: "다음", enable: userInfoSetupViewModel.canGoNext[selectedIndex]) {
+                MainButton(
+                    text: buttonText(),
+                    enable: userInfoSetupViewModel.canGoNext[selectedIndex]
+                ) {
                     withAnimation {
                         if selectedIndex < userInfoSetupViewModel.contentData.count - 1 {
                             selectedIndex += 1
                             print(selectedIndex)
-                            print(userInfoSetupViewModel.contentData[selectedIndex].title)
                         } else {
                             // 회원가입 프로세스
+                            userInfoSetupViewModel.showCompleteView = true
                         }
                     }
                 }
@@ -61,7 +70,12 @@ struct UserInfoSetupView: View {
             }
         }
         .background(Color.gray1)
+        .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
+        .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
+        .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
+            UISCompleteView(userName: userInfoSetupViewModel.userName)
+        }
     }
 }
 
@@ -90,6 +104,26 @@ private struct TabViewProgressBar: View {
     }
 }
 
-#Preview {
-    UserInfoSetupView()
+fileprivate extension View {
+    /// 관심사 선택시에만 보여지는 건너뛰기 버튼
+    func skipButton(
+        selectedIndex: Binding<Int>,
+        viewModel: UserInfoSetupViewModel
+    ) -> some View {
+        self.toolbar {
+            if selectedIndex.wrappedValue == 1 {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        withAnimation { selectedIndex.wrappedValue += 1 }
+                        viewModel.selectedInterestIndex.removeAll()
+                    } label: {
+                        Text("건너뛰기")
+                            .font(.bbip(.caption1_m16))
+                            .frame(height: 24)
+                            .foregroundStyle(.gray5)
+                    }
+                }
+            }
+        }
+    }
 }
