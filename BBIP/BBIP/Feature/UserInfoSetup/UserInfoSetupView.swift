@@ -62,6 +62,7 @@ struct UserInfoSetupView: View {
                             print(selectedIndex)
                         } else {
                             // 회원가입 프로세스
+                            userInfoSetupViewModel.showCompleteView = true
                         }
                     }
                 }
@@ -72,6 +73,9 @@ struct UserInfoSetupView: View {
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
         .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
+        .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
+            UISCompleteView(userName: userInfoSetupViewModel.userName)
+        }
     }
 }
 

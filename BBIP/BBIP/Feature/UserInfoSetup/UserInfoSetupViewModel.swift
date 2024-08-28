@@ -17,6 +17,7 @@ class UserInfoSetupViewModel: ObservableObject {
         false,  // 생년월일
         false   // 직업
     ]
+    @Published var showCompleteView: Bool = false
     
     
     // MARK: - Active Area Setting View
