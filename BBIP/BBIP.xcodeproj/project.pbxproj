@@ -39,6 +39,7 @@
 		C695CB642C7F154F00BB3952 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB632C7F154F00BB3952 /* AppState.swift */; };
 		C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB652C7F160200BB3952 /* UserDefaultManager.swift */; };
 		C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB672C7F164300BB3952 /* KeychainManager.swift */; };
+		C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB692C7F209000BB3952 /* LoginViewModel.swift */; };
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
@@ -91,6 +92,8 @@
 		C695CB632C7F154F00BB3952 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		C695CB652C7F160200BB3952 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C695CB672C7F164300BB3952 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		C695CB692C7F209000BB3952 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C695CB6B2C7F284A00BB3952 /* BBIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BBIP.entitlements; sourceTree = "<group>"; };
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
@@ -179,7 +182,7 @@
 			children = (
 				C695BDE92C649F8B009DEC3C /* Onboarding */,
 				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
-				C695BDE82C649F67009DEC3C /* SignIn */,
+				C695BDE82C649F67009DEC3C /* Login */,
 				C695BDE72C649F63009DEC3C /* Home */,
 			);
 			path = Feature;
@@ -193,12 +196,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		C695BDE82C649F67009DEC3C /* SignIn */ = {
+		C695BDE82C649F67009DEC3C /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				C695CB612C7F13E600BB3952 /* LoginView.swift */,
+				C695CB692C7F209000BB3952 /* LoginViewModel.swift */,
 			);
-			path = SignIn;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		C695BDE92C649F8B009DEC3C /* Onboarding */ = {
@@ -372,6 +376,7 @@
 		C6B00C132C590A0E009AC4E2 /* BBIP */ = {
 			isa = PBXGroup;
 			children = (
+				C695CB6B2C7F284A00BB3952 /* BBIP.entitlements */,
 				C61A472D2C6686CA0016986D /* Info.plist */,
 				C695BDE02C649EDE009DEC3C /* App */,
 				C695BDE12C649F06009DEC3C /* Core */,
@@ -487,6 +492,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */,
 				C695CB4C2C7DE30100BB3952 /* TestEntity.swift in Sources */,
 				C695CB602C7F13C200BB3952 /* HomeView.swift in Sources */,
@@ -640,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -680,6 +687,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
