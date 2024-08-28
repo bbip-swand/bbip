@@ -29,7 +29,7 @@ enum StudyCategory: String {
         case .history: return .orange
         case .technology: return .indigo
         case .art: return .pink
-        case .sports: return .black
+        case .sports: return Color.black
         case .music: return .yellow
         }
     }
@@ -95,11 +95,11 @@ struct StudyCardView: View {
                 HStack(spacing: 0) {
                     Text(weekText)
                         .font(.bbip(.body2_b14))
-                        .foregroundColor(.primary3)
+                        .foregroundColor(category.color)
                     
                     Text("주차")
                         .font(.bbip(.body2_m14))
-                        .foregroundColor(.primary3)
+                        .foregroundColor(category.color)
                     
                     Spacer().frame(width: 8)
                     
@@ -164,7 +164,7 @@ struct reContentView: View {
             
             StudyCardView(
                 studyTitle: "JLPT N2 청해 스터디",
-                category: .language,
+                category: .history,
                 durationType: .haveDate(weekInt: "3", descriptionText: "Day 18 단어시험"),
                 dateText: "8월 11일 / 12:00 ~ 15:00",
                 locationText: "미정"
