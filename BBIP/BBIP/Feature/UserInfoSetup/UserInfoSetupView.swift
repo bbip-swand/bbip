@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct UserInfoSetupView: View {
     @StateObject private var userInfoSetupViewModel = UserInfoSetupViewModel()
@@ -36,6 +37,9 @@ struct UserInfoSetupView: View {
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+                tabView.isScrollEnabled = false
+            }
             
             VStack(spacing: 0) {
                 TabViewProgressBar(value: bindingCalculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))

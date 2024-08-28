@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct OnboardingView: View {
     @StateObject private var onboardingViewModel = OnboardingViewModel()
@@ -17,6 +18,9 @@ struct OnboardingView: View {
                 OnboardingContentView(onboardingViewModel: onboardingViewModel)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+                tabView.isScrollEnabled = false
+            }
             
             TabViewPageIndicator(
                 contentCount: onboardingViewModel.onboardingContents.count,
