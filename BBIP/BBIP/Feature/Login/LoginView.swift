@@ -36,9 +36,6 @@ struct LoginView: View {
             Spacer()
             
             AppleSigninButton(viewModel: viewModel)
-                .onTapGesture {
-                    HapticManager.shared.homeButtonTouchDown()
-                }
                 .padding(.bottom, 38)       
         }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
@@ -72,4 +69,8 @@ private struct AppleSigninButton : View {
                 .blendMode(.overlay)
             }
     }
+}
+
+#Preview {
+    LoginView()
 }
