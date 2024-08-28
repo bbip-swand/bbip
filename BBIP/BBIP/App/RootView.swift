@@ -26,7 +26,7 @@ struct RootView: View {
                 
             case .home:
                 NavigationStack {
-                    HomeView()
+                    MainHomeView()
                 }
             }
         }
