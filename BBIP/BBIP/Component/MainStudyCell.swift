@@ -37,18 +37,28 @@ enum StudyCategory: String {
 
 // 2. DurationText의 존재 여부를 나타내는 enum
 enum DurationType {
-    case haveDate(weekText: String, descriptionText: String)
+    case haveDate(weekInt: String, descriptionText: String)
     case nonDate
 }
 
 // 3. 메인 StudyCardView 정의
 struct StudyCardView: View {
-    var studyImage: String = "profile_default"
-    var studyTitle: String
-    var category: StudyCategory
-    var durationType: DurationType
-    var dateText: String
-    var locationText: String
+    private let studyImage: String
+    private let studyTitle: String
+    private let category: StudyCategory
+    private let durationType: DurationType
+    private let dateText: String
+    private let locationText: String
+    
+    // 생성자
+    init(studyImage: String = "profile_default", studyTitle: String, category: StudyCategory, durationType: DurationType, dateText: String, locationText: String) {
+        self.studyImage = studyImage
+        self.studyTitle = studyTitle
+        self.category = category
+        self.durationType = durationType
+        self.dateText = dateText
+        self.locationText = locationText
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -82,18 +92,21 @@ struct StudyCardView: View {
             // 4. DurationType에 따라 다른 뷰를 표시
             switch durationType {
             case .haveDate(let weekText, let descriptionText):
-                HStack {
+                HStack(spacing: 0) {
                     Text(weekText)
-                        .font(.bbip(.body1_m16))
+                        .font(.bbip(.body2_b14))
                         .foregroundColor(.primary3)
-                        .fontWeight(.bold)
+                    
+                    Text("주차")
+                        .font(.bbip(.body2_m14))
+                        .foregroundColor(.primary3)
                     
                     Spacer().frame(width: 8)
                     
                     Text(descriptionText)
-                        .font(.bbip(.body1_m16))
+                        .font(.bbip(.body2_m14))
                         .foregroundColor(.gray8)
-                        
+                    
                 }
                 .padding(.top, 8)
                 .padding(.bottom, 6)
@@ -152,7 +165,7 @@ struct reContentView: View {
             StudyCardView(
                 studyTitle: "JLPT N2 청해 스터디",
                 category: .language,
-                durationType: .haveDate(weekText: "3주차", descriptionText: "Day 18 단어시험"),
+                durationType: .haveDate(weekInt: "3", descriptionText: "Day 18 단어시험"),
                 dateText: "8월 11일 / 12:00 ~ 15:00",
                 locationText: "미정"
             )
