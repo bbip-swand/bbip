@@ -19,7 +19,7 @@ class UserInfoSetupViewModel: ObservableObject {
     ]
     
     
-    // MARK: - Active Area View
+    // MARK: - Active Area Setting View
     // 지역 재 선택시 기존의 데이터 리셋
     @Published var showAreaSelectModal: Bool = false {
         didSet {
@@ -42,6 +42,9 @@ class UserInfoSetupViewModel: ObservableObject {
     var selectedArea: [String?] {
         [selectedCity, selectedDistrict, selectedsubDistricts]
     }
+    
+    // MARK: - Interest Setting View
+    @Published var selectedInterestIndex: Int = -1
     
     // MARK: - Profile Setting View
     @Published var userName: String = ""
