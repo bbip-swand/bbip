@@ -69,6 +69,7 @@ struct UserInfoSetupView: View {
             }
         }
         .background(Color.gray1)
+        .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
         .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
     }

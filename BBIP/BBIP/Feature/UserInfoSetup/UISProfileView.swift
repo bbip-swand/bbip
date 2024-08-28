@@ -18,7 +18,6 @@ struct UISProfileView: View {
                 .padding(.top, 181)
             
             Spacer()
-            
         }
         .sheet(isPresented: $viewModel.showImagePicker) {
             ImagePicker(image: $viewModel.selectedImage)
@@ -38,64 +37,65 @@ private struct UISProfileImageAndNameView: View {
                         .frame(width: 160, height: 160)
                         .clipShape(Circle())
                 } else {
-                    Image("profile_default")
-                        .resizable()
-                        .frame(width: 160, height: 160)
-                        .clipShape(Circle())
-                    
-                    Button(action: {
+                    Button {
                         viewModel.showImagePicker = true
-                    }) {
-                        Image(systemName: "plus")
-                            .foregroundColor(.white)
-                            .background(Circle().fill(Color.black).frame(width: 30, height: 30))
+                    } label: {
+                        ZStack {
+                            Image("profile_default")
+                                .resizable()
+                                .frame(width: 160, height: 160)
+                                .clipShape(Circle())
+                            
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .background(
+                                    Circle()
+                                        .fill(Color.black)
+                                        .frame(width: 30, height: 30)
+                                )
+                        }
                     }
                 }
             }
-            .padding(.bottom, 40) // 간격 조정
+            .padding(.bottom, 40)
             
             VStack(spacing: 0) {
                 TextField("실명을 입력해주세요", text: $viewModel.userName)
-                    .onChange(of: viewModel.userName) { oldValue,newValue in
-                            viewModel.hasStartedEditing = true
-                            validateName(newValue)
-                        }
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 8)
-                    .overlay(
-                        Rectangle()
-                            .frame(height: 2)
-                            .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3),
-                        alignment: .bottom
-                    )
-    
-                HStack {
-                    Text(viewModel.hasStartedEditing && !viewModel.isNameValid ? "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다." : " ")
-                            .foregroundColor(.red)
-                            .font(.bbip(family:.Medium, size:12))
-                            .multilineTextAlignment(.center)
-                    if viewModel.hasStartedEditing && !viewModel.isNameValid {
-                            Button(action: {
-                                viewModel.userName = ""
-                            }) {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                    .foregroundColor(.red)
-                            }
-                        }
+                    .font(.bbip(.body1_m16))
+                    .onChange(of: viewModel.userName) { _, newValue in
+                        viewModel.hasStartedEditing = true
+                        validateName(newValue)
                     }
-                    .frame(height: 20) // Fixed height for the error message area
-                    .padding(.top, 4)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10)
+                
+                Rectangle()
+                    .frame(height: 2)
+                    .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3)
+                
+                HStack(spacing: 7) {
+                    if viewModel.hasStartedEditing && !viewModel.isNameValid {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .resizable()
+                            .frame(width: 10, height: 10)
+                        
+                        Text("실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다.")
+                            .font(.bbip(.caption2_m12))
+                    }
+                }
+                .foregroundColor(.red)
+                .frame(height: 20)
+                .padding(.top, 4)
             }
         }
-        .padding(.horizontal)
-        .padding(.top)
+        .padding(.horizontal, 20)
     }
     
     private func validateName(_ name: String) {
-        let regex = "^[가-힣a-zA-Z]{2,15}$"
+        let regex = "^[가-힣]{2,15}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         viewModel.isNameValid = predicate.evaluate(with: name)
-        
+        viewModel.canGoNext[2] = predicate.evaluate(with: name)
     }
 }
 
