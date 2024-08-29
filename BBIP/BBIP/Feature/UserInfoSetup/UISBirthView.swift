@@ -22,7 +22,7 @@ struct UISBirthView: View {
             Spacer()
         }
         .onAppear {
-            focusedField = 0
+            focusedField = isYearComplete() ? 3 : 0
         }
         .contentShape(Rectangle())
         .onTapGesture {

@@ -5,9 +5,9 @@
 //  Created by 조예린 on 8/16/24.
 //
 
-import Foundation
 import SwiftUI
 import PhotosUI
+import SwiftUIIntrospect
 
 struct UISProfileView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
@@ -72,6 +72,10 @@ private struct SetNicknameView: View {
                 }
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 10)
+                .introspect(.textField, on: .iOS(.v17)) { textField in
+                    textField.autocorrectionType = .no
+                    textField.autocapitalizationType = .none
+                }
             
             Rectangle()
                 .frame(height: 2)
