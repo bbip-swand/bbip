@@ -10,13 +10,19 @@ import SwiftUIIntrospect
 
 struct UISActiveAreaView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
+    private let sheetModalHeight: CGFloat = 565
+    
+    private func showSheetAndReset() {
+        viewModel.showAreaSelectModal = true
+        viewModel.canGoNext[0] = false
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             SelectedAreaStatusView(viewModel: viewModel)
                 .animation(nil)
                 .onTapGesture {
-                    viewModel.showAreaSelectModal = true
+                    showSheetAndReset()
                 }
                 .padding(.top, 180)
             
@@ -24,7 +30,7 @@ struct UISActiveAreaView: View {
         }
         .sheet(isPresented: $viewModel.showAreaSelectModal) {
             AreaSelectView(viewModel: viewModel)
-                .presentationDetents([.height(620)])
+                .presentationDetents([.height(sheetModalHeight)])
         }
     }
 }
@@ -38,9 +44,9 @@ private struct SelectedAreaStatusView: View {
     }
     
     private var areaForDisplay: [String] {
-        viewModel.showAreaSelectModal 
-            ? viewModel.selectedArea.compactMap { $0 ?? "선택" }
-            : nonNilSelectedAreas
+        viewModel.canGoNext[0]
+            ? nonNilSelectedAreas
+            : viewModel.selectedArea.compactMap { $0 ?? "선택" }
     }
     
     @ViewBuilder
@@ -119,13 +125,8 @@ fileprivate struct AreaSelectView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("활동 지역 선택")
-                .font(.bbip(.body1_m16))
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top, 25)
-            
             SelectedAreaStatusView(viewModel: viewModel)
-                .padding(.top, 32)
+                .padding(.top, 22)
                 .padding(.bottom, 26)
             
             TabView(selection: $currentIndex) {
@@ -163,6 +164,7 @@ fileprivate struct AreaSelectView: View {
                     withAnimation(.easeIn(duration: 0.1)) { processSelection(data) }
                 }
             }
+            .padding(.bottom, 22)
         }
     }
 }
@@ -199,4 +201,8 @@ fileprivate struct AreaGridView: View {
             .padding(.horizontal, 20)
         }
     }
+}
+
+#Preview {
+    UISActiveAreaView(viewModel: UserInfoSetupViewModel())
 }

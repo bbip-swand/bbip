@@ -21,6 +21,9 @@ struct UISBirthView: View {
             
             Spacer()
         }
+        .onAppear {
+            focusedField = isYearComplete() ? 3 : 0
+        }
         .contentShape(Rectangle())
         .onTapGesture {
             focusedField = nil
