@@ -21,6 +21,9 @@ struct UISBirthView: View {
             
             Spacer()
         }
+        .onAppear {
+            focusedField = 0
+        }
         .contentShape(Rectangle())
         .onTapGesture {
             focusedField = nil

@@ -29,7 +29,6 @@ struct UISProfileView: View {
         .padding(.horizontal, 20)
         .hideKeyboard()
     }
-    
 }
 
 private struct SetProfileImageView: View {
