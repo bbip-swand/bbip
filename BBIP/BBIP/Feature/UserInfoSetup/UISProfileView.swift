@@ -75,6 +75,7 @@ private struct SetNicknameView: View {
                 .introspect(.textField, on: .iOS(.v17)) { textField in
                     textField.autocorrectionType = .no
                     textField.autocapitalizationType = .none
+                    textField.spellCheckingType = .no
                 }
             
             Rectangle()
