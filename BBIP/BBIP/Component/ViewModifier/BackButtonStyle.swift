@@ -9,6 +9,11 @@ import SwiftUI
 
 struct BackButtonModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
+    private let isReversal: Bool
+    
+    init(isReversal: Bool) {
+        self.isReversal = isReversal
+    }
 
     func body(content: Content) -> some View {
         content
@@ -19,8 +24,9 @@ struct BackButtonModifier: ViewModifier {
                     } label: {
                         Image("backButton")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 24, height: 24)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(isReversal ? .mainWhite : .gray9)
                     }
                 }
             }
@@ -28,10 +34,10 @@ struct BackButtonModifier: ViewModifier {
 }
 
 extension View {
-    func backButtonStyle() -> some View {
+    func backButtonStyle(isReversal: Bool = false) -> some View {
         self
             .navigationBarBackButtonHidden(true)
-            .modifier(BackButtonModifier())
+            .modifier(BackButtonModifier(isReversal: isReversal))
     }
 }
 

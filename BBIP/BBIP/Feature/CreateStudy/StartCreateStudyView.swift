@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct StartCreateStudyView: View {
+    @State private var showStudyInfoSetupView: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            Spacer()
+            
+            Text("Content...")
+                .font(.bbip(.title4_sb24))
+                .foregroundStyle(.mainWhite)
+            
+            Spacer()
+            
+            MainButton(text: "시작하기") {
+                showStudyInfoSetupView = true
+            }
+            .padding(.bottom, 22)
+        }
+        .frame(maxWidth: .infinity)
+        .backButtonStyle(isReversal: true)
+        .background(.gray9)
+        .navigationDestination(isPresented: $showStudyInfoSetupView) {
+            StudyInfoSetupView()
+        }
     }
 }
 
