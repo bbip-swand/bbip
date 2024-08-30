@@ -13,15 +13,17 @@ struct MainButton: View {
     private var text: String
     private var enable: Bool
     private var action: Action
+    private var disabledColor: Color // 추가된 부분
     
     init(
         text: String,
         enable: Bool = true,
-        description: String = "",
+        disabledColor: Color = .gray3, // 기본값 설정
         action: @escaping Action
     ) {
         self.text = text
         self.enable = enable
+        self.disabledColor = disabledColor // 초기화
         self.action = action
     }
     
@@ -31,7 +33,7 @@ struct MainButton: View {
                 .font(.bbip(.button1_m20))
                 .foregroundColor(enable ? .mainWhite : .gray5)
                 .frame(width: UIScreen.main.bounds.width - 40, height: 56)
-                .background(RoundedRectangle(cornerRadius: 12).fill(enable ? Color.primary3 : Color.gray3))
+                .background(RoundedRectangle(cornerRadius: 12).fill(enable ? Color.primary3 : disabledColor))
         }
         .disabled(!enable)
     }
