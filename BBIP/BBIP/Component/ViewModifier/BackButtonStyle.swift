@@ -9,6 +9,11 @@ import SwiftUI
 
 struct BackButtonModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
+    private let isReversal: Bool
+    
+    init(isReversal: Bool) {
+        self.isReversal = isReversal
+    }
 
     func body(content: Content) -> some View {
         content
@@ -19,8 +24,9 @@ struct BackButtonModifier: ViewModifier {
                     } label: {
                         Image("backButton")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 24, height: 24)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(isReversal ? .mainWhite : .gray9)
                     }
                 }
             }
@@ -28,16 +34,25 @@ struct BackButtonModifier: ViewModifier {
 }
 
 extension View {
-    func backButtonStyle() -> some View {
+    func backButtonStyle(isReversal: Bool = false) -> some View {
         self
             .navigationBarBackButtonHidden(true)
-            .modifier(BackButtonModifier())
+            .modifier(BackButtonModifier(isReversal: isReversal))
     }
 }
 
 struct BackButtonHandlingModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @Binding var currentIndex: Int
+    private let isReversal: Bool
+    
+    init(
+        currentIndex: Binding<Int>,
+        isReversal: Bool
+    ) {
+        self._currentIndex = currentIndex
+        self.isReversal = isReversal
+    }
     
     func body(content: Content) -> some View {
         content
@@ -52,8 +67,9 @@ struct BackButtonHandlingModifier: ViewModifier {
                     } label: {
                         Image("backButton")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 24, height: 24)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(isReversal ? .mainWhite : .gray9)
                     }
                 }
             }
@@ -62,9 +78,12 @@ struct BackButtonHandlingModifier: ViewModifier {
 
 /// TabView에서 selectedIndex값을 handling할 수 있는 backButton
 extension View {
-    func handlingBackButtonStyle(currentIndex: Binding<Int>) -> some View {
+    func handlingBackButtonStyle(
+        currentIndex: Binding<Int>,
+        isReversal: Bool = false
+    ) -> some View {
         self
             .navigationBarBackButtonHidden(true)
-            .modifier(BackButtonHandlingModifier(currentIndex: currentIndex))
+            .modifier(BackButtonHandlingModifier(currentIndex: currentIndex, isReversal: isReversal))
     }
 }

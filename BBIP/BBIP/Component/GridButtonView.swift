@@ -14,6 +14,7 @@ enum GridButtonViewType {
 
 struct GridButtonView: View {
     @Binding var selectedIndices: [Int]
+    private let maximumCount: Int = 3 // 중복 선택 최대 개수
     
     private let type: GridButtonViewType
     private var contents: [GridButtonContent] {
@@ -24,6 +25,7 @@ struct GridButtonView: View {
             GridButtonContent.generateJobContent()
         }
     }
+    
     private var gridItems: [GridItem] {
         switch type {
         case .interest:
@@ -47,7 +49,7 @@ struct GridButtonView: View {
         case .interest:
             if selectedIndices.contains(index) {
                 selectedIndices.removeAll { $0 == index }
-            } else {
+            } else if selectedIndices.count < maximumCount {
                 selectedIndices.append(index)
             }
         case .job:

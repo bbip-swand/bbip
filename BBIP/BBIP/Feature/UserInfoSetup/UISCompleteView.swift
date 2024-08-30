@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UISCompleteView: View {
+    @EnvironmentObject private var appState: AppStateManager
     private let userName: String
     
     init(userName: String) {
@@ -41,11 +42,14 @@ struct UISCompleteView: View {
             Spacer()
             
             MainButton(text: "시작하기") {
-                // go to main
+                withAnimation { appState.goHome() }
             }
             .padding(.bottom, 39)
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            HapticManager.shared.boong()
+        }
     }
 }
 

@@ -9,6 +9,7 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject {
     @Published var onboardingContents: [OnboardingContent]
+    @Published var showLoginView: Bool = false
     
     init() {
         self.onboardingContents = OnboardingContent.generate()

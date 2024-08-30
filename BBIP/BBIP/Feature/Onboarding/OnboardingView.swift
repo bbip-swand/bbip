@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct OnboardingView: View {
-    @EnvironmentObject var appState: AppStateManager
     @StateObject private var onboardingViewModel = OnboardingViewModel()
     @State private var selectedIndex: Int = 0
     
@@ -18,6 +18,9 @@ struct OnboardingView: View {
                 OnboardingContentView(onboardingViewModel: onboardingViewModel)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+                tabView.isScrollEnabled = false
+            }
             
             TabViewPageIndicator(
                 contentCount: onboardingViewModel.onboardingContents.count,
@@ -51,8 +54,7 @@ struct OnboardingView: View {
                     if selectedIndex < onboardingViewModel.onboardingContents.count - 1 {
                         selectedIndex += 1
                     } else {
-                        selectedIndex = 0
-//                        appState.goUIS()
+                        onboardingViewModel.showLoginView = true
                     }
                 }
             }
@@ -60,6 +62,9 @@ struct OnboardingView: View {
             .padding(.bottom, 39)
         }
         .background(Color.gray1)
+        .navigationDestination(isPresented: $onboardingViewModel.showLoginView) {
+            LoginView()
+        }
     }
 }
 

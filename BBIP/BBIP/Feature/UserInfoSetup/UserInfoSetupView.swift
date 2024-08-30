@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct UserInfoSetupView: View {
     @StateObject private var userInfoSetupViewModel = UserInfoSetupViewModel()
@@ -36,13 +37,16 @@ struct UserInfoSetupView: View {
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+                tabView.isScrollEnabled = false
+            }
             
             VStack(spacing: 0) {
-                TabViewProgressBar(value: bindingCalculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
+                TabViewProgressBar(value: .calculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
                     .padding(.top, 20)
                     .background(Color.gray1)
                 
-                UISHeaderView(
+                TabViewHeaderView(
                     title: userInfoSetupViewModel.contentData[selectedIndex].title,
                     subTitle: userInfoSetupViewModel.contentData[selectedIndex].subTitle ?? ""
                 )
@@ -76,31 +80,6 @@ struct UserInfoSetupView: View {
         .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
             UISCompleteView(userName: userInfoSetupViewModel.userName)
         }
-    }
-}
-
-private func bindingCalculateProgress(currentValue: Binding<Int>, totalCount: Int) -> Binding<Double> {
-    return Binding<Double>(
-        get: {
-            guard currentValue.wrappedValue > 0 else { return 0.2 }
-            return Double(currentValue.wrappedValue + 1) / Double(totalCount)
-        },
-        set: { _ in }
-    )
-}
-
-private struct TabViewProgressBar: View {
-    @Binding var value: Double
-    
-    fileprivate init(value: Binding<Double>) {
-        self._value = value
-    }
-    
-    fileprivate var body: some View {
-        ProgressView(value: value)
-            .progressViewStyle(LinearProgressViewStyle())
-            .tint(.primary3)
-            .animation(.easeInOut(duration: 0.1), value: value)
     }
 }
 
