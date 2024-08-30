@@ -31,6 +31,12 @@
 		C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */; };
 		C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBC2C821A1F006AA652 /* View+Extension.swift */; };
 		C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */; };
+		C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC12C822066006AA652 /* SISCategoryView.swift */; };
+		C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC32C8220A6006AA652 /* SISPeriodView.swift */; };
+		C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC52C8220B2006AA652 /* SISProfileView.swift */; };
+		C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */; };
+		C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */; };
+		C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BCB2C822147006AA652 /* SISCompleteView.swift */; };
 		C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BDED2C64A2C1009DEC3C /* Example.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
@@ -88,6 +94,12 @@
 		C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewProgressBar.swift; sourceTree = "<group>"; };
 		C6934BBC2C821A1F006AA652 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C6934BC12C822066006AA652 /* SISCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCategoryView.swift; sourceTree = "<group>"; };
+		C6934BC32C8220A6006AA652 /* SISPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISPeriodView.swift; sourceTree = "<group>"; };
+		C6934BC52C8220B2006AA652 /* SISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISProfileView.swift; sourceTree = "<group>"; };
+		C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISDescriptionView.swift; sourceTree = "<group>"; };
+		C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISWeeklyContentView.swift; sourceTree = "<group>"; };
+		C6934BCB2C822147006AA652 /* SISCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCompleteView.swift; sourceTree = "<group>"; };
 		C695BDED2C64A2C1009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BE042C64CBE8009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		C695BE052C64CBEB009DEC3C /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -168,8 +180,22 @@
 				C6934BB02C808321006AA652 /* StartCreateStudyView.swift */,
 				C6934BB42C8083D5006AA652 /* StudyInfoSetupView.swift */,
 				C6934BB22C808330006AA652 /* CreateStudyViewModel.swift */,
+				C6934BC02C822031006AA652 /* SISInnerView */,
+				C6934BCB2C822147006AA652 /* SISCompleteView.swift */,
 			);
 			path = CreateStudy;
+			sourceTree = "<group>";
+		};
+		C6934BC02C822031006AA652 /* SISInnerView */ = {
+			isa = PBXGroup;
+			children = (
+				C6934BC12C822066006AA652 /* SISCategoryView.swift */,
+				C6934BC32C8220A6006AA652 /* SISPeriodView.swift */,
+				C6934BC52C8220B2006AA652 /* SISProfileView.swift */,
+				C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */,
+				C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */,
+			);
+			path = SISInnerView;
 			sourceTree = "<group>";
 		};
 		C695BDE02C649EDE009DEC3C /* App */ = {
@@ -533,9 +559,12 @@
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
+				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */,
+				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C695CB4C2C7DE30100BB3952 /* TestEntity.swift in Sources */,
@@ -547,12 +576,14 @@
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
+				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
+				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
@@ -561,6 +592,7 @@
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
+				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C695BDEE2C64A2C1009DEC3C /* Example.swift in Sources */,
