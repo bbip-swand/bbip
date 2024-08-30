@@ -46,7 +46,7 @@ struct UserInfoSetupView: View {
                     .padding(.top, 20)
                     .background(Color.gray1)
                 
-                UISHeaderView(
+                TabViewHeaderView(
                     title: userInfoSetupViewModel.contentData[selectedIndex].title,
                     subTitle: userInfoSetupViewModel.contentData[selectedIndex].subTitle ?? ""
                 )
