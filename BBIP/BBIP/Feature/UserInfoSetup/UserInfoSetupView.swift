@@ -42,7 +42,7 @@ struct UserInfoSetupView: View {
             }
             
             VStack(spacing: 0) {
-                TabViewProgressBar(value: bindingCalculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
+                TabViewProgressBar(value: .calculateProgress(currentValue: $selectedIndex, totalCount: userInfoSetupViewModel.contentData.count))
                     .padding(.top, 20)
                     .background(Color.gray1)
                 
@@ -80,31 +80,6 @@ struct UserInfoSetupView: View {
         .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
             UISCompleteView(userName: userInfoSetupViewModel.userName)
         }
-    }
-}
-
-private func bindingCalculateProgress(currentValue: Binding<Int>, totalCount: Int) -> Binding<Double> {
-    return Binding<Double>(
-        get: {
-            guard currentValue.wrappedValue > 0 else { return 0.2 }
-            return Double(currentValue.wrappedValue + 1) / Double(totalCount)
-        },
-        set: { _ in }
-    )
-}
-
-private struct TabViewProgressBar: View {
-    @Binding var value: Double
-    
-    fileprivate init(value: Binding<Double>) {
-        self._value = value
-    }
-    
-    fileprivate var body: some View {
-        ProgressView(value: value)
-            .progressViewStyle(LinearProgressViewStyle())
-            .tint(.primary3)
-            .animation(.easeInOut(duration: 0.1), value: value)
     }
 }
 
