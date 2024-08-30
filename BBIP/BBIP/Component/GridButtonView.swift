@@ -8,13 +8,14 @@
 import SwiftUI
 
 enum GridButtonViewType {
-    case interest   // 관심사 (중복 선택 가능)
+    case interest   // 관심사, 카테고리
     case job        // 직업
 }
 
 struct GridButtonView: View {
     @Binding var selectedIndices: [Int]
-    private let maximumCount: Int = 3 // 중복 선택 최대 개수
+    private let maximumCount: Int   // 중복 선택 최대 개수
+    private let isDarkMode: Bool      // 스터디 생성 시 사용되는 다크모드
     
     private let type: GridButtonViewType
     private var contents: [GridButtonContent] {
@@ -44,13 +45,36 @@ struct GridButtonView: View {
         }
     }
     
+    // MARK: - Colors
+    private var backgroundColor: Color {
+        isDarkMode ? .gray8 : .mainWhite
+    }
+    
+    private var selectedBackgroundColor: Color {
+        isDarkMode 
+        ? Color(uiColor: UIColor(hexCode: "FF9090", alpha: 0.5))
+        : .primary1
+    }
+    
+    private var textColor: Color {
+        isDarkMode ? .gray1 : .gray7
+    }
+    
+    private var borderColor: Color {
+        isDarkMode ? .gray6 : .gray2
+    }
+    
     private func process(with index: Int) {
         switch type {
         case .interest:
-            if selectedIndices.contains(index) {
-                selectedIndices.removeAll { $0 == index }
-            } else if selectedIndices.count < maximumCount {
-                selectedIndices.append(index)
+            if isDarkMode { // 스터디 생성 시 최대개수가 1개 이므로 로직 구분
+                selectedIndices = [index]
+            } else {
+                if selectedIndices.contains(index) {
+                    selectedIndices.removeAll { $0 == index }
+                } else if selectedIndices.count < maximumCount {
+                    selectedIndices.append(index)
+                }
             }
         case .job:
             selectedIndices = [index]
@@ -59,10 +83,14 @@ struct GridButtonView: View {
     
     init(
         type: GridButtonViewType,
-        selectedIndex: Binding<[Int]>
+        selectedIndex: Binding<[Int]>,
+        maximumCount: Int = 1,
+        isDarkMode: Bool = false
     ) {
         self.type = type
         self._selectedIndices = selectedIndex
+        self.maximumCount = maximumCount
+        self.isDarkMode = isDarkMode
     }
     
     var body: some View {
@@ -88,8 +116,8 @@ struct GridButtonView: View {
                             RoundedRectangle(cornerRadius: 12)
                                 .fill(
                                     selectedIndices.contains(index)
-                                    ? .primary1
-                                    : .mainWhite
+                                    ? selectedBackgroundColor
+                                    : (isDarkMode ? .gray8 : .mainWhite)
                                 )
                             
                             VStack(spacing: 12) {
@@ -98,8 +126,8 @@ struct GridButtonView: View {
                                     .frame(width: imageSize, height: imageSize)
                                 
                                 Text(content.text)
-                                    .font(.bbip(.body1_m16))
-                                    .foregroundStyle(.gray7)
+                                    .font(.bbip(.body2_m14))
+                                    .foregroundStyle(textColor)
                             }
                         }
                         .frame(width: itemWidth, height: itemWidth)
@@ -108,7 +136,7 @@ struct GridButtonView: View {
                         cornerRadius: 12,
                         color: selectedIndices.contains(index)
                         ? .primary3
-                        : .gray2,
+                        : borderColor,
                         lineWidth: selectedIndices.contains(index)
                         ? 2
                         : 1

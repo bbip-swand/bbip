@@ -17,6 +17,9 @@ class CreateStudyViewModel: ObservableObject {
         false   // 주차별 계획
     ]
     
+    // MARK: - Category Setting View
+    @Published var selectedCategoryIndex: [Int] = []
+    
     init() {
         self.contentData = CreateStudyContent.generate()
     }
