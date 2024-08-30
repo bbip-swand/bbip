@@ -198,6 +198,18 @@
 			path = SISInnerView;
 			sourceTree = "<group>";
 		};
+		C6934BCD2C822269006AA652 /* UISInnerView */ = {
+			isa = PBXGroup;
+			children = (
+				C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */,
+				C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */,
+				08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */,
+				0865DA732C7AB56B00779741 /* UISBirthView.swift */,
+				C695CB5B2C7F061A00BB3952 /* UISJobView.swift */,
+			);
+			path = UISInnerView;
+			sourceTree = "<group>";
+		};
 		C695BDE02C649EDE009DEC3C /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,11 +422,7 @@
 			children = (
 				C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */,
 				C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */,
-				C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */,
-				C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */,
-				08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */,
-				0865DA732C7AB56B00779741 /* UISBirthView.swift */,
-				C695CB5B2C7F061A00BB3952 /* UISJobView.swift */,
+				C6934BCD2C822269006AA652 /* UISInnerView */,
 				C695CB5D2C7F089C00BB3952 /* UISCompleteView.swift */,
 			);
 			path = UserInfoSetup;
