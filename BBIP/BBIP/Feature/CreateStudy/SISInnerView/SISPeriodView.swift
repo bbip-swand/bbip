@@ -27,10 +27,10 @@ struct SISPeriodView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 12)
             
-            PeriodPickerButton(viewModel: viewModel)
-                .onTapGesture {
-                    showDatePicker = true
-                }
+            PeriodPickerButton(
+                viewModel: viewModel,
+                showDatePicker: $showDatePicker
+            )
             
             HStack(spacing: 10) {
                 Text("요일 선택")
@@ -108,7 +108,7 @@ private struct StepperButton: View {
             
             HStack {
                 Button {
-                    guard intValue > 0 else { return }
+                    guard intValue > 1 else { return }
                     intValue -= 1
                 } label: {
                     Image("stepper_minus")
@@ -135,10 +135,11 @@ private struct StepperButton: View {
 
 private struct PeriodPickerButton: View {
     @ObservedObject var viewModel: CreateStudyViewModel
+    @Binding var showDatePicker: Bool
     
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateFormat = "yy. MM. dd."
         return formatter.string(from: date)
     }
     
@@ -158,12 +159,16 @@ private struct PeriodPickerButton: View {
             HStack {
                 Spacer()
                 
-                Text(viewModel.periodIsSelected
-                     ? formatDate(viewModel.startDate)
-                     : "시작일")
-                .font(.bbip(.body1_m16))
-                .foregroundStyle(.gray3)
-                .monospacedDigit()
+                Button {
+                    showDatePicker = true
+                } label: {
+                    Text(viewModel.periodIsSelected
+                         ? formatDate(viewModel.startDate)
+                         : "시작일")
+                    .font(.bbip(.body1_m16))
+                    .foregroundStyle(.gray3)
+                    .monospacedDigit()
+                }
                 
                 Spacer()
                 
@@ -177,7 +182,7 @@ private struct PeriodPickerButton: View {
                      ? formatDate(viewModel.deadlineDate!)
                      : "마감일")
                 .font(.bbip(.body1_m16))
-                .foregroundStyle(colorBySelected)
+                .foregroundStyle(.gray7)
                 .monospacedDigit()
                 
                 Spacer()

@@ -28,7 +28,7 @@ class CreateStudyViewModel: ObservableObject {
                 let (weekCount, periodIsSelected, selectedDayIndex) = weekPeriodDay
                 
                 // 조건을 만족할 경우 canGoNext[1]을 true로 설정
-                self.canGoNext[1] = (weekCount > 1 && periodIsSelected) && (!selectedDayIndex.isEmpty || skipDay)
+                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && (!selectedDayIndex.isEmpty || skipDay)
             }
             .store(in: &cancellables)
         
