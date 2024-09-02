@@ -17,21 +17,21 @@ struct StudyInfoSetupView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack() {
             TabView(selection: $selectedIndex) {
                 SISCategoryView(viewModel: createStudyViewModel)
                     .tag(0)
                 
-                Text("second")
+                SISPeriodView(viewModel: createStudyViewModel)
                     .tag(1)
                 
-                Text("third")
+                SISProfileView()
                     .tag(2)
                 
-                Text("fourth")
+                SISDescriptionView()
                     .tag(3)
                 
-                Text("fifth")
+                SISWeeklyContentView()
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -76,6 +76,7 @@ struct StudyInfoSetupView: View {
         .navigationTitle("생성하기")
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
+        .preferredColorScheme(.dark)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
     }
