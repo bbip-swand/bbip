@@ -30,8 +30,9 @@ struct UISProfileView: View {
     }
 }
 
-private struct SetProfileImageView: View {
+fileprivate struct SetProfileImageView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
+    private let imageSize: CGFloat = 160
     
     var body: some View {
         Button {
@@ -42,8 +43,13 @@ private struct SetProfileImageView: View {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 160, height: 160)
+                        .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
+                        .radiusBorder(
+                            cornerRadius: imageSize / 2,
+                            color: .gray4,
+                            lineWidth: 2
+                        )
                 } else {
                     Image("profile_default")
                         .resizable()
@@ -58,7 +64,7 @@ private struct SetProfileImageView: View {
     }
 }
 
-private struct SetNicknameView: View {
+fileprivate struct SetNicknameView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
     
     var body: some View {
@@ -88,7 +94,7 @@ private struct SetNicknameView: View {
             }
             .foregroundColor(.red)
             .frame(height: 20)
-            .padding(.top, 4)
+            .padding(.top, 8)
         }
     }
     

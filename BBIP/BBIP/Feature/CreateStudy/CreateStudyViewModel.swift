@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class CreateStudyViewModel: ObservableObject {
     @Published var contentData: [CreateStudyContent]
@@ -74,4 +75,11 @@ class CreateStudyViewModel: ObservableObject {
     
     @Published var selectedDayIndex: [Int] = .init()
     @Published var skipDaySelection: Bool = false
+    
+    // MARK: - Profile Setting View
+    @Published var studyName: String = ""
+    @Published var isNameValid: Bool = false
+    @Published var selectedImage: UIImage? = nil
+    @Published var showImagePicker: Bool = false
+    @Published var hasStartedEditing: Bool = false
 }

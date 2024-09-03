@@ -25,7 +25,7 @@ struct StudyInfoSetupView: View {
                 SISPeriodView(viewModel: createStudyViewModel)
                     .tag(1)
                 
-                SISProfileView()
+                SISProfileView(viewModel: createStudyViewModel)
                     .tag(2)
                 
                 SISDescriptionView()
