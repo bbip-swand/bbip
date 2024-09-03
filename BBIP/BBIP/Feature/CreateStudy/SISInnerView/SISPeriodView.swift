@@ -62,14 +62,13 @@ struct SISPeriodView: View {
                 } label: {
                     RoundedRectangle(cornerRadius: 4)
                         .frame(width: 18, height: 18)
-                        .foregroundStyle(viewModel.skipDaySelection ? .primary2.opacity(0.5) : .gray8)
-                        .radiusBorder(cornerRadius: 4, color: viewModel.skipDaySelection ? .primary3 : .gray3)
+                        .foregroundStyle(viewModel.skipDaySelection ? .primary3 : .gray8)
                         .overlay {
                             if viewModel.skipDaySelection {
                                 Image("check")
                                     .resizable()
                                     .renderingMode(.template)
-                                    .foregroundStyle(.primary3)
+                                    .foregroundStyle(.mainWhite)
                                     .frame(width: 12, height: 12)
                             }
                         }
@@ -104,19 +103,26 @@ struct SISPeriodView: View {
 }
 
 private struct StepperButton: View {
+    @State private var isFirstInputReceived: Bool = false
     @Binding var intValue: Int
     private let maxValue: Int = 52
+    
+    private func shootFirstInput() {
+        if !isFirstInputReceived {
+            isFirstInputReceived = true
+        }
+    }
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.gray8)
                 .frame(height: 54)
-                .radiusBorder(cornerRadius: 12, color: .gray6)
             
             HStack {
                 Button {
                     guard intValue > 1 else { return }
+                    shootFirstInput()
                     intValue -= 1
                 } label: {
                     Image("stepper_minus")
@@ -126,12 +132,13 @@ private struct StepperButton: View {
                 
                 Text("\(intValue) 라운드")
                     .font(.bbip(.body1_sb16))
-                    .foregroundStyle(.mainWhite)
+                    .foregroundStyle(isFirstInputReceived ? .mainWhite : .gray5)
                 
                 Spacer()
                 
                 Button {
                     guard intValue < maxValue else { return }
+                    shootFirstInput()
                     intValue += 1
                 } label: {
                     Image("stepper_plus")
@@ -162,7 +169,6 @@ private struct PeriodPickerButton: View {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.gray8)
                 .frame(height: 54)
-                .radiusBorder(cornerRadius: 12, color: .gray6)
             
             HStack {
                 Spacer()
@@ -174,7 +180,7 @@ private struct PeriodPickerButton: View {
                          ? formatDate(viewModel.startDate)
                          : "시작일")
                     .font(.bbip(.body1_m16))
-                    .foregroundStyle(.gray3)
+                    .foregroundStyle(.gray5)
                     .monospacedDigit()
                 }
                 
@@ -210,9 +216,8 @@ private struct DayPickerButton: View {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.gray8)
                 .frame(height: 54)
-                .radiusBorder(cornerRadius: 12, color: .gray6)
             
-            HStack(spacing: 4) {
+            HStack(spacing: 2) {
                 ForEach(Array(week.enumerated()), id: \.element) { index, day in
                     Button {
                         if selectedDayIndex.contains(index) {
