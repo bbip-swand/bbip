@@ -3,6 +3,16 @@
     {
       "filename" : "category_design.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "category_design_dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

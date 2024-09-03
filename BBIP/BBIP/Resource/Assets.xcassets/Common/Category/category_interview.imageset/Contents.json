@@ -3,6 +3,16 @@
     {
       "filename" : "category_interview.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "category_interview_dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

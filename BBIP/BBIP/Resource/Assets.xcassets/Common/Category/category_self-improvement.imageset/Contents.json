@@ -3,6 +3,16 @@
     {
       "filename" : "category_self-improvement.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "category_self-improvement_dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

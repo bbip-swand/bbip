@@ -3,6 +3,16 @@
     {
       "filename" : "category_hobby.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "category_hobby_dark.svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {
