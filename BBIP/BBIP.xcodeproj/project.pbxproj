@@ -23,6 +23,7 @@
 		C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */; };
 		C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780C12C8598AA00065F98 /* ImagePicker.swift */; };
 		C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */; };
+		C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780CE2C87119D00065F98 /* BBIPShadowStyle.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -91,6 +92,7 @@
 		C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
 		C62780C12C8598AA00065F98 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
+		C62780CE2C87119D00065F98 /* BBIPShadowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPShadowStyle.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -270,10 +272,8 @@
 			children = (
 				C695BDE92C649F8B009DEC3C /* Onboarding */,
 				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
-				C695BDE82C649F67009DEC3C /* SignIn */,
-				C695BDE72C649F63009DEC3C /* MainHome */,
 				C695BDE82C649F67009DEC3C /* Login */,
-				C695BDE72C649F63009DEC3C /* Home */,
+				C695BDE72C649F63009DEC3C /* MainHome */,
 				C6934BAF2C8082F8006AA652 /* CreateStudy */,
 			);
 			path = Feature;
@@ -332,6 +332,7 @@
 				C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */,
 				C695CB532C7DF95D00BB3952 /* RadiusBorder.swift */,
 				C695CB572C7EF80500BB3952 /* HideKeyboard.swift */,
+				C62780CE2C87119D00065F98 /* BBIPShadowStyle.swift */,
 			);
 			path = ViewModifier;
 			sourceTree = "<group>";
@@ -625,6 +626,7 @@
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
+				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
@@ -763,7 +765,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
@@ -803,7 +805,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;

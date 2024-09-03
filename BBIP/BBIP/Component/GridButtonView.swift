@@ -60,10 +60,6 @@ struct GridButtonView: View {
         isDarkMode ? .gray1 : .gray7
     }
     
-    private var borderColor: Color {
-        isDarkMode ? .gray6 : .gray2
-    }
-    
     private func process(with index: Int) {
         switch type {
         case .interest:
@@ -132,14 +128,13 @@ struct GridButtonView: View {
                         }
                         .frame(width: itemWidth, height: itemWidth)
                     }
+                    .bbipShadow1()
                     .radiusBorder(
                         cornerRadius: 12,
-                        color: selectedIndices.contains(index)
-                        ? .primary3
-                        : borderColor,
+                        color: .primary3,
                         lineWidth: selectedIndices.contains(index)
                         ? 2
-                        : 1
+                        : 0
                     )
                 }
             }

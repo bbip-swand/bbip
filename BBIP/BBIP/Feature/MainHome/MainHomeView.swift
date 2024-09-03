@@ -11,6 +11,17 @@ struct MainHomeView: View {
     @State private var progress: Double = 0.1
     
     var body: some View {
+        
+        NavigationStack {
+            NavigationLink {
+                StartCreateStudyView()
+            } label: {
+                Text("Go to Create Study")
+                    .font(.bbip(.title4_sb24))
+            }
+        }
+        
+        /*
         VStack(spacing: 0) {
             Spacer()
             ZStack {
@@ -44,6 +55,7 @@ struct MainHomeView: View {
                 progress = Double.random(in: 0...1)
             }
         }
+         */
     }
 }
 
