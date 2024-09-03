@@ -128,7 +128,7 @@ struct GridButtonView: View {
                         }
                         .frame(width: itemWidth, height: itemWidth)
                     }
-                    .shadow(color: .black.opacity(0.05), radius: 20)
+                    .bbipShadow1()
                     .radiusBorder(
                         cornerRadius: 12,
                         color: .primary3,
