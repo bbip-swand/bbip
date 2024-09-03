@@ -66,10 +66,12 @@ fileprivate struct SetProfileImageView: View {
 
 fileprivate struct SetNicknameView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
             TextField("실명을 입력해주세요", text: $viewModel.userName)
+                .focused($isFocused)
                 .font(.bbip(.body1_m16))
                 .onChange(of: viewModel.userName) { _, newValue in
                     viewModel.hasStartedEditing = true
@@ -85,10 +87,10 @@ fileprivate struct SetNicknameView: View {
             
             Rectangle()
                 .frame(height: 2)
-                .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3)
+                .foregroundColor(!viewModel.userName.isEmpty || isFocused ? Color.red : Color.gray3)
             
             HStack {
-                if viewModel.hasStartedEditing && !viewModel.isNameValid {
+                if !viewModel.userName.isEmpty && viewModel.hasStartedEditing && !viewModel.isNameValid {
                     WarningLabel(errorText: "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다.")
                 }
             }

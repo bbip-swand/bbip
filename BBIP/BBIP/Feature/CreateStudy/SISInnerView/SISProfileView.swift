@@ -65,10 +65,12 @@ fileprivate struct SetStudyImageView: View {
 
 fileprivate struct SetStudyNameView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
             TextField("15자 이내로 작성해주세요", text: $viewModel.studyName)
+                .focused($isFocused)
                 .font(.bbip(.body1_m16))
                 .onChange(of: viewModel.studyName) { _, newValue in
                     viewModel.hasStartedEditing = true
@@ -84,11 +86,11 @@ fileprivate struct SetStudyNameView: View {
             
             Rectangle()
                 .frame(height: 2)
-                .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3)
+                .foregroundColor(!viewModel.studyName.isEmpty || isFocused ? Color.red : Color.gray3)
             
             HStack {
-                if viewModel.hasStartedEditing && !viewModel.isNameValid {
-                    WarningLabel(errorText: "2~15자 이내로 한글로 작성해주세요.")
+                if !viewModel.studyName.isEmpty && viewModel.hasStartedEditing && !viewModel.isNameValid {
+                    WarningLabel(errorText: "2~15자 이내로 한글 또는 영어로 작성해주세요.")
                 }
             }
             .foregroundColor(.red)
@@ -99,7 +101,7 @@ fileprivate struct SetStudyNameView: View {
     
     private func validateNameAndUpdateNextButton(_ name: String) {
         // 한글, 띄어쓰기 포함, 2자 이상 15자 이하
-        let regex = "^[가-힣\\s]{2,15}$"
+        let regex = "^[가-힣a-zA-Z\\s]{2,15}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         viewModel.isNameValid = predicate.evaluate(with: name)
         viewModel.canGoNext[2] = predicate.evaluate(with: name)
