@@ -17,21 +17,21 @@ struct StudyInfoSetupView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack() {
             TabView(selection: $selectedIndex) {
-                Text("first")
+                SISCategoryView(viewModel: createStudyViewModel)
                     .tag(0)
                 
-                Text("second")
+                SISPeriodView(viewModel: createStudyViewModel)
                     .tag(1)
                 
-                Text("third")
+                SISProfileView(viewModel: createStudyViewModel)
                     .tag(2)
                 
-                Text("fourth")
+                SISDescriptionView(viewModel: createStudyViewModel)
                     .tag(3)
                 
-                Text("fifth")
+                SISWeeklyContentView(viewModel: createStudyViewModel)
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -76,22 +76,25 @@ struct StudyInfoSetupView: View {
         .navigationTitle("생성하기")
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
+        .preferredColorScheme(.dark)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
-        .skipButton(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
+        .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
     }
 }
 
 fileprivate extension View {
     /// 스터디 한 줄 소개 작성 뷰에서만 보여지는 건너뛰기 버튼
-    func skipButton(
+    func skipButtonForSISDescriptionView(
         selectedIndex: Binding<Int>,
         viewModel: CreateStudyViewModel
     ) -> some View {
         self.toolbar {
-            if selectedIndex.wrappedValue == 0 {
+            if selectedIndex.wrappedValue == 3 {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         withAnimation { selectedIndex.wrappedValue += 1 }
+                        viewModel.studyDescription = .init()
+                        hideKeyboard()
                     } label: {
                         Text("건너뛰기")
                             .font(.bbip(.caption1_m16))
@@ -102,8 +105,4 @@ fileprivate extension View {
             }
         }
     }
-}
-
-#Preview {
-    StudyInfoSetupView()
 }

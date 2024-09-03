@@ -12,6 +12,14 @@ struct BBIPApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+//            NavigationStack {
+//                NavigationLink {
+//                    StartCreateStudyView()
+//                } label: {
+//                    Text("Go to Create Study")
+//                        .font(.bbip(.title4_sb24))
+//                }
+//            }
         }
     }
 }

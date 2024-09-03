@@ -21,6 +21,8 @@
 		C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBAA2C679E1300E8FF83 /* MainButton.swift */; };
 		C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */; };
 		C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */; };
+		C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780C12C8598AA00065F98 /* ImagePicker.swift */; };
+		C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -87,6 +89,8 @@
 		C61EDBAA2C679E1300E8FF83 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		C61EDBAC2C68AA0500E8FF83 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
+		C62780C12C8598AA00065F98 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -164,6 +168,14 @@
 				C61A47282C6686760016986D /* WantedSans-SemiBold.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		C62780C02C85987C00065F98 /* UIVCRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				C62780C12C8598AA00065F98 /* ImagePicker.swift */,
+			);
+			path = UIVCRepresentable;
 			sourceTree = "<group>";
 		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
@@ -246,7 +258,9 @@
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
 				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
 				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
+				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
+				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -591,6 +605,7 @@
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
+				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* NavigationBar.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
@@ -606,6 +621,7 @@
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,
+				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
