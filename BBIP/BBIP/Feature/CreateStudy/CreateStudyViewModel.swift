@@ -77,9 +77,12 @@ class CreateStudyViewModel: ObservableObject {
     @Published var skipDaySelection: Bool = false
     
     // MARK: - Profile Setting View
-    @Published var studyName: String = ""
+    @Published var studyName: String = .init()
     @Published var isNameValid: Bool = false
     @Published var selectedImage: UIImage? = nil
     @Published var showImagePicker: Bool = false
     @Published var hasStartedEditing: Bool = false
+    
+    // MARK: - Description Input View
+    @Published var studyDescription: String = .init()
 }

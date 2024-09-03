@@ -25,7 +25,7 @@ struct SISProfileView: View {
                 .ignoresSafeArea(edges: .bottom)
         }
         .padding(.horizontal, 20)
-        .hideKeyboard()
+        .keyboardHideable()
     }
 }
 

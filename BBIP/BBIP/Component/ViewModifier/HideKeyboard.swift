@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension View {
-    private func hideKeyboard() {
+    func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
-    func hideKeyboard() -> some View {
+    func keyboardHideable() -> some View {
         self
             .contentShape(Rectangle())
             .onTapGesture {

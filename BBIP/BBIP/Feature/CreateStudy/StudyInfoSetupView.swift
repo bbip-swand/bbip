@@ -28,7 +28,7 @@ struct StudyInfoSetupView: View {
                 SISProfileView(viewModel: createStudyViewModel)
                     .tag(2)
                 
-                SISDescriptionView()
+                SISDescriptionView(viewModel: createStudyViewModel)
                     .tag(3)
                 
                 SISWeeklyContentView()
@@ -93,6 +93,8 @@ fileprivate extension View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         withAnimation { selectedIndex.wrappedValue += 1 }
+                        viewModel.studyDescription = .init()
+                        hideKeyboard()
                     } label: {
                         Text("건너뛰기")
                             .font(.bbip(.caption1_m16))
@@ -103,8 +105,4 @@ fileprivate extension View {
             }
         }
     }
-}
-
-#Preview {
-    StudyInfoSetupView()
 }
