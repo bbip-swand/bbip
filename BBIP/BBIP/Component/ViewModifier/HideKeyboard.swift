@@ -13,10 +13,14 @@ extension View {
     }
     
     func keyboardHideable() -> some View {
-        self
-            .contentShape(Rectangle())
-            .onTapGesture {
-                hideKeyboard()
-            }
+        ZStack {
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    hideKeyboard()
+                }
+            
+            self
+        }
     }
 }
