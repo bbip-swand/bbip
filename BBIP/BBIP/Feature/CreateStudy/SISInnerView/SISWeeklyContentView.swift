@@ -51,6 +51,7 @@ struct SISWeeklyContentView: View {
             
             Spacer()
         }
+        .keyboardHideable()
         .sheet(isPresented: $showEditPeriodView) {
             SISPeriodView(viewModel: viewModel, sheetMode: true)
                 .presentationDragIndicator(.visible)
