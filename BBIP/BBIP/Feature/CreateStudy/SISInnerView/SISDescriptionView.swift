@@ -21,6 +21,9 @@ struct SISDescriptionView: View {
             Spacer()
         }
         .padding(.horizontal, 20)
+        .onChange(of: viewModel.studyDescription) { _, newValue in
+           viewModel.canGoNext[3] = !newValue.isEmpty 
+        }
         .keyboardHideable()
     }
 }

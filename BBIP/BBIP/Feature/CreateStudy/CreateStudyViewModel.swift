@@ -16,7 +16,7 @@ class CreateStudyViewModel: ObservableObject {
         false,  // 기간 및 주차 횟수 선택
         false,  // 스터디 프로필
         false,  // 스터디 한 줄 소개
-        false   // 주차별 계획
+        true   // 주차별 계획
     ]
     private var cancellables = Set<AnyCancellable>()
     
@@ -54,6 +54,18 @@ class CreateStudyViewModel: ObservableObject {
         periodIsSelected = true
     }
     
+    func initalWeeklyContentData() {
+        let currentCount = weeklyContentData.count
+        var newData = Array(repeating: "", count: weekCount)
+        
+        // 기존 데이터 중에서 유지할 데이터가 있는 경우 복사
+        for index in 0..<min(currentCount, weekCount) {
+            newData[index] = weeklyContentData[index] ?? ""
+        }
+        weeklyContentData = newData
+        print(weeklyContentData.count, weeklyContentData)
+    }
+    
     init() {
         self.contentData = CreateStudyContent.generate()
         sinkElements()
@@ -66,6 +78,7 @@ class CreateStudyViewModel: ObservableObject {
     @Published var weekCount: Int = 12 {
         didSet {
             calculateDeadline()
+            initalWeeklyContentData()
         }
     }
     
@@ -85,4 +98,7 @@ class CreateStudyViewModel: ObservableObject {
     
     // MARK: - Description Input View
     @Published var studyDescription: String = .init()
+    
+    // MARK: - Weekly Content Input View
+    @Published var weeklyContentData: [String?] = []
 }

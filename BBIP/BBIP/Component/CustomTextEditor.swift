@@ -13,15 +13,18 @@ struct CustomTextEditor: View {
     @Binding var text: String
     private let characterLimit: Int
     private let height: CGFloat
+    private let showLimitStatus: Bool
 
     init(
         text: Binding<String>,
         characterLimit: Int = 100,
-        height: CGFloat
+        height: CGFloat,
+        showLimitStatus: Bool = true
     ) {
         self._text = text
         self.characterLimit = characterLimit
         self.height = height
+        self.showLimitStatus = showLimitStatus
     }
 
     var body: some View {
@@ -60,10 +63,12 @@ struct CustomTextEditor: View {
                     }
                 }
             
-            Text("\(text.count)/\(characterLimit)")
-                .font(.bbip(.body2_m14))
-                .foregroundStyle(.gray6)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            if showLimitStatus {
+                Text("\(text.count)/\(characterLimit)")
+                    .font(.bbip(.body2_m14))
+                    .foregroundStyle(.gray6)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }   
         }
     }
 }

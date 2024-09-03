@@ -31,7 +31,7 @@ struct StudyInfoSetupView: View {
                 SISDescriptionView(viewModel: createStudyViewModel)
                     .tag(3)
                 
-                SISWeeklyContentView()
+                SISWeeklyContentView(viewModel: createStudyViewModel)
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

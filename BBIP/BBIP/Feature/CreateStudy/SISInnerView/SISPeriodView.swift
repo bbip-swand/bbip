@@ -10,27 +10,38 @@ import SwiftUI
 struct SISPeriodView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
     @State private var showDatePicker: Bool = false
+    private let sheetMode: Bool
+    
+    init(
+        viewModel: CreateStudyViewModel,
+        sheetMode: Bool = false
+    ) {
+        self.viewModel = viewModel
+        self.sheetMode = sheetMode
+    }
     
     var body: some View {
         VStack(spacing: 12) {
             Text("주차 선택")
                 .font(.bbip(.body1_sb16))
                 .foregroundStyle(.mainWhite)
-                .padding(.top, 192)
+                .padding(.top, sheetMode ? 40 : 192)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             StepperButton(intValue: $viewModel.weekCount)
             
-            Text("기간 선택")
-                .font(.bbip(.body1_sb16))
-                .foregroundStyle(.mainWhite)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 12)
-            
-            PeriodPickerButton(
-                viewModel: viewModel,
-                showDatePicker: $showDatePicker
-            )
+            if !sheetMode {
+                Text("기간 선택")
+                    .font(.bbip(.body1_sb16))
+                    .foregroundStyle(.mainWhite)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 12)
+                
+                PeriodPickerButton(
+                    viewModel: viewModel,
+                    showDatePicker: $showDatePicker
+                )
+            }
             
             HStack(spacing: 10) {
                 Text("요일 선택")
@@ -69,11 +80,8 @@ struct SISPeriodView: View {
             DayPickerButton(selectedDayIndex: $viewModel.selectedDayIndex)
             
             Spacer()
-            
         }
         .padding(.horizontal, 24)
-        .frame(maxWidth: .infinity)
-        .background(.gray9)
         .sheet(isPresented: $showDatePicker) {
             DatePicker(
                 "setStudyPeriod",
