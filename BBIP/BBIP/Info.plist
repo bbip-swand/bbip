@@ -8,18 +8,24 @@
 	<string>$(AWS_SECRET_KEY)</string>
 	<key>AWS_SESSION_TOKEN</key>
 	<string>$(AWS_SESSION_TOKEN)</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ko</string>
 	</array>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>WantedSans-Bold.otf</string>
 		<string>WantedSans-SemiBold.otf</string>
 		<string>WantedSans-Medium.otf</string>
 		<string>WantedSans-Regular.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 </dict>
 </plist>
