@@ -24,7 +24,6 @@
 		C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780C12C8598AA00065F98 /* ImagePicker.swift */; };
 		C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */; };
 		C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780CE2C87119D00065F98 /* BBIPShadowStyle.swift */; };
-		C62780D72C88467900065F98 /* AWSS3 in Frameworks */ = {isa = PBXBuildFile; productRef = C62780D62C88467900065F98 /* AWSS3 */; };
 		C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62780DC2C884AAE00065F98 /* AWSS3Manager.swift */; };
 		C62780E02C8886F000065F98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C62780DF2C8886F000065F98 /* GoogleService-Info.plist */; };
 		C62780E32C8887C800065F98 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = C62780E22C8887C800065F98 /* FirebaseDynamicLinks */; };
@@ -157,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C62780D72C88467900065F98 /* AWSS3 in Frameworks */,
 				C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */,
 				C62780E52C8887C800065F98 /* FirebaseMessaging in Frameworks */,
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
@@ -524,7 +522,6 @@
 				C6B8CE352C7AA4BC0006E906 /* Moya */,
 				C6B8CE382C7AA5210006E906 /* Lottie */,
 				C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */,
-				C62780D62C88467900065F98 /* AWSS3 */,
 				C62780E22C8887C800065F98 /* FirebaseDynamicLinks */,
 				C62780E42C8887C800065F98 /* FirebaseMessaging */,
 			);
@@ -560,7 +557,6 @@
 				C6B8CE322C7AA4BC0006E906 /* XCRemoteSwiftPackageReference "Moya" */,
 				C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				C6934BAC2C7F4C2F006AA652 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
-				C62780D52C88467900065F98 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */,
 				C62780E12C8887C800065F98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = C6B00C122C590A0E009AC4E2 /* Products */;
@@ -882,14 +878,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C62780D52C88467900065F98 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/aws-sdk-ios-spm";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.37.0;
-			};
-		};
 		C62780E12C8887C800065F98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -925,11 +913,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C62780D62C88467900065F98 /* AWSS3 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C62780D52C88467900065F98 /* XCRemoteSwiftPackageReference "aws-sdk-ios-spm" */;
-			productName = AWSS3;
-		};
 		C62780E22C8887C800065F98 /* FirebaseDynamicLinks */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C62780E12C8887C800065F98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -6,8 +6,11 @@
 //
 
 import Foundation
-import AWSS3
 
+// S3 접근 방법이 달라짐에 따라 사용 중단
+// TODO: presigned-url 방식 사용
+
+/*
 final class AWSS3Manager {
     typealias ProgressBlock = (_ progress: Double) -> Void
     typealias CompletionBlock = (_ url: URL?, _ error: Error?) -> Void
@@ -94,3 +97,4 @@ final class AWSS3Manager {
         }
     }
 }
+*/
