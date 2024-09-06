@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel = makeLoginViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -38,8 +38,10 @@ struct LoginView: View {
             AppleSigninButton(viewModel: viewModel)
                 .padding(.bottom, 38)       
         }
-        .onChange(of: viewModel.loginSuccess) { _, newValue in
-            if newValue { appState.goUIS() }
+        .onChange(of: viewModel.isNewUser) { _, newValue in
+            if newValue {
+                withAnimation { appState.goUIS() }
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -68,6 +70,16 @@ private struct AppleSigninButton : View {
                 )
                 .blendMode(.overlay)
             }
+    }
+}
+
+extension LoginView {
+    static func makeLoginViewModel() -> LoginViewModel {
+        let dataSource = AuthDataSource()
+        let mapper = LoginResponseMapper()
+        let repository = AuthRepositoryImpl(dataSource: dataSource, mapper: mapper)
+        let useCase = RequestLoginUseCase(repository: repository)
+        return LoginViewModel(requestLoginUseCase: useCase)
     }
 }
 

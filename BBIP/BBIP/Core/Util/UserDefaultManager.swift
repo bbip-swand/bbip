@@ -15,10 +15,15 @@ final class UserDefaultsManager {
 
     private enum UserDefaultKeys: String {
         case isLoggedIn
+        case accessToken
     }
 
     // MARK: - Setters
-    func setLoggedIn(_ value: Bool) {
+    func saveAccessToken(token: String) {
+        defaults.set(token, forKey: UserDefaultKeys.accessToken.rawValue)
+    }
+    
+    func setIsLoggedIn(_ value: Bool) {
         defaults.set(value, forKey: UserDefaultKeys.isLoggedIn.rawValue)
     }
 
