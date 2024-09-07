@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginVO: Encodable {
+struct LoginVO {
     let accessToken: String
     let isUserInfoGenerated: Bool
 }
