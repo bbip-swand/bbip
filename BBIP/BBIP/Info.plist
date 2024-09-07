@@ -3,13 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>API_BASE_URL</key>
-	<string>http://3.39.102.149:8080</string>
-	<key>AWS_ACCESS_KEY</key>
-	<string>$(AWS_ACCESS_KEY)</string>
-	<key>AWS_SECRET_KEY</key>
-	<string>$(AWS_SECRET_KEY)</string>
-	<key>AWS_SESSION_TOKEN</key>
-	<string>$(AWS_SESSION_TOKEN)</string>
+	<string>https://api.bbip.site</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ko</string>
