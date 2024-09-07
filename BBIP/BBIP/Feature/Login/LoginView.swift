@@ -43,6 +43,11 @@ struct LoginView: View {
                 withAnimation { appState.goUIS() }
             }
         }
+        .onChange(of: viewModel.loginSuccess) { _, newValue in
+            if newValue {
+                withAnimation( appState.goHome() )
+            }
+        }
         .navigationBarBackButtonHidden()
     }
 }

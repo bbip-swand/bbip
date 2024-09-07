@@ -37,7 +37,6 @@ final class LoginViewModel: ObservableObject {
                 identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
                 authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
                 
-//                assert(identityToken == nil, "identity token is nil")
                 requestLogin(identityToken: identityToken!)
             default:
                 break
@@ -70,6 +69,8 @@ final class LoginViewModel: ObservableObject {
                 // MARK: Login Success!
                 UserDefaultsManager.shared.setIsLoggedIn(true)
                 self.loginSuccess = true
+                print("로그인 성공!")
+                
             }.store(in: &cancellables)
     }
     
