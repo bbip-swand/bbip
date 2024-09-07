@@ -28,6 +28,10 @@ final class UserDefaultsManager {
     }
 
     // MARK: - Getters
+    func getAccessToken() -> String? {
+        return defaults.string(forKey: UserDefaultKeys.accessToken.rawValue)
+    }
+    
     func checkLoginStatus() -> Bool {
         return defaults.bool(forKey: UserDefaultKeys.isLoggedIn.rawValue)
     }

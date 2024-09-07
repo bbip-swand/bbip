@@ -10,3 +10,8 @@ import Foundation
 struct LoginRequestDTO: Encodable {
     let identityToken: String
 }
+
+struct LoginResponseDTO: Decodable {
+    let accessToken: String
+    let isUserInfoGenerated: Bool
+}

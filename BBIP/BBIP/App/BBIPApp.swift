@@ -14,6 +14,9 @@ struct BBIPApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .onAppear {
+                    print(UserDefaultsManager.shared.getAccessToken())
+                }
 //            NavigationStack {
 //                NavigationLink {
 //                    StartCreateStudyView()

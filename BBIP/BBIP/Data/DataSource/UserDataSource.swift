@@ -13,7 +13,7 @@ import CombineMoya
 final class UserDataSource {
     private let provider = MoyaProvider<UserAPI>()
     
-    func requestSignUp(signUpReqDTO: SignUpRequestDTO) -> AnyPublisher<Bool, Error> {
+    func requestSignUp(signUpReqDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
         provider.requestPublisher(.signUp(dto: signUpReqDTO))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -23,8 +23,10 @@ final class UserDataSource {
                         userInfo: [NSLocalizedDescriptionKey: "[UserDataSource] requestSignUp() failed with status code \(response.statusCode)"]
                     )
                 }
-                return true
+                
+                return response.data
             }
+            .decode(type: SignUpResponseDTO.self, decoder: JSONDecoder())
             .mapError { error in
                 return error
             }

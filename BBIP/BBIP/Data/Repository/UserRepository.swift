@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol UserRepositoryProtocol {
-    func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<Bool, Error>
+    func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error>
     func resign() -> AnyPublisher<Bool, Error>
     func createUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error>
     func updateUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error>
@@ -23,7 +23,7 @@ final class UserRepository: UserRepositoryProtocol {
         self.dataSource = dataSource
     }
 
-    func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<Bool, Error> {
+    func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
         dataSource.requestSignUp(signUpReqDTO: signUpDTO)
             .eraseToAnyPublisher()
     }

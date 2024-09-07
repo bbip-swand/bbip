@@ -11,3 +11,7 @@ struct SignUpRequestDTO: Encodable {
     let identityToken: String
     let authorizationCode: String
 }
+
+struct SignUpResponseDTO: Decodable {
+    let accessToken: String
+}

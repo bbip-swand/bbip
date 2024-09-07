@@ -29,8 +29,13 @@ final class AuthDataSource {
             }
             .decode(type: LoginResponseDTO.self, decoder: JSONDecoder())
             .mapError { error in
-                print("[AuthDataSource] requestLogin() Error: \(error.localizedDescription)")
-                return AuthError.unknownError
+                if let authError = error as? AuthError {
+                    return authError
+                } else {
+                    // 다른 에러는 unknownError로 변환
+                    print("[AuthDataSource] requestLogin() Error: \(error.localizedDescription)")
+                    return AuthError.unknownError
+                }
             }
             .eraseToAnyPublisher()
     }
