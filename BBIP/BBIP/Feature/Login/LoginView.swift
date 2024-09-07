@@ -88,7 +88,8 @@ extension LoginView {
     
     static func makeSignUpUseCase() -> SignUpUseCase {
         let dataSource = UserDataSource()
-        let repository = UserRepository(dataSource: dataSource)
+        let mapper = UserInfoMapper()
+        let repository = UserRepository(dataSource: dataSource, mapper: mapper)
         
         return SignUpUseCase(repository: repository)
     }

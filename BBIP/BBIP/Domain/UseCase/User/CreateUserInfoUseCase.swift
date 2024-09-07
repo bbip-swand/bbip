@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 protocol CreateUserInfoUseCaseProtocol {
-    func execute(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error>
+    func execute(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
 }
 
 final class CreateUserInfoUseCase: CreateUserInfoUseCaseProtocol {
@@ -19,8 +19,8 @@ final class CreateUserInfoUseCase: CreateUserInfoUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error> {
-        repository.createUserInfo(userInfoDTO: userInfoDTO)
+    func execute(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error> {
+        repository.createUserInfo(userInfoVO: userInfoVO)
     }
 }
 

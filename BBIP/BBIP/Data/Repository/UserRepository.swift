@@ -11,16 +11,20 @@ import Combine
 protocol UserRepositoryProtocol {
     func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error>
     func resign() -> AnyPublisher<Bool, Error>
-    func createUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error>
-    func updateUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error>
+    func createUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
+    func updateUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
 }
 
 final class UserRepository: UserRepositoryProtocol {
     private let dataSource: UserDataSource
-    // mapper 아직 필요 없음
+    private let mapper: UserInfoMapper
 
-    init(dataSource: UserDataSource) {
+    init(
+        dataSource: UserDataSource,
+        mapper: UserInfoMapper
+    ) {
         self.dataSource = dataSource
+        self.mapper = mapper
     }
 
     func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
@@ -33,13 +37,15 @@ final class UserRepository: UserRepositoryProtocol {
             .eraseToAnyPublisher()
     }
 
-    func createUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error> {
-        dataSource.createUserInfo(userInfoDTO: userInfoDTO)
+    func createUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error> {
+        let dto = mapper.toDTO(vo: userInfoVO)
+        return dataSource.createUserInfo(userInfoDTO: dto)
             .eraseToAnyPublisher()
     }
 
-    func updateUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error> {
-        dataSource.updateUserInfo(userInfoDTO: userInfoDTO)
+    func updateUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error> {
+        let dto = mapper.toDTO(vo: userInfoVO)
+        return dataSource.updateUserInfo(userInfoDTO: dto)
             .eraseToAnyPublisher()
     }
 }

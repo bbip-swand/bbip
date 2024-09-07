@@ -5,10 +5,19 @@
 //  Created by 이건우 on 8/14/24.
 //
 
+import Combine
 import Foundation
 import PhotosUI
 
 class UserInfoSetupViewModel: ObservableObject {
+    private let createUserInfoUseCase: CreateUserInfoUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(createUserInfoUseCase: CreateUserInfoUseCaseProtocol) {
+        self.createUserInfoUseCase = createUserInfoUseCase
+        self.contentData = UserInfoSetupContent.generate()
+    }
+    
     @Published var contentData: [UserInfoSetupContent]
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
@@ -62,7 +71,27 @@ class UserInfoSetupViewModel: ObservableObject {
     // MARK: - Job Setting View
     @Published var selectedJobIndex: [Int] = []
     
-    init() {
-        self.contentData = UserInfoSetupContent.generate()
+    func createUserInfo() {
+        let vo = UserInfoVO(
+            selectedArea: selectedArea,
+            selectedInterestIndex: selectedInterestIndex,
+            userName: userName,
+            profileImageUrl: "",
+            birthYear: combinedYear,
+            selectedJobIndex: selectedJobIndex
+        )
+        
+        createUserInfoUseCase.execute(userInfoVO: vo)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { isSuccess in
+                self.showCompleteView = isSuccess
+            }
+            .store(in: &cancellables)
     }
 }
