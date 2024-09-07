@@ -41,6 +41,7 @@
 		C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781022C8C775400065F98 /* UserInfoDTO.swift */; };
 		C62781052C8C786900065F98 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781042C8C786900065F98 /* SignUpRequestDTO.swift */; };
 		C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781062C8C798F00065F98 /* UserDataSource.swift */; };
+		C62781092C8C814000065F98 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781082C8C814000065F98 /* UserRepository.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -123,6 +124,7 @@
 		C62781022C8C775400065F98 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		C62781042C8C786900065F98 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		C62781062C8C798F00065F98 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
+		C62781082C8C814000065F98 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -401,10 +403,10 @@
 		C695BDF92C64CB79009DEC3C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C695BDFA2C64CB7F009DEC3C /* DTO */,
 				C695BDFB2C64CB83009DEC3C /* Mapper */,
 				C695BDFE2C64CB9F009DEC3C /* Repository */,
 				C695BDFC2C64CB88009DEC3C /* DataSource */,
+				C695BDFA2C64CB7F009DEC3C /* DTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -450,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				C62780F92C8B099900065F98 /* AuthRepository.swift */,
+				C62781082C8C814000065F98 /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
+				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
