@@ -11,16 +11,21 @@ import AuthenticationServices
 
 final class LoginViewModel: ObservableObject {
     @Published var loginSuccess: Bool = false
-    @Published var isNewUser: Bool = false
+    @Published var UISDataIsEmpty: Bool = false
     
     private let requestLoginUseCase: RequestLoginUseCaseProtocol
+    private let signUpUseCase: SignUpUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     private var identityToken: String?
     private var authorizationCode: String?
     
-    init(requestLoginUseCase: RequestLoginUseCaseProtocol) {
+    init(
+        requestLoginUseCase: RequestLoginUseCaseProtocol,
+        signUpUseCase: SignUpUseCaseProtocol
+    ) {
         self.requestLoginUseCase = requestLoginUseCase
+        self.signUpUseCase = signUpUseCase
     }
     
     func handleAppleLogin(result: Result<ASAuthorization, any Error>) {
@@ -32,7 +37,6 @@ final class LoginViewModel: ObservableObject {
                 identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
                 authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
                 
-                assert(identityToken == nil, "identity token is nil")
                 requestLogin(identityToken: identityToken!)
             default:
                 break
@@ -49,18 +53,24 @@ final class LoginViewModel: ObservableObject {
                 switch completion {
                 case .finished: break
                 case .failure(let error):
+                    // 신규유저 or Error
                     self.handleError(error)
                 }
             } receiveValue: { [weak self] vo in
                 guard let self = self else { return }
+                UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
+                
                 guard vo.isUserInfoGenerated else {
-                    self.isNewUser = true
+                    print("기존 유저이지만 UIS 입력 안된 유저입니다 (UISView push)")
+                    self.UISDataIsEmpty = true
                     return
                 }
+                
                 // MARK: Login Success!
-                UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
                 UserDefaultsManager.shared.setIsLoggedIn(true)
                 self.loginSuccess = true
+                print("로그인 성공!")
+                
             }.store(in: &cancellables)
     }
     
@@ -74,6 +84,30 @@ final class LoginViewModel: ObservableObject {
     }
     
     private func signInProcess() {
-        print("signInProcess is called!")
+        guard let identityToken = identityToken, 
+              let authorizationCode = authorizationCode else {
+            print("[LoginViewModel] Missing token or authorization code")
+            return
+        }
+        
+        let signUpDTO = SignUpRequestDTO(
+            identityToken: identityToken,
+            authorizationCode: authorizationCode
+        )
+        signUpUseCase.execute(signUpDTO: signUpDTO)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error)
+                }
+            } receiveValue: { [weak self] vo in
+                guard let self = self else { return }
+                print("지금 회원가입된 유저입니다")
+                UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
+                self.UISDataIsEmpty = true
+            }
+            .store(in: &cancellables)
     }
 }

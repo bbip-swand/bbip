@@ -38,9 +38,14 @@ struct LoginView: View {
             AppleSigninButton(viewModel: viewModel)
                 .padding(.bottom, 38)       
         }
-        .onChange(of: viewModel.isNewUser) { _, newValue in
+        .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
             if newValue {
                 withAnimation { appState.goUIS() }
+            }
+        }
+        .onChange(of: viewModel.loginSuccess) { _, newValue in
+            if newValue {
+                withAnimation( appState.goHome() )
             }
         }
         .navigationBarBackButtonHidden()
@@ -74,12 +79,25 @@ private struct AppleSigninButton : View {
 }
 
 extension LoginView {
-    static func makeLoginViewModel() -> LoginViewModel {
+    static func makeRequestLoginUseCase() -> RequestLoginUseCase {
         let dataSource = AuthDataSource()
         let mapper = LoginResponseMapper()
         let repository = AuthRepositoryImpl(dataSource: dataSource, mapper: mapper)
-        let useCase = RequestLoginUseCase(repository: repository)
-        return LoginViewModel(requestLoginUseCase: useCase)
+        return RequestLoginUseCase(repository: repository)
+    }
+    
+    static func makeSignUpUseCase() -> SignUpUseCase {
+        let dataSource = UserDataSource()
+        let repository = UserRepository(dataSource: dataSource)
+        
+        return SignUpUseCase(repository: repository)
+    }
+    
+    static func makeLoginViewModel() -> LoginViewModel {
+        return LoginViewModel(
+            requestLoginUseCase: makeRequestLoginUseCase(),
+            signUpUseCase: makeSignUpUseCase()
+        )
     }
 }
 
