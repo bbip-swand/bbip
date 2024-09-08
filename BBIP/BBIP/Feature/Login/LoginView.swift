@@ -49,6 +49,7 @@ struct LoginView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .loadingOverlay(isLoading: $viewModel.isLoading)
     }
 }
 

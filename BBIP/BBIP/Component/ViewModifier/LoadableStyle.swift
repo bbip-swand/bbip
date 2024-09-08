@@ -14,7 +14,11 @@ struct LoadableStyle: ViewModifier {
         ZStack {
             content
             if isLoading {
-                BBIPLottieView(assetName: "BBIPLoading")
+                // BBIPLottieView(assetName: "BBIPLoading")
+                ProgressView()
+                    .tint(.primary3)
+                    .frame(maxWidth: UIScreen.main.bounds.width, alignment: .center)
+                    .frame(maxHeight: UIScreen.main.bounds.height, alignment: .center)
             }
         }
     }

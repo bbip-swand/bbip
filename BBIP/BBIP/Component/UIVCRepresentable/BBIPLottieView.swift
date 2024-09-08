@@ -8,13 +8,13 @@
 import UIKit
 import SwiftUI
 import Lottie
- 
-public struct BBIPLottieView: UIViewRepresentable {
-    public let asset: String
-    public let loopMode: LottieLoopMode
-    public var completion: (() -> Void)?
+
+struct BBIPLottieView: UIViewRepresentable {
+    private let asset: String
+    private let loopMode: LottieLoopMode
+    private var completion: (() -> Void)?
     
-    public init(
+    init(
         assetName: String,
         loopMode: LottieLoopMode = .repeat(.infinity),
         completion: (() -> Void)? = nil
@@ -24,7 +24,7 @@ public struct BBIPLottieView: UIViewRepresentable {
         self.completion = completion
     }
     
-    public func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context: Context) -> UIView {
         let lottieView = LottieAnimationView(animation: .named(asset))
         
         lottieView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ public struct BBIPLottieView: UIViewRepresentable {
         return containerView
     }
     
-    public func updateUIView(_ uiView: UIViewType, context: Context) {
+    func updateUIView(_ uiView: UIViewType, context: Context) {
         
     }
 }
