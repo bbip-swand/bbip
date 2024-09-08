@@ -99,8 +99,12 @@ class UserInfoSetupViewModel: ObservableObject {
                     print("회원가입 실패: \(error.localizedDescription)")
                 }
             } receiveValue: { isSuccess in
-                print(isSuccess ? "회원가입 완료!" : "회원가입 실패!")
-                self.showCompleteView = isSuccess
+                if isSuccess {
+                    self.showCompleteView = true
+                    UserDefaultsManager.shared.setIsLoggedIn(true)
+                } else {
+                    fatalError("회원가입 문제 발생")
+                }
             }
             .store(in: &cancellables)
     }

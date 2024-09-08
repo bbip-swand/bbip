@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @StateObject private var appStateManager = AppStateManager(state: .onboarding)
-    // isLoggedIn: UserDefaultsManager.shared.checkLoginStatus()
+    @StateObject private var appStateManager = AppStateManager()
     
     var body: some View {
         Group {

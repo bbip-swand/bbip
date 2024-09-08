@@ -26,7 +26,8 @@ final class AppStateManager: ObservableObject {
         self.state = .home
     }
     
-    init(state: AppState) {
-        self.state = state
+    init() {
+        let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
+        self.state = isLoggedIn ? .home : .onboarding
     }
 }
