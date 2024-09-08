@@ -72,24 +72,34 @@ class UserInfoSetupViewModel: ObservableObject {
     @Published var selectedJobIndex: [Int] = []
     
     func createUserInfo() {
-        let vo = UserInfoVO(
-            selectedArea: selectedArea,
-            selectedInterestIndex: selectedInterestIndex,
-            userName: userName,
-            profileImageUrl: "",
-            birthYear: combinedYear,
-            selectedJobIndex: selectedJobIndex
-        )
-        
-        createUserInfoUseCase.execute(userInfoVO: vo)
+        AWSS3Manager.shared.upload(image: selectedImage ?? UIImage(named: "profile_default")!)
+            .receive(on: DispatchQueue.main)
+            .flatMap { [weak self] profileImageUrl -> AnyPublisher<Bool, Error> in
+                guard let self = self else {
+                    return Fail(error: URLError(.unknown)).eraseToAnyPublisher()
+                }
+                // 생성된 profileImageUrl을 사용하여 UserInfoVO 객체 생성
+                let vo = UserInfoVO(
+                    selectedArea: self.selectedArea,
+                    selectedInterestIndex: self.selectedInterestIndex,
+                    userName: self.userName,
+                    profileImageUrl: profileImageUrl,  // 업로드된 URL을 할당
+                    birthYear: self.combinedYear,
+                    selectedJobIndex: self.selectedJobIndex
+                )
+                
+                // 회원 정보를 생성
+                return self.createUserInfoUseCase.execute(userInfoVO: vo)
+            }
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
                 case .finished: break
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print("회원가입 실패: \(error.localizedDescription)")
                 }
             } receiveValue: { isSuccess in
+                print(isSuccess ? "회원가입 완료!" : "회원가입 실패!")
                 self.showCompleteView = isSuccess
             }
             .store(in: &cancellables)

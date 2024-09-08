@@ -12,7 +12,7 @@ struct TokenPlugin: PluginType {
     let token: String
     
     init() {
-        self.token = UserDefaultsManager.shared.getAccessToken()!
+        self.token = UserDefaultsManager.shared.getAccessToken() ?? ""
     }
 
     func prepare(
