@@ -11,7 +11,6 @@ import SwiftUI
 
 enum HeaderType {
     case HomeHeader
-    case ElseHeader
 }
 
 struct CustomHeaderView: View {
@@ -27,21 +26,7 @@ struct CustomHeaderView: View {
                         .font(.bbip(.title3_m20))
                         .foregroundStyle(.mainBlack)
                         .padding(.leading, 20)
-                } else if headerType == .ElseHeader {
-                    Image("backButton")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .padding(.leading, 20)
-                    
-                    Text(title)
-                        .font(.bbip(.title3_m20))
-                        .foregroundStyle(.gray9)
-                        .frame(maxWidth: .infinity)
-                        .multilineTextAlignment(.center)
-                    
-                    Spacer()
                 }
-                
                 Spacer()
                 
                 if headerType == .HomeHeader {
@@ -64,13 +49,10 @@ struct CustomHeaderView: View {
                             .padding(.trailing, 28)
                     }
                     
-                } else if headerType == .ElseHeader {
-                    Image("profile_icon")
-                        .padding(.trailing, 28)
                 }
             }
             .frame(height: 44)
-            .background(Color(UIColor.systemGray6))
+            .background(.gray1)
             .frame(maxWidth: .infinity) // Make sure it spans the full width
             
         }
@@ -79,8 +61,7 @@ struct CustomHeaderView: View {
 }
 
 #Preview {
-    CustomHeaderView(headerType: .ElseHeader, title: "스터디 아카이브")
-//    CustomHeaderView(headerType: .HomeHeader, title: "스터디 아카이브",showDot:true)
+    CustomHeaderView(headerType: .HomeHeader,showDot:true)
     
 }
 
