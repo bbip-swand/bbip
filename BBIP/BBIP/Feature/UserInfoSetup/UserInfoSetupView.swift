@@ -70,6 +70,7 @@ struct UserInfoSetupView: View {
                         }
                     }
                 }
+                .disabled(userInfoSetupViewModel.isLoading)
                 .padding(.bottom, 22)
             }
         }
@@ -77,8 +78,12 @@ struct UserInfoSetupView: View {
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
         .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
+        .loadingOverlay(isLoading: $userInfoSetupViewModel.isLoading)
         .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
             UISCompleteView(userName: userInfoSetupViewModel.userName)
+        }
+        .onChange(of: selectedIndex) { _, _ in
+            hideKeyboard()
         }
     }
 }

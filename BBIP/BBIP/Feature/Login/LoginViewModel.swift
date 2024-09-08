@@ -12,6 +12,7 @@ import AuthenticationServices
 final class LoginViewModel: ObservableObject {
     @Published var loginSuccess: Bool = false
     @Published var UISDataIsEmpty: Bool = false
+    @Published var isLoading: Bool = false
     
     private let requestLoginUseCase: RequestLoginUseCaseProtocol
     private let signUpUseCase: SignUpUseCaseProtocol
@@ -47,9 +48,12 @@ final class LoginViewModel: ObservableObject {
     }
     
     private func requestLogin(identityToken: String) {
+        isLoading = true
+        
         requestLoginUseCase.excute(identityToken: identityToken)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
+                guard let self = self else { return }
                 switch completion {
                 case .finished: break
                 case .failure(let error):
@@ -63,12 +67,14 @@ final class LoginViewModel: ObservableObject {
                 guard vo.isUserInfoGenerated else {
                     print("기존 유저이지만 UIS 입력 안된 유저입니다 (UISView push)")
                     self.UISDataIsEmpty = true
+                    self.isLoading = false
                     return
                 }
                 
                 // MARK: Login Success!
                 UserDefaultsManager.shared.setIsLoggedIn(true)
                 self.loginSuccess = true
+                self.isLoading = false
                 print("로그인 성공!")
                 
             }.store(in: &cancellables)
@@ -80,6 +86,7 @@ final class LoginViewModel: ObservableObject {
             signInProcess()
         case .unknownError:
             print("[LoginViewModel] requestLogin() Unknown Error! :", error.localizedDescription)
+            self.isLoading = false
         }
     }
     
@@ -97,10 +104,12 @@ final class LoginViewModel: ObservableObject {
         )
         signUpUseCase.execute(signUpDTO: signUpDTO)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
+            .sink { [weak self] completion in
+                guard let self = self else { return }
                 switch completion {
                 case .finished: break
                 case .failure(let error):
+                    self.isLoading = false
                     print(error)
                 }
             } receiveValue: { [weak self] vo in
@@ -108,6 +117,7 @@ final class LoginViewModel: ObservableObject {
                 print("지금 회원가입된 유저입니다")
                 UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
                 self.UISDataIsEmpty = true
+                self.isLoading = false
             }
             .store(in: &cancellables)
     }
