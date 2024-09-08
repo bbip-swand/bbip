@@ -256,10 +256,8 @@
 			children = (
 				C695BDE92C649F8B009DEC3C /* Onboarding */,
 				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
-				C695BDE82C649F67009DEC3C /* SignIn */,
-				C695BDE72C649F63009DEC3C /* MainHome */,
 				C695BDE82C649F67009DEC3C /* Login */,
-				C695BDE72C649F63009DEC3C /* Home */,
+				C695BDE72C649F63009DEC3C /* MainHome */,
 				C6934BAF2C8082F8006AA652 /* CreateStudy */,
 			);
 			path = Feature;
