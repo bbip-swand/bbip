@@ -12,6 +12,7 @@ struct SignUpRequestDTO: Encodable {
     let authorizationCode: String
 }
 
+// DTO와 VO가 같아 통일함
 struct SignUpResponseDTO: Decodable {
     let accessToken: String
 }

@@ -10,7 +10,7 @@ import Moya
 enum UserAPI {
     case signUp(dto: SignUpRequestDTO)
     case resign
-    case info(dto: UserInfoDTO)
+    case createInfo(dto: UserInfoDTO)
     case updateInfo(dto: UserInfoDTO)
 }
 
@@ -21,8 +21,8 @@ extension UserAPI: BaseAPI {
             return "/users/signup/apple"
         case .resign:
             return "/users/resign/apple"
-        case .info:
-            return "/users/info"
+        case .createInfo:
+            return "/users/create/info"
         case .updateInfo:
             return "/users/update/info"
         }
@@ -34,7 +34,7 @@ extension UserAPI: BaseAPI {
             return .post
         case .resign:
             return .post
-        case .info:
+        case .createInfo:
             return .post
         case .updateInfo:
             return .put
@@ -47,7 +47,7 @@ extension UserAPI: BaseAPI {
             return .requestJSONEncodable(dto)
         case .resign:
             return .requestPlain
-        case .info(let dto):
+        case .createInfo(let dto):
             return .requestJSONEncodable(dto)
         case .updateInfo(let dto):
             return .requestJSONEncodable(dto)

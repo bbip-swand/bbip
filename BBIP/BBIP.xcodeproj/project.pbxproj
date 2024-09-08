@@ -42,8 +42,9 @@
 		C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781062C8C798F00065F98 /* UserDataSource.swift */; };
 		C62781092C8C814000065F98 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781082C8C814000065F98 /* UserRepository.swift */; };
 		C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627810D2C8C843B00065F98 /* SignUpUseCase.swift */; };
-		C62781102C8C869600065F98 /* SignUpVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627810F2C8C869600065F98 /* SignUpVO.swift */; };
+		C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */; };
 		C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781152C8C951100065F98 /* UserInfoVO.swift */; };
+		C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781172C8C98B000065F98 /* UserInfoMapper.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -90,6 +91,8 @@
 		C6B8CE342C7AA4BC0006E906 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE332C7AA4BC0006E906 /* CombineMoya */; };
 		C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE352C7AA4BC0006E906 /* Moya */; };
 		C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE382C7AA5210006E906 /* Lottie */; };
+		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
+		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,8 +130,9 @@
 		C62781062C8C798F00065F98 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		C62781082C8C814000065F98 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		C627810D2C8C843B00065F98 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
-		C627810F2C8C869600065F98 /* SignUpVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVO.swift; sourceTree = "<group>"; };
+		C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserInfoUseCase.swift; sourceTree = "<group>"; };
 		C62781152C8C951100065F98 /* UserInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVO.swift; sourceTree = "<group>"; };
+		C62781172C8C98B000065F98 /* UserInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMapper.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 		C6B00C162C590A0E009AC4E2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C6B00C182C590A10009AC4E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6B00C1B2C590A10009AC4E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
+		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				C627810D2C8C843B00065F98 /* SignUpUseCase.swift */,
+				C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -435,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				C62780FD2C8B0A7E00065F98 /* LoginResponseMapper.swift */,
+				C62781172C8C98B000065F98 /* UserInfoMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -455,6 +463,8 @@
 				C62780F32C8AFBC600065F98 /* BaseAPI.swift */,
 				C62780F12C8AFB9C00065F98 /* AuthAPI.swift */,
 				C62780FF2C8C72C900065F98 /* UserAPI.swift */,
+				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
+				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -490,7 +500,6 @@
 			isa = PBXGroup;
 			children = (
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
-				C627810F2C8C869600065F98 /* SignUpVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
 			);
 			path = Entity;
@@ -657,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				084C022F2C8056F300E54D0C /* MainHomeHeader.swift in Sources */,
+				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
@@ -681,6 +691,7 @@
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C695CB602C7F13C200BB3952 /* MainHomeView.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
+				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
@@ -691,6 +702,7 @@
 				084C022D2C7F20F300E54D0C /* NavigationBar.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
+				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
@@ -711,7 +723,6 @@
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,
-				C62781102C8C869600065F98 /* SignUpVO.swift in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
@@ -722,6 +733,7 @@
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
+				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,

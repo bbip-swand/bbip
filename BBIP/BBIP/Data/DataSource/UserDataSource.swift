@@ -11,7 +11,7 @@ import Moya
 import CombineMoya
 
 final class UserDataSource {
-    private let provider = MoyaProvider<UserAPI>()
+    private let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
     
     func requestSignUp(signUpReqDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
         provider.requestPublisher(.signUp(dto: signUpReqDTO))
@@ -52,7 +52,7 @@ final class UserDataSource {
     }
     
     func createUserInfo(userInfoDTO: UserInfoDTO) -> AnyPublisher<Bool, Error> {
-        provider.requestPublisher(.info(dto: userInfoDTO))
+        provider.requestPublisher(.createInfo(dto: userInfoDTO))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
                     throw NSError(

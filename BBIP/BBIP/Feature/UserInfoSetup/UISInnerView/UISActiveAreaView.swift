@@ -203,6 +203,3 @@ fileprivate struct AreaGridView: View {
     }
 }
 
-#Preview {
-    UISActiveAreaView(viewModel: UserInfoSetupViewModel())
-}
