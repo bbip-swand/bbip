@@ -9,6 +9,7 @@ import Foundation
 
 struct LoginRequestDTO: Encodable {
     let identityToken: String
+    let fcmToken: String
 }
 
 struct LoginResponseDTO: Decodable {

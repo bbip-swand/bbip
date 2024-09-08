@@ -92,7 +92,8 @@ final class LoginViewModel: ObservableObject {
         
         let signUpDTO = SignUpRequestDTO(
             identityToken: identityToken,
-            authorizationCode: authorizationCode
+            authorizationCode: authorizationCode,
+            fcmToken: UserDefaultsManager.shared.getFCMToken()!
         )
         signUpUseCase.execute(signUpDTO: signUpDTO)
             .receive(on: DispatchQueue.main)

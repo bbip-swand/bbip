@@ -10,6 +10,7 @@ import Foundation
 struct SignUpRequestDTO: Encodable {
     let identityToken: String
     let authorizationCode: String
+    let fcmToken: String
 }
 
 // DTO와 VO가 같아 통일함

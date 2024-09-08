@@ -14,13 +14,19 @@ final class UserDefaultsManager {
     private init() {}
 
     private enum UserDefaultKeys: String {
-        case isLoggedIn
         case accessToken
+        case fcmToken
+        
+        case isLoggedIn
     }
 
     // MARK: - Setters
     func saveAccessToken(token: String) {
         defaults.set(token, forKey: UserDefaultKeys.accessToken.rawValue)
+    }
+    
+    func saveFCMToken(token: String) {
+        defaults.set(token, forKey: UserDefaultKeys.fcmToken.rawValue)
     }
     
     func setIsLoggedIn(_ value: Bool) {
@@ -30,6 +36,10 @@ final class UserDefaultsManager {
     // MARK: - Getters
     func getAccessToken() -> String? {
         return defaults.string(forKey: UserDefaultKeys.accessToken.rawValue)
+    }
+    
+    func getFCMToken() -> String? {
+        return defaults.string(forKey: UserDefaultKeys.fcmToken.rawValue)
     }
     
     func checkLoginStatus() -> Bool {

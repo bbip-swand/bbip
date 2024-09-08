@@ -30,7 +30,8 @@ extension AuthAPI: BaseAPI {
     var task: Moya.Task {
         switch self {
         case .login(let identityToken):
-            let body = LoginRequestDTO(identityToken: identityToken)
+            let fcmToken = UserDefaultsManager.shared.getFCMToken()!
+            let body = LoginRequestDTO(identityToken: identityToken, fcmToken: fcmToken)
             return .requestJSONEncodable(body)
         }
     }
