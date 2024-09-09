@@ -37,7 +37,7 @@ struct BBIPHearderView: View {
             
             HStack(spacing: 24) {
                 Button {
-                    onNoticeTapped()
+                    withAnimation { onNoticeTapped() }
                 } label: {
                     Image("notice_icon")
                         .overlay(
@@ -54,7 +54,7 @@ struct BBIPHearderView: View {
                 }
                 
                 Button {
-                    onProfileTapped()
+                    withAnimation { onProfileTapped() }
                 } label: {
                     Image("profile_icon")
                         .padding(.trailing, 28)

@@ -8,7 +8,25 @@
 import SwiftUI
 
 struct NoticeView: View {
+    
+    init() {
+        setNavigationBarAppearance()
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("This is Mypage View")
+            .navigationTitle("알림")
+            .backButtonStyle()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        // go notice setting view!
+                    } label: {
+                        Image("setting_icon")
+                            .resizable()
+                    }
+                }
+            }
+        
     }
 }
