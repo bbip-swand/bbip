@@ -41,17 +41,6 @@ struct MainHomeView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                // 메인 화면의 콘텐츠
-                switch selectedTab {
-                case .UserHome:
-                    Text("You are in UserHomepage.")
-                case .CreateSwitchStudy:
-                    Text("You can create and switch study.")
-                case .Calendar:
-                    Text("You are in Calendar page.")
-                }
-
                 VStack {
                     // CustomHeaderView에서 아이콘 클릭 시 상태 변경
                     CustomHeaderView(showDot: false, onNoticeTapped: {

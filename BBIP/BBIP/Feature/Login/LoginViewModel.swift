@@ -6,10 +6,28 @@
 //
 
 import Foundation
+import Combine
 import AuthenticationServices
 
 final class LoginViewModel: ObservableObject {
     @Published var loginSuccess: Bool = false
+    @Published var UISDataIsEmpty: Bool = false
+    @Published var isLoading: Bool = false
+    
+    private let requestLoginUseCase: RequestLoginUseCaseProtocol
+    private let signUpUseCase: SignUpUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    private var identityToken: String?
+    private var authorizationCode: String?
+    
+    init(
+        requestLoginUseCase: RequestLoginUseCaseProtocol,
+        signUpUseCase: SignUpUseCaseProtocol
+    ) {
+        self.requestLoginUseCase = requestLoginUseCase
+        self.signUpUseCase = signUpUseCase
+    }
     
     func handleAppleLogin(result: Result<ASAuthorization, any Error>) {
         switch result {
@@ -17,20 +35,10 @@ final class LoginViewModel: ObservableObject {
             print("Apple Login Successful")
             switch authResults.credential {
             case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                let userIdentifier = appleIDCredential.user
-                let fullName = appleIDCredential.fullName
-                let name = (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
-                let email = appleIDCredential.email
-                let identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
-                let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+                identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
+                authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
                 
-                print("User ID: \(userIdentifier)")
-                print("Name: \(name)")
-                print("Email: \(email ?? "No email")")
-                print("Identity Token: \(identityToken ?? "No identity token")")
-                print("Authorization Code: \(authorizationCode ?? "No authorization code")")
-                
-                loginProcess()
+                requestLogin(identityToken: identityToken!)
             default:
                 break
             }
@@ -39,13 +47,78 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
-    private func loginProcess() {
-        // TODO: - loginProcess
-        // 1. 받은 Identity Token으로 로그인 요청
-        // 2. AccessToken 받아지면 기존유저 이므로 Keychain & UD 저장 후 Home 진입
-        // 3. 2번이 아니라면 Identity Token, authorizationCode로 회원가입 요청 후 AccessToken 받기 (신규유저 트리거)
-        // 4. UIS뷰로 진입시키고 받은 기초 정보로 회원정보 수정 요청
+    private func requestLogin(identityToken: String) {
+        isLoading = true
         
-        loginSuccess = true
+        requestLoginUseCase.excute(identityToken: identityToken)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    // 신규유저 or Error
+                    self.handleError(error)
+                }
+            } receiveValue: { [weak self] vo in
+                guard let self = self else { return }
+                UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
+                
+                guard vo.isUserInfoGenerated else {
+                    print("기존 유저이지만 UIS 입력 안된 유저입니다 (UISView push)")
+                    self.UISDataIsEmpty = true
+                    self.isLoading = false
+                    return
+                }
+                
+                // MARK: Login Success!
+                UserDefaultsManager.shared.setIsLoggedIn(true)
+                self.loginSuccess = true
+                self.isLoading = false
+                print("로그인 성공!")
+                
+            }.store(in: &cancellables)
+    }
+    
+    private func handleError(_ error: AuthError) {
+        switch error {
+        case .notRegisted:
+            signInProcess()
+        case .unknownError:
+            print("[LoginViewModel] requestLogin() Unknown Error! :", error.localizedDescription)
+            self.isLoading = false
+        }
+    }
+    
+    private func signInProcess() {
+        guard let identityToken = identityToken, 
+              let authorizationCode = authorizationCode else {
+            print("[LoginViewModel] Missing token or authorization code")
+            return
+        }
+        
+        let signUpDTO = SignUpRequestDTO(
+            identityToken: identityToken,
+            authorizationCode: authorizationCode,
+            fcmToken: UserDefaultsManager.shared.getFCMToken()!
+        )
+        signUpUseCase.execute(signUpDTO: signUpDTO)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    self.isLoading = false
+                    print(error)
+                }
+            } receiveValue: { [weak self] vo in
+                guard let self = self else { return }
+                print("지금 회원가입된 유저입니다")
+                UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
+                self.UISDataIsEmpty = true
+                self.isLoading = false
+            }
+            .store(in: &cancellables)
     }
 }

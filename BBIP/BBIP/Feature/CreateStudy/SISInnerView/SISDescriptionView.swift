@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct SISDescriptionView: View {
+    @ObservedObject var viewModel: CreateStudyViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            CustomTextEditor(
+                text: $viewModel.studyDescription,
+                height: 150
+            )
+                .padding(.top, 192)
+            
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+        .onChange(of: viewModel.studyDescription) { _, newValue in
+           viewModel.canGoNext[3] = !newValue.isEmpty 
+        }
+        .keyboardHideable()
     }
-}
-
-#Preview {
-    SISDescriptionView()
 }

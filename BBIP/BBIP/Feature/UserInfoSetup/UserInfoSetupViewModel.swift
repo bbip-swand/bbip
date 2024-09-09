@@ -5,10 +5,20 @@
 //  Created by 이건우 on 8/14/24.
 //
 
+import Combine
 import Foundation
 import PhotosUI
 
 class UserInfoSetupViewModel: ObservableObject {
+    @Published var isLoading: Bool = false
+    private let createUserInfoUseCase: CreateUserInfoUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(createUserInfoUseCase: CreateUserInfoUseCaseProtocol) {
+        self.createUserInfoUseCase = createUserInfoUseCase
+        self.contentData = UserInfoSetupContent.generate()
+    }
+    
     @Published var contentData: [UserInfoSetupContent]
     @Published var canGoNext: [Bool] = [
         false,  // 지역 설정
@@ -62,7 +72,82 @@ class UserInfoSetupViewModel: ObservableObject {
     // MARK: - Job Setting View
     @Published var selectedJobIndex: [Int] = []
     
-    init() {
-        self.contentData = UserInfoSetupContent.generate()
+    func createUserInfo() {
+        isLoading = true
+        
+        if let selectedImage = selectedImage {
+            // selectedImage가 nil이 아닐 경우에만 업로드 실행 (사용자가 사진 선택함)
+            AWSS3Manager.shared.upload(image: selectedImage)
+                .receive(on: DispatchQueue.main)
+                .flatMap { [weak self] uploadedImageUrl -> AnyPublisher<Bool, Error> in
+                    guard let self = self else {
+                        return Fail(error: URLError(.unknown)).eraseToAnyPublisher()
+                    }
+                    
+                    // UserInfoVO 객체 생성
+                    let vo = UserInfoVO(
+                        selectedArea: self.selectedArea,
+                        selectedInterestIndex: self.selectedInterestIndex,
+                        userName: self.userName,
+                        profileImageUrl: uploadedImageUrl,
+                        birthYear: self.combinedYear,
+                        selectedJobIndex: self.selectedJobIndex
+                    )
+                    
+                    // 회원 정보를 생성
+                    return self.createUserInfoUseCase.execute(userInfoVO: vo)
+                }
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] completion in
+                    guard let self = self else { return }
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        self.isLoading = false
+                        print("회원가입 실패: \(error.localizedDescription)")
+                    }
+                } receiveValue: { isSuccess in
+                    if isSuccess {
+                        self.isLoading = false
+                        self.showCompleteView = true
+                        UserDefaultsManager.shared.setIsLoggedIn(true)
+                    } else {
+                        fatalError("회원가입 문제 발생")
+                    }
+                }
+                .store(in: &cancellables)
+        } else {
+            // selectedImage가 nil일 경우 빈 데이터 보내기 (사용자가 사진 선택 안함)
+            let vo = UserInfoVO(
+                selectedArea: self.selectedArea,
+                selectedInterestIndex: self.selectedInterestIndex,
+                userName: self.userName,
+                profileImageUrl: "",
+                birthYear: self.combinedYear,
+                selectedJobIndex: self.selectedJobIndex
+            )
+            
+            // 회원 정보를 생성
+            self.createUserInfoUseCase.execute(userInfoVO: vo)
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] completion in
+                    guard let self = self else { return }
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        self.isLoading = false
+                        print("회원가입 실패: \(error.localizedDescription)")
+                    }
+                } receiveValue: { isSuccess in
+                    if isSuccess {
+                        self.isLoading = false
+                        self.showCompleteView = true
+                        UserDefaultsManager.shared.setIsLoggedIn(true)
+                    } else {
+                        fatalError("회원가입 문제 발생")
+                    }
+                }
+                .store(in: &cancellables)
+        }
     }
 }

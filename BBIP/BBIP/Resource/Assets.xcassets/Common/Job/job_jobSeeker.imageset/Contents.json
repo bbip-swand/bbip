@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "job_jobSeeker.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

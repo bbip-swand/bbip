@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel = makeLoginViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -38,10 +38,18 @@ struct LoginView: View {
             AppleSigninButton(viewModel: viewModel)
                 .padding(.bottom, 38)       
         }
+        .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
+            if newValue {
+                withAnimation { appState.goUIS() }
+            }
+        }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
-            if newValue { appState.goUIS() }
+            if newValue {
+                withAnimation { appState.goHome() }
+            }
         }
         .navigationBarBackButtonHidden()
+        .loadingOverlay(isLoading: $viewModel.isLoading)
     }
 }
 
@@ -68,6 +76,30 @@ private struct AppleSigninButton : View {
                 )
                 .blendMode(.overlay)
             }
+    }
+}
+
+extension LoginView {
+    static func makeRequestLoginUseCase() -> RequestLoginUseCase {
+        let dataSource = AuthDataSource()
+        let mapper = LoginResponseMapper()
+        let repository = AuthRepositoryImpl(dataSource: dataSource, mapper: mapper)
+        return RequestLoginUseCase(repository: repository)
+    }
+    
+    static func makeSignUpUseCase() -> SignUpUseCase {
+        let dataSource = UserDataSource()
+        let mapper = UserInfoMapper()
+        let repository = UserRepository(dataSource: dataSource, mapper: mapper)
+        
+        return SignUpUseCase(repository: repository)
+    }
+    
+    static func makeLoginViewModel() -> LoginViewModel {
+        return LoginViewModel(
+            requestLoginUseCase: makeRequestLoginUseCase(),
+            signUpUseCase: makeSignUpUseCase()
+        )
     }
 }
 

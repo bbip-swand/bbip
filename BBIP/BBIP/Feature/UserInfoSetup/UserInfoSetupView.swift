@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct UserInfoSetupView: View {
-    @StateObject private var userInfoSetupViewModel = UserInfoSetupViewModel()
+    @StateObject private var userInfoSetupViewModel = makeUserInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
     private func buttonText() -> String {
@@ -65,11 +65,12 @@ struct UserInfoSetupView: View {
                             selectedIndex += 1
                             print(selectedIndex)
                         } else {
-                            // 회원가입 프로세스
-                            userInfoSetupViewModel.showCompleteView = true
+                            // 유저 정보 등록
+                            userInfoSetupViewModel.createUserInfo()
                         }
                     }
                 }
+                .disabled(userInfoSetupViewModel.isLoading)
                 .padding(.bottom, 22)
             }
         }
@@ -77,8 +78,12 @@ struct UserInfoSetupView: View {
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex)
         .skipButton(selectedIndex: $selectedIndex, viewModel: userInfoSetupViewModel)
+        .loadingOverlay(isLoading: $userInfoSetupViewModel.isLoading)
         .navigationDestination(isPresented: $userInfoSetupViewModel.showCompleteView) {
             UISCompleteView(userName: userInfoSetupViewModel.userName)
+        }
+        .onChange(of: selectedIndex) { _, _ in
+            hideKeyboard()
         }
     }
 }
@@ -106,3 +111,15 @@ fileprivate extension View {
         }
     }
 }
+
+extension UserInfoSetupView {
+    static func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
+        let dataSource = UserDataSource()
+        let mapper = UserInfoMapper()
+        let repository = UserRepository(dataSource: dataSource, mapper: mapper)
+        let useCase = CreateUserInfoUseCase(repository: repository)
+        
+        return UserInfoSetupViewModel(createUserInfoUseCase: useCase)
+    }
+}
+

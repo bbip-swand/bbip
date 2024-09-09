@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PhotosUI
 import SwiftUIIntrospect
 
 struct UISProfileView: View {
@@ -27,12 +26,13 @@ struct UISProfileView: View {
                 .ignoresSafeArea(edges: .bottom)
         }
         .padding(.horizontal, 20)
-        .hideKeyboard()
+        .keyboardHideable()
     }
 }
 
-private struct SetProfileImageView: View {
+fileprivate struct SetProfileImageView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
+    private let imageSize: CGFloat = 160
     
     var body: some View {
         Button {
@@ -43,8 +43,13 @@ private struct SetProfileImageView: View {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 160, height: 160)
+                        .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
+                        .radiusBorder(
+                            cornerRadius: imageSize / 2,
+                            color: .gray4,
+                            lineWidth: 2
+                        )
                 } else {
                     Image("profile_default")
                         .resizable()
@@ -59,12 +64,14 @@ private struct SetProfileImageView: View {
     }
 }
 
-private struct SetNicknameView: View {
+fileprivate struct SetNicknameView: View {
     @ObservedObject var viewModel: UserInfoSetupViewModel
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 0) {
             TextField("실명을 입력해주세요", text: $viewModel.userName)
+                .focused($isFocused)
                 .font(.bbip(.body1_m16))
                 .onChange(of: viewModel.userName) { _, newValue in
                     viewModel.hasStartedEditing = true
@@ -80,16 +87,16 @@ private struct SetNicknameView: View {
             
             Rectangle()
                 .frame(height: 2)
-                .foregroundColor(viewModel.hasStartedEditing ? Color.red : Color.gray3)
+                .foregroundColor(!viewModel.userName.isEmpty || isFocused ? Color.red : Color.gray3)
             
             HStack {
-                if viewModel.hasStartedEditing && !viewModel.isNameValid {
+                if !viewModel.userName.isEmpty && viewModel.hasStartedEditing && !viewModel.isNameValid {
                     WarningLabel(errorText: "실명을 작성해주세요. 숫자, 특수문자는 사용할 수 없습니다.")
                 }
             }
             .foregroundColor(.red)
             .frame(height: 20)
-            .padding(.top, 4)
+            .padding(.top, 8)
         }
     }
     
@@ -98,48 +105,5 @@ private struct SetNicknameView: View {
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         viewModel.isNameValid = predicate.evaluate(with: name)
         viewModel.canGoNext[2] = predicate.evaluate(with: name)
-    }
-}
-
-// ImagePicker
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var image: UIImage?
-    
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        config.selectionLimit = 1
-        
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        let parent: ImagePicker
-        
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-        
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            picker.dismiss(animated: true)
-            
-            guard let provider = results.first?.itemProvider else { return }
-            
-            if provider.canLoadObject(ofClass: UIImage.self) {
-                provider.loadObject(ofClass: UIImage.self) { image, _ in
-                    DispatchQueue.main.async {
-                        self.parent.image = image as? UIImage
-                    }
-                }
-            }
-        }
     }
 }
