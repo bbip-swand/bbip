@@ -1,5 +1,5 @@
 //
-//  NavigationBar.swift
+//  BBIPTabView.swift
 //  BBIP
 //
 //  Created by 조예린 on 8/28/24.
@@ -9,40 +9,17 @@ import Foundation
 import SwiftUI
 
 
-enum Tab{
+enum Tab {
     case UserHome
     case CreateSwitchStudy
     case Calendar
 }
 
-
-//struct TabContentView : View {
-//    @State var selectedTab: Tab = .UserHome
-//    var body: some View {
-//        VStack{
-//            Spacer()
-//            switch selectedTab {
-//            case .UserHome:
-//                Text("You are in UserHomepage.")
-//            case .CreateSwitchStudy:
-//                Text("You can create and switch study.")
-//            case .Calendar:
-//                Text("You are in Calendarpage.")
-//            }
-//            
-//            Spacer()
-//            CustomTabBarView(selectedTab: $selectedTab)
-//        }
-//    }
-//}
-
-
-struct CustomTabBarView : View{
+struct BBIPTabView : View {
     @Binding var selectedTab: Tab
+    private let calw = ((UIScreen.main.bounds.width/2)-33.5-24)/3.905
     
-    
-    var body : some View {
-        var calw = ((UIScreen.main.bounds.width/2)-33.5-24)/3.905
+    var body: some View {
         ZStack {
             Image("navigation_bar")
                 .resizable()
@@ -51,12 +28,10 @@ struct CustomTabBarView : View{
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: -4)
             
             HStack {
-                
-                
-                Button{
+                Button {
                     selectedTab = .UserHome
-                }label : {
-                    Image(selectedTab == .UserHome ? "home_active" :"home_nonactive" )
+                } label: {
+                    Image(selectedTab == .UserHome ? "home_active" : "home_nonactive" )
                         .resizable()
                         .frame(width: 24, height: 24)
                         .padding(.leading, 1.551*calw)
@@ -64,18 +39,13 @@ struct CustomTabBarView : View{
                         .padding(.top,9)
                         .padding(.bottom,5)
                         .contentShape(Rectangle())
-                    
-                        
                 }
-                
                 
                 Spacer()
                 
-                
-                
                 Button {
                     selectedTab = .Calendar
-                }label: {
+                } label: {
                     Image(selectedTab == .Calendar ? "calendar_active" : "calendar_nonactive")
                         .resizable()
                         .frame(width: 24, height: 24)
@@ -85,9 +55,6 @@ struct CustomTabBarView : View{
                         .padding(.bottom,5)
                         .contentShape(Rectangle())
                 }
-                
-                
-                
             }
             .overlay {
                 Button {
@@ -101,9 +68,3 @@ struct CustomTabBarView : View{
         }
     }
 }
-
-
-#Preview{
-    CustomTabBarView(selectedTab: .constant(.UserHome))
-}
-

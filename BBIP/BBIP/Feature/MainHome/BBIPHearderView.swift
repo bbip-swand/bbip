@@ -1,5 +1,5 @@
 //
-//  MainHomeHeader.swift
+//  BBIPHearderView.swift
 //  BBIP
 //
 //  Created by 조예린 on 8/29/24.
@@ -8,12 +8,23 @@
 import Foundation
 import SwiftUI
 
-
-struct CustomHeaderView: View {
-    var title: String = "홈"
-    var showDot: Bool = false
+struct BBIPHearderView: View {
+    @Binding var showDot: Bool
+    var title: String
     let onNoticeTapped: () -> Void
     let onProfileTapped: () -> Void
+    
+    init(
+        showDot: Binding<Bool>,
+        title: String = "홈",
+        onNoticeTapped: @escaping () -> Void,
+        onProfileTapped: @escaping () -> Void
+    ) {
+        self._showDot = showDot
+        self.title = title
+        self.onNoticeTapped = onNoticeTapped
+        self.onProfileTapped = onProfileTapped
+    }
     
     var body: some View {
         HStack(spacing: 0) {
