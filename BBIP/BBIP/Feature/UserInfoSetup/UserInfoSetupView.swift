@@ -70,7 +70,6 @@ struct UserInfoSetupView: View {
                         }
                     }
                 }
-                .disabled(userInfoSetupViewModel.isLoading)
                 .padding(.bottom, 22)
             }
         }

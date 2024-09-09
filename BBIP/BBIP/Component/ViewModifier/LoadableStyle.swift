@@ -9,23 +9,24 @@ import SwiftUI
 
 struct LoadableStyle: ViewModifier {
     @Binding var isLoading: Bool
+    var withBackground: Bool
     
     func body(content: Content) -> some View {
         ZStack {
             content
             if isLoading {
-                // BBIPLottieView(assetName: "BBIPLoading")
-                ProgressView()
-                    .tint(.primary3)
-                    .frame(maxWidth: UIScreen.main.bounds.width, alignment: .center)
-                    .frame(maxHeight: UIScreen.main.bounds.height, alignment: .center)
+                 BBIPLottieView(assetName: "BBIPLoading", withBackground: withBackground)
+                    .ignoresSafeArea(.all)
             }
         }
     }
 }
 
 extension View {
-    func loadingOverlay(isLoading: Binding<Bool>) -> some View {
-        self.modifier(LoadableStyle(isLoading: isLoading))
+    func loadingOverlay(
+        isLoading: Binding<Bool>,
+        withBackground: Bool = true
+    ) -> some View {
+        self.modifier(LoadableStyle(isLoading: isLoading, withBackground: withBackground))
     }
 }

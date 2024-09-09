@@ -12,14 +12,17 @@ import Lottie
 struct BBIPLottieView: UIViewRepresentable {
     private let asset: String
     private let loopMode: LottieLoopMode
+    private let withBackground: Bool
     private var completion: (() -> Void)?
     
     init(
         assetName: String,
+        withBackground: Bool,
         loopMode: LottieLoopMode = .repeat(.infinity),
         completion: (() -> Void)? = nil
     ) {
         self.asset = assetName
+        self.withBackground = withBackground
         self.loopMode = loopMode
         self.completion = completion
     }
@@ -36,8 +39,20 @@ struct BBIPLottieView: UIViewRepresentable {
             }
         })
         
+        let backgroundView = UIView()
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = withBackground ? UIColor.gray10.withAlphaComponent(0.6) : .clear
+        
         let containerView = UIView(frame: .zero)
+        containerView.addSubview(backgroundView)
         containerView.addSubview(lottieView)
+        
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
+        ])
         NSLayoutConstraint.activate([
             lottieView.heightAnchor.constraint(equalTo: containerView.heightAnchor),
             lottieView.widthAnchor.constraint(equalTo: containerView.widthAnchor)

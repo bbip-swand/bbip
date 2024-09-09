@@ -94,10 +94,10 @@
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
-		C6FA55952C8DDA7100E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA55942C8DDA7100E537D7 /* BBIPLoading.json */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
 		C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559D2C8EC02600E537D7 /* MypageView.swift */; };
+		C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,10 +185,10 @@
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
-		C6FA55942C8DDA7100E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		C6FA559D2C8EC02600E537D7 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
+		C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,7 +532,7 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				C6FA55942C8DDA7100E537D7 /* BBIPLoading.json */,
+				C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -681,11 +681,11 @@
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
 				C62780E02C8886F000065F98 /* GoogleService-Info.plist in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
-				C6FA55952C8DDA7100E537D7 /* BBIPLoading.json in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
+				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
 				C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
