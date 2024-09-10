@@ -13,10 +13,12 @@ struct BBIPApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .onAppear {
-                    print(UserDefaultsManager.shared.getAccessToken())
-                }
+            Text(timeAgo(date: Date().addingTimeInterval(-3600))
+            )
+//            RootView()
+//                .onAppear {
+//                    print(UserDefaultsManager.shared.getAccessToken())
+//                }
 //            NavigationStack {
 //                NavigationLink {
 //                    StartCreateStudyView()
