@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
-		08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* MainStudyCell.swift */; };
+		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* BBIPHearderView.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
@@ -98,12 +98,14 @@
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
 		C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559D2C8EC02600E537D7 /* MypageView.swift */; };
 		C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */; };
+		C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B12C8F279700E537D7 /* StudyCategory.swift */; };
+		C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */; };
 		C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B52C8F317300E537D7 /* CapsuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
-		08469F482C7E044A00675792 /* MainStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStudyCell.swift; sourceTree = "<group>"; };
+		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* BBIPHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPHearderView.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,8 @@
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		C6FA559D2C8EC02600E537D7 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
+		C6FA55B12C8F279700E537D7 /* StudyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCategory.swift; sourceTree = "<group>"; };
+		C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoVO.swift; sourceTree = "<group>"; };
 		C6FA55B52C8F317300E537D7 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +276,7 @@
 				C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */,
 				C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */,
 				C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */,
+				C6FA55B12C8F279700E537D7 /* StudyCategory.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -338,13 +343,13 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				08469F482C7E044A00675792 /* MainStudyCell.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
 				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
 				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
 				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
+				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
 				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
@@ -518,6 +523,7 @@
 			children = (
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
+				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -714,6 +720,7 @@
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
+				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
@@ -721,12 +728,13 @@
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
-				08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */,
+				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C695CB602C7F13C200BB3952 /* MainHomeView.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
+				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
