@@ -11,6 +11,7 @@ enum CapsuleViewType {
     case normal
     case highlight
     case fill
+    case timeRing
 }
 
 struct CapsuleView: View {
@@ -27,12 +28,10 @@ struct CapsuleView: View {
     
     var titleColor: Color {
         switch type {
-        case .normal:
+        case .normal, .fill, .timeRing:
             return .gray8
         case .highlight:
             return .primary3
-        case .fill:
-            return .gray8
         }
     }
     
@@ -42,14 +41,14 @@ struct CapsuleView: View {
             return .gray7
         case .highlight:
             return .primary3
-        case .fill:
+        case .fill, .timeRing:
             return .clear
         }
     }
     
     var backgroundColor: Color {
         switch type {
-        case .fill:
+        case .fill, .timeRing:
             return .gray2
         default:
             return .clear
