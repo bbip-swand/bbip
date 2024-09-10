@@ -98,6 +98,7 @@
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
 		C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559D2C8EC02600E537D7 /* MypageView.swift */; };
 		C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */; };
+		C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B52C8F317300E537D7 /* CapsuleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +190,7 @@
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		C6FA559D2C8EC02600E537D7 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
+		C6FA55B52C8F317300E537D7 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
 				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
 				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
+				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
@@ -728,6 +731,7 @@
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
+				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
 				C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
