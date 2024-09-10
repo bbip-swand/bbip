@@ -106,6 +106,7 @@
 		C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */; };
 		C6FA55BE2C90319A00E537D7 /* BulletnboardVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BD2C90319A00E537D7 /* BulletnboardVO.swift */; };
 		C6FA55DF2C906F5400E537D7 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55DE2C906F5400E537D7 /* DateFormat.swift */; };
+		C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,6 +206,7 @@
 		C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardCell.swift; sourceTree = "<group>"; };
 		C6FA55BD2C90319A00E537D7 /* BulletnboardVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletnboardVO.swift; sourceTree = "<group>"; };
 		C6FA55DE2C906F5400E537D7 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +387,7 @@
 			children = (
 				C6FA55BF2C90355800E537D7 /* Frame */,
 				C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */,
+				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
 				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
 				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
 				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
@@ -748,6 +751,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
+				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
 				C62780EC2C8AEE4800065F98 /* RequestLoginUseCase.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
