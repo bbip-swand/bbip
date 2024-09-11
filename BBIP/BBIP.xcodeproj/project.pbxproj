@@ -110,6 +110,7 @@
 		C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */; };
 		C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */; };
 		C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */; };
+		C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +215,7 @@
 		C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHomeView.swift; path = BBIP/Feature/MainHome/MainHomeView.swift; sourceTree = SOURCE_ROOT; };
 		C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleCardView.swift; sourceTree = "<group>"; };
 		C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleVO.swift; sourceTree = "<group>"; };
+		C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPGuideButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +402,7 @@
 				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
 				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
 				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
+				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
+				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,

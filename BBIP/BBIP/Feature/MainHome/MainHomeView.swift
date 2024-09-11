@@ -45,15 +45,18 @@ struct MainHomeView: View {
                     .redacted(reason: isRefresh ? .placeholder : [])
                     
                     mainBulletn
-                        .padding(.bottom, 23)
+                        .padding(.bottom, 32)
                         .redacted(reason: isRefresh ? .placeholder : [])
                     
                     currentWeekStudy
-                        .padding(.bottom, 23)
+                        .padding(.bottom, 32)
                         .redacted(reason: isRefresh ? .placeholder : [])
                     
                     commingSchedule
                         .redacted(reason: isRefresh ? .placeholder : [])
+                        .padding(.bottom, 32)
+                    
+                    BBIPGuideButton()
                     
                     Spacer()
                         .frame(minHeight: 150)
@@ -166,7 +169,6 @@ struct MainHomeView: View {
             .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
                 scrollView.showsHorizontalScrollIndicator = false
             }
-
         }
     }
 }
