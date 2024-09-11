@@ -7,6 +7,7 @@
 
 import Foundation
 
+// For TimeRing
 struct ImpendingStudyVO {
     let leftDay: Int
     let title: String

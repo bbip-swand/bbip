@@ -103,11 +103,13 @@
 		C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */; };
 		C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */; };
 		C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */; };
-		C6FA55BE2C90319A00E537D7 /* BulletnboardVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BD2C90319A00E537D7 /* BulletnboardVO.swift */; };
+		C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */; };
 		C6FA55DF2C906F5400E537D7 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55DE2C906F5400E537D7 /* DateFormat.swift */; };
 		C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */; };
 		C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */; };
 		C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */; };
+		C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */; };
+		C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,11 +207,13 @@
 		C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTimeRingView.swift; sourceTree = "<group>"; };
 		C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpendingStudyVO.swift; sourceTree = "<group>"; };
 		C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardCell.swift; sourceTree = "<group>"; };
-		C6FA55BD2C90319A00E537D7 /* BulletnboardVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletnboardVO.swift; sourceTree = "<group>"; };
+		C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardPostVO.swift; sourceTree = "<group>"; };
 		C6FA55DE2C906F5400E537D7 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBannerView.swift; sourceTree = "<group>"; };
 		C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewModel.swift; sourceTree = "<group>"; };
 		C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHomeView.swift; path = BBIP/Feature/MainHome/MainHomeView.swift; sourceTree = SOURCE_ROOT; };
+		C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleCardView.swift; sourceTree = "<group>"; };
+		C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleVO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +399,7 @@
 				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
 				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
 				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
+				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -542,9 +547,10 @@
 			children = (
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
-				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
-				C6FA55BD2C90319A00E537D7 /* BulletnboardVO.swift */,
+				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
+				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
+				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -749,7 +755,7 @@
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
-				C6FA55BE2C90319A00E537D7 /* BulletnboardVO.swift in Sources */,
+				C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
@@ -788,8 +794,10 @@
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* DateFormat.swift in Sources */,
+				C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
+				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,

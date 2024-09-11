@@ -49,6 +49,10 @@ struct MainHomeView: View {
                         .redacted(reason: isRefresh ? .placeholder : [])
                     
                     currentWeekStudy
+                        .padding(.bottom, 23)
+                        .redacted(reason: isRefresh ? .placeholder : [])
+                    
+                    commingSchedule
                         .redacted(reason: isRefresh ? .placeholder : [])
                     
                     Spacer()
@@ -63,7 +67,7 @@ struct MainHomeView: View {
                     }
                 }
                 .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-                    scrollView.showsHorizontalScrollIndicator = false
+                    scrollView.showsVerticalScrollIndicator = false
                     scrollView.backgroundColor = .gray1
                     scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                     scrollView.refreshControl?.tintColor = .primary3
@@ -120,7 +124,7 @@ struct MainHomeView: View {
     }
     
     var currentWeekStudy: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 0) {
             HStack {
                 Text("이번 주 스터디")
                     .font(.bbip(.body1_b16))
@@ -130,10 +134,39 @@ struct MainHomeView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 12)
             
-            ForEach(0..<viewModel.currentWeekStudyData.count, id: \.self) { index in
-                CurrentWeekStudyInfoCardView(vo: viewModel.currentWeekStudyData[index])
+            VStack(spacing: 8) {
+                ForEach(0..<viewModel.currentWeekStudyData.count, id: \.self) { index in
+                    CurrentWeekStudyInfoCardView(vo: viewModel.currentWeekStudyData[index])
+                }
             }
             .padding(.horizontal, 17)
+        }
+    }
+    
+    var commingSchedule: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("다가오는 일정")
+                    .font(.bbip(.body1_b16))
+                    .foregroundStyle(.gray8)
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 12)
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 8) {
+                    ForEach(0..<viewModel.commingScheduleData.count, id: \.self) { index in
+                        CommingScheduleCardView(vo: viewModel.commingScheduleData[index])
+                    }
+                }
+                .padding(.horizontal, 17)
+                .frame(height: 150)
+            }
+            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+                scrollView.showsHorizontalScrollIndicator = false
+            }
+
         }
     }
 }
