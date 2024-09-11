@@ -21,13 +21,13 @@ struct BBIPTabView : View {
     
     var body: some View {
         ZStack {
-            Image("navigation_bar")
+            Image("tabbar")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: UIScreen.main.bounds.width)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: -4)
+                .bbipShadow2()
             
-            HStack {
+            HStack() {
                 Button {
                     selectedTab = .UserHome
                 } label: {
@@ -36,8 +36,7 @@ struct BBIPTabView : View {
                         .frame(width: 24, height: 24)
                         .padding(.leading, 1.551*calw)
                         .padding(.trailing, 1.354*calw)
-                        .padding(.top,9)
-                        .padding(.bottom,5)
+                        .padding(.bottom, 10)
                         .contentShape(Rectangle())
                 }
                 
@@ -51,8 +50,7 @@ struct BBIPTabView : View {
                         .frame(width: 24, height: 24)
                         .padding(.trailing, 1.551*calw)
                         .padding(.leading, 1.354*calw)
-                        .padding(.top,9)
-                        .padding(.bottom,5)
+                        .padding(.bottom, 10)
                         .contentShape(Rectangle())
                 }
             }
@@ -62,9 +60,14 @@ struct BBIPTabView : View {
                 } label: {
                     Image("switch_button")
                         .frame(width: 67, height: 67)
-                        .padding(.bottom, 80)
+                        .padding(.bottom, 100)
                 }
             }
+            .background(.clear)
         }
     }
+}
+
+#Preview {
+    BBIPTabView(selectedTab: .constant(.UserHome))
 }

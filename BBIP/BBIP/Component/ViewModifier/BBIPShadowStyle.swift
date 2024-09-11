@@ -24,6 +24,7 @@ extension View {
         self.modifier(BBIPShadowStyle(color: color, radius: radius, x: x, y: y))
     }
     
+    /// 있는 듯 없는 듯
     func bbipShadow1() -> some View {
         self.bbipShadow(color: Color.black.opacity(0.05), radius: 20, x: 0, y: 0)
     }

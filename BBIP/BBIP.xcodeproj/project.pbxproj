@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
-		08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* MainStudyCell.swift */; };
+		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* BBIPHearderView.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
@@ -73,7 +73,6 @@
 		C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB592C7EFBE900BB3952 /* WarningLabel.swift */; };
 		C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5B2C7F061A00BB3952 /* UISJobView.swift */; };
 		C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5D2C7F089C00BB3952 /* UISCompleteView.swift */; };
-		C695CB602C7F13C200BB3952 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */; };
 		C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB612C7F13E600BB3952 /* LoginView.swift */; };
 		C695CB642C7F154F00BB3952 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB632C7F154F00BB3952 /* AppState.swift */; };
 		C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB652C7F160200BB3952 /* UserDefaultManager.swift */; };
@@ -98,11 +97,25 @@
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
 		C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559D2C8EC02600E537D7 /* MypageView.swift */; };
 		C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */; };
+		C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B12C8F279700E537D7 /* StudyCategory.swift */; };
+		C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */; };
+		C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B52C8F317300E537D7 /* CapsuleView.swift */; };
+		C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */; };
+		C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */; };
+		C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */; };
+		C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */; };
+		C6FA55DF2C906F5400E537D7 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55DE2C906F5400E537D7 /* DateFormat.swift */; };
+		C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */; };
+		C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */; };
+		C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */; };
+		C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */; };
+		C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */; };
+		C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
-		08469F482C7E044A00675792 /* MainStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStudyCell.swift; sourceTree = "<group>"; };
+		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* BBIPHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPHearderView.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
@@ -189,6 +202,20 @@
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
 		C6FA559D2C8EC02600E537D7 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
+		C6FA55B12C8F279700E537D7 /* StudyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCategory.swift; sourceTree = "<group>"; };
+		C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoVO.swift; sourceTree = "<group>"; };
+		C6FA55B52C8F317300E537D7 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
+		C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTimeRingView.swift; sourceTree = "<group>"; };
+		C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpendingStudyVO.swift; sourceTree = "<group>"; };
+		C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardCell.swift; sourceTree = "<group>"; };
+		C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardPostVO.swift; sourceTree = "<group>"; };
+		C6FA55DE2C906F5400E537D7 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBannerView.swift; sourceTree = "<group>"; };
+		C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewModel.swift; sourceTree = "<group>"; };
+		C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHomeView.swift; path = BBIP/Feature/MainHome/MainHomeView.swift; sourceTree = SOURCE_ROOT; };
+		C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleCardView.swift; sourceTree = "<group>"; };
+		C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleVO.swift; sourceTree = "<group>"; };
+		C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPGuideButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +297,7 @@
 				C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */,
 				C695CB512C7DEB4600BB3952 /* GridButtonContent.swift */,
 				C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */,
+				C6FA55B12C8F279700E537D7 /* StudyCategory.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -336,13 +364,13 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				08469F482C7E044A00675792 /* MainStudyCell.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
 				C695CB592C7EFBE900BB3952 /* WarningLabel.swift */,
 				C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */,
 				C62780CC2C86ADB900065F98 /* CustomTextEditor.swift */,
+				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
@@ -366,9 +394,15 @@
 		C695BDE72C649F63009DEC3C /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
-				C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */,
-				084C022C2C7F20F300E54D0C /* BBIPTabView.swift */,
-				084C022E2C8056F300E54D0C /* BBIPHearderView.swift */,
+				C6FA55BF2C90355800E537D7 /* Frame */,
+				C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */,
+				C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */,
+				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
+				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
+				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
+				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
+				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
+				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -428,6 +462,7 @@
 				C695CB652C7F160200BB3952 /* UserDefaultManager.swift */,
 				C695CB672C7F164300BB3952 /* KeychainManager.swift */,
 				C695CB6C2C7F2C2C00BB3952 /* HapticManager.swift */,
+				C6FA55DE2C906F5400E537D7 /* DateFormat.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -515,6 +550,10 @@
 			children = (
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
+				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
+				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
+				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
+				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -553,6 +592,7 @@
 			children = (
 				C6B00C132C590A0E009AC4E2 /* BBIP */,
 				C6B00C122C590A0E009AC4E2 /* Products */,
+				C6FA55ED2C91924000E537D7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -604,6 +644,23 @@
 				C6FA559D2C8EC02600E537D7 /* MypageView.swift */,
 			);
 			path = Mypage;
+			sourceTree = "<group>";
+		};
+		C6FA55BF2C90355800E537D7 /* Frame */ = {
+			isa = PBXGroup;
+			children = (
+				084C022C2C7F20F300E54D0C /* BBIPTabView.swift */,
+				084C022E2C8056F300E54D0C /* BBIPHearderView.swift */,
+			);
+			path = Frame;
+			sourceTree = "<group>";
+		};
+		C6FA55ED2C91924000E537D7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C695CB5F2C7F13C200BB3952 /* MainHomeView.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,8 +755,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */,
+				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
+				C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
@@ -711,34 +770,43 @@
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
+				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
+				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
+				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
 				C62780EC2C8AEE4800065F98 /* RequestLoginUseCase.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
-				08469F492C7E044A00675792 /* MainStudyCell.swift in Sources */,
+				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
+				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
-				C695CB602C7F13C200BB3952 /* MainHomeView.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
+				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
+				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
 				C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
+				C6FA55DF2C906F5400E537D7 /* DateFormat.swift in Sources */,
+				C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
+				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
+				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
@@ -750,6 +818,7 @@
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
+				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
@@ -764,6 +833,7 @@
 				C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
+				C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */,
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
