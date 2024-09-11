@@ -15,7 +15,7 @@ struct NoticeBannerView: View {
     }
     
     var body: some View {
-        HStack(spacing: 19) {
+        HStack(spacing: 0) {
             Text("공지")
                 .foregroundStyle(.primary3)
                 .font(.bbip(.body1_sb16))
@@ -27,14 +27,16 @@ struct NoticeBannerView: View {
                     .frame(width: 4, height: 4),
                     alignment: .topTrailing
                 )
+                .padding(.trailing, 19)
             
             Text(pendingNotice)
                 .font(.bbip(.body2_m14))
                 .foregroundStyle(.gray8)
-                .frame(maxWidth: 284, maxHeight: 20)
+                .frame(maxWidth: 284, maxHeight: 20, alignment: .leading)
+            
+            Spacer()
         }
         .padding(.leading, 11)
-        .padding(.trailing, 12)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.gray2)

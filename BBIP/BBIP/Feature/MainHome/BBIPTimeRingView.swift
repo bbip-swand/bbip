@@ -91,6 +91,7 @@ struct BBIPTimeRingView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .offset(x: 30, y: 62)
+                        .unredacted()
                 }
             }
             RoundedRectangle(cornerRadius: 10)

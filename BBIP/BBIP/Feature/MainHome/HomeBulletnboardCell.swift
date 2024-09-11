@@ -26,27 +26,28 @@ struct HomeBulletnboardCell: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            CapsuleView(title: vo.studyName, type: capsuleViewType)
-                .padding(.bottom, 12)
-            
-            Text(vo.postContent)
-                .frame(maxWidth: 137, maxHeight: 34)
-                .font(.bbip(.body2_m14))
-                .padding(.bottom, 7)
-            
-            Text(timeAgo(date: vo.createdAt))
-
-                .font(.bbip(.caption3_r12))
-                .foregroundStyle(.gray6)
-                .frame(maxWidth: 137, alignment: .trailing)
-        }
-        .background(
+        ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: 171, height: 115)
                 .foregroundStyle(.mainWhite)
                 .bbipShadow1()
-        )
+            
+            VStack(alignment: .leading, spacing: 0) {
+                CapsuleView(title: vo.studyName, type: capsuleViewType)
+                    .padding(.bottom, 12)
+                
+                Text(vo.postContent)
+                    .frame(maxWidth: 137, maxHeight: 34)
+                    .font(.bbip(.body2_m14))
+                    .padding(.bottom, 7)
+                
+                Text(timeAgo(date: vo.createdAt))
+
+                    .font(.bbip(.caption3_r12))
+                    .foregroundStyle(.gray6)
+                    .frame(maxWidth: 137, alignment: .trailing)
+            }
+        }
     }
 }
 
