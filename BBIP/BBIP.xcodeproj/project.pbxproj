@@ -118,6 +118,9 @@
 		C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */; };
 		C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56032C9552C900E537D7 /* CalendarVO.swift */; };
 		C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56052C956D3700E537D7 /* CalendarView.swift */; };
+		C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56082C95920C00E537D7 /* UserHomeView.swift */; };
+		C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA560A2C95968900E537D7 /* StudySwitchView.swift */; };
+		C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -229,6 +232,9 @@
 		C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		C6FA56032C9552C900E537D7 /* CalendarVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVO.swift; sourceTree = "<group>"; };
 		C6FA56052C956D3700E537D7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C6FA56082C95920C00E537D7 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
+		C6FA560A2C95968900E537D7 /* StudySwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwitchView.swift; sourceTree = "<group>"; };
+		C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwitchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,7 +408,6 @@
 				C6FA55982C8EBFE200E537D7 /* Notice */,
 				C6FA559A2C8EC00B00E537D7 /* Mypage */,
 				C6934BAF2C8082F8006AA652 /* CreateStudy */,
-				C6FA55FD2C9545CF00E537D7 /* Calendar */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -410,15 +415,12 @@
 		C695BDE72C649F63009DEC3C /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
-				C6FA55BF2C90355800E537D7 /* Frame */,
 				C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */,
 				C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */,
-				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
-				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
-				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
-				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
-				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
-				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
+				C6FA55BF2C90355800E537D7 /* Frame */,
+				C6FA56072C9591E600E537D7 /* UserHome */,
+				C6FA560C2C95972600E537D7 /* StudySwitch */,
+				C6FA55FD2C9545CF00E537D7 /* Calendar */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -699,6 +701,29 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		C6FA56072C9591E600E537D7 /* UserHome */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA56082C95920C00E537D7 /* UserHomeView.swift */,
+				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
+				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
+				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
+				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
+				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
+				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
+			);
+			path = UserHome;
+			sourceTree = "<group>";
+		};
+		C6FA560C2C95972600E537D7 /* StudySwitch */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA560A2C95968900E537D7 /* StudySwitchView.swift */,
+				C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */,
+			);
+			path = StudySwitch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -808,6 +833,7 @@
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
+				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
@@ -829,6 +855,7 @@
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
+				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
@@ -849,6 +876,7 @@
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
+				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
