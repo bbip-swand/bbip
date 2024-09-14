@@ -75,10 +75,10 @@ extension Font {
     }
     
     static func bbip(_ style: BBIPStyle) -> Font {
-        return Font.custom("WantedSans-\(style.family.rawValue)", size: style.size)
+        return Font(UIFont(name: "WantedSans-\(style.family.rawValue)", size: style.size)!)
     }
     
     static func bbip(family: FontFamily, size: CGFloat) -> Font {
-        return Font.custom("WantedSans-\(family.rawValue)", size: size)
+        return Font(UIFont(name: "WantedSans-\(family.rawValue)", size: size)!)
     }
 }
