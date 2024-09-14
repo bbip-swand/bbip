@@ -111,6 +111,8 @@
 		C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */; };
 		C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */; };
 		C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */; };
+		C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */; };
+		C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -216,6 +218,8 @@
 		C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleCardView.swift; sourceTree = "<group>"; };
 		C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleVO.swift; sourceTree = "<group>"; };
 		C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPGuideButton.swift; sourceTree = "<group>"; };
+		C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationView.swift; sourceTree = "<group>"; };
+		C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +388,7 @@
 				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
 				C695BDE82C649F67009DEC3C /* Login */,
 				C695BDE72C649F63009DEC3C /* MainHome */,
+				C6FA55F62C95359900E537D7 /* Attendance */,
 				C6FA55982C8EBFE200E537D7 /* Notice */,
 				C6FA559A2C8EC00B00E537D7 /* Mypage */,
 				C6934BAF2C8082F8006AA652 /* CreateStudy */,
@@ -663,6 +668,15 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		C6FA55F62C95359900E537D7 /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */,
+				C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */,
+			);
+			path = Attendance;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -758,6 +772,7 @@
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
+				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
 				C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
@@ -826,6 +841,7 @@
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,
+				C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */,
 				C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
