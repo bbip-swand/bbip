@@ -22,7 +22,7 @@ struct CurrentWeekStudyInfoCardView: View {
                 .bbipShadow1()
             
             VStack(alignment: .leading, spacing: 0) {
-                HStack(alignment: .top, spacing: 0) {
+                HStack(alignment: .center, spacing: 0) {
                     Group {
                         if let imageURL = vo.imageUrl {
                             AsyncImage(url: URL(string: imageURL))
@@ -61,6 +61,7 @@ struct CurrentWeekStudyInfoCardView: View {
                     Spacer()
                     
                     CapsuleView(title: vo.category.rawValue, type: .fill)
+                        .frame(height: 48, alignment: .top)
                 }
                 Rectangle()
                     .fill(.gray3)

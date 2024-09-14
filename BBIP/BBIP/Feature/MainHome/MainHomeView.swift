@@ -42,6 +42,7 @@ struct MainHomeView: View {
                             location: "예대 4층"
                         )
                     )
+                    .padding(.bottom, 36)
                     .redacted(reason: isRefresh ? .placeholder : [])
                     
                     mainBulletn

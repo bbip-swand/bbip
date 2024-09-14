@@ -103,7 +103,7 @@ struct BBIPTimeRingView: View {
                         .foregroundStyle(.gray5)
                 }
         }
-        .frame(height: 340)
+        .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
     }
 }
@@ -247,10 +247,10 @@ struct AttendanceCertificationView: View {
                 location: "예대 4층")
         )
         
-        AttendanceCertificationView(
-            studyTitle: "TOEIC / IELTS",
-            remainingTime: 40
-        )
+//        AttendanceCertificationView(
+//            studyTitle: "TOEIC / IELTS",
+//            remainingTime: 40
+//        )
     }
     
 }
