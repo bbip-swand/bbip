@@ -10,6 +10,7 @@ import SwiftUI
 
 class CalendarViewModel: ObservableObject {
     @Published var vo: [CalendarVO] = mock()
+    @Published var selectedDate: Date = Date()
 }
 
 extension CalendarViewModel {

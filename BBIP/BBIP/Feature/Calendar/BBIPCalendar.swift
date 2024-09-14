@@ -9,8 +9,19 @@ import SwiftUI
 import FSCalendar
 
 struct BBIPCalendar: UIViewRepresentable {
-    @Binding var selectedDate: Date?
-    @ObservedObject var viewModel: CalendarViewModel = .init()
+    @Binding var currentMonthTitle: String
+    @Binding var selectedDate: Date
+    @State var vo: [CalendarVO]
+    
+    init(
+        vo: [CalendarVO],
+        selectedDate: Binding<Date>,
+        currentMonthTitle: Binding<String>
+    ) {
+        self.vo = vo
+        self._selectedDate = selectedDate
+        self._currentMonthTitle = currentMonthTitle
+    }
 
     func makeUIView(context: Context) -> FSCalendar {
         let calendar = FSCalendar()
@@ -37,12 +48,20 @@ struct BBIPCalendar: UIViewRepresentable {
         
         // 일요일만 빨간색
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
+        
+        // 좌우 inset
+        calendar.calendarWeekdayView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            calendar.calendarWeekdayView.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 20),
+            calendar.calendarWeekdayView.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -20),
+            calendar.calendarWeekdayView.heightAnchor.constraint(equalToConstant: 36)
+        ])
+        calendar.collectionViewLayout.sectionInsets = .init(top: 0, left: 20, bottom: 0, right: 24)
+        
         return calendar
     }
 
-    func updateUIView(_ uiView: FSCalendar, context: Context) {
-        uiView.reloadData()
-    }
+    func updateUIView(_ uiView: FSCalendar, context: Context) { }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -57,11 +76,11 @@ struct BBIPCalendar: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            parent.selectedDate = date
             calendar.appearance.todayColor = .primary1
             calendar.appearance.titleTodayColor = .black
-            
             calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
+            
+            parent.selectedDate = date
         }
         
         // 일요일 날짜 색상 설정
@@ -75,7 +94,7 @@ struct BBIPCalendar: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-            return parent.viewModel.vo.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })?.events.count ?? 0
+            return parent.vo.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })?.events.count ?? 0
         }
         
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
@@ -91,6 +110,13 @@ struct BBIPCalendar: UIViewRepresentable {
         
         // 페이지 변경 후 처리
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+            let currentPage = calendar.currentPage
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "ko_KR")
+            formatter.dateFormat = "yyyy.MM"
+            
+            // 현재 월 텍스트 업데이트
+            parent.currentMonthTitle = formatter.string(from: currentPage)
             calendar.reloadData()
         }
     }
