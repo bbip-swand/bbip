@@ -108,25 +108,29 @@ struct BBIPTimeRingView: View {
     }
 }
 
-struct AttendanceCertificationView: View {
+struct ActivatedBBIPTimeRingView: View {
     @State private var progress: Double = 0
     @State private var remainingTime: Int
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
     @State private var showCircle: Bool = false
     @State private var shakeStick: Bool = false
+    @State private var showAttendanceCertificationView: Bool = false
     
     private let initialTime: Int = 60 // for test
     private var studyTitle: String
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
+    private var completion: (() -> Void)?
     
     init(
         studyTitle: String,
-        remainingTime: Int
+        remainingTime: Int,
+        completion: (() -> Void)? = nil
     ) {
         self.studyTitle = studyTitle
         self.remainingTime = remainingTime
+        self.completion = completion
     }
     
     private func formatTime(_ seconds: Int) -> String {
@@ -136,12 +140,15 @@ struct AttendanceCertificationView: View {
     }
     
     private func startTimer() {
+        formattedTime = formatTime(remainingTime)
+        
         timer?.cancel()
         timer = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
                 guard remainingTime > 0 else {
                     timer?.cancel()
+                    completion?()
                     return
                 }
                 remainingTime -= 1
@@ -212,7 +219,7 @@ struct AttendanceCertificationView: View {
                     .offset(x: 30, y: 68)
             }
             Button {
-                // attendance certification process
+                showAttendanceCertificationView = true
             } label: {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.primary3)
@@ -232,6 +239,9 @@ struct AttendanceCertificationView: View {
         }
         .frame(height: 340)
         .padding(.horizontal, 60)
+        .navigationDestination(isPresented: $showAttendanceCertificationView) {
+            AttendanceCertificationView(remainingTime: remainingTime)
+        }
     }
 }
 

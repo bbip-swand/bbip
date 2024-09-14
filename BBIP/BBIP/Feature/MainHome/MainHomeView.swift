@@ -18,6 +18,8 @@ struct MainHomeView: View {
     
     @ObservedObject private var viewModel = MainHomeViewModel()
     
+    @State private var timeRingStart: Bool = false
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -33,17 +35,27 @@ struct MainHomeView: View {
                         .padding(.bottom, 35)
                         .redacted(reason: isRefresh ? .placeholder : [])
                     
-                    BBIPTimeRingView(
-                        progress: 0.4,
-                        vo: .init(
-                            leftDay: 0,
-                            title: "TOEIC / IELTS",
-                            time: "18:00 - 20:00",
-                            location: "예대 4층"
+                    if timeRingStart {
+                        ActivatedBBIPTimeRingView(
+                            studyTitle: "TOEIC / IELTS",
+                            remainingTime: 20) {
+                                withAnimation { timeRingStart = false }
+                            }
+                    } else {
+                        BBIPTimeRingView(
+                            progress: 0.4,
+                            vo: .init(
+                                leftDay: 0,
+                                title: "TOEIC / IELTS",
+                                time: "18:00 - 20:00",
+                                location: "예대 4층"
+                            )
                         )
-                    )
-                    .padding(.bottom, 36)
-                    .redacted(reason: isRefresh ? .placeholder : [])
+                        .redacted(reason: isRefresh ? .placeholder : [])
+                        .onTapGesture {
+                            withAnimation { timeRingStart = true }
+                        }
+                    }
                     
                     mainBulletn
                         .padding(.bottom, 32)
