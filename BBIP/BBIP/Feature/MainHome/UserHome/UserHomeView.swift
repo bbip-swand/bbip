@@ -47,6 +47,7 @@ struct UserHomeView: View {
             }
             
             mainBulletn
+                .padding(.top, 36)
                 .padding(.bottom, 32)
                 .redacted(reason: isRefresh ? .placeholder : [])
             
