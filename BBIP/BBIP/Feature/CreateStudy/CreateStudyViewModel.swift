@@ -43,7 +43,7 @@ class CreateStudyViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    // 마감일 계산
+    // 시작일로부터 주차 계산해 마감일 계산
     func calculateDeadline() {
         let addedWeeks = Calendar.current.date(
             byAdding: .weekOfYear,
@@ -81,12 +81,22 @@ class CreateStudyViewModel: ObservableObject {
             initalWeeklyContentData()
         }
     }
-    
     @Published var periodIsSelected: Bool = false
     @Published var startDate: Date = Date()
     @Published var deadlineDate: Date? = nil
     
     @Published var selectedDayIndex: [Int] = .init()
+    @Published var selectedDayStudySession: [StudySessionVO] = .init()
+    func createEmptyDay() {
+        selectedDayIndex.append(-1)
+        selectedDayStudySession.append(.emptySession())
+    }
+    func deleteDay(at index: Int) {
+        selectedDayIndex.remove(at: index)
+        selectedDayStudySession.remove(at: index)
+    }
+    
+    // not use
     @Published var skipDaySelection: Bool = false
     
     // MARK: - Profile Setting View

@@ -79,6 +79,7 @@
 		C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB672C7F164300BB3952 /* KeychainManager.swift */; };
 		C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB692C7F209000BB3952 /* LoginViewModel.swift */; };
 		C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB6C2C7F2C2C00BB3952 /* HapticManager.swift */; };
+		C6989E972C96E396003CE4D5 /* StudySessionVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6989E962C96E396003CE4D5 /* StudySessionVO.swift */; };
 		C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */; };
 		C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */; };
 		C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */; };
@@ -196,6 +197,7 @@
 		C695CB692C7F209000BB3952 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C695CB6B2C7F284A00BB3952 /* BBIP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BBIP.entitlements; sourceTree = "<group>"; };
 		C695CB6C2C7F2C2C00BB3952 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		C6989E962C96E396003CE4D5 /* StudySessionVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionVO.swift; sourceTree = "<group>"; };
 		C6A10ACF2C6C7D5E001AA74E /* UserInfoSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupView.swift; sourceTree = "<group>"; };
 		C6A10AD12C6C86BE001AA74E /* BackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonStyle.swift; sourceTree = "<group>"; };
 		C6A10AD32C6C8CCC001AA74E /* UserInfoSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSetupViewModel.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
 				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
+				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
+				C6989E972C96E396003CE4D5 /* StudySessionVO.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

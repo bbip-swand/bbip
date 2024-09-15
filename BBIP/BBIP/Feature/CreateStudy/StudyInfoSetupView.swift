@@ -51,6 +51,8 @@ struct StudyInfoSetupView: View {
                     reversal: true
                 )
                 .padding(.top, 48)
+                .padding(.bottom, 16) // scrollable view에서 header와 contentView의 간격
+                .background(Color.gray9)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
 
@@ -70,7 +72,9 @@ struct StudyInfoSetupView: View {
                         }
                     }
                 }
+                .padding(.top, 16)
                 .padding(.bottom, 22)
+                .background(.gray9) // scrollable view에서 하단 가림용
             }
         }
         .navigationTitle("생성하기")
