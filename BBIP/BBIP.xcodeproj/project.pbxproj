@@ -12,6 +12,8 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* BBIPHearderView.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		089D5A142C96F6960034BA93 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D5A132C96F6960034BA93 /* CustomTextField.swift */; };
+		089D5A172C9708640034BA93 /* AttendanceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D5A162C9708640034BA93 /* AttendanceDTO.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -121,6 +123,8 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* BBIPHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPHearderView.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		089D5A132C96F6960034BA93 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		089D5A162C9708640034BA93 /* AttendanceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDTO.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -239,6 +243,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089D5A152C9708500034BA93 /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+				089D5A162C9708640034BA93 /* AttendanceDTO.swift */,
+			);
+			path = Attendance;
+			sourceTree = "<group>";
+		};
 		C61A47242C6686630016986D /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +380,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				089D5A132C96F6960034BA93 /* CustomTextField.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
@@ -486,6 +499,7 @@
 		C695BDFA2C64CB7F009DEC3C /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				089D5A152C9708500034BA93 /* Attendance */,
 				C62780EE2C8AF2E800065F98 /* Login */,
 				C62781012C8C76A000065F98 /* User */,
 			);
@@ -772,6 +786,8 @@
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
+				089D5A142C96F6960034BA93 /* CustomTextField.swift in Sources */,
+				089D5A172C9708640034BA93 /* AttendanceDTO.swift in Sources */,
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
 				C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
