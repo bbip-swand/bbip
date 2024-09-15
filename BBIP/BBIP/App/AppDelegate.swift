@@ -57,7 +57,6 @@ extension AppDelegate: MessagingDelegate {
         didReceiveRegistrationToken fcmToken: String?
     ) {
         if let token = fcmToken {
-            print("fcm", token)
             UserDefaultsManager.shared.saveFCMToken(token: token)
         }
     }

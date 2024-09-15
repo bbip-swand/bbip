@@ -113,6 +113,14 @@
 		C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */; };
 		C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */; };
 		C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */; };
+		C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */; };
+		C6FA56002C95462900E537D7 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C6FA55FF2C95462900E537D7 /* FSCalendar */; };
+		C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */; };
+		C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56032C9552C900E537D7 /* CalendarVO.swift */; };
+		C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56052C956D3700E537D7 /* CalendarView.swift */; };
+		C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA56082C95920C00E537D7 /* UserHomeView.swift */; };
+		C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA560A2C95968900E537D7 /* StudySwitchView.swift */; };
+		C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +228,13 @@
 		C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPGuideButton.swift; sourceTree = "<group>"; };
 		C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationView.swift; sourceTree = "<group>"; };
 		C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationViewModel.swift; sourceTree = "<group>"; };
+		C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPCalendar.swift; sourceTree = "<group>"; };
+		C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		C6FA56032C9552C900E537D7 /* CalendarVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVO.swift; sourceTree = "<group>"; };
+		C6FA56052C956D3700E537D7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C6FA56082C95920C00E537D7 /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
+		C6FA560A2C95968900E537D7 /* StudySwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwitchView.swift; sourceTree = "<group>"; };
+		C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySwitchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +247,7 @@
 				C6B8CE362C7AA4BC0006E906 /* Moya in Frameworks */,
 				C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */,
 				C6934BAE2C7F4C2F006AA652 /* SwiftUIIntrospect in Frameworks */,
+				C6FA56002C95462900E537D7 /* FSCalendar in Frameworks */,
 				C62780E32C8887C800065F98 /* FirebaseDynamicLinks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,15 +415,12 @@
 		C695BDE72C649F63009DEC3C /* MainHome */ = {
 			isa = PBXGroup;
 			children = (
-				C6FA55BF2C90355800E537D7 /* Frame */,
 				C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */,
 				C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */,
-				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
-				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
-				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
-				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
-				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
-				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
+				C6FA55BF2C90355800E537D7 /* Frame */,
+				C6FA56072C9591E600E537D7 /* UserHome */,
+				C6FA560C2C95972600E537D7 /* StudySwitch */,
+				C6FA55FD2C9545CF00E537D7 /* Calendar */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -559,6 +572,7 @@
 				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
 				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
+				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -677,6 +691,39 @@
 			path = Attendance;
 			sourceTree = "<group>";
 		};
+		C6FA55FD2C9545CF00E537D7 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA56052C956D3700E537D7 /* CalendarView.swift */,
+				C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */,
+				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C6FA56072C9591E600E537D7 /* UserHome */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA56082C95920C00E537D7 /* UserHomeView.swift */,
+				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
+				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
+				C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */,
+				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
+				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
+				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
+			);
+			path = UserHome;
+			sourceTree = "<group>";
+		};
+		C6FA560C2C95972600E537D7 /* StudySwitch */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA560A2C95968900E537D7 /* StudySwitchView.swift */,
+				C6FA560D2C9597B100E537D7 /* StudySwitchViewModel.swift */,
+			);
+			path = StudySwitch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -700,6 +747,7 @@
 				C6934BAD2C7F4C2F006AA652 /* SwiftUIIntrospect */,
 				C62780E22C8887C800065F98 /* FirebaseDynamicLinks */,
 				C62780E42C8887C800065F98 /* FirebaseMessaging */,
+				C6FA55FF2C95462900E537D7 /* FSCalendar */,
 			);
 			productName = BBIP;
 			productReference = C6B00C112C590A0E009AC4E2 /* BBIP.app */;
@@ -734,6 +782,7 @@
 				C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				C6934BAC2C7F4C2F006AA652 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				C62780E12C8887C800065F98 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C6FA55FE2C95462900E537D7 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = C6B00C122C590A0E009AC4E2 /* Products */;
 			projectDirPath = "";
@@ -768,8 +817,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
 				084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */,
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
+				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
@@ -782,6 +833,7 @@
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
+				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
@@ -803,6 +855,7 @@
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
+				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
@@ -816,12 +869,14 @@
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
+				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
+				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
@@ -857,6 +912,7 @@
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
+				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,
 			);
@@ -1120,6 +1176,14 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		C6FA55FE2C95462900E537D7 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1152,6 +1216,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C6B8CE372C7AA5210006E906 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		C6FA55FF2C95462900E537D7 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6FA55FE2C95462900E537D7 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
