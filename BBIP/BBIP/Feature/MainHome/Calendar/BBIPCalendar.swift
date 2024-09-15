@@ -38,7 +38,7 @@ struct BBIPCalendar: UIViewRepresentable {
         calendar.appearance.titleFont = UIFont(name: "WantedSans-Bold", size: 14)
         
         // 오늘 날짜 컬러 (선택, 미선택)
-        calendar.appearance.todayColor = .primary3
+        calendar.appearance.todayColor = .primary1
         calendar.appearance.selectionColor = .primary3
         
         // 이벤트 Dot
@@ -46,7 +46,7 @@ struct BBIPCalendar: UIViewRepresentable {
         calendar.appearance.eventOffset = .init(x: 0, y: 2)
         calendar.placeholderType = .fillHeadTail
         
-        // 일요일만 빨간색
+        // 일요일만 빨간색 (상단 요일)
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
         
         // 좌우 inset
@@ -54,9 +54,9 @@ struct BBIPCalendar: UIViewRepresentable {
         NSLayoutConstraint.activate([
             calendar.calendarWeekdayView.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 20),
             calendar.calendarWeekdayView.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -20),
-            calendar.calendarWeekdayView.heightAnchor.constraint(equalToConstant: 36)
+            calendar.calendarWeekdayView.heightAnchor.constraint(equalToConstant: 10)
         ])
-        calendar.collectionViewLayout.sectionInsets = .init(top: 0, left: 20, bottom: 0, right: 24)
+        calendar.collectionViewLayout.sectionInsets = .init(top: 0, left: 20, bottom: 0, right: 20)
         
         return calendar
     }
@@ -85,9 +85,13 @@ struct BBIPCalendar: UIViewRepresentable {
         
         // 일요일 날짜 색상 설정
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-            let weekday = Calendar.current.component(.weekday, from: date)
-            if weekday == 1 { // 일요일인 경우
-                return UIColor.red
+            let calendar = Calendar.current
+            let weekday = calendar.component(.weekday, from: date)
+            let today = Date()
+            let isToday = calendar.isDate(date, inSameDayAs: today)
+            
+            if weekday == 1 { // 일요일인 경우, 원과 색이 같아 가리는 현상 없애기
+                return .primary3
             } else {
                 return nil
             }
@@ -120,4 +124,8 @@ struct BBIPCalendar: UIViewRepresentable {
             calendar.reloadData()
         }
     }
+}
+
+#Preview {
+    CalendarView()
 }
