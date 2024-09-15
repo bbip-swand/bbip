@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct MainHomeView: View {
+    @ObservedObject private var viewModel = MainHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
+    
+    // MARK: - Navigation Destination
     @State private var showNoticeView: Bool = false
     @State private var showMypageView: Bool = false
+    @State private var showCreateStudyView: Bool = false
     
     // TODO: Use NoticeManager...
     @State private var hasNotice: Bool = false
-    
-    @ObservedObject private var viewModel = MainHomeViewModel()
     
     var body: some View {
         ZStack {
@@ -34,7 +36,7 @@ struct MainHomeView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
 
-            BBIPTabView(selectedTab: $selectedTab)
+            BBIPTabView(selectedTab: $selectedTab, showCreateStudyView: $showCreateStudyView)
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .edgesIgnoringSafeArea(.bottom)
         }
@@ -43,6 +45,9 @@ struct MainHomeView: View {
         }
         .navigationDestination(isPresented: $showMypageView) {
             MypageView()
+        }
+        .navigationDestination(isPresented: $showCreateStudyView) {
+            StartCreateStudyView()
         }
     }
 }
