@@ -15,6 +15,7 @@ struct AttendanceCertificationView: View {
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @State private var remainingTime: Int
+    var studyName: String = "StudyName"
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
@@ -43,12 +44,13 @@ struct AttendanceCertificationView: View {
     }
     
     var body: some View {
+        
         VStack(spacing: 0) {
             Image("glove")
                 .resizable()
                 .frame(width: 32, height: 32)
-                .padding(.top, 50)
-                .padding(.bottom, 20)
+                .padding(.top, remainingTime == 0 ? 22 : 50)
+                .padding(.bottom, remainingTime == 0 ? 12 : 20)
             
             Text("출석 인증 코드 입력")
                 .foregroundStyle(.mainWhite)
@@ -58,7 +60,22 @@ struct AttendanceCertificationView: View {
             Text("생성된 4자리 코드를 입력하세요")
                 .foregroundStyle(.gray6)
                 .font(.bbip(.caption1_m16))
-                .padding(.bottom, 48)
+                .padding(.bottom, remainingTime == 0 ? 41 : 48)
+            
+            if remainingTime == 0 {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .foregroundColor(.gray8)
+                    
+                    
+                    Text(studyName)
+                        .font(.bbip(.title3_sb20))
+                        .foregroundColor(.mainWhite)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 34)
+                .padding(.horizontal, 38)
+                .padding(.bottom, 8)
+            }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -69,50 +86,65 @@ struct AttendanceCertificationView: View {
                 
                 HStack(spacing: 15) {
                     Image("alarm")
+                        .renderingMode(.template)
+                        .foregroundColor(remainingTime == 0 ? .primary3 : .mainWhite)
                     
                     Text(formattedTime)
                         .font(.bbip(.title1_sb42))
-                        .foregroundStyle(.mainWhite)
+                        .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
                         .onAppear {
                             startTimer()
                         }
                 }
             }
             
-            HStack(spacing: 12) {
-                Spacer(minLength: 38)
-                ForEach(0..<4, id: \.self) { index in
-                                    CustomTextFieldComponent(
-                                        text: $viewModel.codeDigits[index],
-                                        isRight: $viewModel.isRight,
-                                        focusedField: $focusedIndex,
-                                        index: index,
-                                        font: .bbip(.title1_sb42),
-                                        viewModel: viewModel
-                                    )
-                                    .customFieldStyle(
-                                            isFocused: focusedIndex == index,
-                                            isRight: viewModel.isRight,
-                                            isComplete: viewModel.isComplete(),
-                                            isFilled: !viewModel.codeDigits[index].isEmpty
-                                        )
-                                }
-                Spacer(minLength: 39)
+            if remainingTime != 0 {
+                HStack(spacing: 12) {
+                    Spacer(minLength: 38)
+                    ForEach(0..<4, id: \.self) { index in
+                        CustomTextFieldComponent(
+                            text: $viewModel.codeDigits[index],
+                            isRight: $viewModel.isRight,
+                            focusedField: $focusedIndex,
+                            index: index,
+                            font: .bbip(.title1_sb42),
+                            viewModel: viewModel
+                        )
+                        .customFieldStyle(
+                            isFocused: focusedIndex == index,
+                            isRight: viewModel.isRight,
+                            isComplete: viewModel.isComplete(),
+                            isFilled: !viewModel.codeDigits[index].isEmpty
+                        )
+                    }
+                    Spacer(minLength: 39)
+                }
+                .padding(.top, 20)
+                
+                createWarningLabel()
             }
-            .padding(.top, 20)
             
-            createWarningLabel()
             
             Spacer()
             
+            if remainingTime == 0 {
+                Text("라운드가 이미 시작되었습니다.")
+                    .font(.bbip(family: .Medium, size:16))
+                    .foregroundStyle(.gray6)
+                    .padding(.bottom,20)
+            }
+            
+            
+            
             MainButton(text: "파이트!") {
-                // Request check attendance code
+                // TODO: Request check attendance code & check the time
             }
             .padding(.bottom, 22)
+            
         }
+        .backButtonStyle(isReversal: true)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
-        .backButtonStyle(isReversal: true)
         .onAppear {
             focusedIndex = viewModel.isComplete() ? 3 : 0
         }
@@ -136,7 +168,7 @@ struct AttendanceCertificationView: View {
         .padding(.top, 23)
     }
     
-  
+    
     
     
 }
@@ -156,5 +188,5 @@ fileprivate extension View {
 }
 
 #Preview {
-    AttendanceCertificationView(remainingTime: 0)
+    AttendanceCertificationView(remainingTime: 10)
 }

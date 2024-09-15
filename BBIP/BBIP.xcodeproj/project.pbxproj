@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082E63CD2C97258E003620B0 /* attendancedone.json in Resources */ = {isa = PBXBuildFile; fileRef = 082E63CC2C97258E003620B0 /* attendancedone.json */; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
 		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
@@ -14,6 +15,7 @@
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		089D5A142C96F6960034BA93 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D5A132C96F6960034BA93 /* CustomTextField.swift */; };
 		089D5A172C9708640034BA93 /* AttendanceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D5A162C9708640034BA93 /* AttendanceDTO.swift */; };
+		089D5A192C9716930034BA93 /* AttendanceDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D5A182C9716920034BA93 /* AttendanceDoneView.swift */; };
 		C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47252C6686760016986D /* WantedSans-Medium.otf */; };
 		C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47262C6686760016986D /* WantedSans-Bold.otf */; };
 		C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C61A47272C6686760016986D /* WantedSans-Regular.otf */; };
@@ -118,6 +120,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082E63CC2C97258E003620B0 /* attendancedone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = attendancedone.json; path = ../../../../../../Downloads/attendancedone.json; sourceTree = "<group>"; };
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
 		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		089D5A132C96F6960034BA93 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		089D5A162C9708640034BA93 /* AttendanceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDTO.swift; sourceTree = "<group>"; };
+		089D5A182C9716920034BA93 /* AttendanceDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDoneView.swift; sourceTree = "<group>"; };
 		C61A47252C6686760016986D /* WantedSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		C61A47262C6686760016986D /* WantedSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		C61A47272C6686760016986D /* WantedSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WantedSans-Regular.otf"; sourceTree = "<group>"; };
@@ -590,6 +594,7 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				082E63CC2C97258E003620B0 /* attendancedone.json */,
 				C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */,
 			);
 			path = Lottie;
@@ -687,6 +692,7 @@
 			children = (
 				C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */,
 				C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */,
+				089D5A182C9716920034BA93 /* AttendanceDoneView.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -763,6 +769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				082E63CD2C97258E003620B0 /* attendancedone.json in Resources */,
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
 				C62780E02C8886F000065F98 /* GoogleService-Info.plist in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
@@ -821,6 +828,7 @@
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
+				089D5A192C9716930034BA93 /* AttendanceDoneView.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
