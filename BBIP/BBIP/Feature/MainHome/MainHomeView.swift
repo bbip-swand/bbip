@@ -101,7 +101,9 @@ struct MainHomeView: View {
         .navigationDestination(isPresented: $showMypageView) {
             MypageView()
         }
+        .navigationBarBackButtonHidden()
     }
+        
 
     var mainBulletn: some View {
         VStack(spacing: 0) {
