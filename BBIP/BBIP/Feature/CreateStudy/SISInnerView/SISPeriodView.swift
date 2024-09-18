@@ -11,6 +11,10 @@ import SwiftUIIntrospect
 struct SISPeriodView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
     @State private var showDatePicker: Bool = false
+    @State private var showDayPicker: Bool = false
+    @State private var showStartTimePicker: Bool = false
+    @State private var showEndTimePicker: Bool = false
+    
     private let sheetMode: Bool
     
     init(
@@ -51,10 +55,19 @@ struct SISPeriodView: View {
                         .foregroundStyle(.mainWhite)
                     
                     Spacer()
+                    
+                    if viewModel.showInvalidTimeAlert {
+                        WarningLabel(errorText: "종료 시간이 시작 시간보다 빠릅니다")
+                    }
                 }
                 .padding(.top, 12)
                 
-                DayPickerView(viewModel: viewModel)
+                SetDayAndTimeView(
+                    viewModel: viewModel,
+                    showDayPicker: $showDayPicker,
+                    showStartTimePicker: $showStartTimePicker,
+                    showEndTimePicker: $showEndTimePicker
+                )
                 
                 Spacer()
                     .frame(height: 110)
@@ -189,18 +202,87 @@ private struct PeriodPickerButton: View {
     }
 }
 
-private struct DayPickerView: View {
+private struct SetDayAndTimeView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
+    @Binding private var showDayPicker: Bool
+    @Binding private var showStartTimePicker: Bool
+    @Binding private var showEndTimePicker: Bool
+    @State private var selectedIndex: Int? // 선택한 인덱스를 추적
+    
+    init(
+        viewModel: CreateStudyViewModel,
+        showDayPicker: Binding<Bool>,
+        showStartTimePicker: Binding<Bool>,
+        showEndTimePicker: Binding<Bool>
+    ) {
+        self.viewModel = viewModel
+        self._showDayPicker = showDayPicker
+        self._showStartTimePicker = showStartTimePicker
+        self._showEndTimePicker = showEndTimePicker
+    }
     
     var body: some View {
         VStack(spacing: 8) {
             ForEach(viewModel.selectedDayIndex.indices, id: \.self) { index in
-                DayAndTimePickerButton(
-                    viewModel: viewModel,
-                    dayIndex: $viewModel.selectedDayIndex[index],
-                    studySession: $viewModel.selectedDayStudySession[index],
-                    indexId: index
-                )
+                HStack(spacing: 8) {
+                    // 요일 선택 버튼
+                    Button {
+                        selectedIndex = index
+                        showDayPicker.toggle() // 요일 선택 picker 열기
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .foregroundStyle(.gray8)
+                                .frame(width: 90, height: 54)
+                            
+                            Text(dayText(for: viewModel.selectedDayIndex[index]))
+                                .font(.bbip(.body1_m16))
+                                .foregroundStyle(dayTextColor())
+                        }
+                        .foregroundStyle(.gray5)
+                    }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundStyle(.gray8)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 54)
+                        
+                        HStack(spacing: 0) {
+                            // 시작 시간 선택 버튼
+                            Button {
+                                selectedIndex = index
+                                showStartTimePicker.toggle() // 시작시간 선택 picker 열기
+                            } label: {
+                                Text(startTimeText(for: viewModel.selectedDayStudySession[index]))
+                                    .foregroundStyle(startTimeTextColor())
+                            }
+                            .frame(width: calcWidth, height: 30)
+                            
+                            Text("-")
+                            
+                            // 종료 시간 선택 버튼
+                            Button {
+                                selectedIndex = index
+                                showEndTimePicker.toggle() // 종료시간 선택 picker 열기
+                            } label: {
+                                Text(endTimeText(for: viewModel.selectedDayStudySession[index]))
+                                    .foregroundStyle(endTimeTextColor())
+                            }
+                            .frame(width: calcWidth, height: 30)
+                            
+                            // 삭제 버튼
+                            Button {
+                                withAnimation { viewModel.deleteDay(at: index) }
+                            } label: {
+                                Image("remove_minus")
+                            }
+                            .padding(.trailing)
+                        }
+                        .font(.bbip(.body1_m16))
+                        .foregroundStyle(.gray5)
+                    }
+                }
             }
             
             addDayButton
@@ -209,8 +291,94 @@ private struct DayPickerView: View {
             Spacer()
         }
         .frame(maxWidth: .infinity)
+        .sheet(isPresented: $showDayPicker) {
+            DayPickerView(
+                selectedDay: $viewModel.selectedDayIndex[selectedIndex ?? 0],
+                isSheetPresented: $showDayPicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(270)])
+        }
+        .sheet(isPresented: $showStartTimePicker) {
+            TimePickerView(
+                selectedTime: $viewModel.selectedDayStudySession[selectedIndex ?? 0].startTime,
+                isSheetPresented: $showStartTimePicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(320)])
+        }
+
+        .sheet(isPresented: $showEndTimePicker) {
+            TimePickerView(
+                selectedTime: $viewModel.selectedDayStudySession[selectedIndex ?? 0].endTime,
+                isSheetPresented: $showEndTimePicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(320)])
+        }
     }
     
+    // 요일 선택 텍스트 처리
+    private func dayText(for dayIndex: Int) -> String {
+        let week = ["월", "화", "수", "목", "금", "토", "일"]
+        return dayIndex == -1 ? "요일 선택" : week[dayIndex]
+    }
+    
+    // 요일 선택 텍스트 색상
+    private func dayTextColor() -> Color {
+        guard selectedIndex != nil else {
+            return .gray5
+        }
+        return viewModel.selectedDayIndex[selectedIndex!] == -1
+        ? .gray5
+        : .mainWhite
+    }
+    
+    // 시작 시간 텍스트 처리
+    private func startTimeText(for studySession: StudySessionVO) -> String {
+        guard let startTime = studySession.startTime else { return "00:00" }
+        return formattedTime(for: startTime)
+    }
+    
+    // 종료 시간 텍스트 처리
+    private func endTimeText(for studySession: StudySessionVO) -> String {
+        guard let endTime = studySession.endTime else { return "00:00" }
+        return formattedTime(for: endTime)
+    }
+    
+    // 시작 시간 텍스트 색상
+    private func startTimeTextColor() -> Color {
+        guard selectedIndex != nil else {
+            return .gray5
+        }
+        return viewModel.selectedDayStudySession[selectedIndex!].startTime == nil
+        ? .gray5
+        : .mainWhite
+    }
+    
+    // 종료 시간 텍스트 색상
+    private func endTimeTextColor() -> Color {
+        guard selectedIndex != nil else {
+            return .gray5
+        }
+        return viewModel.selectedDayStudySession[selectedIndex!].endTime == nil
+        ? .gray5
+        : .mainWhite
+    }
+    
+    // 시간 포맷터 HH:mm
+    private func formattedTime(for date: Date) -> String {
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.dateFormat = "HH:mm"
+        return weekdayFormatter.string(from: date)
+    }
+    
+    // 버튼 가로 간격 계산
+    private var calcWidth: CGFloat {
+        (UIScreen.main.bounds.width - 54 - 48 - 8 - 50 - 30) / 2
+    }
+    
+    // 요일 추가 버튼
     var addDayButton: some View {
         Button {
             withAnimation { viewModel.createEmptyDay() }
@@ -234,115 +402,6 @@ private struct DayPickerView: View {
         }
     }
 }
-
-private struct DayAndTimePickerButton: View {
-    @ObservedObject private var viewModel: CreateStudyViewModel
-    @Binding private var dayIndex: Int
-    @Binding private var studySession: StudySessionVO
-    private let indexId: Int
-    
-    init(
-        viewModel: CreateStudyViewModel,
-        dayIndex: Binding<Int>,
-        studySession: Binding<StudySessionVO>,
-        indexId: Int
-    ) {
-        self.viewModel = viewModel
-        self._dayIndex = dayIndex
-        self._studySession = studySession
-        self.indexId = indexId
-    }
-    
-    private func formattedTime(for date: Date) -> String {
-        let weekdayFormatter = DateFormatter()
-        weekdayFormatter.dateFormat = "HH:mm"
-        return weekdayFormatter.string(from: date)
-    }
-    
-    private let week: [String] = [
-        "월", "화", "수", "목", "금", "토", "일"
-    ]
-    
-    private var dayText: String {
-        if dayIndex == -1 {
-            return "요일 선택"
-        } else {
-            return week[dayIndex]
-        }
-    }
-    
-    private var startTimeText: String {
-        if studySession.startTime == nil {
-            return "00:00"
-        } else {
-            return formattedTime(for: studySession.startTime!)
-        }
-    }
-    
-    private var endTimeText: String {
-        if studySession.endTime == nil {
-            return "00:00"
-        } else {
-            return formattedTime(for: studySession.endTime!)
-        }
-    }
-    
-    // 시작 및 종료시간 버튼 가로간격 계산
-    private var calcWidth = (UIScreen.main.bounds.width - 54 - 48 - 8 - 50 - 30) / 2
-    
-    var body: some View {
-        HStack(spacing: 8) {
-            Button {
-                // 요일 선택 sheet
-            } label: {
-                ZStack {
-                   RoundedRectangle(cornerRadius: 12)
-                        .foregroundStyle(.gray8)
-                        .frame(width: 90, height: 54)
-                    
-                    Text(dayText)
-                }
-                .font(.bbip(.body1_m16))
-                .foregroundStyle(.gray5)
-            }
-            
-            ZStack {
-               RoundedRectangle(cornerRadius: 12)
-                    .foregroundStyle(.gray8)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 54)
-                
-                HStack(spacing: 0) {
-                    Button {
-                        // 시작시간 선택
-                    } label: {
-                        Text(startTimeText)
-                    }
-                    .frame(width: calcWidth, height: 30)
-                    
-                    Text("-")
-                    
-                    Button {
-                        // 종료 시간 선택
-                    } label: {
-                        Text(endTimeText)
-                    }
-                    .frame(width: calcWidth, height: 30)
-                    
-                    Button {
-                        withAnimation { viewModel.deleteDay(at: indexId) }
-                    } label: {
-                        Image("remove_minus")
-                    }
-                    .padding(.trailing)
-                }
-                .font(.bbip(.body1_m16))
-                .foregroundStyle(.gray5)
-            }
-        }
-    }
-}
-
 
 
 // Not Use (가로형 요일 선택 버튼)
@@ -393,7 +452,3 @@ private struct DayPickerButton: View {
     }
 }
  */
-
-#Preview {
-    SISPeriodView(viewModel: .init())
-}

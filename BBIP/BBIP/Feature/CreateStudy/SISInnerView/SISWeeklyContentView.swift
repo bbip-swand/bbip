@@ -66,11 +66,11 @@ private struct EditPeriodButton: View {
     typealias Action = () -> Void
     let action: Action
     
-    private var title: String {
-        viewModel.skipDaySelection
-        ? "\(viewModel.weekCount)주차"
-        : "\(viewModel.weekCount)주차, 주 \(viewModel.selectedDayIndex.count)회"
-    }
+//    private var title: String {
+//        viewModel.skipDaySelection
+//        ? "\(viewModel.weekCount)주차"
+//        : "\(viewModel.weekCount)주차, 주 \(viewModel.selectedDayIndex.count)회"
+//    }
     
     init(
         viewModel: CreateStudyViewModel,
@@ -88,7 +88,7 @@ private struct EditPeriodButton: View {
                 .frame(width: 98, height: 26)
                 .foregroundStyle(.gray7)
                 .overlay {
-                    Text(title)
+                    Text("title")
                         .font(.bbip(.caption2_m12))
                         .foregroundStyle(.mainWhite)
                 }

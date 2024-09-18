@@ -66,7 +66,6 @@ struct StudyInfoSetupView: View {
                     withAnimation {
                         if selectedIndex < createStudyViewModel.contentData.count - 1 {
                             selectedIndex += 1
-                            print(selectedIndex)
                         } else {
                             // 스터디 생성 프로세스
                         }
@@ -78,6 +77,7 @@ struct StudyInfoSetupView: View {
             }
         }
         .navigationTitle("생성하기")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
         .preferredColorScheme(.dark)
