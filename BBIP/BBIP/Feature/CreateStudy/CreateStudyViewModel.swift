@@ -27,19 +27,19 @@ class CreateStudyViewModel: ObservableObject {
                 guard let self = self else { return }
                 
                 // selectedDayIndex에 -1이 없고, selectedDayStudySession에 nil 값이 없는지 확인
-                let allDaysSelected = !selectedDayIndex.contains(-1)
+                let allDaysValid = !selectedDayIndex.contains(-1) && selectedDayIndex.count > 0
                 let allSessionsValid = !selectedDayStudySessions.contains { $0.startTime == nil || $0.endTime == nil }
                 
                 // 시작 시간이 종료 시간보다 늦은 상태 감지
                 let startTimeBeforeEndTime = !selectedDayStudySessions.contains {
                     guard let startTime = $0.startTime, let endTime = $0.endTime else { return false }
-                    return startTime > endTime
+                    return startTime >= endTime
                 }
                 // 시작 시간이 종료 시간보다 늦은 경우 alert 표시
                 self.showInvalidTimeAlert = !startTimeBeforeEndTime
                 
                 // canGoNext[1]을 true로 설정할 조건
-                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysSelected && allSessionsValid && startTimeBeforeEndTime
+                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysValid && allSessionsValid && startTimeBeforeEndTime
             }
             .store(in: &cancellables)
     }
@@ -111,4 +111,5 @@ class CreateStudyViewModel: ObservableObject {
     
     // MARK: - Weekly Content Input View
     @Published var weeklyContentData: [String?] = []
+    @Published var goEditPeriod: Bool = false
 }

@@ -59,21 +59,20 @@ struct StudyInfoSetupView: View {
                 Spacer()
                    
                 MainButton(
-                    text: "다음",
+                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : "다음",
                     enable: createStudyViewModel.canGoNext[selectedIndex],
                     disabledColor: .gray8
                 ) {
-                    withAnimation {
-                        if selectedIndex < createStudyViewModel.contentData.count - 1 {
-                            selectedIndex += 1
-                        } else {
-                            // 스터디 생성 프로세스
-                        }
-                    }
+                    handleNextButtonTap()
                 }
                 .padding(.top, 16)
                 .padding(.bottom, 22)
-                .background(.gray9) // scrollable view에서 하단 가림용
+                .background(.gray9)
+            }
+        }
+        .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
+            if newVal {
+                withAnimation { selectedIndex = 1 }
             }
         }
         .navigationTitle("생성하기")
@@ -84,7 +83,22 @@ struct StudyInfoSetupView: View {
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
     }
+
+    // 다음 버튼 동작 처리
+    private func handleNextButtonTap() {
+        withAnimation {
+            if createStudyViewModel.goEditPeriod {
+                selectedIndex = 4
+                createStudyViewModel.goEditPeriod = false
+            } else if selectedIndex < createStudyViewModel.contentData.count - 1 {
+                selectedIndex += 1
+            } else {
+                // 스터디 생성 프로세스
+            }
+        }
+    }
 }
+
 
 fileprivate extension View {
     /// 스터디 한 줄 소개 작성 뷰에서만 보여지는 건너뛰기 버튼

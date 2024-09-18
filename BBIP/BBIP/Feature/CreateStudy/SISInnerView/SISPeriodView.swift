@@ -34,7 +34,9 @@ struct SISPeriodView: View {
                     .padding(.top, sheetMode ? 40 : 192)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                StepperButton(intValue: $viewModel.weekCount)
+                StepperButton(
+                    viewModel: viewModel
+                )
                 
                 if !sheetMode {
                     Text("기간 선택")
@@ -100,15 +102,8 @@ struct SISPeriodView: View {
 }
 
 private struct StepperButton: View {
-    @State private var isFirstInputReceived: Bool = false
-    @Binding var intValue: Int
+    @ObservedObject var viewModel: CreateStudyViewModel
     private let maxValue: Int = 52
-    
-    private func shootFirstInput() {
-        if !isFirstInputReceived {
-            isFirstInputReceived = true
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -118,25 +113,23 @@ private struct StepperButton: View {
             
             HStack {
                 Button {
-                    guard intValue > 1 else { return }
-                    shootFirstInput()
-                    intValue -= 1
+                    guard viewModel.weekCount > 1 else { return }
+                    viewModel.weekCount -= 1
                 } label: {
                     Image("stepper_minus")
                 }
                 
                 Spacer()
                 
-                Text("\(intValue) 라운드")
+                Text("\(viewModel.weekCount) 라운드")
                     .font(.bbip(.body1_sb16))
-                    .foregroundStyle(isFirstInputReceived ? .mainWhite : .gray5)
+                    .foregroundStyle(viewModel.periodIsSelected ? .mainWhite : .gray5)
                 
                 Spacer()
                 
                 Button {
-                    guard intValue < maxValue else { return }
-                    shootFirstInput()
-                    intValue += 1
+                    guard viewModel.weekCount < maxValue else { return }
+                    viewModel.weekCount += 1
                 } label: {
                     Image("stepper_plus")
                 }
@@ -157,7 +150,7 @@ private struct PeriodPickerButton: View {
     
     private var colorBySelected: Color {
         viewModel.deadlineDate != nil
-        ? .gray3
+        ? .gray6
         : .gray7
     }
     
@@ -177,13 +170,13 @@ private struct PeriodPickerButton: View {
                          ? formatDate(viewModel.startDate)
                          : "시작일")
                     .font(.bbip(.body1_m16))
-                    .foregroundStyle(.gray5)
+                    .foregroundStyle(viewModel.periodIsSelected ? .mainWhite : .gray5)
                     .monospacedDigit()
                 }
                 
                 Spacer()
                 
-                Image("rightArrow")
+                Image("SIS_rightArrow")
                     .renderingMode(.template)
                     .foregroundStyle(colorBySelected)
                 
@@ -193,7 +186,7 @@ private struct PeriodPickerButton: View {
                      ? formatDate(viewModel.deadlineDate!)
                      : "마감일")
                 .font(.bbip(.body1_m16))
-                .foregroundStyle(.gray7)
+                .foregroundStyle(viewModel.periodIsSelected ? .gray6 : .gray7)
                 .monospacedDigit()
                 
                 Spacer()
@@ -237,7 +230,7 @@ private struct SetDayAndTimeView: View {
                             
                             Text(dayText(for: viewModel.selectedDayIndex[index]))
                                 .font(.bbip(.body1_m16))
-                                .foregroundStyle(dayTextColor())
+                                .foregroundStyle(.mainWhite)
                         }
                         .foregroundStyle(.gray5)
                     }
@@ -255,7 +248,7 @@ private struct SetDayAndTimeView: View {
                                 showStartTimePicker.toggle() // 시작시간 선택 picker 열기
                             } label: {
                                 Text(startTimeText(for: viewModel.selectedDayStudySession[index]))
-                                    .foregroundStyle(startTimeTextColor())
+                                    .foregroundStyle(.mainWhite)
                             }
                             .frame(width: calcWidth, height: 30)
                             
@@ -267,7 +260,7 @@ private struct SetDayAndTimeView: View {
                                 showEndTimePicker.toggle() // 종료시간 선택 picker 열기
                             } label: {
                                 Text(endTimeText(for: viewModel.selectedDayStudySession[index]))
-                                    .foregroundStyle(endTimeTextColor())
+                                    .foregroundStyle(.mainWhite)
                             }
                             .frame(width: calcWidth, height: 30)
                             
@@ -324,16 +317,6 @@ private struct SetDayAndTimeView: View {
         return dayIndex == -1 ? "요일 선택" : week[dayIndex]
     }
     
-    // 요일 선택 텍스트 색상
-    private func dayTextColor() -> Color {
-        guard selectedIndex != nil else {
-            return .gray5
-        }
-        return viewModel.selectedDayIndex[selectedIndex!] == -1
-        ? .gray5
-        : .mainWhite
-    }
-    
     // 시작 시간 텍스트 처리
     private func startTimeText(for studySession: StudySessionVO) -> String {
         guard let startTime = studySession.startTime else { return "00:00" }
@@ -344,26 +327,6 @@ private struct SetDayAndTimeView: View {
     private func endTimeText(for studySession: StudySessionVO) -> String {
         guard let endTime = studySession.endTime else { return "00:00" }
         return formattedTime(for: endTime)
-    }
-    
-    // 시작 시간 텍스트 색상
-    private func startTimeTextColor() -> Color {
-        guard selectedIndex != nil else {
-            return .gray5
-        }
-        return viewModel.selectedDayStudySession[selectedIndex!].startTime == nil
-        ? .gray5
-        : .mainWhite
-    }
-    
-    // 종료 시간 텍스트 색상
-    private func endTimeTextColor() -> Color {
-        guard selectedIndex != nil else {
-            return .gray5
-        }
-        return viewModel.selectedDayStudySession[selectedIndex!].endTime == nil
-        ? .gray5
-        : .mainWhite
     }
     
     // 시간 포맷터 HH:mm

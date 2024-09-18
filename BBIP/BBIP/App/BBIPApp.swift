@@ -13,15 +13,14 @@ struct BBIPApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            RootView()
-//                .onAppear {
-//                    print(UserDefaultsManager.shared.getAccessToken())
-//                }
-            
-            NavigationStack {
-                StartCreateStudyView()
-                
-            }
+            RootView()
+                .onAppear {
+                    print(UserDefaultsManager.shared.getAccessToken())
+                }
+//            NavigationStack {
+//                StartCreateStudyView()
+//                
+//            }
 //            NavigationStack {
 //                NavigationLink {
 //                    StartCreateStudyView()

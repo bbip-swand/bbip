@@ -68,7 +68,7 @@ private struct SelectedAreaStatusView: View {
                     ForEach(areaForDisplay.indices, id: \.self) { index in
                         if index > 0 {
                             Spacer()
-                            Image("rightArrow")
+                            Image("UIS_rightArrow")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 10)
