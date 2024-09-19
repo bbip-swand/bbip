@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		082539502C9C6BF700632582 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825394F2C9C6BF700632582 /* CustomTextField.swift */; };
 		082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539562C9C6E7900632582 /* AttendanceDoneView.swift */; };
+		0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = 082539592C9C6F4100632582 /* CodeCheck.json */; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
 		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		0825394F2C9C6BF700632582 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		082539562C9C6E7900632582 /* AttendanceDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDoneView.swift; sourceTree = "<group>"; };
+		082539592C9C6F4100632582 /* CodeCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CodeCheck.json; path = "../../../../../뉴/CodeCheck.json"; sourceTree = "<group>"; };
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
 		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				082539592C9C6F4100632582 /* CodeCheck.json */,
 				C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */,
 			);
 			path = Lottie;
@@ -814,6 +817,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
+				0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */,
 				C62780E02C8886F000065F98 /* GoogleService-Info.plist in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
