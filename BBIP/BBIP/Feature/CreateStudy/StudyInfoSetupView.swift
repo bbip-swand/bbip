@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct StudyInfoSetupView: View {
+    @EnvironmentObject var appState: AppStateManager
     @StateObject private var createStudyViewModel = CreateStudyViewModel()
     @State private var selectedIndex: Int = .zero
     
@@ -51,36 +52,60 @@ struct StudyInfoSetupView: View {
                     reversal: true
                 )
                 .padding(.top, 48)
+                .padding(.bottom, 16) // scrollable view에서 header와 contentView의 간격
+                .background(Color.gray9)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
 
                 Spacer()
                    
                 MainButton(
-                    text: "다음",
+                    text: createStudyViewModel.goEditPeriod ? "돌아가기" : "다음",
                     enable: createStudyViewModel.canGoNext[selectedIndex],
                     disabledColor: .gray8
                 ) {
-                    withAnimation {
-                        if selectedIndex < createStudyViewModel.contentData.count - 1 {
-                            selectedIndex += 1
-                            print(selectedIndex)
-                        } else {
-                            // 스터디 생성 프로세스
-                        }
-                    }
+                    handleNextButtonTap()
                 }
+                .padding(.top, 16)
                 .padding(.bottom, 22)
+                .background(.gray9)
             }
         }
+        .onChange(of: createStudyViewModel.goEditPeriod) { _, newVal in
+            if newVal {
+                withAnimation { selectedIndex = 1 }
+            }
+        }
+        .onAppear {
+            appState.setDarkMode()
+        }
         .navigationTitle("생성하기")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
-        .preferredColorScheme(.dark)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
+        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
+            SISCompleteView()
+        }
+    }
+
+    // 다음 버튼 동작 처리
+    private func handleNextButtonTap() {
+        withAnimation {
+            if createStudyViewModel.goEditPeriod {
+                selectedIndex = 4
+                createStudyViewModel.goEditPeriod = false
+            } else if selectedIndex < createStudyViewModel.contentData.count - 1 {
+                selectedIndex += 1
+            } else {
+                // 스터디 생성 프로세스
+                createStudyViewModel.showCompleteView = true
+            }
+        }
     }
 }
+
 
 fileprivate extension View {
     /// 스터디 한 줄 소개 작성 뷰에서만 보여지는 건너뛰기 버튼

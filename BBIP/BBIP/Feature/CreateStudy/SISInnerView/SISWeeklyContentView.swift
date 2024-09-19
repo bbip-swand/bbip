@@ -9,13 +9,12 @@ import SwiftUI
 
 struct SISWeeklyContentView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
-    @State private var showEditPeriodView: Bool = false
     @State private var selectedWeekIndex: Int = 0
     
     var body: some View {
         VStack(spacing: 0) {
             EditPeriodButton(viewModel: viewModel) {
-                showEditPeriodView = true
+                viewModel.goEditPeriod = true
             }
             .padding(.top, 166)
             .padding(.horizontal, 20)
@@ -52,25 +51,24 @@ struct SISWeeklyContentView: View {
             Spacer()
         }
         .keyboardHideable()
-        .sheet(isPresented: $showEditPeriodView) {
-            SISPeriodView(viewModel: viewModel, sheetMode: true)
-                .presentationDragIndicator(.visible)
-                .presentationDetents([.height(300)])
-                .presentationBackground(.gray9)
-        }
     }
 }
+
+/* 수정 방법 변경으로 인해 사용 중단
+ // @State private var showEditPeriodView: Bool = false
+ 
+ .sheet(isPresented: $showEditPeriodView) {
+ SISPeriodView(viewModel: viewModel, sheetMode: true)
+     .presentationDragIndicator(.visible)
+     .presentationDetents([.height(300)])
+     .presentationBackground(.gray9)
+}
+*/
 
 private struct EditPeriodButton: View {
     @ObservedObject var viewModel: CreateStudyViewModel
     typealias Action = () -> Void
     let action: Action
-    
-    private var title: String {
-        viewModel.skipDaySelection
-        ? "\(viewModel.weekCount)주차"
-        : "\(viewModel.weekCount)주차, 주 \(viewModel.selectedDayIndex.count)회"
-    }
     
     init(
         viewModel: CreateStudyViewModel,
@@ -80,18 +78,42 @@ private struct EditPeriodButton: View {
         self.action = action
     }
     
+    // 시간 포맷터 MM.dd
+    private func formattedTime(for date: Date) -> String {
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.dateFormat = "MM.dd"
+        return weekdayFormatter.string(from: date)
+    }
+    
     var body: some View {
         Button {
             action()
         } label: {
-            RoundedRectangle(cornerRadius: 50)
-                .frame(width: 98, height: 26)
-                .foregroundStyle(.gray7)
-                .overlay {
-                    Text(title)
-                        .font(.bbip(.caption2_m12))
-                        .foregroundStyle(.mainWhite)
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .frame(width: 210, height: 32)
+                    .foregroundStyle(.gray8)
+                
+                HStack(spacing: 7) {
+                    Text("\(viewModel.weekCount)주차")
+                        
+                    Capsule()
+                        .foregroundColor(.gray6)
+                        .frame(width: 1, height: 10)
+                    
+                    Text("주 \(viewModel.selectedDayIndex.count)회")
+                    
+                    Capsule()
+                        .foregroundColor(.gray6)
+                        .frame(width: 1, height: 10)
+                    
+                    Text("\(formattedTime(for: viewModel.startDate)) ~ \(formattedTime(for: viewModel.deadlineDate!))")
+                    
+                    Image("common_edit")
                 }
+                .font(.bbip(.caption2_m12))
+                .foregroundStyle(.mainWhite)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -130,8 +152,4 @@ private struct WeeklyContentCardView: View {
                     )
             }
     }
-}
-
-#Preview {
-    SISWeeklyContentView(viewModel: CreateStudyViewModel())
 }

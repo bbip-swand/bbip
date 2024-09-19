@@ -42,7 +42,7 @@ struct UISCompleteView: View {
             Spacer()
             
             MainButton(text: "시작하기") {
-                withAnimation { appState.goHome() }
+                withAnimation { appState.switchRoot(.home) }
             }
             .padding(.bottom, 39)
         }

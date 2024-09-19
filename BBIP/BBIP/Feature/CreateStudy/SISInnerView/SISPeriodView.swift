@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct SISPeriodView: View {
     @ObservedObject var viewModel: CreateStudyViewModel
     @State private var showDatePicker: Bool = false
+    @State private var showDayPicker: Bool = false
+    @State private var showStartTimePicker: Bool = false
+    @State private var showEndTimePicker: Bool = false
+    
     private let sheetMode: Bool
     
     init(
@@ -21,97 +26,84 @@ struct SISPeriodView: View {
     }
     
     var body: some View {
-        VStack(spacing: 12) {
-            Text("주차 선택")
-                .font(.bbip(.body1_sb16))
-                .foregroundStyle(.mainWhite)
-                .padding(.top, sheetMode ? 40 : 192)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            StepperButton(intValue: $viewModel.weekCount)
-            
-            if !sheetMode {
-                Text("기간 선택")
+        ScrollView {
+            VStack(spacing: 12) {
+                Text("주차 선택")
                     .font(.bbip(.body1_sb16))
                     .foregroundStyle(.mainWhite)
+                    .padding(.top, sheetMode ? 40 : 192)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 12)
                 
-                PeriodPickerButton(
-                    viewModel: viewModel,
-                    showDatePicker: $showDatePicker
+                StepperButton(
+                    viewModel: viewModel
                 )
-            }
-            
-            HStack(spacing: 10) {
-                Text("요일 선택")
-                    .font(.bbip(.body1_sb16))
-                    .foregroundStyle(.mainWhite)
+                
+                if !sheetMode {
+                    Text("기간 선택")
+                        .font(.bbip(.body1_sb16))
+                        .foregroundStyle(.mainWhite)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 12)
+                    
+                    PeriodPickerButton(
+                        viewModel: viewModel,
+                        showDatePicker: $showDatePicker
+                    )
+                }
+                
+                HStack(spacing: 10) {
+                    Text("요일 선택")
+                        .font(.bbip(.body1_sb16))
+                        .foregroundStyle(.mainWhite)
+                    
+                    Spacer()
+                    
+                    if viewModel.showInvalidTimeAlert {
+                        WarningLabel(errorText: "종료 시간이 시작 시간보다 빠릅니다")
+                    }
+                }
+                .padding(.top, 12)
+                
+                SetDayAndTimeView(
+                    viewModel: viewModel,
+                    showDayPicker: $showDayPicker,
+                    showStartTimePicker: $showStartTimePicker,
+                    showEndTimePicker: $showEndTimePicker
+                )
                 
                 Spacer()
-                
-                Text("선택 안함")
-                    .font(.bbip(.caption3_r12))
-                    .foregroundStyle(.gray5)
-                
-                Button {
-                    viewModel.skipDaySelection.toggle()
-                    if viewModel.skipDaySelection {
-                        viewModel.selectedDayIndex.removeAll()
-                    }
-                } label: {
-                    RoundedRectangle(cornerRadius: 4)
-                        .frame(width: 18, height: 18)
-                        .foregroundStyle(viewModel.skipDaySelection ? .primary3 : .gray8)
-                        .overlay {
-                            if viewModel.skipDaySelection {
-                                Image("check")
-                                    .resizable()
-                                    .renderingMode(.template)
-                                    .foregroundStyle(.mainWhite)
-                                    .frame(width: 12, height: 12)
-                            }
-                        }
+                    .frame(height: 110)
+            }
+            .padding(.horizontal, 24)
+            .sheet(isPresented: $showDatePicker) {
+                DatePicker(
+                    "setStudyPeriod",
+                    selection: $viewModel.startDate,
+                    in: Date()...,
+                    displayedComponents: .date
+                )
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .onChange(of: viewModel.startDate) {
+                    viewModel.calculateDeadline()
+                    showDatePicker = false
                 }
+                .padding(.top, 20)
+                .padding()
+                .tint(.primary3)
+                .presentationDragIndicator(.visible)
+                .presentationDetents([.height(370)])
             }
-            .padding(.top, 12)
-            
-            DayPickerButton(selectedDayIndex: $viewModel.selectedDayIndex)
-            
-            Spacer()
         }
-        .padding(.horizontal, 24)
-        .sheet(isPresented: $showDatePicker) {
-            DatePicker(
-                "setStudyPeriod",
-                selection: $viewModel.startDate,
-                in: Date()...,
-                displayedComponents: .date
-            )
-            .datePickerStyle(GraphicalDatePickerStyle())
-            .onChange(of: viewModel.startDate) {
-                viewModel.calculateDeadline()
-                showDatePicker = false
-            }
-            .padding(.top, 20)
-            .padding()
-            .tint(.primary3)
-            .presentationDragIndicator(.visible)
-            .presentationDetents([.height(370)])
+        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+            scrollView.showsVerticalScrollIndicator = false
+            scrollView.bounces = false
         }
     }
 }
 
 private struct StepperButton: View {
-    @State private var isFirstInputReceived: Bool = false
-    @Binding var intValue: Int
+    @ObservedObject var viewModel: CreateStudyViewModel
     private let maxValue: Int = 52
-    
-    private func shootFirstInput() {
-        if !isFirstInputReceived {
-            isFirstInputReceived = true
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -121,25 +113,23 @@ private struct StepperButton: View {
             
             HStack {
                 Button {
-                    guard intValue > 1 else { return }
-                    shootFirstInput()
-                    intValue -= 1
+                    guard viewModel.weekCount > 1 else { return }
+                    viewModel.weekCount -= 1
                 } label: {
                     Image("stepper_minus")
                 }
                 
                 Spacer()
                 
-                Text("\(intValue) 라운드")
+                Text("\(viewModel.weekCount) 라운드")
                     .font(.bbip(.body1_sb16))
-                    .foregroundStyle(isFirstInputReceived ? .mainWhite : .gray5)
+                    .foregroundStyle(viewModel.periodIsSelected ? .mainWhite : .gray5)
                 
                 Spacer()
                 
                 Button {
-                    guard intValue < maxValue else { return }
-                    shootFirstInput()
-                    intValue += 1
+                    guard viewModel.weekCount < maxValue else { return }
+                    viewModel.weekCount += 1
                 } label: {
                     Image("stepper_plus")
                 }
@@ -160,7 +150,7 @@ private struct PeriodPickerButton: View {
     
     private var colorBySelected: Color {
         viewModel.deadlineDate != nil
-        ? .gray3
+        ? .gray6
         : .gray7
     }
     
@@ -180,13 +170,13 @@ private struct PeriodPickerButton: View {
                          ? formatDate(viewModel.startDate)
                          : "시작일")
                     .font(.bbip(.body1_m16))
-                    .foregroundStyle(.gray5)
+                    .foregroundStyle(viewModel.periodIsSelected ? .mainWhite : .gray5)
                     .monospacedDigit()
                 }
                 
                 Spacer()
                 
-                Image("rightArrow")
+                Image("SIS_rightArrow")
                     .renderingMode(.template)
                     .foregroundStyle(colorBySelected)
                 
@@ -196,7 +186,7 @@ private struct PeriodPickerButton: View {
                      ? formatDate(viewModel.deadlineDate!)
                      : "마감일")
                 .font(.bbip(.body1_m16))
-                .foregroundStyle(.gray7)
+                .foregroundStyle(viewModel.periodIsSelected ? .gray6 : .gray7)
                 .monospacedDigit()
                 
                 Spacer()
@@ -205,6 +195,180 @@ private struct PeriodPickerButton: View {
     }
 }
 
+private struct SetDayAndTimeView: View {
+    @ObservedObject var viewModel: CreateStudyViewModel
+    @Binding private var showDayPicker: Bool
+    @Binding private var showStartTimePicker: Bool
+    @Binding private var showEndTimePicker: Bool
+    @State private var selectedIndex: Int? // 선택한 인덱스를 추적
+    
+    init(
+        viewModel: CreateStudyViewModel,
+        showDayPicker: Binding<Bool>,
+        showStartTimePicker: Binding<Bool>,
+        showEndTimePicker: Binding<Bool>
+    ) {
+        self.viewModel = viewModel
+        self._showDayPicker = showDayPicker
+        self._showStartTimePicker = showStartTimePicker
+        self._showEndTimePicker = showEndTimePicker
+    }
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            ForEach(viewModel.selectedDayIndex.indices, id: \.self) { index in
+                HStack(spacing: 8) {
+                    // 요일 선택 버튼
+                    Button {
+                        selectedIndex = index
+                        showDayPicker.toggle() // 요일 선택 picker 열기
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .foregroundStyle(.gray8)
+                                .frame(width: 90, height: 54)
+                            
+                            Text(dayText(for: viewModel.selectedDayIndex[index]))
+                                .font(.bbip(.body1_m16))
+                                .foregroundStyle(.mainWhite)
+                        }
+                        .foregroundStyle(.gray5)
+                    }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundStyle(.gray8)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 54)
+                        
+                        HStack(spacing: 0) {
+                            // 시작 시간 선택 버튼
+                            Button {
+                                selectedIndex = index
+                                showStartTimePicker.toggle() // 시작시간 선택 picker 열기
+                            } label: {
+                                Text(startTimeText(for: viewModel.selectedDayStudySession[index]))
+                                    .foregroundStyle(.mainWhite)
+                            }
+                            .frame(width: calcWidth, height: 30)
+                            
+                            Text("-")
+                            
+                            // 종료 시간 선택 버튼
+                            Button {
+                                selectedIndex = index
+                                showEndTimePicker.toggle() // 종료시간 선택 picker 열기
+                            } label: {
+                                Text(endTimeText(for: viewModel.selectedDayStudySession[index]))
+                                    .foregroundStyle(.mainWhite)
+                            }
+                            .frame(width: calcWidth, height: 30)
+                            
+                            // 삭제 버튼
+                            Button {
+                                withAnimation { viewModel.deleteDay(at: index) }
+                            } label: {
+                                Image("remove_minus")
+                            }
+                            .padding(.trailing)
+                        }
+                        .font(.bbip(.body1_m16))
+                        .foregroundStyle(.gray5)
+                    }
+                }
+            }
+            
+            addDayButton
+                .opacity(viewModel.selectedDayIndex.count < 7 ? 1 : 0)
+            
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .sheet(isPresented: $showDayPicker) {
+            DayPickerView(
+                selectedDay: $viewModel.selectedDayIndex[selectedIndex ?? 0],
+                isSheetPresented: $showDayPicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(270)])
+        }
+        .sheet(isPresented: $showStartTimePicker) {
+            TimePickerView(
+                selectedTime: $viewModel.selectedDayStudySession[selectedIndex ?? 0].startTime,
+                isSheetPresented: $showStartTimePicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(320)])
+        }
+
+        .sheet(isPresented: $showEndTimePicker) {
+            TimePickerView(
+                selectedTime: $viewModel.selectedDayStudySession[selectedIndex ?? 0].endTime,
+                isSheetPresented: $showEndTimePicker
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.height(320)])
+        }
+    }
+    
+    // 요일 선택 텍스트 처리
+    private func dayText(for dayIndex: Int) -> String {
+        let week = ["월", "화", "수", "목", "금", "토", "일"]
+        return dayIndex == -1 ? "요일 선택" : week[dayIndex]
+    }
+    
+    // 시작 시간 텍스트 처리
+    private func startTimeText(for studySession: StudySessionVO) -> String {
+        guard let startTime = studySession.startTime else { return "00:00" }
+        return formattedTime(for: startTime)
+    }
+    
+    // 종료 시간 텍스트 처리
+    private func endTimeText(for studySession: StudySessionVO) -> String {
+        guard let endTime = studySession.endTime else { return "00:00" }
+        return formattedTime(for: endTime)
+    }
+    
+    // 시간 포맷터 HH:mm
+    private func formattedTime(for date: Date) -> String {
+        let weekdayFormatter = DateFormatter()
+        weekdayFormatter.dateFormat = "HH:mm"
+        return weekdayFormatter.string(from: date)
+    }
+    
+    // 버튼 가로 간격 계산
+    private var calcWidth: CGFloat {
+        (UIScreen.main.bounds.width - 54 - 48 - 8 - 50 - 30) / 2
+    }
+    
+    // 요일 추가 버튼
+    var addDayButton: some View {
+        Button {
+            withAnimation { viewModel.createEmptyDay() }
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundStyle(.gray8)
+                    .frame(height: 54)
+                
+                HStack(spacing: 16) {
+                    Image("add_plus")
+                        .padding(.leading, 22)
+                    
+                    Text("요일 추가")
+                        .font(.bbip(.body1_m16))
+                        .foregroundStyle(.gray5)
+                    
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+
+// Not Use (가로형 요일 선택 버튼)
+/*
 private struct DayPickerButton: View {
     @Binding var selectedDayIndex: [Int]
     private let week: [String] = [
@@ -250,3 +414,4 @@ private struct DayPickerButton: View {
         }
     }
 }
+ */

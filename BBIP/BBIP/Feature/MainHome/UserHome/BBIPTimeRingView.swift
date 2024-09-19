@@ -237,7 +237,7 @@ struct ActivatedBBIPTimeRingView: View {
                     .frame(width: 130, height: 43)
             )
         }
-        .frame(height: 340)
+        .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
             AttendanceCertificationView(remainingTime: remainingTime)

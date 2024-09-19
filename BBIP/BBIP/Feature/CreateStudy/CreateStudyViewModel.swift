@@ -22,28 +22,29 @@ class CreateStudyViewModel: ObservableObject {
     
     private func sinkElements() {
         // SISPeriodView 다음 버튼 상태
-        Publishers.CombineLatest3($weekCount, $periodIsSelected, $selectedDayIndex)
-            .combineLatest($skipDaySelection)
-            .sink { [weak self] (weekPeriodDay, skipDay) in
+        Publishers.CombineLatest4($weekCount, $periodIsSelected, $selectedDayIndex, $selectedDayStudySession)
+            .sink { [weak self] (weekCount, periodIsSelected, selectedDayIndex, selectedDayStudySessions) in
                 guard let self = self else { return }
-                let (weekCount, periodIsSelected, selectedDayIndex) = weekPeriodDay
                 
-                // 조건을 만족할 경우 canGoNext[1]을 true로 설정
-                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && (!selectedDayIndex.isEmpty || skipDay)
-            }
-            .store(in: &cancellables)
-        
-        $selectedDayIndex
-            .sink { [weak self] newValue in
-                guard let self = self else { return }
-                if self.skipDaySelection, !newValue.isEmpty {
-                    self.skipDaySelection = false
+                // selectedDayIndex에 -1이 없고, selectedDayStudySession에 nil 값이 없는지 확인
+                let allDaysValid = !selectedDayIndex.contains(-1) && selectedDayIndex.count > 0
+                let allSessionsValid = !selectedDayStudySessions.contains { $0.startTime == nil || $0.endTime == nil }
+                
+                // 시작 시간이 종료 시간보다 늦은 상태 감지
+                let startTimeBeforeEndTime = !selectedDayStudySessions.contains {
+                    guard let startTime = $0.startTime, let endTime = $0.endTime else { return false }
+                    return startTime >= endTime
                 }
+                // 시작 시간이 종료 시간보다 늦은 경우 alert 표시
+                self.showInvalidTimeAlert = !startTimeBeforeEndTime
+                
+                // canGoNext[1]을 true로 설정할 조건
+                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysValid && allSessionsValid && startTimeBeforeEndTime
             }
             .store(in: &cancellables)
     }
     
-    // 마감일 계산
+    // 시작일로부터 주차 계산해 마감일 계산
     func calculateDeadline() {
         let addedWeeks = Calendar.current.date(
             byAdding: .weekOfYear,
@@ -81,13 +82,22 @@ class CreateStudyViewModel: ObservableObject {
             initalWeeklyContentData()
         }
     }
-    
     @Published var periodIsSelected: Bool = false
     @Published var startDate: Date = Date()
     @Published var deadlineDate: Date? = nil
     
     @Published var selectedDayIndex: [Int] = .init()
-    @Published var skipDaySelection: Bool = false
+    @Published var selectedDayStudySession: [StudySessionVO] = .init()
+    @Published var showInvalidTimeAlert: Bool = false
+    
+    func createEmptyDay() {
+        selectedDayIndex.append(-1)
+        selectedDayStudySession.append(.emptySession())
+    }
+    func deleteDay(at index: Int) {
+        selectedDayIndex.remove(at: index)
+        selectedDayStudySession.remove(at: index)
+    }
     
     // MARK: - Profile Setting View
     @Published var studyName: String = .init()
@@ -101,4 +111,8 @@ class CreateStudyViewModel: ObservableObject {
     
     // MARK: - Weekly Content Input View
     @Published var weeklyContentData: [String?] = []
+    @Published var goEditPeriod: Bool = false
+    
+    // MARK: - Handle Complete
+    @Published var showCompleteView: Bool = false
 }

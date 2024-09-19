@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct StudySwitchView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var appState: AppStateManager
+    
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 8) {
@@ -19,7 +22,8 @@ struct StudySwitchView: View {
             
             HStack(spacing: 16) {
                 Button {
-                    // create
+                    presentationMode.wrappedValue.dismiss()
+                    appState.push(.startSIS)
                 } label: {
                     RoundedRectangle(cornerRadius: 12)
                         .foregroundStyle(.mainWhite)
@@ -61,8 +65,4 @@ private struct StudySwitchViewCell: View {
                 .padding(.horizontal, 16)
         }
     }
-}
-
-#Preview {
-    StudySwitchView()
 }

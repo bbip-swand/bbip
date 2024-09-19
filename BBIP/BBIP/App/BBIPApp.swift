@@ -18,6 +18,10 @@ struct BBIPApp: App {
                     print(UserDefaultsManager.shared.getAccessToken())
                 }
 //            NavigationStack {
+//                StartCreateStudyView()
+//                
+//            }
+//            NavigationStack {
 //                NavigationLink {
 //                    StartCreateStudyView()
 //                } label: {

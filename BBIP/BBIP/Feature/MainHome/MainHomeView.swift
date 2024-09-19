@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct MainHomeView: View {
-    @State private var selectedTab: MainHomeTab = .userHome
-    @State private var showNoticeView: Bool = false
-    @State private var showMypageView: Bool = false
-    
-    // TODO: Use NoticeManager...
-    @State private var hasNotice: Bool = false
-    
+    @EnvironmentObject var appState: AppStateManager
     @ObservedObject private var viewModel = MainHomeViewModel()
+    @State private var selectedTab: MainHomeTab = .userHome
+    
+    // MARK: - Navigation Destination
+    @State private var hasNotice: Bool = false
     
     var body: some View {
         ZStack {
@@ -24,8 +22,12 @@ struct MainHomeView: View {
                 case .userHome:
                     BBIPHearderView(
                         showDot: $hasNotice,
-                        onNoticeTapped: { showNoticeView = true },
-                        onProfileTapped: { showMypageView = true }
+                        onNoticeTapped: {
+                            appState.path.append("NoticeView")
+                        },
+                        onProfileTapped: {
+                            appState.path.append("MypageView")
+                        }
                     )
                     UserHomeView(viewModel: viewModel)
                 case .calendar:
@@ -33,19 +35,29 @@ struct MainHomeView: View {
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
-
+            
             BBIPTabView(selectedTab: $selectedTab)
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .edgesIgnoringSafeArea(.bottom)
         }
-        .navigationDestination(isPresented: $showNoticeView) {
-            NoticeView()
+        .onAppear {
+            appState.setLightMode()
         }
-        .navigationDestination(isPresented: $showMypageView) {
-            MypageView()
+        .navigationDestination(for: MainHomeViewDestination.self) { destination in
+            switch destination {
+            case .notice:
+                NoticeView()
+            case .mypage:
+                MypageView()
+            case .startSIS:
+                StartCreateStudyView()
+            default:
+                EmptyView()
+            }
         }
     }
 }
+
 
 #Preview {
     MainHomeView()

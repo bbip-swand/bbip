@@ -17,7 +17,7 @@ struct BBIPLottieView: UIViewRepresentable {
     
     init(
         assetName: String,
-        withBackground: Bool,
+        withBackground: Bool = false,
         loopMode: LottieLoopMode = .repeat(.infinity),
         completion: (() -> Void)? = nil
     ) {
