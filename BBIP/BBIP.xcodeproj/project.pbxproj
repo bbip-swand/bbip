@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		082539492C9C215300632582 /* AttendanceDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539482C9C215200632582 /* AttendanceDoneView.swift */; };
 		0825394E2C9C231A00632582 /* CodeCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = 0825394D2C9C231A00632582 /* CodeCheck.json */; };
+		082539502C9C6BF700632582 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825394F2C9C6BF700632582 /* CustomTextField.swift */; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
 		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		082539482C9C215200632582 /* AttendanceDoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendanceDoneView.swift; path = "../../../../../뉴/AttendanceDoneView.swift"; sourceTree = "<group>"; };
 		0825394D2C9C231A00632582 /* CodeCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CodeCheck.json; path = ../../../../../../Downloads/CodeCheck.json; sourceTree = "<group>"; };
+		0825394F2C9C6BF700632582 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
 		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				0825394F2C9C6BF700632582 /* CustomTextField.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
@@ -868,6 +871,7 @@
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
+				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
