@@ -40,6 +40,9 @@ struct MainHomeView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .edgesIgnoringSafeArea(.bottom)
         }
+        .onAppear {
+            appState.setLightMode()
+        }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
             case .notice:

@@ -25,8 +25,18 @@ enum MainHomeViewDestination {
 final class AppStateManager: ObservableObject {
     @Published var state: AppState
     @Published var path = NavigationPath()
+    @Published var colorScheme: ColorScheme = .light
+    
+    func setDarkMode() {
+        self.colorScheme = .dark
+    }
+    
+    func setLightMode() {
+        self.colorScheme = .light
+    }
     
     func popToRoot() {
+        setLightMode()
         path = .init()
     }
     

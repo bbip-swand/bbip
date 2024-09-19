@@ -21,6 +21,7 @@ struct SISCompleteView: View {
                 } label: {
                     Image("xmark")
                 }
+                .opacity(showDismissButton ? 1 : 0)
                 .padding(.trailing, 28)
             }
             .frame(height: 42)
@@ -54,9 +55,9 @@ struct SISCompleteView: View {
         .onAppear {
             HapticManager.shared.boong()
             
-            // 2초 후에 버튼을 표시
+            // 2초 후에 X버튼을 표시
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                showDismissButton = true
+                withAnimation { showDismissButton = true }
             }
         }
     }

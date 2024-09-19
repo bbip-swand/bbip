@@ -29,6 +29,7 @@ struct RootView: View {
                 }
             }
         }
+        .preferredColorScheme(appStateManager.colorScheme)
         .environmentObject(appStateManager)
     }
 }

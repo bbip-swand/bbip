@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct StudyInfoSetupView: View {
+    @EnvironmentObject var appState: AppStateManager
     @StateObject private var createStudyViewModel = CreateStudyViewModel()
     @State private var selectedIndex: Int = .zero
     
@@ -75,11 +76,13 @@ struct StudyInfoSetupView: View {
                 withAnimation { selectedIndex = 1 }
             }
         }
+        .onAppear {
+            appState.setDarkMode()
+        }
         .navigationTitle("생성하기")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.gray9)
         .ignoresSafeArea(.keyboard)
-        .preferredColorScheme(.dark)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
