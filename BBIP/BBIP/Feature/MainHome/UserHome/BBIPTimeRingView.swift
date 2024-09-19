@@ -220,6 +220,7 @@ struct ActivatedBBIPTimeRingView: View {
             }
             Button {
                 showAttendanceCertificationView = true
+                timer?.cancel()
             } label: {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.primary3)
@@ -237,10 +238,10 @@ struct ActivatedBBIPTimeRingView: View {
                     .frame(width: 130, height: 43)
             )
         }
-        .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
+        .frame(height: 340)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
-            AttendanceCertificationView(remainingTime: remainingTime)
+            AttendanceCertificationView(remainingTime: $remainingTime)
         }
     }
 }
