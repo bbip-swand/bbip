@@ -82,6 +82,9 @@ struct StudyInfoSetupView: View {
         .preferredColorScheme(.dark)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
+        .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
+            SISCompleteView()
+        }
     }
 
     // 다음 버튼 동작 처리
@@ -94,6 +97,7 @@ struct StudyInfoSetupView: View {
                 selectedIndex += 1
             } else {
                 // 스터디 생성 프로세스
+                createStudyViewModel.showCompleteView = true
             }
         }
     }

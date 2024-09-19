@@ -24,7 +24,7 @@ struct RootView: View {
                 }
                 
             case .home:
-                NavigationStack {
+                NavigationStack(path: $appStateManager.path) {
                     MainHomeView()
                 }
             }

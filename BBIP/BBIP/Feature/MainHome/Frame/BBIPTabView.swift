@@ -16,8 +16,6 @@ enum MainHomeTab {
 
 struct BBIPTabView : View {
     @Binding var selectedTab: MainHomeTab
-    @Binding var showCreateStudyView: Bool
-    
     @State private var showSheet = false
     
     private let calw = ((UIScreen.main.bounds.width/2)-33.5-24)/3.905
@@ -69,7 +67,7 @@ struct BBIPTabView : View {
             .background(.clear)
         }
         .sheet(isPresented: $showSheet) {
-            StudySwitchView(showCreateStudyView: $showCreateStudyView)
+            StudySwitchView()
                 .presentationDragIndicator(.visible)
                 .presentationDetents([.height(330)])
         }

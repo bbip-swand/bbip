@@ -112,4 +112,7 @@ class CreateStudyViewModel: ObservableObject {
     // MARK: - Weekly Content Input View
     @Published var weeklyContentData: [String?] = []
     @Published var goEditPeriod: Bool = false
+    
+    // MARK: - Handle Complete
+    @Published var showCompleteView: Bool = false
 }
