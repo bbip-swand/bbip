@@ -38,7 +38,7 @@ struct CustomTextEditor: View {
                         .stroke(isFocused || !text.isEmpty ? Color.red : .gray3, lineWidth: 1)
                 )
                 .frame(height: height)
-                .introspect(.textEditor, on: .iOS(.v17)) { textEditor in
+                .introspect(.textEditor, on: .iOS(.v17, .v18)) { textEditor in
                     textEditor.autocorrectionType = .no
                     textEditor.autocapitalizationType = .none
                     textEditor.spellCheckingType = .no

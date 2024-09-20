@@ -154,7 +154,7 @@ fileprivate struct AreaSelectView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .introspect(.tabView(style: .page), on: .iOS(.v17)) { tabView in
+            .introspect(.tabView(style: .page), on: .iOS(.v17, .v18)) { tabView in
                 tabView.isScrollEnabled = false
             }
             .padding(.bottom, 26)

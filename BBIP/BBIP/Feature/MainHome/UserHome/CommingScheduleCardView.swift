@@ -19,7 +19,6 @@ struct CommingScheduleCardView: View {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.mainWhite)
                 .frame(width: 133, height: 146)
-                .bbipShadow1()
             
             VStack(spacing: 0) {
                 Image("dday_icon\(vo.iconType)")

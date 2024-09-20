@@ -78,7 +78,7 @@ fileprivate struct SetStudyNameView: View {
                 }
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 10)
-                .introspect(.textField, on: .iOS(.v17)) { textField in
+                .introspect(.textField, on: .iOS(.v17, .v18)) { textField in
                     textField.autocorrectionType = .no
                     textField.autocapitalizationType = .none
                     textField.spellCheckingType = .no
