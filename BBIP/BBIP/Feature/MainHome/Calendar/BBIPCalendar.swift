@@ -38,7 +38,7 @@ struct BBIPCalendar: UIViewRepresentable {
         calendar.appearance.titleFont = UIFont(name: "WantedSans-Bold", size: 14)
         
         // 오늘 날짜 컬러 (선택, 미선택)
-        calendar.appearance.todayColor = .primary1
+        calendar.appearance.todayColor = .primary3
         calendar.appearance.selectionColor = .primary3
         
         // 이벤트 Dot
@@ -88,7 +88,6 @@ struct BBIPCalendar: UIViewRepresentable {
             let calendar = Calendar.current
             let weekday = calendar.component(.weekday, from: date)
             let today = Date()
-            let isToday = calendar.isDate(date, inSameDayAs: today)
             
             if weekday == 1 { // 일요일인 경우, 원과 색이 같아 가리는 현상 없애기
                 return .primary3

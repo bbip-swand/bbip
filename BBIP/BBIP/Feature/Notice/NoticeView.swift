@@ -25,6 +25,8 @@ struct NoticeView: View {
                     } label: {
                         Image("setting_icon")
                             .resizable()
+                            .frame(width: 20, height: 20)
+                            .padding(.trailing, 10)
                     }
                 }
             }
