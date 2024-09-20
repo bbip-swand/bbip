@@ -20,6 +20,7 @@ struct MypageView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
         .navigationTitle("마이페이지")
+        .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
     }
 }

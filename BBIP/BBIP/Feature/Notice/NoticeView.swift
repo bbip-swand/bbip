@@ -16,6 +16,7 @@ struct NoticeView: View {
     var body: some View {
         Text("This is Mypage View")
             .navigationTitle("알림")
+            .navigationBarTitleDisplayMode(.inline)
             .backButtonStyle()
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
