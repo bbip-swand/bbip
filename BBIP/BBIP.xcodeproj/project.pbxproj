@@ -68,6 +68,8 @@
 		C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BCB2C822147006AA652 /* SISCompleteView.swift */; };
 		C69445922C9D55DF003945CC /* StudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445912C9D55DF003945CC /* StudyInfoVO.swift */; };
 		C69445982C9D595D003945CC /* CreateStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445972C9D595D003945CC /* CreateStudyUseCase.swift */; };
+		C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445992C9D5A3E003945CC /* StudyAPI.swift */; };
+		C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694459C2C9D5B5A003945CC /* StudyInfoDTO.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
 		C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */; };
@@ -191,6 +193,8 @@
 		C6934BCB2C822147006AA652 /* SISCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCompleteView.swift; sourceTree = "<group>"; };
 		C69445912C9D55DF003945CC /* StudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoVO.swift; sourceTree = "<group>"; };
 		C69445972C9D595D003945CC /* CreateStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyUseCase.swift; sourceTree = "<group>"; };
+		C69445992C9D5A3E003945CC /* StudyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAPI.swift; sourceTree = "<group>"; };
+		C694459C2C9D5B5A003945CC /* StudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoDTO.swift; sourceTree = "<group>"; };
 		C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISInterestView.swift; sourceTree = "<group>"; };
@@ -393,19 +397,27 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		C69445952C9D562D003945CC /* CreateStudy */ = {
+		C69445952C9D562D003945CC /* Study */ = {
 			isa = PBXGroup;
 			children = (
 				C69445912C9D55DF003945CC /* StudyInfoVO.swift */,
 				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 			);
-			path = CreateStudy;
+			path = Study;
 			sourceTree = "<group>";
 		};
 		C69445962C9D590C003945CC /* Study */ = {
 			isa = PBXGroup;
 			children = (
 				C69445972C9D595D003945CC /* CreateStudyUseCase.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		C694459B2C9D5B19003945CC /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				C694459C2C9D5B5A003945CC /* StudyInfoDTO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -556,6 +568,7 @@
 			children = (
 				C62780EE2C8AF2E800065F98 /* Login */,
 				C62781012C8C76A000065F98 /* User */,
+				C694459B2C9D5B19003945CC /* Study */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -582,11 +595,12 @@
 		C695BDFD2C64CB97009DEC3C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
 				C62780F32C8AFBC600065F98 /* BaseAPI.swift */,
 				C62780F12C8AFB9C00065F98 /* AuthAPI.swift */,
 				C62780FF2C8C72C900065F98 /* UserAPI.swift */,
 				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
-				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
+				C69445992C9D5A3E003945CC /* StudyAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -624,7 +638,7 @@
 			children = (
 				C69445932C9D55F8003945CC /* UserHome */,
 				C69445942C9D5616003945CC /* Calendar */,
-				C69445952C9D562D003945CC /* CreateStudy */,
+				C69445952C9D562D003945CC /* Study */,
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
 			);
@@ -898,6 +912,7 @@
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
+				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
@@ -973,6 +988,7 @@
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
+				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
