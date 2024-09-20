@@ -6,3 +6,28 @@
 //
 
 import Foundation
+import Combine
+
+protocol StudyRepositoryProtocol {
+    func createStudy(vo: StudyInfoVO) -> AnyPublisher<Bool, Error>
+}
+
+final class StudyRepository: StudyRepositoryProtocol {
+    private let dataSource: StudyDataSource
+    private let mapper: StudyInfoMapper
+
+    init(
+        dataSource: StudyDataSource,
+        mapper: StudyInfoMapper
+    ) {
+        self.dataSource = dataSource
+        self.mapper = mapper
+    }
+    
+    func createStudy(vo: StudyInfoVO) -> AnyPublisher<Bool, Error> {
+        let dto = mapper.toDTO(vo: vo)
+        return dataSource.createStudy(dto: dto)
+            .eraseToAnyPublisher()
+    }
+}
+

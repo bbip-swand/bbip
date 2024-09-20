@@ -71,6 +71,8 @@
 		C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445992C9D5A3E003945CC /* StudyAPI.swift */; };
 		C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694459C2C9D5B5A003945CC /* StudyInfoDTO.swift */; };
 		C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694459E2C9D6003003945CC /* StudyDataSource.swift */; };
+		C69445A12C9D6200003945CC /* StudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445A02C9D6200003945CC /* StudyInfoMapper.swift */; };
+		C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445A22C9D655C003945CC /* StudyRepository.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
 		C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */; };
@@ -197,6 +199,8 @@
 		C69445992C9D5A3E003945CC /* StudyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyAPI.swift; sourceTree = "<group>"; };
 		C694459C2C9D5B5A003945CC /* StudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoDTO.swift; sourceTree = "<group>"; };
 		C694459E2C9D6003003945CC /* StudyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDataSource.swift; sourceTree = "<group>"; };
+		C69445A02C9D6200003945CC /* StudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoMapper.swift; sourceTree = "<group>"; };
+		C69445A22C9D655C003945CC /* StudyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRepository.swift; sourceTree = "<group>"; };
 		C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISInterestView.swift; sourceTree = "<group>"; };
@@ -580,6 +584,7 @@
 			children = (
 				C62780FD2C8B0A7E00065F98 /* LoginResponseMapper.swift */,
 				C62781172C8C98B000065F98 /* UserInfoMapper.swift */,
+				C69445A02C9D6200003945CC /* StudyInfoMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -613,6 +618,7 @@
 			children = (
 				C62780F92C8B099900065F98 /* AuthRepository.swift */,
 				C62781082C8C814000065F98 /* UserRepository.swift */,
+				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -968,6 +974,7 @@
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
+				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
@@ -982,6 +989,7 @@
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
+				C69445A12C9D6200003945CC /* StudyInfoMapper.swift in Sources */,
 				C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */,
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,

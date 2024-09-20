@@ -15,7 +15,7 @@ struct StudyInfoVO {
     let dayIndexArr: [Int]
     let studySessionArr: [StudySessionVO]
     let name: String
-    let thumbnail: UIImage?
+    let imageURL: String
     let description: String
     let weeklyContent: [String?]
 }
