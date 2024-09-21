@@ -110,6 +110,9 @@
 		C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */; };
 		C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700742C9ED526000CCC80 /* PostingDataSource.swift */; };
 		C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700762C9EED44000CCC80 /* PostDTO.swift */; };
+		C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700782C9EEF30000CCC80 /* PostingRepository.swift */; };
+		C6F7007C2C9EEF89000CCC80 /* CurrentWeekPostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007B2C9EEF89000CCC80 /* CurrentWeekPostVO.swift */; };
+		C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -243,6 +246,9 @@
 		C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
 		C6F700742C9ED526000CCC80 /* PostingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDataSource.swift; sourceTree = "<group>"; };
 		C6F700762C9EED44000CCC80 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		C6F700782C9EEF30000CCC80 /* PostingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingRepository.swift; sourceTree = "<group>"; };
+		C6F7007B2C9EEF89000CCC80 /* CurrentWeekPostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostVO.swift; sourceTree = "<group>"; };
+		C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostMapper.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -605,6 +611,7 @@
 				C62780FD2C8B0A7E00065F98 /* LoginResponseMapper.swift */,
 				C62781172C8C98B000065F98 /* UserInfoMapper.swift */,
 				C69445A02C9D6200003945CC /* StudyInfoMapper.swift */,
+				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -641,6 +648,7 @@
 				C62780F92C8B099900065F98 /* AuthRepository.swift */,
 				C62781082C8C814000065F98 /* UserRepository.swift */,
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
+				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -672,6 +680,7 @@
 				C69445932C9D55F8003945CC /* UserHome */,
 				C69445942C9D5616003945CC /* Calendar */,
 				C69445952C9D562D003945CC /* Study */,
+				C6F7007A2C9EEF72000CCC80 /* Posting */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -770,6 +779,14 @@
 			children = (
 				C6F700762C9EED44000CCC80 /* PostDTO.swift */,
 				C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */,
+			);
+			path = Posting;
+			sourceTree = "<group>";
+		};
+		C6F7007A2C9EEF72000CCC80 /* Posting */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7007B2C9EEF89000CCC80 /* CurrentWeekPostVO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -970,6 +987,7 @@
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
+				C6F7007C2C9EEF89000CCC80 /* CurrentWeekPostVO.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
@@ -1007,12 +1025,14 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
+				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
+				C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */,
 				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
