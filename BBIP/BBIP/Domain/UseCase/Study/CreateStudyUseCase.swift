@@ -12,9 +12,9 @@ protocol CreateStudyUseCaseProtocol {
 }
 
 final class CreateStudyUseCase: CreateStudyUseCaseProtocol {
-    private let repository: StudyRepositoryProtocol
+    private let repository: StudyRepository
     
-    init(repository: StudyRepositoryProtocol) {
+    init(repository: StudyRepository) {
         self.repository = repository
     }
     

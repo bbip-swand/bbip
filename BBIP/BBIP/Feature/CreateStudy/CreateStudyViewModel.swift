@@ -10,15 +10,23 @@ import Combine
 import UIKit
 
 class CreateStudyViewModel: ObservableObject {
+    @Published var isLoading: Bool = false
     @Published var contentData: [CreateStudyContent]
     @Published var canGoNext: [Bool] = [
         false,  // 카테고리 분야 선택
         false,  // 기간 및 주차 횟수 선택
         false,  // 스터디 프로필
         false,  // 스터디 한 줄 소개
-        true   // 주차별 계획
+        true    // 주차별 계획
     ]
+    private let createStudyInfoUseCase: CreateStudyUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
+    
+    init(createStudyInfoUseCase: CreateStudyUseCaseProtocol) {
+        self.createStudyInfoUseCase = createStudyInfoUseCase
+        self.contentData = CreateStudyContent.generate()
+        sinkElements()
+    }
     
     private func sinkElements() {
         // SISPeriodView 다음 버튼 상태
@@ -65,11 +73,6 @@ class CreateStudyViewModel: ObservableObject {
         }
         weeklyContentData = newData
         print(weeklyContentData.count, weeklyContentData)
-    }
-    
-    init() {
-        self.contentData = CreateStudyContent.generate()
-        sinkElements()
     }
     
     // MARK: - Category Setting View

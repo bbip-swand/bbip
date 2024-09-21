@@ -13,9 +13,9 @@ protocol CreateUserInfoUseCaseProtocol {
 }
 
 final class CreateUserInfoUseCase: CreateUserInfoUseCaseProtocol {
-    private let repository: UserRepositoryProtocol
+    private let repository: UserRepository
 
-    init(repository: UserRepositoryProtocol) {
+    init(repository: UserRepository) {
         self.repository = repository
     }
 

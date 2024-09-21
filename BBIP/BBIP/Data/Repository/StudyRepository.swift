@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol StudyRepositoryProtocol {
+protocol StudyRepository {
     func createStudy(vo: StudyInfoVO) -> AnyPublisher<Bool, Error>
 }
 
-final class StudyRepository: StudyRepositoryProtocol {
+final class StudyRepositoryImpl: StudyRepository {
     private let dataSource: StudyDataSource
     private let mapper: StudyInfoMapper
 

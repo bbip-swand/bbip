@@ -10,7 +10,7 @@ import SwiftUIIntrospect
 
 struct StudyInfoSetupView: View {
     @EnvironmentObject var appState: AppStateManager
-    @StateObject private var createStudyViewModel = CreateStudyViewModel()
+    @StateObject private var createStudyViewModel = DIContainer.shared.makeCreateStudyViewModel()
     @State private var selectedIndex: Int = .zero
     
     init() {
