@@ -656,11 +656,11 @@
 		C695BE012C64CBC8009DEC3C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C6F7006D2C9EC1C0000CCC80 /* Auth */,
+				C6F7006E2C9EC1EC000CCC80 /* User */,
 				C69445932C9D55F8003945CC /* UserHome */,
 				C69445942C9D5616003945CC /* Calendar */,
 				C69445952C9D562D003945CC /* Study */,
-				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
-				C62781152C8C951100065F98 /* UserInfoVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -736,6 +736,22 @@
 				C6B00C1B2C590A10009AC4E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C6F7006D2C9EC1C0000CCC80 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C6F7006E2C9EC1EC000CCC80 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C62781152C8C951100065F98 /* UserInfoVO.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		C6FA55982C8EBFE200E537D7 /* Notice */ = {
