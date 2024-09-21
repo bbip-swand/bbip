@@ -107,7 +107,9 @@
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
-		C6F700732C9ED0C9000CCC80 /* PostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700722C9ED0C9000CCC80 /* PostingDTO.swift */; };
+		C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */; };
+		C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700742C9ED526000CCC80 /* PostingDataSource.swift */; };
+		C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700762C9EED44000CCC80 /* PostDTO.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -238,7 +240,9 @@
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
-		C6F700722C9ED0C9000CCC80 /* PostingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDTO.swift; sourceTree = "<group>"; };
+		C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
+		C6F700742C9ED526000CCC80 /* PostingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDataSource.swift; sourceTree = "<group>"; };
+		C6F700762C9EED44000CCC80 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -612,6 +616,7 @@
 				C62780F72C8AFF0C00065F98 /* AuthDataSource.swift */,
 				C62781062C8C798F00065F98 /* UserDataSource.swift */,
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
+				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -763,7 +768,8 @@
 		C6F700712C9ED0A9000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				C6F700722C9ED0C9000CCC80 /* PostingDTO.swift */,
+				C6F700762C9EED44000CCC80 /* PostDTO.swift */,
+				C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 				C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
+				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
@@ -983,6 +990,7 @@
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
+				C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
@@ -1012,7 +1020,7 @@
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
-				C6F700732C9ED0C9000CCC80 /* PostingDTO.swift in Sources */,
+				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,

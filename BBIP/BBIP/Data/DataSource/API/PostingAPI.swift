@@ -11,7 +11,7 @@ import Moya
 enum PostingAPI {
     case getCurrentWeekPosting
     case getPostingInfo(postingId: String)                  // param
-    case createPosting(dto: PostingDTO)
+    case createPosting(dto: CreatePostingDTO)
     case createComment(postingId: String, content: String)  // param
 }
 
