@@ -29,6 +29,7 @@ struct SettingListRow : View{
             Spacer()
             
             if settinglist.iconName == "info_open"{
+                //TODO: 추후버튼으로 교체
                 Image(settinglist.iconName)
             }else{
                 Text(settinglist.iconName)

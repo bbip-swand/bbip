@@ -12,6 +12,8 @@
 		0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = 082539592C9C6F4100632582 /* CodeCheck.json */; };
 		0825395D2C9DA4EC00632582 /* MypageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825395C2C9DA4EC00632582 /* MypageViewModel.swift */; };
 		0825395F2C9E9BAB00632582 /* MypageSettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825395E2C9E9BAB00632582 /* MypageSettingListView.swift */; };
+		082539612C9ECD0000632582 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539602C9ECD0000632582 /* ProfileDetailView.swift */; };
+		082539632C9ED78500632582 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539622C9ED78500632582 /* ProfileInfoListView.swift */; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
 		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
@@ -138,6 +140,8 @@
 		082539592C9C6F4100632582 /* CodeCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CodeCheck.json; sourceTree = "<group>"; };
 		0825395C2C9DA4EC00632582 /* MypageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewModel.swift; sourceTree = "<group>"; };
 		0825395E2C9E9BAB00632582 /* MypageSettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageSettingListView.swift; sourceTree = "<group>"; };
+		082539602C9ECD0000632582 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		082539622C9ED78500632582 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
 		08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoCardView.swift; sourceTree = "<group>"; };
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
@@ -711,6 +715,8 @@
 				C6FA559D2C8EC02600E537D7 /* MypageView.swift */,
 				0825395C2C9DA4EC00632582 /* MypageViewModel.swift */,
 				0825395E2C9E9BAB00632582 /* MypageSettingListView.swift */,
+				082539602C9ECD0000632582 /* ProfileDetailView.swift */,
+				082539622C9ED78500632582 /* ProfileInfoListView.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -886,6 +892,7 @@
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
+				082539612C9ECD0000632582 /* ProfileDetailView.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
@@ -944,6 +951,7 @@
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
+				082539632C9ED78500632582 /* ProfileInfoListView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
