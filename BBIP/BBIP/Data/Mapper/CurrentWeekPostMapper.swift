@@ -8,14 +8,17 @@
 import Foundation
 
 struct CurrentWeekPostMapper {
-    func toVO(dto: [PostDTO]) -> CurrentWeekPostVO {
-        return dto.map { postDTO in
-            PostVO(
-                createdAt: postDTO.createdAt,
-                postingId: postDTO.postingId,
-                title: postDTO.title,
-                content: postDTO.content,
-                isNotice: postDTO.isNotice
+    func toVO(dto: [PostDTO]) -> [PostVO] {
+        return dto.map { dtoItem in
+            let postType: PostType = dtoItem.isNotice ? .notice : .normal
+            
+            return PostVO(
+                postId: dtoItem.postingId,
+                createdAt: dtoItem.createdAt,
+                studyName: dtoItem.studyName,
+                title: dtoItem.title,
+                content: dtoItem.content,
+                postType: postType
             )
         }
     }
