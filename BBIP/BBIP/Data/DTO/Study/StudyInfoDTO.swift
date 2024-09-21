@@ -14,13 +14,18 @@ struct StudyInfoDTO: Encodable {
     let totalWeeks: Int
     let studyStartDate: String
     let studyEndDate: String
-    let dayOfWeek: [Int]
+    let daysOfWeek: [Int]
     let studyTimes: [StudyTime]
     let studyDescription: String
     let studyContents: [String]
     
     struct StudyTime: Encodable {
-        let startDate: String
-        let endDate: String
+        let startTime: String
+        let endTime: String
     }
+}
+
+// VO 통일
+struct CreateStudyResponseDTO: Decodable {
+    let studyId: String
 }

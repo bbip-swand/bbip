@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol StudyRepository {
-    func createStudy(vo: StudyInfoVO) -> AnyPublisher<Bool, Error>
+    func createStudy(vo: StudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -24,8 +24,9 @@ final class StudyRepositoryImpl: StudyRepository {
         self.mapper = mapper
     }
     
-    func createStudy(vo: StudyInfoVO) -> AnyPublisher<Bool, Error> {
+    func createStudy(vo: StudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         let dto = mapper.toDTO(vo: vo)
+        print("dto: \(dto)")
         return dataSource.createStudy(dto: dto)
             .eraseToAnyPublisher()
     }

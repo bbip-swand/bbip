@@ -13,7 +13,7 @@ import CombineMoya
 final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin()])
     
-    func createStudy(dto: StudyInfoDTO) -> AnyPublisher<Bool, Error> {
+    func createStudy(dto: StudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -23,8 +23,9 @@ final class StudyDataSource {
                         userInfo: [NSLocalizedDescriptionKey: "[StudyDataSource] createStudy() failed with status code \(response.statusCode)"]
                     )
                 }
-                return true
+                return response.data
             }
+            .decode(type: CreateStudyResponseDTO.self, decoder: JSONDecoder())
             .mapError { error in
                 return error
             }

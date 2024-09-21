@@ -19,61 +19,6 @@ class CreateStudyViewModel: ObservableObject {
         false,  // 스터디 한 줄 소개
         true    // 주차별 계획
     ]
-    private let createStudyInfoUseCase: CreateStudyUseCaseProtocol
-    private var cancellables = Set<AnyCancellable>()
-    
-    init(createStudyInfoUseCase: CreateStudyUseCaseProtocol) {
-        self.createStudyInfoUseCase = createStudyInfoUseCase
-        self.contentData = CreateStudyContent.generate()
-        sinkElements()
-    }
-    
-    private func sinkElements() {
-        // SISPeriodView 다음 버튼 상태
-        Publishers.CombineLatest4($weekCount, $periodIsSelected, $selectedDayIndex, $selectedDayStudySession)
-            .sink { [weak self] (weekCount, periodIsSelected, selectedDayIndex, selectedDayStudySessions) in
-                guard let self = self else { return }
-                
-                // selectedDayIndex에 -1이 없고, selectedDayStudySession에 nil 값이 없는지 확인
-                let allDaysValid = !selectedDayIndex.contains(-1) && selectedDayIndex.count > 0
-                let allSessionsValid = !selectedDayStudySessions.contains { $0.startTime == nil || $0.endTime == nil }
-                
-                // 시작 시간이 종료 시간보다 늦은 상태 감지
-                let startTimeBeforeEndTime = !selectedDayStudySessions.contains {
-                    guard let startTime = $0.startTime, let endTime = $0.endTime else { return false }
-                    return startTime >= endTime
-                }
-                // 시작 시간이 종료 시간보다 늦은 경우 alert 표시
-                self.showInvalidTimeAlert = !startTimeBeforeEndTime
-                
-                // canGoNext[1]을 true로 설정할 조건
-                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysValid && allSessionsValid && startTimeBeforeEndTime
-            }
-            .store(in: &cancellables)
-    }
-    
-    // 시작일로부터 주차 계산해 마감일 계산
-    func calculateDeadline() {
-        let addedWeeks = Calendar.current.date(
-            byAdding: .weekOfYear,
-            value: weekCount,
-            to: startDate
-        )
-        deadlineDate = addedWeeks
-        periodIsSelected = true
-    }
-    
-    func initalWeeklyContentData() {
-        let currentCount = weeklyContentData.count
-        var newData = Array(repeating: "", count: weekCount)
-        
-        // 기존 데이터 중에서 유지할 데이터가 있는 경우 복사
-        for index in 0..<min(currentCount, weekCount) {
-            newData[index] = weeklyContentData[index] ?? ""
-        }
-        weeklyContentData = newData
-        print(weeklyContentData.count, weeklyContentData)
-    }
     
     // MARK: - Category Setting View
     @Published var selectedCategoryIndex: [Int] = .init()
@@ -118,4 +63,115 @@ class CreateStudyViewModel: ObservableObject {
     
     // MARK: - Handle Complete
     @Published var showCompleteView: Bool = false
+    var createdStudyId: String = .init()
+    
+    private let createStudyInfoUseCase: CreateStudyUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(createStudyInfoUseCase: CreateStudyUseCaseProtocol) {
+        self.createStudyInfoUseCase = createStudyInfoUseCase
+        self.contentData = CreateStudyContent.generate()
+        sinkElements()
+    }
+    
+    private func sinkElements() {
+        // SISPeriodView 다음 버튼 상태
+        Publishers.CombineLatest4($weekCount, $periodIsSelected, $selectedDayIndex, $selectedDayStudySession)
+            .sink { [weak self] (weekCount, periodIsSelected, selectedDayIndex, selectedDayStudySessions) in
+                guard let self = self else { return }
+                
+                // selectedDayIndex에 -1이 없고, selectedDayStudySession에 nil 값이 없는지 확인
+                let allDaysValid = !selectedDayIndex.contains(-1) && selectedDayIndex.count > 0
+                let allSessionsValid = !selectedDayStudySessions.contains { $0.startTime == nil || $0.endTime == nil }
+                
+                // 시작 시간이 종료 시간보다 늦은 상태 감지
+                let startTimeBeforeEndTime = !selectedDayStudySessions.contains {
+                    guard let startTime = $0.startTime, let endTime = $0.endTime else { return false }
+                    return startTime >= endTime
+                }
+                // 시작 시간이 종료 시간보다 늦은 경우 alert 표시
+                self.showInvalidTimeAlert = !startTimeBeforeEndTime
+                
+                // canGoNext[1]을 true로 설정할 조건
+                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysValid && allSessionsValid && startTimeBeforeEndTime
+            }
+            .store(in: &cancellables)
+    }
+    
+    func createStudy() {
+        isLoading = true
+        let uploadPublisher: AnyPublisher<String, Error>
+        
+        // 사용자가 이미지를 선택했다면 업로드 후 S3 bucket url, 아니라면 빈 문자열로 VO 생성
+        if let selectedImage = selectedImage {
+            uploadPublisher = AWSS3Manager.shared.upload(image: selectedImage)
+        } else {
+            uploadPublisher = Just("")
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+        }
+        
+        uploadPublisher
+            .receive(on: DispatchQueue.main)
+            .flatMap { [weak self] uploadedImageUrl -> AnyPublisher<CreateStudyResponseDTO, Error> in
+                guard let self = self else {
+                    return Fail(error: URLError(.unknown)).eraseToAnyPublisher()
+                }
+                
+                let vo = StudyInfoVO(
+                    category: selectedCategoryIndex[0],
+                    weekCount: weekCount,
+                    startDate: startDate,
+                    endDate: deadlineDate!,
+                    dayIndexArr: selectedDayIndex,
+                    studySessionArr: selectedDayStudySession,
+                    name: studyName,
+                    imageURL: uploadedImageUrl,
+                    description: studyDescription,
+                    weeklyContent: weeklyContentData
+                )
+                
+                return self.createStudyInfoUseCase.excute(studyInfoVO: vo)
+            }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    self.isLoading = false
+                    print("스터디 생성 실패: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.isLoading = false
+                self.createdStudyId = response.studyId
+                self.showCompleteView = true
+                print("\(createdStudyId) 스터디 생성 성공")
+            }
+            .store(in: &cancellables)
+    }
+
+    // 시작일로부터 주차 계산해 마감일 계산
+    func calculateDeadline() {
+        let addedWeeks = Calendar.current.date(
+            byAdding: .weekOfYear,
+            value: weekCount,
+            to: startDate
+        )
+        deadlineDate = addedWeeks
+        periodIsSelected = true
+    }
+    
+    func initalWeeklyContentData() {
+        let currentCount = weeklyContentData.count
+        var newData = Array(repeating: "", count: weekCount)
+        
+        // 기존 데이터 중에서 유지할 데이터가 있는 경우 복사
+        for index in 0..<min(currentCount, weekCount) {
+            newData[index] = weeklyContentData[index] ?? ""
+        }
+        weeklyContentData = newData
+        print(weeklyContentData.count, weeklyContentData)
+    }
 }

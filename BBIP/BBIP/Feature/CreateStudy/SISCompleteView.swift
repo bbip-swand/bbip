@@ -11,6 +11,12 @@ struct SISCompleteView: View {
     @EnvironmentObject private var appState: AppStateManager
     @State private var showDismissButton: Bool = false
     
+    private let studyId: String
+    
+    init(studyId: String) {
+        self.studyId = studyId
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -61,8 +67,4 @@ struct SISCompleteView: View {
             }
         }
     }
-}
-
-#Preview {
-    SISCompleteView()
 }

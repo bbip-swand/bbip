@@ -85,8 +85,9 @@ struct StudyInfoSetupView: View {
         .ignoresSafeArea(.keyboard)
         .handlingBackButtonStyle(currentIndex: $selectedIndex, isReversal: true)
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
+        .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-            SISCompleteView()
+            SISCompleteView(studyId: createStudyViewModel.createdStudyId)
         }
     }
 
@@ -99,8 +100,7 @@ struct StudyInfoSetupView: View {
             } else if selectedIndex < createStudyViewModel.contentData.count - 1 {
                 selectedIndex += 1
             } else {
-                // 스터디 생성 프로세스
-                createStudyViewModel.showCompleteView = true
+                createStudyViewModel.createStudy()
             }
         }
     }

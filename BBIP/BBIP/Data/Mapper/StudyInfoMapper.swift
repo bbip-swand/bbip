@@ -19,8 +19,8 @@ struct StudyInfoMapper {
         // StudyTime 변환
         let studyTimes = vo.studySessionArr.map { session in
             return StudyInfoDTO.StudyTime(
-                startDate: sessionTimeDateFormatter.string(from: session.startTime!),
-                endDate: sessionTimeDateFormatter.string(from: session.endTime!)
+                startTime: sessionTimeDateFormatter.string(from: session.startTime!),
+                endTime: sessionTimeDateFormatter.string(from: session.endTime!)
             )
         }
         
@@ -32,7 +32,7 @@ struct StudyInfoMapper {
             totalWeeks: vo.weekCount,
             studyStartDate: dateFormatter.string(from: vo.startDate),
             studyEndDate: dateFormatter.string(from: vo.endDate),
-            dayOfWeek: vo.dayIndexArr,
+            daysOfWeek: vo.dayIndexArr,
             studyTimes: studyTimes,
             studyDescription: vo.description,
             studyContents: vo.weeklyContent.map { $0 ?? "" }
