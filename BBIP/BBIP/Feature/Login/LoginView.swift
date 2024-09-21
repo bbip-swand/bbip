@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @ObservedObject var viewModel: LoginViewModel = makeLoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -76,30 +76,6 @@ private struct AppleSigninButton : View {
                 )
                 .blendMode(.overlay)
             }
-    }
-}
-
-extension LoginView {
-    static func makeRequestLoginUseCase() -> RequestLoginUseCase {
-        let dataSource = AuthDataSource()
-        let mapper = LoginResponseMapper()
-        let repository = AuthRepositoryImpl(dataSource: dataSource, mapper: mapper)
-        return RequestLoginUseCase(repository: repository)
-    }
-    
-    static func makeSignUpUseCase() -> SignUpUseCase {
-        let dataSource = UserDataSource()
-        let mapper = UserInfoMapper()
-        let repository = UserRepository(dataSource: dataSource, mapper: mapper)
-        
-        return SignUpUseCase(repository: repository)
-    }
-    
-    static func makeLoginViewModel() -> LoginViewModel {
-        return LoginViewModel(
-            requestLoginUseCase: makeRequestLoginUseCase(),
-            signUpUseCase: makeSignUpUseCase()
-        )
     }
 }
 

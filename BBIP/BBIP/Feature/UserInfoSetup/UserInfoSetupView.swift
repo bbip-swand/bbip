@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct UserInfoSetupView: View {
-    @StateObject private var userInfoSetupViewModel = makeUserInfoSetupViewModel()
+    @StateObject private var userInfoSetupViewModel = DIContainer.shared.makeUserInfoSetupViewModel()
     @State private var selectedIndex: Int = 0
     
     private func buttonText() -> String {
@@ -111,14 +111,4 @@ fileprivate extension View {
     }
 }
 
-extension UserInfoSetupView {
-    static func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
-        let dataSource = UserDataSource()
-        let mapper = UserInfoMapper()
-        let repository = UserRepository(dataSource: dataSource, mapper: mapper)
-        let useCase = CreateUserInfoUseCase(repository: repository)
-        
-        return UserInfoSetupViewModel(createUserInfoUseCase: useCase)
-    }
-}
 

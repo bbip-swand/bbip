@@ -13,9 +13,9 @@ protocol SignUpUseCaseProtocol {
 }
 
 final class SignUpUseCase: SignUpUseCaseProtocol {
-    private let repository: UserRepositoryProtocol
+    private let repository: UserRepository
 
-    init(repository: UserRepositoryProtocol) {
+    init(repository: UserRepository) {
         self.repository = repository
     }
 
