@@ -10,6 +10,7 @@ import SwiftUI
 struct MypageView: View {
     var selectedImage : UIImage? = nil
     var userName : String = ""
+    @State private var settinglist = SettingList.MypageSettingList()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -153,17 +154,34 @@ struct MypageView: View {
             }
             .padding(.top,24)
             
-            
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.mainWhite)
+                    .padding(.top,29)
+                    .ignoresSafeArea()
+                
+                List{
+                    ForEach(settinglist){ settinglist in
+                        SettingListRow(settinglist: settinglist)
+                            .listRowInsets(.none)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)) // 패딩 조정
+                        
+                    }
+                    .listRowSeparator(.hidden)
+                }
+                .padding(.top,29)
+            .listStyle(.plain)
+            }
             
             
         }
+        .ignoresSafeArea(.keyboard)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
         .navigationTitle("마이페이지")
         .backButtonStyle()
     }
 }
-
 
 #Preview{
     MypageView()
