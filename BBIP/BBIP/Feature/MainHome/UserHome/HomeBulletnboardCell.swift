@@ -30,7 +30,6 @@ struct HomeBulletnboardCell: View {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: 171, height: 115)
                 .foregroundStyle(.mainWhite)
-                .bbipShadow1()
             
             VStack(alignment: .leading, spacing: 0) {
                 CapsuleView(title: vo.studyName, type: capsuleViewType)

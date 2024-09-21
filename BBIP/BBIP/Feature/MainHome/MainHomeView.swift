@@ -23,10 +23,10 @@ struct MainHomeView: View {
                     BBIPHearderView(
                         showDot: $hasNotice,
                         onNoticeTapped: {
-                            appState.path.append("NoticeView")
+                            appState.push(.notice)
                         },
                         onProfileTapped: {
-                            appState.path.append("MypageView")
+                            appState.push(.mypage)
                         }
                     )
                     UserHomeView(viewModel: viewModel)

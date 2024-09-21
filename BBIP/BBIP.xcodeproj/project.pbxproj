@@ -68,6 +68,7 @@
 		C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */; };
 		C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */; };
 		C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BCB2C822147006AA652 /* SISCompleteView.swift */; };
+		C69445922C9D55DF003945CC /* StudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69445912C9D55DF003945CC /* StudyInfoVO.swift */; };
 		C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */; };
 		C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */; };
 		C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */; };
@@ -191,6 +192,7 @@
 		C6934BC72C8220E1006AA652 /* SISDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISDescriptionView.swift; sourceTree = "<group>"; };
 		C6934BC92C822121006AA652 /* SISWeeklyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISWeeklyContentView.swift; sourceTree = "<group>"; };
 		C6934BCB2C822147006AA652 /* SISCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCompleteView.swift; sourceTree = "<group>"; };
+		C69445912C9D55DF003945CC /* StudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoVO.swift; sourceTree = "<group>"; };
 		C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C695CB4D2C7DE9E000BB3952 /* UISInterestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISInterestView.swift; sourceTree = "<group>"; };
@@ -372,6 +374,34 @@
 				C695CB5B2C7F061A00BB3952 /* UISJobView.swift */,
 			);
 			path = UISInnerView;
+			sourceTree = "<group>";
+		};
+		C69445932C9D55F8003945CC /* UserHome */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
+				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
+				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
+				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
+			);
+			path = UserHome;
+			sourceTree = "<group>";
+		};
+		C69445942C9D5616003945CC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C69445952C9D562D003945CC /* CreateStudy */ = {
+			isa = PBXGroup;
+			children = (
+				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
+				C69445912C9D55DF003945CC /* StudyInfoVO.swift */,
+			);
+			path = CreateStudy;
 			sourceTree = "<group>";
 		};
 		C695BDE02C649EDE009DEC3C /* App */ = {
@@ -585,14 +615,11 @@
 		C695BE012C64CBC8009DEC3C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C69445932C9D55F8003945CC /* UserHome */,
+				C69445942C9D5616003945CC /* Calendar */,
+				C69445952C9D562D003945CC /* CreateStudy */,
 				C62780FB2C8B0A3900065F98 /* LoginVO.swift */,
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
-				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
-				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
-				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
-				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
-				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
-				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -872,6 +899,7 @@
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
 				C62780EC2C8AEE4800065F98 /* RequestLoginUseCase.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
+				C69445922C9D55DF003945CC /* StudyInfoVO.swift in Sources */,
 				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,

@@ -36,7 +36,7 @@ struct StudyInfoSetupView: View {
                     .tag(4)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .introspect(.tabView(style: .page), on: .iOS(.v17)) {
+            .introspect(.tabView(style: .page), on: .iOS(.v17, .v18)) {
                 $0.isScrollEnabled = false
             }
             

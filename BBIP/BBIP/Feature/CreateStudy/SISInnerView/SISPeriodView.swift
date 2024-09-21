@@ -94,8 +94,8 @@ struct SISPeriodView: View {
                 .presentationDetents([.height(370)])
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            scrollView.showsVerticalScrollIndicator = false
+        .scrollIndicators(.never)
+        .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
             scrollView.bounces = false
         }
     }

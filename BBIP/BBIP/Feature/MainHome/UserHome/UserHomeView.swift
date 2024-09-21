@@ -72,8 +72,8 @@ struct UserHomeView: View {
                 withAnimation { isRefresh = false }
             }
         }
-        .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-            scrollView.showsVerticalScrollIndicator = false
+        .scrollIndicators(.never)
+        .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
             scrollView.backgroundColor = .gray1
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
@@ -110,9 +110,8 @@ struct UserHomeView: View {
                 .padding(.horizontal, 17)
                 .frame(height: 120)
             }
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-                scrollView.showsHorizontalScrollIndicator = false
-            }
+            .bbipShadow1()
+            .scrollIndicators(.never)
         }
     }
     
@@ -156,9 +155,8 @@ struct UserHomeView: View {
                 .padding(.horizontal, 17)
                 .frame(height: 150)
             }
-            .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
-                scrollView.showsHorizontalScrollIndicator = false
-            }
+            .bbipShadow1()
+            .scrollIndicators(.never)
         }
     }
 }
