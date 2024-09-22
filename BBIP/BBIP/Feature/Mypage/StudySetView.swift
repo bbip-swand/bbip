@@ -45,11 +45,12 @@ struct StudySetView : View {
                 }
             }
             
+            Spacer()
             
             
         }
         .navigationTitle("나의 스터디")
-        .background(.gray1)
+        .background(.mainWhite)
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
         

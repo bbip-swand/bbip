@@ -88,6 +88,9 @@ struct MypageProfileView: View{
 
 //MARK: MypageStudyView
 struct MypageStudyView: View{
+    @State var showStudying : Bool = false
+    @State var showStudied : Bool = false
+    
     var body: some View{
         VStack(spacing: 0) {
             HStack(spacing:0){
@@ -102,7 +105,7 @@ struct MypageStudyView: View{
             HStack(spacing:11){
                 
                 Button{
-                    
+                    showStudying = true
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
@@ -143,7 +146,7 @@ struct MypageStudyView: View{
                 }
                 
                 Button{
-                    
+                    showStudied = true
                 }label:{
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
@@ -185,6 +188,12 @@ struct MypageStudyView: View{
                 
             }
             .padding(.top,12)
+        }
+        .navigationDestination(isPresented: $showStudying){
+            StudySetView()
+        }
+        .navigationDestination(isPresented: $showStudied){
+            StudySetView()
         }
     }
 }
