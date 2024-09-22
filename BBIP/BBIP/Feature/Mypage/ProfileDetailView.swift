@@ -7,8 +7,6 @@ struct ProfileDetailView: View{
     @State private var profileinfolist = ProfileInfoList.InfoList()
     var body: some View {
         VStack(spacing:0){
-            
-            VStack(spacing:0){
                 Button {
         //            viewModel.showImagePicker = true
                 } label: {
@@ -34,15 +32,13 @@ struct ProfileDetailView: View{
                             .frame(width: 24, height: 24)
                             .padding(.trailing, 16.5)
                     }
+                    .padding(.top,30)
                 }
                 
                 Text("채지영")
                     .font(.bbip(.title3_m20))
                     .foregroundStyle(.mainBlack)
                     .padding(.top,20)
-            }
-            .padding(.top,30)
-            
             
             VStack(spacing:0){
                 HStack(spacing:0){
@@ -58,7 +54,8 @@ struct ProfileDetailView: View{
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.gray3, lineWidth: 1) // 테두리 색상과 두께 설정
                         .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.mainWhite))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 65)
                         .padding(.leading, 16)
                         .padding(.trailing, 16)
                         
@@ -113,8 +110,6 @@ struct ProfileDetailView: View{
                                 .padding(.trailing,26)
                                 .padding(.bottom,21)
                         }
-                        
-                        Spacer().frame(height:3)
                     }
                 }
                 .padding(.top,12)
@@ -122,6 +117,7 @@ struct ProfileDetailView: View{
             }
             .padding(.top,21)
             
+            Spacer()
             
             ZStack{
                 RoundedRectangle(cornerRadius: 12)
@@ -138,7 +134,7 @@ struct ProfileDetailView: View{
                 
             }
             .padding(.bottom,64)
-            .padding(.top,114)
+            
             
             
         }

@@ -100,79 +100,88 @@ struct MypageStudyView: View{
             .padding(.leading,28)
             
             HStack(spacing:11){
-                ZStack{
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(.mainWhite)
-                        .frame(maxWidth: .infinity, maxHeight: 64)
-                        .padding(.leading, 16)
+                
+                Button{
                     
-                    HStack(spacing:0){
-                        VStack(alignment:.leading,spacing:0){
-                            Text("진행 중인 스터디")
-                                .font(.bbip(.body2_m14))
-                                .foregroundStyle(.gray7)
-                            
-                            HStack(spacing:0){
-                                Text("3")
-                                    .font(.bbip(.body1_sb16))
-                                    .foregroundStyle(.primary3)
-                                    .padding(.top, 4)
+                }label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundColor(.mainWhite)
+                            .frame(maxWidth: .infinity, maxHeight: 64)
+                            .padding(.leading, 16)
+                        
+                        HStack(spacing:0){
+                            VStack(alignment:.leading,spacing:0){
+                                Text("진행 중인 스터디")
+                                    .font(.bbip(.body2_m14))
+                                    .foregroundStyle(.gray7)
                                 
-                                Text("개")
-                                    .font(.bbip(.body1_sb16))
-                                    .foregroundStyle(.gray8)
-                                    .padding(.top, 4)
-                                
+                                HStack(spacing:0){
+                                    Text("3")
+                                        .font(.bbip(.body1_sb16))
+                                        .foregroundStyle(.primary3)
+                                        .padding(.top, 4)
+                                    
+                                    Text("개")
+                                        .font(.bbip(.body1_sb16))
+                                        .foregroundStyle(.gray8)
+                                        .padding(.top, 4)
+                                    
+                                }
                             }
+                            
+                            Spacer()
+                            
+                            Image("mypage_punch")
+                                .resizable()
+                                .frame(width:35, height: 35)
                         }
+                        .padding(.leading,35)
+                        .padding(.trailing,19)
                         
-                        Spacer()
-                        
-                        Image("mypage_punch")
-                            .resizable()
-                            .frame(width:35, height: 35)
                     }
-                    .padding(.leading,35)
-                    .padding(.trailing,19)
-                    
                 }
                 
-                
-                ZStack{
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(.mainWhite)
-                        .frame(maxWidth: .infinity, maxHeight: 64)
-                        .padding(.trailing,16)
+                Button{
                     
-                    HStack(spacing:0){
-                        VStack(alignment:.leading,spacing:0){
-                            Text("종료된 스터디")
-                                .font(.bbip(.body2_m14))
-                                .foregroundStyle(.gray7)
-                            
-                            HStack(spacing:0){
-                                Text("3")
-                                    .font(.bbip(.body1_sb16))
-                                    .foregroundStyle(.primary3)
-                                    .padding(.top, 4)
+                }label:{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundColor(.mainWhite)
+                            .frame(maxWidth: .infinity, maxHeight: 64)
+                            .padding(.trailing,16)
+                        
+                        HStack(spacing:0){
+                            VStack(alignment:.leading,spacing:0){
+                                Text("종료된 스터디")
+                                    .font(.bbip(.body2_m14))
+                                    .foregroundStyle(.gray7)
                                 
-                                Text("개")
-                                    .font(.bbip(.body1_sb16))
-                                    .foregroundStyle(.gray8)
-                                    .padding(.top, 4)
-                                
+                                HStack(spacing:0){
+                                    Text("3")
+                                        .font(.bbip(.body1_sb16))
+                                        .foregroundStyle(.primary3)
+                                        .padding(.top, 4)
+                                    
+                                    Text("개")
+                                        .font(.bbip(.body1_sb16))
+                                        .foregroundStyle(.gray8)
+                                        .padding(.top, 4)
+                                    
+                                }
                             }
+                            
+                            Spacer()
+                            
+                            Image("mypage_belt")
+                                .resizable()
+                                .frame(width:35, height: 24.05)
                         }
-                        
-                        Spacer()
-                        
-                        Image("mypage_belt")
-                            .resizable()
-                            .frame(width:35, height: 24.05)
+                        .padding(.leading, 19)
+                        .padding(.trailing,31)
                     }
-                    .padding(.leading, 19)
-                    .padding(.trailing,31)
                 }
+                
                 
             }
             .padding(.top,12)

@@ -47,10 +47,14 @@ struct ProfileInfoListRow : View{
             
             Spacer()
             
-            Text(profileinfolist.iconName)
-                .font(.bbip(.caption3_r12))
-                .foregroundStyle(.gray5)
-                .padding(.trailing,16)
+            Button{
+                
+            }label: {
+                Text(profileinfolist.iconName)
+                    .font(.bbip(.caption3_r12))
+                    .foregroundStyle(.gray5)
+                    .padding(.trailing,16)
+            }
             
         }
     }
