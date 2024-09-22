@@ -8,14 +8,14 @@
 import Foundation
 import Combine
 
-protocol UserRepositoryProtocol {
+protocol UserRepository {
     func signUp(signUpDTO: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error>
     func resign() -> AnyPublisher<Bool, Error>
     func createUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
     func updateUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
 }
 
-final class UserRepository: UserRepositoryProtocol {
+final class UserRepositoryImpl: UserRepository {
     private let dataSource: UserDataSource
     private let mapper: UserInfoMapper
 
