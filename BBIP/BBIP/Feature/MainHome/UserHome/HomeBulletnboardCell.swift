@@ -30,7 +30,7 @@ struct HomeBulletnboardCell: View {
                 CapsuleView(title: vo.studyName, type: capsuleViewType)
                     .padding(.bottom, 12)
                 
-                Text(vo.content)
+                Text(vo.title)
                     .frame(maxWidth: 137, maxHeight: 34, alignment: .leading)
                     .font(.bbip(.body2_m14))
                     .padding(.bottom, 7)
