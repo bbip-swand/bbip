@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
-    @ObservedObject private var viewModel = MainHomeViewModel()
+    @ObservedObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
     
     // MARK: - Navigation Destination
@@ -42,6 +42,8 @@ struct MainHomeView: View {
         }
         .onAppear {
             appState.setLightMode()
+            print("onAppear!")
+            viewModel.loadHomeData()
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
