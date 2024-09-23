@@ -106,6 +106,14 @@
 		C6B8CE392C7AA5210006E906 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C6B8CE382C7AA5210006E906 /* Lottie */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
+		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
+		C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */; };
+		C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700742C9ED526000CCC80 /* PostingDataSource.swift */; };
+		C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700762C9EED44000CCC80 /* PostDTO.swift */; };
+		C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700782C9EEF30000CCC80 /* PostingRepository.swift */; };
+		C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007B2C9EEF89000CCC80 /* PostVO.swift */; };
+		C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */; };
+		C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -235,6 +243,14 @@
 		C6B00C1B2C590A10009AC4E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
+		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
+		C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
+		C6F700742C9ED526000CCC80 /* PostingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDataSource.swift; sourceTree = "<group>"; };
+		C6F700762C9EED44000CCC80 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		C6F700782C9EEF30000CCC80 /* PostingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingRepository.swift; sourceTree = "<group>"; };
+		C6F7007B2C9EEF89000CCC80 /* PostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVO.swift; sourceTree = "<group>"; };
+		C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostMapper.swift; sourceTree = "<group>"; };
+		C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -586,6 +602,7 @@
 				C62780EE2C8AF2E800065F98 /* Login */,
 				C62781012C8C76A000065F98 /* User */,
 				C694459B2C9D5B19003945CC /* Study */,
+				C6F700712C9ED0A9000CCC80 /* Posting */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -593,9 +610,11 @@
 		C695BDFB2C64CB83009DEC3C /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				C62780FD2C8B0A7E00065F98 /* LoginResponseMapper.swift */,
-				C62781172C8C98B000065F98 /* UserInfoMapper.swift */,
-				C69445A02C9D6200003945CC /* StudyInfoMapper.swift */,
+				C6F700822C9EF8B3000CCC80 /* Posting */,
+				C6F7007F2C9EF889000CCC80 /* Auth */,
+				C6F700802C9EF896000CCC80 /* User */,
+				C6F700812C9EF8A3000CCC80 /* Study */,
+				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -607,6 +626,7 @@
 				C62780F72C8AFF0C00065F98 /* AuthDataSource.swift */,
 				C62781062C8C798F00065F98 /* UserDataSource.swift */,
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
+				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -615,11 +635,12 @@
 			isa = PBXGroup;
 			children = (
 				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
+				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
 				C62780F32C8AFBC600065F98 /* BaseAPI.swift */,
 				C62780F12C8AFB9C00065F98 /* AuthAPI.swift */,
 				C62780FF2C8C72C900065F98 /* UserAPI.swift */,
-				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
 				C69445992C9D5A3E003945CC /* StudyAPI.swift */,
+				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -630,6 +651,7 @@
 				C62780F92C8B099900065F98 /* AuthRepository.swift */,
 				C62781082C8C814000065F98 /* UserRepository.swift */,
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
+				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -649,6 +671,7 @@
 				C62780ED2C8AEFD100065F98 /* Login */,
 				C627810C2C8C841700065F98 /* User */,
 				C69445962C9D590C003945CC /* Study */,
+				C6F700842CA158B6000CCC80 /* Posting */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -661,6 +684,7 @@
 				C69445932C9D55F8003945CC /* UserHome */,
 				C69445942C9D5616003945CC /* Calendar */,
 				C69445952C9D562D003945CC /* Study */,
+				C6F7007A2C9EEF72000CCC80 /* Posting */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -752,6 +776,62 @@
 				C62781152C8C951100065F98 /* UserInfoVO.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		C6F700712C9ED0A9000CCC80 /* Posting */ = {
+			isa = PBXGroup;
+			children = (
+				C6F700762C9EED44000CCC80 /* PostDTO.swift */,
+				C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */,
+			);
+			path = Posting;
+			sourceTree = "<group>";
+		};
+		C6F7007A2C9EEF72000CCC80 /* Posting */ = {
+			isa = PBXGroup;
+			children = (
+				C6F7007B2C9EEF89000CCC80 /* PostVO.swift */,
+			);
+			path = Posting;
+			sourceTree = "<group>";
+		};
+		C6F7007F2C9EF889000CCC80 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C62780FD2C8B0A7E00065F98 /* LoginResponseMapper.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C6F700802C9EF896000CCC80 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C62781172C8C98B000065F98 /* UserInfoMapper.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C6F700812C9EF8A3000CCC80 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				C69445A02C9D6200003945CC /* StudyInfoMapper.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		C6F700822C9EF8B3000CCC80 /* Posting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Posting;
+			sourceTree = "<group>";
+		};
+		C6F700842CA158B6000CCC80 /* Posting */ = {
+			isa = PBXGroup;
+			children = (
+				C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */,
+			);
+			path = Posting;
 			sourceTree = "<group>";
 		};
 		C6FA55982C8EBFE200E537D7 /* Notice */ = {
@@ -938,8 +1018,10 @@
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */,
+				C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
+				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
@@ -948,6 +1030,7 @@
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
+				C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
@@ -968,6 +1051,7 @@
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
+				C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
@@ -984,12 +1068,14 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
+				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
+				C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */,
 				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
@@ -997,6 +1083,7 @@
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
+				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
@@ -1004,6 +1091,7 @@
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
+				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,

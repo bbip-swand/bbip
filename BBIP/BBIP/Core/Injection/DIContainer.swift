@@ -54,6 +54,18 @@ class DIContainer {
     )
     
     
+    // MARK: - Posting
+    private let postingDataSource = PostingDataSource()
+    private let currentWeekPostMapper = CurrentWeekPostMapper()
+    private lazy var postingRepository: PostingRepository = PostingRepositoryImpl(
+        dataSource: postingDataSource,
+        mapper: currentWeekPostMapper
+    )
+    
+    private lazy var getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol = GetCurrentWeekPostUseCase(
+        repository: postingRepository
+    )
+    
     // MARK: - ViewModels
     // Login
     func makeLoginViewModel() -> LoginViewModel {
@@ -66,6 +78,11 @@ class DIContainer {
     // UserInfoSetup
     func makeUserInfoSetupViewModel() -> UserInfoSetupViewModel {
         return UserInfoSetupViewModel(createUserInfoUseCase: createUserInfoUseCase)
+    }
+    
+    // UserHome
+    func makeMainHomeViewModel() -> MainHomeViewModel {
+        return MainHomeViewModel(getCurrentWeekPostUseCase: getCurrentWeekPostUseCase)
     }
     
     // CreateStudy

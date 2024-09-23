@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct UserHomeView: View {
-    @ObservedObject private var viewModel: MainHomeViewModel
+    @StateObject var viewModel: MainHomeViewModel
     
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
-    
-    init(viewModel: MainHomeViewModel) {
-        self.viewModel = viewModel
-    }
     
     var body: some View {
         ScrollView {
@@ -49,7 +45,6 @@ struct UserHomeView: View {
             mainBulletn
                 .padding(.top, 36)
                 .padding(.bottom, 32)
-                .redacted(reason: isRefresh ? .placeholder : [])
             
             currentWeekStudy
                 .padding(.bottom, 32)
@@ -103,10 +98,20 @@ struct UserHomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    ForEach(0..<viewModel.homeBulletnData.count, id: \.self) { index in
-                        HomeBulletnboardCell(vo: viewModel.homeBulletnData[index])
+                    if viewModel.homeBulletnData == nil {
+                        ForEach(0..<5, id: \.self) { _ in
+                            HomeBulletnboardCell(vo: .placeholderVO())
+                                .redacted(reason: .placeholder)
+                        }
+                    } else if let data = viewModel.homeBulletnData, data.isEmpty {
+                        HomeBulletnboardCellPlaceholder()
+                    } else if let data = viewModel.homeBulletnData {
+                        ForEach(0..<data.count, id: \.self) { index in
+                            HomeBulletnboardCell(vo: data[index])
+                        }
                     }
                 }
+                .animation(.easeInOut, value: viewModel.homeBulletnData)
                 .padding(.horizontal, 17)
                 .frame(height: 120)
             }
