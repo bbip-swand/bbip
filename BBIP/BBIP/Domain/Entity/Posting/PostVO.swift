@@ -18,8 +18,23 @@ typealias CurrentWeekPostVO = [PostVO]
 struct PostVO {
     let postId: String
     let createdAt: Date
+    let writer: String
     let studyName: String
     let title: String
     let content: String
     let postType: PostType
+}
+
+extension PostVO {
+    static func placeholderVO() -> PostVO {
+        return PostVO.init(
+            postId: "",
+            createdAt: Date(),
+            writer: "",
+            studyName: "placeholder",
+            title: "placeholder",
+            content: "placeholder",
+            postType: .normal
+        )
+    }
 }

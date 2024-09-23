@@ -49,7 +49,6 @@ struct UserHomeView: View {
             mainBulletn
                 .padding(.top, 36)
                 .padding(.bottom, 32)
-                .redacted(reason: isRefresh ? .placeholder : [])
             
             currentWeekStudy
                 .padding(.bottom, 32)
@@ -103,8 +102,17 @@ struct UserHomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    ForEach(0..<viewModel.homeBulletnData.count, id: \.self) { index in
-                        HomeBulletnboardCell(vo: viewModel.homeBulletnData[index])
+                    if let data = viewModel.homeBulletnData, data.isEmpty {
+                        HomeBulletnboardCellPlaceholder()
+                    } else if let data = viewModel.homeBulletnData, !data.isEmpty {
+                        ForEach(0..<data.count, id: \.self) { index in
+                            HomeBulletnboardCell(vo: data[index])
+                        }
+                    } else {
+                        ForEach(0..<5, id: \.self) { _ in
+                            HomeBulletnboardCell(vo: .placeholderVO())
+                                .redacted(reason: .placeholder)
+                        }
                     }
                 }
                 .padding(.horizontal, 17)

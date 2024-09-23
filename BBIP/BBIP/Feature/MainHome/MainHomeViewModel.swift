@@ -8,7 +8,7 @@
 import Foundation
 
 class MainHomeViewModel: ObservableObject {
-    @Published var homeBulletnData = HomeBulletnboardPostVO.generateMock()
+    @Published var homeBulletnData: CurrentWeekPostVO?
     @Published var currentWeekStudyData = CurrentWeekStudyInfoVO.generateMock()
     @Published var commingScheduleData = CommingScheduleVO.generateMock()
 }

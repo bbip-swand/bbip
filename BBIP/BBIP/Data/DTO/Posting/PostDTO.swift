@@ -10,6 +10,7 @@ import Foundation
 struct PostDTO: Decodable {
     let studyName: String
     let dbPostingId: Int
+    let writer: String
     let postingId: String
     let title: String
     let content: String
