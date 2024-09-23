@@ -12,11 +12,15 @@ import CombineMoya
 
 final class PostingDataSource {
     private let provider = MoyaProvider<PostingAPI>(plugins: [TokenPlugin()])
-    
+
     func getCurrentWeekPosting() -> AnyPublisher<[PostDTO], Error> {
-        provider.requestPublisher(.getCurrentWeekPosting)
+        return provider.requestPublisher(.getCurrentWeekPosting)
             .map(\.data)
-            .decode(type: [PostDTO].self, decoder: JSONDecoder())
+            .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .mapError { error in
+                print("Error: \(error.localizedDescription)")
+                return error
+            }
             .eraseToAnyPublisher()
     }
 }

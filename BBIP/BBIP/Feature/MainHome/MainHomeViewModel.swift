@@ -40,8 +40,8 @@ class MainHomeViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
-                print(response)
                 self.homeBulletnData = response
+                print(homeBulletnData![0].createdAt)
             }
             .store(in: &cancellables)
     }

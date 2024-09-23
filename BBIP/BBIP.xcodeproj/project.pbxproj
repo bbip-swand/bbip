@@ -114,6 +114,8 @@
 		C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007B2C9EEF89000CCC80 /* PostVO.swift */; };
 		C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */; };
 		C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */; };
+		C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */; };
+		C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -251,6 +253,8 @@
 		C6F7007B2C9EEF89000CCC80 /* PostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVO.swift; sourceTree = "<group>"; };
 		C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostMapper.swift; sourceTree = "<group>"; };
 		C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
+		C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -558,6 +562,8 @@
 				C61A472F2C6687690016986D /* Font+Extension.swift */,
 				C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */,
 				C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */,
+				C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */,
+				C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1078,6 +1084,7 @@
 				C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */,
 				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
+				C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
@@ -1102,6 +1109,7 @@
 				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,
 				C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */,
 				C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */,
+				C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
