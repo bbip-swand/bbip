@@ -1,5 +1,5 @@
 //
-//  StudyInfoVO.swift
+//  CurrentWeekStudyInfoVO.swift
 //  BBIP
 //
 //  Created by 이건우 on 9/9/24.
@@ -7,10 +7,8 @@
 
 import Foundation
 
-typealias CurrentWeekStudyInfoVO = [StudyInfoVO]
-
-/// 앱 내부에서 사용되는 스터디 정보 VO
-struct StudyInfoVO: Equatable {
+/// 금주 스터디 정보에 사용되는 스터디 정보 VO
+struct CurrentWeekStudyInfoVO: Equatable {
     let studyId: String
     let imageUrl: String?
     let title: String
@@ -23,9 +21,9 @@ struct StudyInfoVO: Equatable {
 }
 
 
-extension StudyInfoVO {
-    static func placeholderVO() -> StudyInfoVO {
-        return StudyInfoVO(
+extension CurrentWeekStudyInfoVO {
+    static func placeholderVO() -> CurrentWeekStudyInfoVO {
+        return CurrentWeekStudyInfoVO(
             studyId: "",
             imageUrl: nil,
             title: "placeholder",

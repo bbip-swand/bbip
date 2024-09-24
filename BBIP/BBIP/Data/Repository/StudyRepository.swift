@@ -10,7 +10,7 @@ import Combine
 
 protocol StudyRepository {
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
-    func getCurrentWeekStudyInfo() -> AnyPublisher<CurrentWeekStudyInfoVO, Error>
+    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -28,7 +28,7 @@ final class StudyRepositoryImpl: StudyRepository {
         self.currentWeekStudyInfoMapper = currentWeekStudyInfoMapper
     }
     
-    func getCurrentWeekStudyInfo() -> AnyPublisher<CurrentWeekStudyInfoVO, Error> {
+    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {
         dataSource.getCurrentWeekStudyInfo()
             .map { [weak self] dtoArray in
                 guard let self = self else { return [] }
@@ -36,6 +36,10 @@ final class StudyRepositoryImpl: StudyRepository {
             }
             .eraseToAnyPublisher()
     }
+    
+//    func getOngoingStudyInfo() -> AnyPublisher<StudyInfoVO, Error> {
+//        
+//    }
 
     
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {

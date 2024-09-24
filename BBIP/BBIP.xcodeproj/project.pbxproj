@@ -126,7 +126,7 @@
 		C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559D2C8EC02600E537D7 /* MypageView.swift */; };
 		C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */; };
 		C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B12C8F279700E537D7 /* StudyCategory.swift */; };
-		C6FA55B42C8F294500E537D7 /* StudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B32C8F294500E537D7 /* StudyInfoVO.swift */; };
+		C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */; };
 		C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B52C8F317300E537D7 /* CapsuleView.swift */; };
 		C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */; };
 		C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */; };
@@ -268,7 +268,7 @@
 		C6FA559D2C8EC02600E537D7 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BBIPLoading.json; sourceTree = "<group>"; };
 		C6FA55B12C8F279700E537D7 /* StudyCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCategory.swift; sourceTree = "<group>"; };
-		C6FA55B32C8F294500E537D7 /* StudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyInfoVO.swift; sourceTree = "<group>"; };
+		C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoVO.swift; sourceTree = "<group>"; };
 		C6FA55B52C8F317300E537D7 /* CapsuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleView.swift; sourceTree = "<group>"; };
 		C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTimeRingView.swift; sourceTree = "<group>"; };
 		C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpendingStudyVO.swift; sourceTree = "<group>"; };
@@ -432,7 +432,7 @@
 		C69445952C9D562D003945CC /* Study */ = {
 			isa = PBXGroup;
 			children = (
-				C6FA55B32C8F294500E537D7 /* StudyInfoVO.swift */,
+				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 				C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */,
 			);
@@ -1050,7 +1050,7 @@
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
-				C6FA55B42C8F294500E537D7 /* StudyInfoVO.swift in Sources */,
+				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
 				C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */,

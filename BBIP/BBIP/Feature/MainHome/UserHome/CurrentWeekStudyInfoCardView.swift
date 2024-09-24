@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CurrentWeekStudyInfoCardView: View {
-    private let vo: StudyInfoVO
+    private let vo: CurrentWeekStudyInfoVO
     
-    init(vo: StudyInfoVO) {
+    init(vo: CurrentWeekStudyInfoVO) {
         self.vo = vo
     }
     

@@ -15,7 +15,7 @@ class MainHomeViewModel: ObservableObject {
     
     // real data
     @Published var homeBulletnData: RecentPostVO?
-    @Published var currentWeekStudyData: CurrentWeekStudyInfoVO?
+    @Published var currentWeekStudyData: [CurrentWeekStudyInfoVO]?
     
     // 게시판 글 불러오기
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol
