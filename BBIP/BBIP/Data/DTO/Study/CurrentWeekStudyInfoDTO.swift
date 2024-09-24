@@ -11,7 +11,7 @@ struct CurrentWeekStudyInfoDTO: Decodable {
     var studyId: String
     var studyName: String
     var studyWeek: Int
-    var studyImageUrl: String
+    var studyImageUrl: String?
     var studyField: Int
     var studyDate: Date
     var dayOfWeek: Int

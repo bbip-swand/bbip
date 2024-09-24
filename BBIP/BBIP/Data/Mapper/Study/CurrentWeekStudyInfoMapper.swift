@@ -21,7 +21,7 @@ struct CurrentWeekStudyInfoMapper {
         
         return StudyInfoVO(
             studyId: dto.studyId,
-            imageUrl: dto.studyImageUrl.isEmpty ? nil : dto.studyImageUrl,
+            imageUrl: dto.studyImageUrl,
             title: dto.studyName,
             category: .from(int: dto.studyField) ?? .others,
             currentStudyRound: dto.studyWeek,

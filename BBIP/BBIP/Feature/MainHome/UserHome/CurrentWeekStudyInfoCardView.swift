@@ -92,3 +92,30 @@ struct CurrentWeekStudyInfoCardView: View {
         }
     }
 }
+
+struct CurrentWeekStudyInfoCardViewPlaceholder: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.gray2)
+                .frame(height: 120)
+                .bbipShadow1()
+            
+            HStack(spacing: 19) {
+                Image("logo_placeholder")
+                
+                Text("더 이상 진행할 라운드가 없어요")
+                    .font(.bbip(.body1_sb16))
+                    .foregroundStyle(.gray6)
+                
+                Spacer()
+            }
+            .padding(.leading, 14)
+        }
+        .padding(.horizontal, 14)
+    }
+}
+
+#Preview {
+    CurrentWeekStudyInfoCardViewPlaceholder()
+}
