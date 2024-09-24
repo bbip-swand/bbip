@@ -134,8 +134,15 @@ struct UserHomeView: View {
             .padding(.bottom, 12)
             
             VStack(spacing: 8) {
-                ForEach(0..<viewModel.currentWeekStudyData.count, id: \.self) { index in
-                    CurrentWeekStudyInfoCardView(vo: viewModel.currentWeekStudyData[index])
+                
+                if viewModel.currentWeekStudyData == nil {
+                    // loading
+                } else if let data = viewModel.currentWeekStudyData, data.isEmpty {
+                    // placeholder
+                } else if let data = viewModel.currentWeekStudyData {
+                    ForEach(0..<data.count, id: \.self) { index in
+                        CurrentWeekStudyInfoCardView(vo: data[index])
+                    }
                 }
             }
             .padding(.horizontal, 17)

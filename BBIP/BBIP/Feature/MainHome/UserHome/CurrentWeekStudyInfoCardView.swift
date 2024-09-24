@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CurrentWeekStudyInfoCardView: View {
-    private let vo: CurrentWeekStudyInfoVO
+    private let vo: StudyInfoVO
     
-    init(vo: CurrentWeekStudyInfoVO) {
+    init(vo: StudyInfoVO) {
         self.vo = vo
     }
     
@@ -91,19 +91,4 @@ struct CurrentWeekStudyInfoCardView: View {
             .padding(.horizontal, 14)
         }
     }
-}
-
-#Preview {
-    ForEach(1..<3) { int in
-        CurrentWeekStudyInfoCardView(vo: CurrentWeekStudyInfoVO(
-            imageUrl: nil,
-            title: "가나다 스터디",
-            category: .design,
-            currentStudyRound: 9,
-            currentStudyDescription: "오늘은 가나다",
-            date: "9월 24일",
-            time: "12:00 ~ 15:00",
-            location: "경희대학교"))
-    }
-    .padding(.horizontal, 17)
 }

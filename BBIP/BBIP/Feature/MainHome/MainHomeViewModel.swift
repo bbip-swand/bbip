@@ -11,11 +11,11 @@ import Combine
 class MainHomeViewModel: ObservableObject {
     
     // mock data for test
-    @Published var currentWeekStudyData = CurrentWeekStudyInfoVO.generateMock()
     @Published var commingScheduleData = CommingScheduleVO.generateMock()
     
     // real data
     @Published var homeBulletnData: RecentPostVO?
+    @Published var currentWeekStudyData: CurrentWeekStudyInfoVO?
     
     // 게시판 글 불러오기
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol

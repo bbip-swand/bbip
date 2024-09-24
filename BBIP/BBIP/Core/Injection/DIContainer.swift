@@ -44,9 +44,11 @@ class DIContainer {
     // MARK: - Study
     private let studyDataSource = StudyDataSource()
     private let studyInfoMapper = StudyInfoMapper()
+    private let currentWeekStudyInfoMapper = CurrentWeekStudyInfoMapper()
     private lazy var studyRepository: StudyRepository = StudyRepositoryImpl(
         dataSource: studyDataSource,
-        mapper: studyInfoMapper
+        studyInfoMapper: studyInfoMapper,
+        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper
     )
     
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(

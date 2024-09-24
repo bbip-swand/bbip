@@ -13,6 +13,15 @@ import CombineMoya
 final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin()])
     
+    // MARK: - GET
+    func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
+        provider.requestPublisher(.getThisWeekStudy)
+            .map(\.data)
+            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: - POST
     func createStudy(dto: StudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
             .tryMap { response in

@@ -2,20 +2,22 @@
 //  StudyInfoVO.swift
 //  BBIP
 //
-//  Created by 이건우 on 9/20/24.
+//  Created by 이건우 on 9/9/24.
 //
 
-import UIKit
+import Foundation
 
+typealias CurrentWeekStudyInfoVO = [StudyInfoVO]
+
+/// 앱 내부에서 사용되는 스터디 정보 VO
 struct StudyInfoVO {
-    let category: Int
-    let weekCount: Int
-    let startDate: Date
-    let endDate: Date
-    let dayIndexArr: [Int]
-    let studySessionArr: [StudySessionVO]
-    let name: String
-    let imageURL: String
-    let description: String
-    let weeklyContent: [String?]
+    let studyId: String
+    let imageUrl: String?
+    let title: String
+    let category: StudyCategory
+    let currentStudyRound: Int
+    let currentStudyDescription: String?
+    let date: String
+    let time: String
+    let location: String
 }

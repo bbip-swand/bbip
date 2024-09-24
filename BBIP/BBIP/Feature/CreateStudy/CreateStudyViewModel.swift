@@ -118,7 +118,7 @@ class CreateStudyViewModel: ObservableObject {
                     return Fail(error: URLError(.unknown)).eraseToAnyPublisher()
                 }
                 
-                let vo = StudyInfoVO(
+                let vo = CreateStudyInfoVO(
                     category: selectedCategoryIndex[0],
                     weekCount: weekCount,
                     startDate: startDate,
