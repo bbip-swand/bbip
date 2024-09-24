@@ -55,25 +55,7 @@ private struct StudySwitchViewCell: View {
                 .padding(.horizontal, 20)
             
             HStack(spacing: 24) {
-                Group {
-                    if let url = study.imageUrl {
-                        AsyncImage(url: URL(string: url)) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                        } placeholder: {
-                            Image("logo_placeholder")
-                                .resizable()
-                                .scaledToFill()
-                        }
-                    } else {
-                        Image("logo_placeholder")
-                            .resizable()
-                            .scaledToFill()
-                    }
-                }
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
+                LoadableImageView(imageUrl: study.imageUrl)
 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(spacing: 14) {

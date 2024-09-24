@@ -109,6 +109,7 @@
 		C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226B2CA2EFAB00988748 /* StudyTime.swift */; };
 		C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226D2CA2F17A00988748 /* CreateStudyInfoMapper.swift */; };
 		C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */; };
+		C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22712CA3237400988748 /* LoadableImageView.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -256,6 +257,7 @@
 		C6CF226B2CA2EFAB00988748 /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		C6CF226D2CA2F17A00988748 /* CreateStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyInfoMapper.swift; sourceTree = "<group>"; };
 		C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOngoingStudyUseCase.swift; sourceTree = "<group>"; };
+		C6CF22712CA3237400988748 /* LoadableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableImageView.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				C6FA55B52C8F317300E537D7 /* CapsuleView.swift */,
 				C6989E982C9A99F2003CE4D5 /* DayPickerView.swift */,
 				C6989E9A2C9AB2C6003CE4D5 /* TimePickerView.swift */,
+				C6CF22712CA3237400988748 /* LoadableImageView.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
@@ -1164,6 +1167,7 @@
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
+				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,

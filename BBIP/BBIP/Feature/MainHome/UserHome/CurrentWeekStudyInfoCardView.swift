@@ -23,18 +23,8 @@ struct CurrentWeekStudyInfoCardView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 0) {
-                    Group {
-                        if let imageURL = vo.imageUrl {
-                            AsyncImage(url: URL(string: imageURL))
-                                .frame(width: 48, height: 48)
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            Image("profile_default")
-                                .resizable()
-                                .frame(width: 48, height: 48)
-                        }
-                    }
-                    .padding(.trailing, 19)
+                    LoadableImageView(imageUrl: vo.imageUrl, size: 48)
+                        .padding(.trailing, 19)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text(vo.title)
