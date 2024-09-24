@@ -11,22 +11,30 @@ import Combine
 class MainHomeViewModel: ObservableObject {
     
     // mock data for test
-    @Published var currentWeekStudyData = CurrentWeekStudyInfoVO.generateMock()
     @Published var commingScheduleData = CommingScheduleVO.generateMock()
     
     // real data
-    @Published var homeBulletnData: CurrentWeekPostVO?
+    @Published var homeBulletnData: RecentPostVO?
+    @Published var currentWeekStudyData: CurrentWeekStudyInfoVO?
     
     // 게시판 글 불러오기
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol
+    private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol,
+        getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ) {
         self.getCurrentWeekPostUseCase = getCurrentWeekPostUseCase
+        self.getCurrentWeekStudyInfoUseCase = getCurrentWeekStudyInfoUseCase
         self.cancellables = cancellables
+    }
+    
+    private func clearData() {
+        homeBulletnData = nil
+        currentWeekStudyData = nil
     }
     
     func loadHomeData() {
@@ -41,8 +49,31 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.homeBulletnData = response
-                print(homeBulletnData![0].createdAt)
             }
             .store(in: &cancellables)
+        
+        getCurrentWeekStudyInfoUseCase.excute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed load current week study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.currentWeekStudyData = response
+                print(response)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func refreshHomeData() {
+        clearData()
+        
+        // for testing
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.loadHomeData()
+        }
     }
 }

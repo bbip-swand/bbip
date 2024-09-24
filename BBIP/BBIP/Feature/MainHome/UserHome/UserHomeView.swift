@@ -48,7 +48,6 @@ struct UserHomeView: View {
             
             currentWeekStudy
                 .padding(.bottom, 32)
-                .redacted(reason: isRefresh ? .placeholder : [])
             
             commingSchedule
                 .redacted(reason: isRefresh ? .placeholder : [])
@@ -62,6 +61,8 @@ struct UserHomeView: View {
         .frame(maxHeight: .infinity)
         .refreshable {
             // refresh
+            viewModel.refreshHomeData()
+            
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation { isRefresh = false }
@@ -132,10 +133,21 @@ struct UserHomeView: View {
             .padding(.bottom, 12)
             
             VStack(spacing: 8) {
-                ForEach(0..<viewModel.currentWeekStudyData.count, id: \.self) { index in
-                    CurrentWeekStudyInfoCardView(vo: viewModel.currentWeekStudyData[index])
+                
+                if viewModel.currentWeekStudyData == nil {
+                    ForEach(0..<3, id: \.self) { _ in
+                        CurrentWeekStudyInfoCardView(vo: .placeholderVO())
+                            .redacted(reason: .placeholder)
+                    }
+                } else if let data = viewModel.currentWeekStudyData, data.isEmpty {
+                    CurrentWeekStudyInfoCardViewPlaceholder()
+                } else if let data = viewModel.currentWeekStudyData {
+                    ForEach(0..<data.count, id: \.self) { index in
+                        CurrentWeekStudyInfoCardView(vo: data[index])
+                    }
                 }
             }
+            .animation(.easeInOut, value: viewModel.currentWeekStudyData)
             .padding(.horizontal, 17)
         }
     }

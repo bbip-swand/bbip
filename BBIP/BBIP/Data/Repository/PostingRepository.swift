@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol PostingRepository {
-    func getCurrentWeekPost() -> AnyPublisher<CurrentWeekPostVO, Error>
+    func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
@@ -24,7 +24,7 @@ final class PostingRepositoryImpl: PostingRepository {
         self.mapper = mapper
     }
     
-    func getCurrentWeekPost() -> AnyPublisher<CurrentWeekPostVO, Error> {
+    func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error> {
         return dataSource.getCurrentWeekPosting()
             .map { [weak self] dto in
                 guard let self = self else { return [] }

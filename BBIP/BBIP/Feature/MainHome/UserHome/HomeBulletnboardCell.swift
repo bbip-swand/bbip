@@ -64,7 +64,3 @@ struct HomeBulletnboardCellPlaceholder: View {
         }
     }
 }
-
-#Preview(body: {
-    HomeBulletnboardCellPlaceholder()
-})

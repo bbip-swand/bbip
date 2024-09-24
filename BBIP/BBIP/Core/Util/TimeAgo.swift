@@ -1,5 +1,5 @@
 //
-//  DateFormatManager.swift
+//  TimeAgo.swift
 //  BBIP
 //
 //  Created by 이건우 on 9/10/24.
@@ -15,7 +15,6 @@ func timeAgo(date: Date) -> String {
     let now = Date().addingTimeInterval(9 * 60 * 60) // GMT 한국 현지 시간
     
     let components = calendar.dateComponents([.second, .minute, .hour, .day, .weekOfYear], from: date, to: now)
-    print(components)
     
     if let weeks = components.weekOfYear, weeks >= 3 {
         let formatter = DateFormatter()
