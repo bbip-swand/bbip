@@ -119,6 +119,7 @@
 		C6F7008C2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7008B2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift */; };
 		C6F7008E2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7008D2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift */; };
 		C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */; };
+		C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -261,6 +262,7 @@
 		C6F7008B2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F7008D2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoMapper.swift; sourceTree = "<group>"; };
 		C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekStudyInfoUseCase.swift; sourceTree = "<group>"; };
+		C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeView.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */,
 				C6FA55BF2C90355800E537D7 /* Frame */,
 				C6FA56072C9591E600E537D7 /* UserHome */,
+				C6F700952CA2DA66000CCC80 /* StudyHome */,
 				C6FA560C2C95972600E537D7 /* StudySwitch */,
 				C6FA55FD2C9545CF00E537D7 /* Calendar */,
 			);
@@ -849,6 +852,14 @@
 			path = Posting;
 			sourceTree = "<group>";
 		};
+		C6F700952CA2DA66000CCC80 /* StudyHome */ = {
+			isa = PBXGroup;
+			children = (
+				C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */,
+			);
+			path = StudyHome;
+			sourceTree = "<group>";
+		};
 		C6FA55982C8EBFE200E537D7 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,6 +1082,7 @@
 				C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
+				C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,

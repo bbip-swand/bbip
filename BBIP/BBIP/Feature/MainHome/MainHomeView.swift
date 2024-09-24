@@ -31,6 +31,8 @@ struct MainHomeView: View {
                         }
                     )
                     UserHomeView(viewModel: viewModel)
+                case .studyHome:
+                    StudyHomeView()
                 case .calendar:
                     CalendarView()
                 }

@@ -11,6 +11,7 @@ import SwiftUI
 
 enum MainHomeTab {
     case userHome
+    case studyHome
     case calendar
 }
 
@@ -67,9 +68,9 @@ struct BBIPTabView : View {
             .background(.clear)
         }
         .sheet(isPresented: $showSheet) {
-            StudySwitchView()
+            StudySwitchView(selectedTab: $selectedTab)
                 .presentationDragIndicator(.visible)
-                .presentationDetents([.height(330)])
+                .presentationDetents([.height(320)])
         }
     }
 }
