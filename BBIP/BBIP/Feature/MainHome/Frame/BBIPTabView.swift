@@ -16,10 +16,23 @@ enum MainHomeTab {
 }
 
 struct BBIPTabView : View {
-    @Binding var selectedTab: MainHomeTab
+    @Binding private var selectedTab: MainHomeTab
+    @Binding private var ongoingStudyData: [StudyInfoVO]?
     @State private var showSheet = false
     
+    init(
+        selectedTab: Binding<MainHomeTab>,
+        ongoingStudyData: Binding<[StudyInfoVO]?>
+    ) {
+        self._selectedTab = selectedTab
+        self._ongoingStudyData = ongoingStudyData
+    }
+    
     private let calw = ((UIScreen.main.bounds.width/2)-33.5-24)/3.905
+    private var sheetHeight: CGFloat {
+        guard let data = ongoingStudyData else { return 0 }
+        return CGFloat(130 + (data.count * 95))
+    }
     
     var body: some View {
         ZStack {
@@ -64,13 +77,14 @@ struct BBIPTabView : View {
                         .frame(width: 67, height: 67)
                         .padding(.bottom, 100)
                 }
+                .disabled(ongoingStudyData == nil)
             }
             .background(.clear)
         }
         .sheet(isPresented: $showSheet) {
-            StudySwitchView(selectedTab: $selectedTab)
+            StudySwitchView(selectedTab: $selectedTab, ongoingStudyData: $ongoingStudyData)
                 .presentationDragIndicator(.visible)
-                .presentationDetents([.height(320)])
+                .presentationDetents([.height(sheetHeight)])
         }
     }
 }

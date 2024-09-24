@@ -112,7 +112,6 @@ struct CurrentWeekStudyInfoCardViewPlaceholder: View {
             }
             .padding(.leading, 14)
         }
-        .padding(.horizontal, 14)
     }
 }
 

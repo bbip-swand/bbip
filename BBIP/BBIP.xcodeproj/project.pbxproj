@@ -108,6 +108,7 @@
 		C6CF226A2CA2EF3300988748 /* CreateStudyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22692CA2EF3300988748 /* CreateStudyDTO.swift */; };
 		C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226B2CA2EFAB00988748 /* StudyTime.swift */; };
 		C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226D2CA2F17A00988748 /* CreateStudyInfoMapper.swift */; };
+		C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -254,6 +255,7 @@
 		C6CF22692CA2EF3300988748 /* CreateStudyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyDTO.swift; sourceTree = "<group>"; };
 		C6CF226B2CA2EFAB00988748 /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		C6CF226D2CA2F17A00988748 /* CreateStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyInfoMapper.swift; sourceTree = "<group>"; };
+		C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOngoingStudyUseCase.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 			children = (
 				C69445972C9D595D003945CC /* CreateStudyUseCase.swift */,
 				C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */,
+				C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
 				C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */,
+				C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */,
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,

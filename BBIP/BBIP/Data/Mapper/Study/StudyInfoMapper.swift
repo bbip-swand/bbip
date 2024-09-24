@@ -22,14 +22,15 @@ struct StudyInfoMapper {
         return StudyInfoVO(
             studyId: dto.studyId,
             studyName: dto.studyName,
-            imageUrl: dto.studyImageUrl.isEmpty ? nil : dto.studyImageUrl,
+            imageUrl: dto.studyImageUrl,
             category: category,
             totalWeeks: dto.totalWeeks,
-            studyStartDate: dto.studyStartDate,
-            studyEndDate: dto.studyEndDate,
+            studyStartDate: dto.studyStartDate.replacingOccurrences(of: "-", with: "."),
+            studyEndDate: dto.studyEndDate.replacingOccurrences(of: "-", with: "."),
             studyTimes: studyTimes,
-            studyDescription: dto.studyDescription,
-            studyContents: dto.studyContents
+            studyDescription: dto.studyDescription ?? "",
+            studyContents: dto.studyContents ?? [], 
+            currentWeek: dto.currentWeek
         )
     }
 }

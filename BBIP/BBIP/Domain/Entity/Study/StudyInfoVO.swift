@@ -20,6 +20,7 @@ struct StudyInfoVO {
     let studyTimes: [StudyTime]
     let studyDescription: String
     let studyContents: [String]
+    let currentWeek: Int
     
     struct StudyTime: Codable {
         let startTime: String
