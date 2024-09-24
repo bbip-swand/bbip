@@ -19,13 +19,16 @@ class MainHomeViewModel: ObservableObject {
     
     // 게시판 글 불러오기
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol
+    private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol,
+        getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ) {
         self.getCurrentWeekPostUseCase = getCurrentWeekPostUseCase
+        self.getCurrentWeekStudyInfoUseCase = getCurrentWeekStudyInfoUseCase
         self.cancellables = cancellables
     }
     
@@ -45,6 +48,21 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.homeBulletnData = response
+            }
+            .store(in: &cancellables)
+        
+        getCurrentWeekStudyInfoUseCase.excute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed load current week study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.currentWeekStudyData = response
+                print(response)
             }
             .store(in: &cancellables)
     }

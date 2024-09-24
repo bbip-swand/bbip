@@ -54,6 +54,9 @@ class DIContainer {
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
         repository: studyRepository
     )
+    private lazy var getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol = GetCurrentWeekStudyInfoUseCase(
+        repository: studyRepository
+    )
     
     
     // MARK: - Posting
@@ -84,7 +87,10 @@ class DIContainer {
     
     // UserHome
     func makeMainHomeViewModel() -> MainHomeViewModel {
-        return MainHomeViewModel(getCurrentWeekPostUseCase: getCurrentWeekPostUseCase)
+        return MainHomeViewModel(
+            getCurrentWeekPostUseCase: getCurrentWeekPostUseCase, 
+            getCurrentWeekStudyInfoUseCase: getCurrentWeekStudyInfoUseCase
+        )
     }
     
     // CreateStudy
