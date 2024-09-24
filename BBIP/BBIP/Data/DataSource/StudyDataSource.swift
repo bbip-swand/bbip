@@ -20,6 +20,13 @@ final class StudyDataSource {
             .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
             .eraseToAnyPublisher()
     }
+    
+    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error> {
+        provider.requestPublisher(.getOngoingStudy)
+            .map(\.data)
+            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .eraseToAnyPublisher()
+    }
 
     
     // MARK: - POST

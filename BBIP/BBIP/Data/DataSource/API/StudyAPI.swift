@@ -10,6 +10,7 @@ import Moya
 
 enum StudyAPI {
     case getThisWeekStudy
+    case getOngoingStudy
     case getStudyInfo(studyId: String)      // param
     case getInviteInfo(inviteCode: String)  // param
     case createStudy(dto: StudyInfoDTO)
@@ -21,6 +22,8 @@ extension StudyAPI: BaseAPI {
         switch self {
         case .getThisWeekStudy:
             return "/study/this-week"
+        case .getOngoingStudy:
+            return "/study/ongoing"
         case .getStudyInfo:
             return "/study"
         case .getInviteInfo:
@@ -34,22 +37,16 @@ extension StudyAPI: BaseAPI {
     
     var method: Moya.Method {
         switch self {
-        case .getThisWeekStudy:
+        case .getThisWeekStudy, .getOngoingStudy, .getStudyInfo, .getInviteInfo:
             return .get
-        case .getStudyInfo:
-            return .get
-        case .getInviteInfo:
-            return .get
-        case .createStudy:
-            return .post
-        case .joinStudy:
+        case .createStudy, .joinStudy:
             return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .getThisWeekStudy:
+        case .getThisWeekStudy, .getOngoingStudy:
             return .requestPlain
             
         case .getStudyInfo(let studyId):

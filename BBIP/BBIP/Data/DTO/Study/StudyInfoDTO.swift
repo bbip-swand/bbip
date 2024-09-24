@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyInfoDTO: Encodable {
+struct StudyInfoDTO: Codable {
     let studyName: String
     let studyImageUrl: String
     let studyField: Int
@@ -19,7 +19,7 @@ struct StudyInfoDTO: Encodable {
     let studyDescription: String
     let studyContents: [String]
     
-    struct StudyTime: Encodable {
+    struct StudyTime: Codable {
         let startTime: String
         let endTime: String
     }

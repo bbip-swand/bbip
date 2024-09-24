@@ -131,7 +131,6 @@
 		C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */; };
 		C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */; };
 		C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */; };
-		C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */; };
 		C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55DE2C906F5400E537D7 /* TimeAgo.swift */; };
 		C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */; };
 		C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */; };
@@ -274,7 +273,6 @@
 		C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTimeRingView.swift; sourceTree = "<group>"; };
 		C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpendingStudyVO.swift; sourceTree = "<group>"; };
 		C6FA55BB2C902F3200E537D7 /* HomeBulletnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardCell.swift; sourceTree = "<group>"; };
-		C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBulletnboardPostVO.swift; sourceTree = "<group>"; };
 		C6FA55DE2C906F5400E537D7 /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBannerView.swift; sourceTree = "<group>"; };
 		C6FA55EB2C91566C00E537D7 /* MainHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewModel.swift; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
-				C6FA55BD2C90319A00E537D7 /* HomeBulletnboardPostVO.swift */,
 				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
 			);
 			path = UserHome;
@@ -1038,7 +1035,6 @@
 				C6F7008C2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
-				C6FA55BE2C90319A00E537D7 /* HomeBulletnboardPostVO.swift in Sources */,
 				082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
