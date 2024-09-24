@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct StudyInfoMapper {
-    func toDTO(vo: StudyInfoVO) -> StudyInfoDTO {
+    func toDTO(vo: CreateStudyInfoVO) -> StudyInfoDTO {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         

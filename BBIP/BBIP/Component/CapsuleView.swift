@@ -12,6 +12,7 @@ enum CapsuleViewType {
     case highlight
     case fill
     case timeRing
+    case placeholder
 }
 
 struct CapsuleView: View {
@@ -32,6 +33,8 @@ struct CapsuleView: View {
             return .gray8
         case .highlight:
             return .primary3
+        case .placeholder:
+            return .mainWhite
         }
     }
     
@@ -41,7 +44,7 @@ struct CapsuleView: View {
             return .gray7
         case .highlight:
             return .primary3
-        case .fill, .timeRing:
+        case .fill, .timeRing, .placeholder:
             return .clear
         }
     }
@@ -50,6 +53,8 @@ struct CapsuleView: View {
         switch type {
         case .fill, .timeRing:
             return .gray2
+        case .placeholder:
+            return .gray4
         default:
             return .clear
         }
