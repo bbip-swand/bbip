@@ -10,9 +10,10 @@ import Combine
 import Moya
 import CombineMoya
 
-final class CreateCodeDataSource{
+final class AttendDataSource{
     private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin()])
     
+    //MARK: - POST
     func createAttendCode(dto: CreateCodeDTO) -> AnyPublisher<CreateCodeResponseDTO, Error> {
         provider.requestPublisher(.createCode(dto: dto))
             .tryMap{ response in
@@ -30,11 +31,8 @@ final class CreateCodeDataSource{
                 return error}
             .eraseToAnyPublisher()
     }
-}
-
-final class EnterCodeDataSource{
-    private let provider = MoyaProvider<AttendanceAPI>(plugins:[TokenPlugin()])
     
+    //MARK: -POST
     func enterCode(dto: EnterCodeDTO) -> AnyPublisher<Void,Error>{
         provider.requestPublisher(.enterCode(dto: dto))
             .tryMap{response in
@@ -52,11 +50,8 @@ final class EnterCodeDataSource{
             }
             .eraseToAnyPublisher()
     }
-}
-
-final class GetStatusDataSource{
-    private let provider = MoyaProvider<AttendanceAPI>(plugins: [TokenPlugin()])
     
+    //MARK: -GET
     func getStatus() -> AnyPublisher<GetStatusResponseDTO,Error>{
         provider.requestPublisher(.getStatus)
             .tryMap{response in
@@ -69,7 +64,7 @@ final class GetStatusDataSource{
                 }
                 return response.data
             }
-            .decode(type: GetStatusResponseDTO.self, decoder:JSONDecoder())
+            .decode(type: GetStatusResponseDTO.self, decoder:JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError{ error in
                 return error}
             .eraseToAnyPublisher()
