@@ -20,10 +20,17 @@ final class StudyDataSource {
             .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
             .eraseToAnyPublisher()
     }
+    
+    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error> {
+        provider.requestPublisher(.getOngoingStudy)
+            .map(\.data)
+            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .eraseToAnyPublisher()
+    }
 
     
     // MARK: - POST
-    func createStudy(dto: StudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
+    func createStudy(dto: CreateStudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
