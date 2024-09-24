@@ -9,8 +9,9 @@ import SwiftUI
 
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
-    @ObservedObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
+    @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
+    @State private var hasLoaded: Bool = false
     
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
@@ -41,8 +42,12 @@ struct MainHomeView: View {
                 .edgesIgnoringSafeArea(.bottom)
         }
         .onAppear {
-            appState.setLightMode()
-            viewModel.loadHomeData()
+            if !hasLoaded {
+                print("mainHome OnAppear")
+                appState.setLightMode()
+                viewModel.loadHomeData()
+                hasLoaded = true
+            }
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {

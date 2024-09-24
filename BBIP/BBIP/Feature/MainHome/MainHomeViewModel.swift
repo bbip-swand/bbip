@@ -63,7 +63,6 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.currentWeekStudyData = response
-                print(response)
             }
             .store(in: &cancellables)
     }
