@@ -29,6 +29,10 @@ class MainHomeViewModel: ObservableObject {
         self.cancellables = cancellables
     }
     
+    private func clearData() {
+        homeBulletnData = nil
+    }
+    
     func loadHomeData() {
         getCurrentWeekPostUseCase.excute()
             .receive(on: DispatchQueue.main)
@@ -41,8 +45,12 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.homeBulletnData = response
-                print(homeBulletnData![0].createdAt)
             }
             .store(in: &cancellables)
+    }
+    
+    func refreshHomeData() {
+        clearData()
+        loadHomeData()
     }
 }

@@ -62,6 +62,8 @@ struct UserHomeView: View {
         .frame(maxHeight: .infinity)
         .refreshable {
             // refresh
+            viewModel.refreshHomeData()
+            
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation { isRefresh = false }

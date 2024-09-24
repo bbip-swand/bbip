@@ -42,7 +42,6 @@ struct MainHomeView: View {
         }
         .onAppear {
             appState.setLightMode()
-            print("onAppear!")
             viewModel.loadHomeData()
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
