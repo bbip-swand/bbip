@@ -34,6 +34,7 @@ class MainHomeViewModel: ObservableObject {
     
     private func clearData() {
         homeBulletnData = nil
+        currentWeekStudyData = nil
     }
     
     func loadHomeData() {
@@ -69,6 +70,10 @@ class MainHomeViewModel: ObservableObject {
     
     func refreshHomeData() {
         clearData()
-        loadHomeData()
+        
+        // for testing
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.loadHomeData()
+        }
     }
 }

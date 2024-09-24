@@ -48,7 +48,6 @@ struct UserHomeView: View {
             
             currentWeekStudy
                 .padding(.bottom, 32)
-                .redacted(reason: isRefresh ? .placeholder : [])
             
             commingSchedule
                 .redacted(reason: isRefresh ? .placeholder : [])
@@ -136,15 +135,19 @@ struct UserHomeView: View {
             VStack(spacing: 8) {
                 
                 if viewModel.currentWeekStudyData == nil {
-                    // loading
+                    ForEach(0..<3, id: \.self) { _ in
+                        CurrentWeekStudyInfoCardView(vo: .placeholderVO())
+                            .redacted(reason: .placeholder)
+                    }
                 } else if let data = viewModel.currentWeekStudyData, data.isEmpty {
-                    // placeholder
+                    CurrentWeekStudyInfoCardViewPlaceholder()
                 } else if let data = viewModel.currentWeekStudyData {
                     ForEach(0..<data.count, id: \.self) { index in
                         CurrentWeekStudyInfoCardView(vo: data[index])
                     }
                 }
             }
+            .animation(.easeInOut, value: viewModel.currentWeekStudyData)
             .padding(.horizontal, 17)
         }
     }

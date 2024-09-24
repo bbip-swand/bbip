@@ -12,13 +12,6 @@ struct CurrentWeekStudyInfoMapper {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM월 dd일"
         
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
-
-        var timeString: String {
-            timeFormatter.string(from: dto.studyTime.startTime) + " ~ " + timeFormatter.string(from: dto.studyTime.endTime)
-        }
-        
         return StudyInfoVO(
             studyId: dto.studyId,
             imageUrl: dto.studyImageUrl,
@@ -27,7 +20,7 @@ struct CurrentWeekStudyInfoMapper {
             currentStudyRound: dto.studyWeek,
             currentStudyDescription: dto.studyContent,
             date: dateFormatter.string(from: dto.studyDate),
-            time: timeString,
+            time: dto.studyTime.startTime + " ~ " + dto.studyTime.endTime,
             location: "미정"
         )
     }

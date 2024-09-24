@@ -17,9 +17,10 @@ final class StudyDataSource {
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
         provider.requestPublisher(.getThisWeekStudy)
             .map(\.data)
-            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .decode(type: [CurrentWeekStudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
             .eraseToAnyPublisher()
     }
+
     
     // MARK: - POST
     func createStudy(dto: StudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
