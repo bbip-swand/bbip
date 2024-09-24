@@ -75,4 +75,3 @@ final class GetStatusDataSource{
             .eraseToAnyPublisher()
     }
 }
-
