@@ -15,7 +15,7 @@ class MainHomeViewModel: ObservableObject {
     @Published var commingScheduleData = CommingScheduleVO.generateMock()
     
     // real data
-    @Published var homeBulletnData: CurrentWeekPostVO?
+    @Published var homeBulletnData: RecentPostVO?
     
     // 게시판 글 불러오기
     private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol

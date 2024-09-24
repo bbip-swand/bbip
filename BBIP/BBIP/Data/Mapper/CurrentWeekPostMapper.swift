@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrentWeekPostMapper {
-    func toVO(dto: [PostDTO]) -> CurrentWeekPostVO {
+    func toVO(dto: [PostDTO]) -> RecentPostVO {
         return dto.map { dtoItem in
             let postType: PostType = dtoItem.isNotice ? .notice : .normal
             
