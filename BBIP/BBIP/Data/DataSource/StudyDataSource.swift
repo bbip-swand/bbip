@@ -30,7 +30,7 @@ final class StudyDataSource {
 
     
     // MARK: - POST
-    func createStudy(dto: StudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
+    func createStudy(dto: CreateStudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {

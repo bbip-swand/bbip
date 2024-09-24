@@ -13,7 +13,7 @@ enum StudyAPI {
     case getOngoingStudy
     case getStudyInfo(studyId: String)      // param
     case getInviteInfo(inviteCode: String)  // param
-    case createStudy(dto: StudyInfoDTO)
+    case createStudy(dto: CreateStudyInfoDTO)
     case joinStudy(studyId: String)         // param
 }
 

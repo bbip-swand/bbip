@@ -1,14 +1,13 @@
 //
-//  StudyInfoDTO.swift
+//  CreateStudyDTO.swift
 //  BBIP
 //
-//  Created by 이건우 on 9/20/24.
+//  Created by 이건우 on 9/24/24.
 //
 
 import Foundation
 
-struct StudyInfoDTO: Decodable {
-    let studyId: String
+struct CreateStudyInfoDTO: Encodable {
     let studyName: String
     let studyImageUrl: String
     let studyField: Int
@@ -19,4 +18,8 @@ struct StudyInfoDTO: Decodable {
     let studyTimes: [StudyTime]
     let studyDescription: String
     let studyContents: [String]
+}
+
+struct CreateStudyResponseDTO: Decodable {
+    let studyId: String
 }

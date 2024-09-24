@@ -17,9 +17,4 @@ struct CurrentWeekStudyInfoDTO: Decodable {
     var dayOfWeek: Int
     var studyTime: StudyTime
     var studyContent: String
-    
-    struct StudyTime: Decodable {
-        var startTime: String
-        var endTime: String
-    }
 }
