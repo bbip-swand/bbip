@@ -15,20 +15,24 @@ class MainHomeViewModel: ObservableObject {
     
     // real data
     @Published var homeBulletnData: RecentPostVO?
-    @Published var currentWeekStudyData: CurrentWeekStudyInfoVO?
+    @Published var currentWeekStudyData: [CurrentWeekStudyInfoVO]?
+    @Published var ongoingStudyData: [StudyInfoVO]?
     
-    // 게시판 글 불러오기
-    private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol
-    private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol
+    // UseCases
+    private let getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol            // 게시글
+    private let getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol  // 이번 주 스터디
+    private let getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol          // 진행중인 스터디
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol,
         getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol,
+        getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ) {
         self.getCurrentWeekPostUseCase = getCurrentWeekPostUseCase
         self.getCurrentWeekStudyInfoUseCase = getCurrentWeekStudyInfoUseCase
+        self.getOngoingStudyInfoUseCase = getOngoingStudyInfoUseCase
         self.cancellables = cancellables
     }
     
@@ -63,6 +67,20 @@ class MainHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.currentWeekStudyData = response
+            }
+            .store(in: &cancellables)
+        
+        getOngoingStudyInfoUseCase.excute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed load ongoing study: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.ongoingStudyData = response
             }
             .store(in: &cancellables)
     }

@@ -31,15 +31,20 @@ struct MainHomeView: View {
                         }
                     )
                     UserHomeView(viewModel: viewModel)
+                case .studyHome:
+                    StudyHomeView()
                 case .calendar:
                     CalendarView()
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
-            BBIPTabView(selectedTab: $selectedTab)
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .edgesIgnoringSafeArea(.bottom)
+            BBIPTabView(
+                selectedTab: $selectedTab,
+                ongoingStudyData: $viewModel.ongoingStudyData
+            )
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .edgesIgnoringSafeArea(.bottom)
         }
         .onAppear {
             if !hasLoaded {

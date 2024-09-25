@@ -9,33 +9,28 @@ import Foundation
 import UIKit
 
 struct StudyInfoMapper {
-    func toDTO(vo: CreateStudyInfoVO) -> StudyInfoDTO {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let sessionTimeDateFormatter = DateFormatter()
-        sessionTimeDateFormatter.dateFormat = "HH:mm"
-        
-        // StudyTime 변환
-        let studyTimes = vo.studySessionArr.map { session in
-            return StudyInfoDTO.StudyTime(
-                startTime: sessionTimeDateFormatter.string(from: session.startTime!),
-                endTime: sessionTimeDateFormatter.string(from: session.endTime!)
+    func toVO(dto: StudyInfoDTO) -> StudyInfoVO {
+        let studyTimes = dto.studyTimes.map { dtoTime in
+            return StudyInfoVO.StudyTime(
+                startTime: dtoTime.startTime,
+                endTime: dtoTime.endTime
             )
         }
+        let category = StudyCategory.from(int: dto.studyField) ?? .others
         
-        // DTO 변환
-        return StudyInfoDTO(
-            studyName: vo.name,
-            studyImageUrl: vo.imageURL,
-            studyField: vo.category,
-            totalWeeks: vo.weekCount,
-            studyStartDate: dateFormatter.string(from: vo.startDate),
-            studyEndDate: dateFormatter.string(from: vo.endDate),
-            daysOfWeek: vo.dayIndexArr,
+        // VO로 변환
+        return StudyInfoVO(
+            studyId: dto.studyId,
+            studyName: dto.studyName,
+            imageUrl: dto.studyImageUrl,
+            category: category,
+            totalWeeks: dto.totalWeeks,
+            studyStartDate: dto.studyStartDate.replacingOccurrences(of: "-", with: "."),
+            studyEndDate: dto.studyEndDate.replacingOccurrences(of: "-", with: "."),
             studyTimes: studyTimes,
-            studyDescription: vo.description,
-            studyContents: vo.weeklyContent.map { $0 ?? "" }
+            studyDescription: dto.studyDescription ?? "",
+            studyContents: dto.studyContents ?? [], 
+            currentWeek: dto.currentWeek
         )
     }
 }
