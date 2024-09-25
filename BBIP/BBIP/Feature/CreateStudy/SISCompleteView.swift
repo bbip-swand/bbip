@@ -12,9 +12,14 @@ struct SISCompleteView: View {
     @State private var showDismissButton: Bool = false
     
     private let studyId: String
+    private let studyInviteCode: String
     
-    init(studyId: String) {
+    init(
+        studyId: String,
+        studyInviteCode: String
+    ) {
         self.studyId = studyId
+        self.studyInviteCode = studyInviteCode
     }
     
     var body: some View {
@@ -49,11 +54,15 @@ struct SISCompleteView: View {
             
             BBIPLottieView(assetName: "BBIPLoading") // 임시
             
-            MainButton(text: "공유하기") {
-                // handle sharing (deepLink)
+            ShareLink(item: URL(string: "https://bbip.site/join-study/\(studyInviteCode)")!) {
+                Text("공유하기")
+                    .font(.bbip(.body1_b16))
+                    .foregroundColor(.mainWhite)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 56)
+                    .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary3))
+                    .padding(.bottom, 22)
+                    .padding(.top, 69)
             }
-            .padding(.bottom, 22)
-            .padding(.top, 69)
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)

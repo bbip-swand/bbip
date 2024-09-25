@@ -87,7 +87,10 @@ struct StudyInfoSetupView: View {
         .skipButtonForSISDescriptionView(selectedIndex: $selectedIndex, viewModel: createStudyViewModel)
         .loadingOverlay(isLoading: $createStudyViewModel.isLoading, withBackground: true)
         .navigationDestination(isPresented: $createStudyViewModel.showCompleteView) {
-            SISCompleteView(studyId: createStudyViewModel.createdStudyId)
+            SISCompleteView(
+                studyId: createStudyViewModel.createdStudyId,
+                studyInviteCode: createStudyViewModel.studyInviteCode
+            )
         }
     }
 

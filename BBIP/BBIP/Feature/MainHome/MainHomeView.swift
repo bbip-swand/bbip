@@ -47,12 +47,9 @@ struct MainHomeView: View {
             .edgesIgnoringSafeArea(.bottom)
         }
         .onAppear {
+            print("mainHome OnAppear")
             appState.setLightMode()
-            if !hasLoaded {
-                print("mainHome OnAppear")
-                viewModel.loadHomeData()
-                hasLoaded = true
-            }
+            viewModel.loadHomeData()
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
