@@ -17,12 +17,16 @@ struct StudySwitchView: View {
         VStack(spacing: 20) {
             VStack(spacing: 8) {
                 if let studies = ongoingStudyData {
-                    ForEach(studies.indices, id: \.self) { index in
-                        StudySwitchViewCell(study: studies[index])
-                            .onTapGesture {
-                                presentationMode.wrappedValue.dismiss()
-                                selectedTab = .studyHome
-                            }
+                    if studies.isEmpty {
+                        StudySwitchViewCellPlaceholder()
+                    } else {
+                        ForEach(studies.indices, id: \.self) { index in
+                            StudySwitchViewCell(study: studies[index])
+                                .onTapGesture {
+                                    presentationMode.wrappedValue.dismiss()
+                                    selectedTab = .studyHome
+                                }
+                        }
                     }
                 }
             }
@@ -81,5 +85,29 @@ private struct StudySwitchViewCell: View {
             .padding(.horizontal, 36)
         }
         .bbipShadow1()
+    }
+}
+
+
+private struct StudySwitchViewCellPlaceholder: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.gray3)
+                .frame(maxWidth: .infinity)
+                .frame(height: 94)
+                .padding(.horizontal, 20)
+            
+            HStack(spacing: 12) {
+                Image("logo_placeholder2")
+                
+                Text("참여 중인 스터디가 없어요")
+                    .font(.bbip(.body1_sb16))
+                    .foregroundStyle(.gray6)
+                
+                Spacer()
+            }
+            .padding(.leading, 34)
+        }
     }
 }

@@ -47,9 +47,9 @@ struct MainHomeView: View {
             .edgesIgnoringSafeArea(.bottom)
         }
         .onAppear {
+            appState.setLightMode()
             if !hasLoaded {
                 print("mainHome OnAppear")
-                appState.setLightMode()
                 viewModel.loadHomeData()
                 hasLoaded = true
             }
