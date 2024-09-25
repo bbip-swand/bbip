@@ -11,7 +11,8 @@ final class AttendanceCertificationViewModel: ObservableObject {
     // MARK: - Code
     @Published var codeDigits: [String] = ["", "", "", ""]
     @Published var isRight: Bool = true
-    @Published var combinedCode: String = ""
+    @Published var stringCode: String = ""
+    @Published var combinedCode:Int = 0
     
     func handleTextFieldChange(index: Int, newValue: String) -> Int? {
             if newValue.isEmpty {
@@ -21,7 +22,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
                 updateCombinedCode()
                 
                 if isComplete() {
-                    validateYear() //TODO:  모든 입력이 완료되었을 때 유효성 검사(api 연결해야함) - 현재는 생년검사와 동일한 로직
+                    
                 }
                 return moveToNextField(index: index)
             }
@@ -41,18 +42,10 @@ final class AttendanceCertificationViewModel: ObservableObject {
         return codeDigits.allSatisfy { $0.count == 1 }
     }
     
-    //TODO: 여기도 로직 바뀌어야 함
-    func validateYear() {
-        let yearString = codeDigits.joined()
-        if let year = Int(yearString), (1950...Calendar.current.component(.year, from: Date())).contains(year) {
-            isRight = true
-        } else {
-            isRight = false
-        }
-    }
-    
     func updateCombinedCode() {
-        combinedCode = codeDigits.joined()
+        stringCode = codeDigits.joined()
+        combinedCode = Int(stringCode) ?? 0
+        print(combinedCode)
     }
     
     
