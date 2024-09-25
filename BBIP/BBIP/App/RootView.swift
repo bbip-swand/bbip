@@ -38,13 +38,20 @@ struct RootView: View {
             Group {
                 if let data = appStateManager.deepLinkAlertData {
                     JoinStudyCustomAlert(
-                        isPresented: $appStateManager.showDeepLinkAlert,
+                        appState: appStateManager,
                         inviteData: data
                     )
                     .opacity(appStateManager.showDeepLinkAlert ? 1 : 0)
                 }
             }
         )
+        .alert(isPresented: $appStateManager.showJoinFailAlert) {
+            Alert(
+                title: Text("가입 실패"),
+                message: Text("이미 가입된 스터디입니다"),
+                dismissButton: .default(Text("확인"))
+            )
+        }
     }
     
     private func handleDeepLink(_ url: URL) {

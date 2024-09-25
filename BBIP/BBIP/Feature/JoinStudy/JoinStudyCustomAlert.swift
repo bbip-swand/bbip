@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct JoinStudyCustomAlert: View {
-    @Binding var isPresented: Bool
+    @ObservedObject var viewModel: JoinStudyViewModel = DIContainer.shared.makeJoinStudyViewModel()
+    @ObservedObject var appState: AppStateManager
+    
     private let inviteData: DeepLinkAlertData
     private let calcWidth: CGFloat = UIScreen.main.bounds.width - 70
     
     init(
-        isPresented: Binding<Bool>,
+        appState: AppStateManager,
         inviteData: DeepLinkAlertData
     ) {
-        self._isPresented = isPresented
+        self.appState = appState
         self.inviteData = inviteData
     }
     
@@ -52,7 +55,7 @@ struct JoinStudyCustomAlert: View {
                 
                 HStack(spacing: 8) {
                     Button {
-                        withAnimation { isPresented = false }
+                        withAnimation { appState.showDeepLinkAlert = false }
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
@@ -64,10 +67,13 @@ struct JoinStudyCustomAlert: View {
                                 .foregroundStyle(.primary3)
                         }
                     }
-
+                    
                     Button {
-                        withAnimation { isPresented = false }
-                        // join study
+                        viewModel.joinStudy(studyId: inviteData.studyId) {
+                            appState.showJoinFailAlert = true
+                        }
+                        
+                        withAnimation { appState.showDeepLinkAlert = false }
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)

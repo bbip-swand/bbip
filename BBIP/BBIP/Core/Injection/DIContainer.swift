@@ -64,6 +64,9 @@ class DIContainer {
     private lazy var getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol = GetOngoingStudyInfoUseCase(
         repository: studyRepository
     )
+    private lazy var joinStudyUseCase: JoinStudyUseCaseProtocol = JoinStudyUseCase(
+        repository: studyRepository
+    )
     
     
     // MARK: - Posting
@@ -104,5 +107,10 @@ class DIContainer {
     // CreateStudy
     func makeCreateStudyViewModel() -> CreateStudyViewModel {
         return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
+    }
+    
+    // JoinStudy
+    func makeJoinStudyViewModel() -> JoinStudyViewModel {
+        return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
 }

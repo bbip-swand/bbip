@@ -48,4 +48,22 @@ final class StudyDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func joinStudy(studyId: String) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.joinStudy(studyId: studyId))
+            .tryMap { response in
+                if (200...299).contains(response.statusCode) {
+                    return true
+                } else if response.statusCode == 400 {
+                    return false // already study member
+                } else {
+                    throw NSError(
+                        domain: "joinStudy Error",
+                        code: response.statusCode,
+                        userInfo: [NSLocalizedDescriptionKey: "[StudyDataSource] createStudy() failed with status code \(response.statusCode)"]
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
 }
