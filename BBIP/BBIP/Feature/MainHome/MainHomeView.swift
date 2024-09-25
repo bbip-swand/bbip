@@ -9,8 +9,9 @@ import SwiftUI
 
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
-    @ObservedObject private var viewModel = MainHomeViewModel()
+    @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
+    @State private var hasLoaded: Bool = false
     
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
@@ -30,18 +31,28 @@ struct MainHomeView: View {
                         }
                     )
                     UserHomeView(viewModel: viewModel)
+                case .studyHome:
+                    StudyHomeView()
                 case .calendar:
                     CalendarView()
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
-            BBIPTabView(selectedTab: $selectedTab)
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .edgesIgnoringSafeArea(.bottom)
+            BBIPTabView(
+                selectedTab: $selectedTab,
+                ongoingStudyData: $viewModel.ongoingStudyData
+            )
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .edgesIgnoringSafeArea(.bottom)
         }
         .onAppear {
-            appState.setLightMode()
+            if !hasLoaded {
+                print("mainHome OnAppear")
+                appState.setLightMode()
+                viewModel.loadHomeData()
+                hasLoaded = true
+            }
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {

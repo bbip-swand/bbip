@@ -8,13 +8,29 @@
 import Foundation
 
 enum StudyCategory: String {
-    case design = "디자인"
+    case majorSubject = "전공과목"
+    case selfDevelopment = "자기계발"
     case language = "어학"
-    case science = "과학"
-    case math = "수학"
-    case history = "역사"
-    case technology = "기술"
-    case art = "예술"
-    case sports = "스포츠"
-    case music = "음악"
+    case certification = "자격증"
+    case interview = "면접"
+    case development = "개발"
+    case design = "디자인"
+    case hobby = "취미"
+    case others = "기타"
+    
+    static let allCategories: [StudyCategory] = [
+        .majorSubject, .selfDevelopment, .language, .certification,
+        .interview, .development, .design, .hobby, .others
+    ]
 }
+
+extension StudyCategory {
+    static func from(int: Int) -> StudyCategory? {
+        guard int >= 0 && int < allCategories.count else {
+            return nil
+        }
+        return allCategories[int]
+    }
+}
+
+

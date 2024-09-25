@@ -216,7 +216,8 @@ struct ActivatedBBIPTimeRingView: View {
                 Image("timeRingStick_enable")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .offset(x: 30, y: 68)
+                    .offset(x: 30, y: 62)
+                    .unredacted()
             }
             Button {
                 showAttendanceCertificationView = true
@@ -238,7 +239,7 @@ struct ActivatedBBIPTimeRingView: View {
                     .frame(width: 130, height: 43)
             )
         }
-        .frame(height: 340)
+        .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
             AttendanceCertificationView(remainingTime: $remainingTime)

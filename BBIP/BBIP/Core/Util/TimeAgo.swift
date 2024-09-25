@@ -1,5 +1,5 @@
 //
-//  DateFormatManager.swift
+//  TimeAgo.swift
 //  BBIP
 //
 //  Created by 이건우 on 9/10/24.
@@ -8,14 +8,18 @@
 import Foundation
 
 func timeAgo(date: Date) -> String {
-    let calendar = Calendar.current
-    let now = Date()
+    var calendar = Calendar.current
+    calendar.locale = Locale(identifier: "ko_KR")
+    calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+
+    let now = Date().addingTimeInterval(9 * 60 * 60) // GMT 한국 현지 시간
     
     let components = calendar.dateComponents([.second, .minute, .hour, .day, .weekOfYear], from: date, to: now)
     
     if let weeks = components.weekOfYear, weeks >= 3 {
         let formatter = DateFormatter()
         formatter.dateFormat = "yy.MM.dd"
+        formatter.timeZone = calendar.timeZone // 한국 시간대 설정
         return formatter.string(from: date)
     } else if let weeks = components.weekOfYear, weeks < 3 && weeks > 0 {
         return "\(weeks)주 전"
@@ -28,8 +32,6 @@ func timeAgo(date: Date) -> String {
     } else if let seconds = components.second, seconds < 60 && seconds > 0 {
         return "방금 전"
     } else {
-        return "경희대 화이팅"
+        return "날짜 변환 오류"
     }
 }
-
-

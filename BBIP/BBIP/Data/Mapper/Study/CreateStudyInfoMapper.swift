@@ -1,15 +1,14 @@
 //
-//  StudyInfoMapper.swift
+//  CreateStudyInfoMapper.swift
 //  BBIP
 //
-//  Created by 이건우 on 9/20/24.
+//  Created by 이건우 on 9/24/24.
 //
 
 import Foundation
-import UIKit
 
-struct StudyInfoMapper {
-    func toDTO(vo: StudyInfoVO) -> StudyInfoDTO {
+struct CreateStudyInfoMapper {
+    func toDTO(vo: CreateStudyInfoVO) -> CreateStudyInfoDTO {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -18,14 +17,14 @@ struct StudyInfoMapper {
         
         // StudyTime 변환
         let studyTimes = vo.studySessionArr.map { session in
-            return StudyInfoDTO.StudyTime(
+            return StudyTime(
                 startTime: sessionTimeDateFormatter.string(from: session.startTime!),
                 endTime: sessionTimeDateFormatter.string(from: session.endTime!)
             )
         }
         
         // DTO 변환
-        return StudyInfoDTO(
+        return CreateStudyInfoDTO(
             studyName: vo.name,
             studyImageUrl: vo.imageURL,
             studyField: vo.category,

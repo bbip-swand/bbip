@@ -23,18 +23,8 @@ struct CurrentWeekStudyInfoCardView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 0) {
-                    Group {
-                        if let imageURL = vo.imageUrl {
-                            AsyncImage(url: URL(string: imageURL))
-                                .frame(width: 48, height: 48)
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            Image("profile_default")
-                                .resizable()
-                                .frame(width: 48, height: 48)
-                        }
-                    }
-                    .padding(.trailing, 19)
+                    LoadableImageView(imageUrl: vo.imageUrl, size: 48)
+                        .padding(.trailing, 19)
                     
                     VStack(alignment: .leading, spacing: 8) {
                         Text(vo.title)
@@ -93,17 +83,28 @@ struct CurrentWeekStudyInfoCardView: View {
     }
 }
 
-#Preview {
-    ForEach(1..<3) { int in
-        CurrentWeekStudyInfoCardView(vo: CurrentWeekStudyInfoVO(
-            imageUrl: nil,
-            title: "가나다 스터디",
-            category: .design,
-            currentStudyRound: 9,
-            currentStudyDescription: "오늘은 가나다",
-            date: "9월 24일",
-            time: "12:00 ~ 15:00",
-            location: "경희대학교"))
+struct CurrentWeekStudyInfoCardViewPlaceholder: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.gray2)
+                .frame(height: 120)
+                .bbipShadow1()
+            
+            HStack(spacing: 19) {
+                Image("logo_placeholder")
+                
+                Text("더 이상 진행할 라운드가 없어요")
+                    .font(.bbip(.body1_sb16))
+                    .foregroundStyle(.gray6)
+                
+                Spacer()
+            }
+            .padding(.leading, 14)
+        }
     }
-    .padding(.horizontal, 17)
+}
+
+#Preview {
+    CurrentWeekStudyInfoCardViewPlaceholder()
 }

@@ -7,25 +7,17 @@
 
 import Foundation
 
-struct StudyInfoDTO: Encodable {
+struct StudyInfoDTO: Decodable {
+    let studyId: String
     let studyName: String
-    let studyImageUrl: String
+    let studyImageUrl: String?
     let studyField: Int
     let totalWeeks: Int
     let studyStartDate: String
     let studyEndDate: String
     let daysOfWeek: [Int]
     let studyTimes: [StudyTime]
-    let studyDescription: String
-    let studyContents: [String]
-    
-    struct StudyTime: Encodable {
-        let startTime: String
-        let endTime: String
-    }
-}
-
-// VO 통일
-struct CreateStudyResponseDTO: Decodable {
-    let studyId: String
+    let studyDescription: String?
+    let studyContents: [String]?
+    let currentWeek: Int
 }
