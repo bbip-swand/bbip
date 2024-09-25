@@ -2,39 +2,28 @@
 //  StudyInfoVO.swift
 //  BBIP
 //
-//  Created by 이건우 on 9/9/24.
+//  Created by 이건우 on 9/24/24.
 //
 
 import Foundation
 
-typealias CurrentWeekStudyInfoVO = [StudyInfoVO]
-
-/// 앱 내부에서 사용되는 스터디 정보 VO
-struct StudyInfoVO: Equatable {
+/// 앱 전반적으로 사용되는 스터디 정보 VO
+/// 스터디 스위치 뷰 & 마이페이지 나의스터디에서 사용
+struct StudyInfoVO {
     let studyId: String
+    let studyName: String
     let imageUrl: String?
-    let title: String
     let category: StudyCategory
-    let currentStudyRound: Int
-    let currentStudyDescription: String?
-    let date: String
-    let time: String
-    let location: String
-}
-
-
-extension StudyInfoVO {
-    static func placeholderVO() -> StudyInfoVO {
-        return StudyInfoVO(
-            studyId: "",
-            imageUrl: nil,
-            title: "placeholder",
-            category: .certification,
-            currentStudyRound: 1,
-            currentStudyDescription: "placeholder description",
-            date: "00월 00일",
-            time: "00:00 ~ 00:00",
-            location: "placeholder"
-        )
+    let totalWeeks: Int
+    let studyStartDate: String
+    let studyEndDate: String
+    let studyTimes: [StudyTime]
+    let studyDescription: String
+    let studyContents: [String]
+    let currentWeek: Int
+    
+    struct StudyTime: Codable {
+        let startTime: String
+        let endTime: String
     }
 }

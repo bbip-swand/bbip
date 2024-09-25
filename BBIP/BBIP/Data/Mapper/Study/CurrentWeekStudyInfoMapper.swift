@@ -8,11 +8,11 @@
 import Foundation
 
 struct CurrentWeekStudyInfoMapper {
-    func toVO(dto: CurrentWeekStudyInfoDTO) -> StudyInfoVO {
+    func toVO(dto: CurrentWeekStudyInfoDTO) -> CurrentWeekStudyInfoVO {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM월 dd일"
         
-        return StudyInfoVO(
+        return CurrentWeekStudyInfoVO(
             studyId: dto.studyId,
             imageUrl: dto.studyImageUrl,
             title: dto.studyName,
