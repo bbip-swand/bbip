@@ -9,7 +9,7 @@ import Foundation
 
 struct DeepLinkAlertData {
     let studyId: String
-    let imageUrl: String
+    let imageUrl: String?
     let studyName: String
     let studyDescription: String?
 }

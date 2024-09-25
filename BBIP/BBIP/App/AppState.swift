@@ -31,6 +31,10 @@ final class AppStateManager: ObservableObject {
     @Published var showDeepLinkAlert: Bool = false
     @Published var deepLinkAlertData: DeepLinkAlertData?
     
+    func setDeepLinkAlertData(_ data: DeepLinkAlertData) {
+        self.deepLinkAlertData = data
+    }
+    
     func setDarkMode() {
         self.colorScheme = .dark
     }
