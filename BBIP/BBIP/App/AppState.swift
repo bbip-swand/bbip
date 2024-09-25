@@ -27,6 +27,10 @@ final class AppStateManager: ObservableObject {
     @Published var path = NavigationPath()
     @Published var colorScheme: ColorScheme = .light
     
+    // DeepLink
+    @Published var showDeepLinkAlert: Bool = false
+    @Published var deepLinkAlertData: DeepLinkAlertData?
+    
     func setDarkMode() {
         self.colorScheme = .dark
     }

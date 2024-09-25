@@ -31,9 +31,19 @@ struct RootView: View {
         }
         .preferredColorScheme(appStateManager.colorScheme)
         .environmentObject(appStateManager)
+        .onOpenURL { url in
+            handleDeepLink(url)
+        }
     }
-}
-
-#Preview {
-    RootView()
+    
+    private func handleDeepLink(_ url: URL) {
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        if urlComponents?.host == "inviteStudy" {
+            if let queryItems = urlComponents?.queryItems {
+                let data = queryItems.first(where: { $0.name == "data" })?.value
+                // handle data
+                appStateManager.showDeepLinkAlert = true
+            }
+        }
+    }
 }
