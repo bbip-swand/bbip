@@ -27,8 +27,7 @@ class JoinStudyViewModel: ObservableObject {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { [weak self] isSuccess in
-                guard let self = self else { return }
+            } receiveValue: { isSuccess in
                 if isSuccess {
                     print("스터디 참여 성공")
                 } else {
