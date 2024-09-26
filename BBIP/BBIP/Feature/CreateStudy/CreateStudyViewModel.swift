@@ -64,6 +64,7 @@ class CreateStudyViewModel: ObservableObject {
     // MARK: - Handle Complete
     @Published var showCompleteView: Bool = false
     var createdStudyId: String = .init()
+    var studyInviteCode: String = .init()
     
     private let createStudyInfoUseCase: CreateStudyUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -146,6 +147,7 @@ class CreateStudyViewModel: ObservableObject {
                 guard let self = self else { return }
                 self.isLoading = false
                 self.createdStudyId = response.studyId
+                self.studyInviteCode = response.studyInviteCode
                 self.showCompleteView = true
                 print("\(createdStudyId) 스터디 생성 성공")
             }

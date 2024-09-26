@@ -62,7 +62,7 @@ extension StudyAPI: BaseAPI {
             
         case .joinStudy(let studyId):
             let param = ["studyId" : studyId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: param, encoding: URLEncoding.default)
         }
     }
 }

@@ -31,6 +31,7 @@ struct BBIPTabView : View {
     private let calw = ((UIScreen.main.bounds.width/2)-33.5-24)/3.905
     private var sheetHeight: CGFloat {
         guard let data = ongoingStudyData else { return 0 }
+        if data.isEmpty { return 225 }
         return CGFloat(130 + (data.count * 95))
     }
     
