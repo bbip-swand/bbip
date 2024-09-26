@@ -12,6 +12,7 @@ protocol StudyRepository {
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
     func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
+    func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -55,6 +56,11 @@ final class StudyRepositoryImpl: StudyRepository {
         let dto = createStudyInfoMapper.toDTO(vo: vo)
         print("dto: \(dto)")
         return dataSource.createStudy(dto: dto)
+            .eraseToAnyPublisher()
+    }
+    
+    func joinStudy(studyId: String) -> AnyPublisher<Bool, Error> {
+        dataSource.joinStudy(studyId: studyId)
             .eraseToAnyPublisher()
     }
 }

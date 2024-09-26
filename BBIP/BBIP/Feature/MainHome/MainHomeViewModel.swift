@@ -89,7 +89,7 @@ class MainHomeViewModel: ObservableObject {
         clearData()
         
         // for testing
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.loadHomeData()
         }
     }
