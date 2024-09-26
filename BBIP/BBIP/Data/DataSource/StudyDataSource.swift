@@ -52,6 +52,8 @@ final class StudyDataSource {
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error> {
         provider.requestPublisher(.joinStudy(studyId: studyId))
             .tryMap { response in
+                print(String(data: response.data, encoding: .utf8))
+                print(response.statusCode)
                 if (200...299).contains(response.statusCode) {
                     return true
                 } else if response.statusCode == 400 {
