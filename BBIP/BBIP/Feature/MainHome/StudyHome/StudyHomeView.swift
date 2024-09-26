@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct StudyHomeView: View {
+    private let studyId: String
+    
+    init(studyId: String) {
+        self.studyId = studyId
+    }
+    
     var body: some View {
-        Text("StudyHomeView")
+        Text(studyId)
     }
 }
 
 #Preview {
-    StudyHomeView()
+    StudyHomeView(studyId: "a")
 }

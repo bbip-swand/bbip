@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 
-enum MainHomeTab {
+enum MainHomeTab: Equatable {
     case userHome
-    case studyHome
+    case studyHome(studyId: String)
     case calendar
 }
 

@@ -30,8 +30,8 @@ extension StudyAPI: BaseAPI {
             return "/study/invite-info"
         case .createStudy:
             return "/study/create"
-        case .joinStudy:
-            return "/study/join"
+        case .joinStudy(let studyId):
+            return "/study/join/\(studyId)"
         }
     }
     
@@ -61,8 +61,8 @@ extension StudyAPI: BaseAPI {
             return .requestJSONEncodable(dto)
             
         case .joinStudy(let studyId):
-            let param = ["studyId" : studyId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+            let param = ["studyId": studyId]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }
