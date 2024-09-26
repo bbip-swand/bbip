@@ -24,7 +24,7 @@ struct StudySwitchView: View {
                             StudySwitchViewCell(study: studies[index])
                                 .onTapGesture {
                                     presentationMode.wrappedValue.dismiss()
-                                    selectedTab = .studyHome(studyId: studies[index].studyId)
+                                    selectedTab = .studyHome(studyId: studies[index].studyId, studyName: studies[index].studyName)
                                 }
                         }
                     }
