@@ -11,8 +11,6 @@ import Combine
 
 struct StudyHomeView: View {
     private let studyId: String
-    let ds = StudyDataSource()
-    @State var cancellables = Set<AnyCancellable>()
     
     init(studyId: String) {
         self.studyId = studyId
