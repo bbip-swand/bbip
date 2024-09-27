@@ -118,4 +118,8 @@ class DIContainer {
     func makeJoinStudyViewModel() -> JoinStudyViewModel {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
+    
+    func makeStudyHomeViewModel() -> StudyHomeViewModel {
+        return StudyHomeViewModel(getFullStudyInfoUseCase: getFullStudyInfoUseCase)
+    }
 }

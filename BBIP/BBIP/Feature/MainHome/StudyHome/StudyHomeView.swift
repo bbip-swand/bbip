@@ -10,6 +10,7 @@ import Combine
 
 
 struct StudyHomeView: View {
+    @StateObject private var viewModel = DIContainer.shared.makeStudyHomeViewModel()
     private let studyId: String
     
     init(studyId: String) {
@@ -26,6 +27,10 @@ struct StudyHomeView: View {
                     coreFeatureButtons
                         .padding(.top, 50)
                         .padding(.bottom, 27)
+//                    
+                    
+                    studyProgress
+                   
                 }
                 .frame(height: 1020)
                 
@@ -64,13 +69,17 @@ struct StudyHomeView: View {
                         .frame(width: 30, height: 24)
                         .foregroundStyle(.primary3)
                         .overlay {
-                            Text("8R")
-                                .font(.bbip(.caption2_m12))
+                            if let currentWeek = viewModel.fullStudyInfo?.currentWeek {
+                                Text(currentWeek.description + "R")
+                                    .font(.bbip(.caption2_m12))
+                            }
                         }
                     
-                    Text("2차 과제 제출 확인 및 피드백우뱌뱌뱌바바바")
-                        .font(.bbip(.body2_m14))
-                        .frame(maxWidth: UIScreen.main.bounds.width - 160, maxHeight: 20)
+                    if let currentContent = viewModel.fullStudyInfo?.currentWeekContent {
+                        Text(currentContent)
+                            .font(.bbip(.body2_m14))
+                            .frame(maxWidth: UIScreen.main.bounds.width - 160, maxHeight: 20, alignment: .leading)
+                    }
                     
                     Spacer()
                 }
@@ -83,7 +92,7 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    Text("8월 14일 / 12:00 ~ 18:00")
+                    Text(viewModel.fullStudyInfo!.pendingDateStr + viewModel.fullStudyInfo!.pendingDayStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
                         .font(.bbip(.caption2_m12))
                         .foregroundStyle(.gray2)
                     
@@ -136,6 +145,34 @@ struct StudyHomeView: View {
         .font(.bbip(.button2_m16))
         .padding(.horizontal, 33)
     }
+    
+    var studyProgress: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("스터디 진척도")
+                    .font(.bbip(.body1_b16))
+                    .padding(.leading, 11)
+                
+                Spacer()
+            }
+            
+            if let totalWeek = viewModel.fullStudyInfo?.totalWeeks {
+                StudyProgressBar(
+                    totalWeek: totalWeek,
+                    currentWeek: viewModel.fullStudyInfo!.currentWeek,
+                    periodString: viewModel.fullStudyInfo!.studyPeriodString
+                )
+            } else {
+                StudyProgressBar(
+                    totalWeek: 50,
+                    currentWeek: 1,
+                    periodString: "placeholderplaceholder"
+                )
+                .redacted(reason: .placeholder)
+            }
+        }
+        .animation(.easeInOut, value: viewModel.fullStudyInfo?.totalWeeks)
+    }
 }
 
 struct StudyHomeInnerView<Content: View>: View {
@@ -145,12 +182,13 @@ struct StudyHomeInnerView<Content: View>: View {
         ZStack(alignment: .top) {
             Color.gray1
             
-            content
-                .padding(.horizontal, 17)
+            VStack {
+                content
+            }
+            .padding(.horizontal, 17)
         }
     }
 }
-
 
 #Preview {
     StudyHomeView(studyId: "a")

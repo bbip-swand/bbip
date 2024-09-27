@@ -13,6 +13,7 @@ struct FullStudyInfoVO {
     let studyImageURL: String?
     let studyField: StudyCategory
     let totalWeeks, currentWeek: Int
+    let currentWeekContent: String
     let studyPeriodString: String
     let daysOfWeek: [Int]
     let studyTimes: [StudyTime]
@@ -20,9 +21,9 @@ struct FullStudyInfoVO {
     let studyContents: [String]
     let studyMembers: [StudyMemberDTO]
     
-    let pendingDate: String
+    let pendingDateStr: String
     let pendingDayStr: String
-    let pendingDateTime: StudyTime
+    let pendingDateTimeStr: String
 }
 
 extension FullStudyInfoVO {
@@ -33,7 +34,8 @@ extension FullStudyInfoVO {
             studyField: .certification,
             totalWeeks: 6,
             currentWeek: 2,
-            studyPeriodString: "2024-09-25 ~ 2024-11-07",
+            currentWeekContent: "다음 주 스터디 하루 쉬어갑니다요 다들 확인하세요!",
+            studyPeriodString: "2024.09.25 ~ 2024.11.07",
             daysOfWeek: [2, 4],
             studyTimes: [
                 StudyTime(startTime: "09:00", endTime: "11:00"),
@@ -47,9 +49,9 @@ extension FullStudyInfoVO {
                 StudyMemberDTO(memberName: "강희주", isManager: false, memberImageURL: nil, interest: ["7"]),
                 StudyMemberDTO(memberName: "고현준", isManager: false, memberImageURL: nil, interest: ["5"])
             ],
-            pendingDate: "2024-10-01",
-            pendingDayStr: "화요일",
-            pendingDateTime: StudyTime(startTime: "09:00", endTime: "11:00")
+            pendingDateStr: "8월 14일",
+            pendingDayStr: "(화)",
+            pendingDateTimeStr: "12:00 ~ 18:00"
         )
     }
 }

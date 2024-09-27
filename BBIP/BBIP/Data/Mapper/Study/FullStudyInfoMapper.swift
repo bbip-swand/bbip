@@ -23,7 +23,11 @@ struct FullStudyInfoMapper {
         }
         var pendingDayString: String {
             let days = ["월", "화", "수", "목", "금", "토", "일"]
-            return days[dto.pendingDateIndex].description
+            return " (\(days[dto.pendingDateIndex].description))"
+        }
+        var pendingDateTimeStr: String {
+            let times = dto.studyTimes[dto.pendingDateIndex]
+            return "\(times.startTime) ~ \(times.endTime)"
         }
         
         // VO로 변환
@@ -33,15 +37,16 @@ struct FullStudyInfoMapper {
             studyField: category,
             totalWeeks: dto.totalWeeks,
             currentWeek: dto.currentWeek,
+            currentWeekContent: dto.studyContents[dto.currentWeek],
             studyPeriodString: periodString,
             daysOfWeek: dto.daysOfWeek,
             studyTimes: studyTimes,
             studyDescription: dto.studyDescription,
             studyContents: dto.studyContents,
             studyMembers: dto.studyMembers,
-            pendingDate: dto.pendingDate, 
+            pendingDateStr: dto.pendingDate,
             pendingDayStr: pendingDayString,
-            pendingDateTime: dto.studyTimes[dto.pendingDateIndex]
+            pendingDateTimeStr: pendingDateTimeStr
         )
     }
 }
