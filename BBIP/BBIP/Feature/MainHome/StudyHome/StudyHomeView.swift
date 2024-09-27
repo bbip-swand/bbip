@@ -20,9 +20,10 @@ struct StudyHomeView: View {
                 headerView
                     .zIndex(1)
                 
-                ZStack {
-                    Color.gray1
-                    
+                StudyHomeInnerView {
+                    coreFeatureButtons
+                        .padding(.top, 50)
+                        .padding(.bottom, 27)
                 }
                 .frame(height: 1020)
                 
@@ -93,7 +94,61 @@ struct StudyHomeView: View {
             .frame(maxHeight: 320)
         }
     }
+    
+    var coreFeatureButtons: some View {
+        HStack {
+            VStack(spacing: 12) {
+                Button {
+                    // go attendance
+                } label: {
+                    Image("studyHome_attendance")
+                }
+                
+                Text("출석 인증")
+            }
+            
+            Spacer()
+            
+            VStack(spacing: 12) {
+                Button {
+                    // go location
+                } label: {
+                    Image("studyHome_location")
+                }
+                
+                Text("장소 확인")
+            }
+            
+            Spacer()
+            
+            VStack(spacing: 12) {
+                Button {
+                    // go archive
+                } label: {
+                    Image("studyHome_archive")
+                }
+                
+                Text("아카이브")
+            }
+        }
+        .font(.bbip(.button2_m16))
+        .padding(.horizontal, 33)
+    }
 }
+
+struct StudyHomeInnerView<Content: View>: View {
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            Color.gray1
+            
+            content
+                .padding(.horizontal, 17)
+        }
+    }
+}
+
 
 #Preview {
     StudyHomeView(studyId: "a")
