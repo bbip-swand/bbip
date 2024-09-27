@@ -1,5 +1,5 @@
 //
-//  StudyFullInfoDTO.swift
+//  FullStudyInfoVO.swift
 //  BBIP
 //
 //  Created by 이건우 on 9/27/24.
@@ -7,17 +7,20 @@
 
 import Foundation
 
-/// 스터디 전체 정보 DTO
-struct FullStudyInfoDTO: Decodable {
+/// 스터디 전체 정보 VO, 스터디 홈에서 사용
+struct FullStudyInfoVO {
     let studyName: String
     let studyImageURL: String?
-    let studyField, totalWeeks, currentWeek: Int
-    let studyStartDate, studyEndDate: String
+    let studyField: StudyCategory
+    let totalWeeks, currentWeek: Int
+    let studyPeriodString: String
     let daysOfWeek: [Int]
     let studyTimes: [StudyTime]
     let studyDescription: String
     let studyContents: [String]
     let studyMembers: [StudyMemberDTO]
+    
     let pendingDate: String
-    let pendingDateIndex: Int
+    let pendingDayStr: String
+    let pendingDateTime: StudyTime
 }

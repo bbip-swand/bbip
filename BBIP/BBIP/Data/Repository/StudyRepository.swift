@@ -50,6 +50,11 @@ final class StudyRepositoryImpl: StudyRepository {
             }
             .eraseToAnyPublisher()
     }
+    
+    func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoDTO, Error> {
+        dataSource.getFullStudyInfo(studyId: studyId)
+            .eraseToAnyPublisher()
+    }
 
     
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {

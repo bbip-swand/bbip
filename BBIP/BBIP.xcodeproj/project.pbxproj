@@ -117,6 +117,8 @@
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
+		C6F074392CA6DC6800A37501 /* FullStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */; };
+		C6F0743B2CA6E09000A37501 /* FullStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -272,6 +274,8 @@
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
+		C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoVO.swift; sourceTree = "<group>"; };
+		C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoMapper.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				C6FA55B32C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift */,
 				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 				C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */,
+				C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -660,11 +665,10 @@
 		C695BDFB2C64CB83009DEC3C /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
-				C6F700822C9EF8B3000CCC80 /* Posting */,
 				C6F7007F2C9EF889000CCC80 /* Auth */,
 				C6F700802C9EF896000CCC80 /* User */,
 				C6F700812C9EF8A3000CCC80 /* Study */,
-				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
+				C6F700822C9EF8B3000CCC80 /* Posting */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -877,6 +881,7 @@
 				C69445A02C9D6200003945CC /* StudyInfoMapper.swift */,
 				C6F7008D2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift */,
 				C6CF226D2CA2F17A00988748 /* CreateStudyInfoMapper.swift */,
+				C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -884,6 +889,7 @@
 		C6F700822C9EF8B3000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
+				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1081,7 +1087,9 @@
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6F7008C2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
+				C6F074392CA6DC6800A37501 /* FullStudyInfoVO.swift in Sources */,
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
+				C6F0743B2CA6E09000A37501 /* FullStudyInfoMapper.swift in Sources */,
 				082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
