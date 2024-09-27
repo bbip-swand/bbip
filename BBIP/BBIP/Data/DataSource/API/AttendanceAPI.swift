@@ -6,6 +6,7 @@ enum AttendanceAPI {
     case createCode(dto: CreateCodeDTO)
     case getStatus
     case enterCode(dto: EnterCodeDTO)
+    case getAttendRecord(studyId: String)
 }
 
 extension AttendanceAPI: BaseAPI{
@@ -17,6 +18,8 @@ extension AttendanceAPI: BaseAPI{
             return "/attendance/status"
         case .enterCode:
             return "/attendance/apply"
+        case .getAttendRecord(let studyId):
+            return "/attendance/records/\(studyId)"
         }
     }
     
@@ -24,7 +27,7 @@ extension AttendanceAPI: BaseAPI{
         switch self {
         case .createCode:
             return .post
-        case .getStatus:
+        case .getStatus , .getAttendRecord:
             return .get
         case .enterCode:
             return .post
@@ -41,6 +44,10 @@ extension AttendanceAPI: BaseAPI{
             
         case .enterCode(let dto):
             return .requestJSONEncodable(dto)
+            
+        case .getAttendRecord(let studyId):
+            let param = ["studyId" : studyId]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }

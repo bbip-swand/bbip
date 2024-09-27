@@ -27,4 +27,16 @@ struct getMemberVO{
     let studyName: [String]
 }
 
+struct getAttendRecordVO{
+    let session: Int
+    let userName: String
+    let profileImageUrl: String
+    let status: AttendanceStatus
+    let remainingTime: Int
+    let attendCode: Int
+}
 
+enum AttendanceStatus: String, Decodable {
+    case attended = "ATTENDED"
+    case absent = "ABSENT"
+}

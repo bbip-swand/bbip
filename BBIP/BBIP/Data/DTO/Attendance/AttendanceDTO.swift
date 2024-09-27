@@ -30,3 +30,10 @@ struct GetStatusResponseDTO: Decodable{
     let ttl: Int
     let studyId: String
 }
+
+struct GetAttendRecordDTO: Decodable{
+    let session: Int
+    let userName: String
+    let profileImageUrl: String
+    let status: AttendanceStatus
+}
