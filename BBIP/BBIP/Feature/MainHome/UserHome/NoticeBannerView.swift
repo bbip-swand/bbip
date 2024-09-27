@@ -9,9 +9,14 @@ import SwiftUI
 
 struct NoticeBannerView: View {
     private let pendingNotice: String
+    private let isDark: Bool
     
-    init(pendingNotice: String) {
+    init(
+        pendingNotice: String,
+        isDark: Bool = false
+    ) {
         self.pendingNotice = pendingNotice
+        self.isDark = isDark
     }
     
     var body: some View {
@@ -31,7 +36,7 @@ struct NoticeBannerView: View {
             
             Text(pendingNotice)
                 .font(.bbip(.body2_m14))
-                .foregroundStyle(.gray8)
+                .foregroundStyle(isDark ? .gray2 : .gray8)
                 .frame(maxWidth: 284, maxHeight: 20, alignment: .leading)
             
             Spacer()
@@ -39,7 +44,7 @@ struct NoticeBannerView: View {
         .padding(.leading, 11)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundStyle(.gray2)
+                .foregroundStyle(isDark ? .gray8 : .gray2)
                 .frame(height: 40)
         )
         .padding(.horizontal, 16)
@@ -48,6 +53,7 @@ struct NoticeBannerView: View {
 
 #Preview {
     NoticeBannerView(
-        pendingNotice: "다음 주 스터디 하루 쉬어갑니다! 다들 확인해주세요오오"
+        pendingNotice: "다음 주 스터디 하루 쉬어갑니다! 다들 확인해주세요오오", 
+        isDark: true
     )
 }
