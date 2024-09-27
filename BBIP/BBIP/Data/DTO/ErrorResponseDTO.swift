@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct ErrorResponseDTO: Decodable{
+    let statusCode: Int
+    let message: String
+}
