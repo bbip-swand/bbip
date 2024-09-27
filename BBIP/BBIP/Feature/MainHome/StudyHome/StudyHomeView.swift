@@ -10,7 +10,7 @@ import Combine
 
 
 struct StudyHomeView: View {
-    @StateObject private var viewModel = DIContainer.shared.makeStudyHomeViewModel()
+    @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
     private let studyId: String
     
     init(studyId: String) {
@@ -30,6 +30,9 @@ struct StudyHomeView: View {
 //                    
                     
                     studyProgress
+                        .padding(.bottom, 32)
+                    
+                    weeklyContent
                    
                 }
                 .frame(height: 1020)
@@ -47,6 +50,13 @@ struct StudyHomeView: View {
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
+        }
+        .onAppear {
+            print(studyId)
+            viewModel.requestFullStudyInfo(studyId: studyId)
+        }
+        .onChange(of: studyId) { _, newVal in
+            viewModel.requestFullStudyInfo(studyId: newVal)
         }
     }
     
@@ -92,9 +102,11 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    Text(viewModel.fullStudyInfo!.pendingDateStr + viewModel.fullStudyInfo!.pendingDayStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
-                        .font(.bbip(.caption2_m12))
-                        .foregroundStyle(.gray2)
+                    if let dateStr = viewModel.fullStudyInfo?.pendingDateStr {
+                        Text(dateStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
+                            .font(.bbip(.caption2_m12))
+                            .foregroundStyle(.gray2)
+                    }
                     
                     Spacer()
                 }
@@ -173,6 +185,34 @@ struct StudyHomeView: View {
         }
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.totalWeeks)
     }
+    
+    var weeklyContent: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("주차별 활동")
+                    .font(.bbip(.body1_b16))
+                    .padding(.leading, 11)
+                
+                Spacer()
+            }
+            
+            if let contents = viewModel.fullStudyInfo?.studyContents {
+                let currentWeek = viewModel.fullStudyInfo?.currentWeek ?? 0
+                let maxWeeks = min(3, contents.count - currentWeek)
+                
+                ForEach(0..<maxWeeks, id: \.self) { index in
+                    let weekIndex = currentWeek + index
+                    let content = contents[weekIndex].isEmpty ? "미정" : contents[weekIndex]
+                    WeeklyStudyContentCell(weekVal: weekIndex, content: content)
+                }
+            } else {
+                // You can handle the empty state here
+                Text("No contents available")
+            }
+        }
+        .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyContents)
+    }
+
 }
 
 struct StudyHomeInnerView<Content: View>: View {

@@ -22,7 +22,6 @@ struct FullStudyInfoVO {
     let studyMembers: [StudyMemberDTO]
     
     let pendingDateStr: String
-    let pendingDayStr: String
     let pendingDateTimeStr: String
 }
 
@@ -50,7 +49,6 @@ extension FullStudyInfoVO {
                 StudyMemberDTO(memberName: "고현준", isManager: false, memberImageURL: nil, interest: ["5"])
             ],
             pendingDateStr: "8월 14일",
-            pendingDayStr: "(화)",
             pendingDateTimeStr: "12:00 ~ 18:00"
         )
     }

@@ -21,10 +21,6 @@ struct FullStudyInfoMapper {
             " ~ " +
             dto.studyEndDate.replacingOccurrences(of: "-", with: ".")
         }
-        var pendingDayString: String {
-            let days = ["월", "화", "수", "목", "금", "토", "일"]
-            return " (\(days[dto.pendingDateIndex].description))"
-        }
         var pendingDateTimeStr: String {
             let times = dto.studyTimes[dto.pendingDateIndex]
             return "\(times.startTime) ~ \(times.endTime)"
@@ -45,7 +41,6 @@ struct FullStudyInfoMapper {
             studyContents: dto.studyContents,
             studyMembers: dto.studyMembers,
             pendingDateStr: dto.pendingDate,
-            pendingDayStr: pendingDayString,
             pendingDateTimeStr: pendingDateTimeStr
         )
     }

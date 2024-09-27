@@ -122,6 +122,7 @@
 		C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */; };
 		C6F0743F2CA6EB4B00A37501 /* StudyHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */; };
 		C6F074412CA717CC00A37501 /* StudyProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074402CA717CC00A37501 /* StudyProgressBar.swift */; };
+		C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -282,6 +283,7 @@
 		C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFullStudyInfoUseCase.swift; sourceTree = "<group>"; };
 		C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeViewModel.swift; sourceTree = "<group>"; };
 		C6F074402CA717CC00A37501 /* StudyProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyProgressBar.swift; sourceTree = "<group>"; };
+		C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentCell.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 			children = (
 				C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */,
 				C6F074402CA717CC00A37501 /* StudyProgressBar.swift */,
+				C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */,
 				C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */,
 			);
 			path = StudyHome;
@@ -1159,6 +1162,7 @@
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
 				C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */,
+				C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,

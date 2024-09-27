@@ -77,6 +77,9 @@ struct StudyProgressBar: View {
         .onAppear {
             withAnimation { progress = targetProgress }
         }
+        .onChange(of: progress) { _, newVal in
+            withAnimation { progress = targetProgress }
+        }
         .bbipShadow1()
     }
 }

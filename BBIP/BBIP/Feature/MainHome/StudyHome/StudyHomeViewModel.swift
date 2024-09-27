@@ -10,7 +10,7 @@ import Combine
 
 class StudyHomeViewModel: ObservableObject {
     // Datas
-    @Published var fullStudyInfo: FullStudyInfoVO? = .mock()
+    @Published var fullStudyInfo: FullStudyInfoVO?
     
     // UseCases
     private let getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol
