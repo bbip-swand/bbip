@@ -119,6 +119,7 @@
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
 		C6F074392CA6DC6800A37501 /* FullStudyInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */; };
 		C6F0743B2CA6E09000A37501 /* FullStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */; };
+		C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -276,6 +277,7 @@
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoVO.swift; sourceTree = "<group>"; };
 		C6F0743A2CA6E09000A37501 /* FullStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoMapper.swift; sourceTree = "<group>"; };
+		C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFullStudyInfoUseCase.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */,
 				C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */,
 				C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */,
+				C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
 				C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
+				C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,

@@ -45,19 +45,6 @@ struct StudyHomeView: View {
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
         }
-        .onAppear {
-            ds.getStudyFullInfo(studyId: studyId)
-                .sink { completion in
-                    switch completion {
-                    case .finished: break
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                } receiveValue: { res in
-                    print(res)
-                }
-                .store(in: &cancellables)
-        }
     }
     
     var headerView: some View {

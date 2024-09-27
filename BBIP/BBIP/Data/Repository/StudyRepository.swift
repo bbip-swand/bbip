@@ -9,9 +9,10 @@ import Foundation
 import Combine
 
 protocol StudyRepository {
-    func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
-    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
+    func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
+    func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error>
+    func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
 }
 
@@ -20,17 +21,20 @@ final class StudyRepositoryImpl: StudyRepository {
     private let studyInfoMapper: StudyInfoMapper
     private let createStudyInfoMapper: CreateStudyInfoMapper
     private let currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper
+    private let fullStudyInfoMapper: FullStudyInfoMapper
 
     init(
         dataSource: StudyDataSource,
         studyInfoMapper: StudyInfoMapper,
         createStudyInfoMapper: CreateStudyInfoMapper,
-        currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper
+        currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper,
+        fullStudyInfoMapper: FullStudyInfoMapper
     ) {
         self.dataSource = dataSource
         self.studyInfoMapper = studyInfoMapper
         self.createStudyInfoMapper = createStudyInfoMapper
         self.currentWeekStudyInfoMapper = currentWeekStudyInfoMapper
+        self.fullStudyInfoMapper = fullStudyInfoMapper
     }
     
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {
@@ -51,8 +55,9 @@ final class StudyRepositoryImpl: StudyRepository {
             .eraseToAnyPublisher()
     }
     
-    func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoDTO, Error> {
+    func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error> {
         dataSource.getFullStudyInfo(studyId: studyId)
+            .map { self.fullStudyInfoMapper.toVO(dto: $0) }
             .eraseToAnyPublisher()
     }
 
