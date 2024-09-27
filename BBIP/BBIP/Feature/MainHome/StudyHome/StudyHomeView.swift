@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Combine
+
 
 struct StudyHomeView: View {
     private let studyId: String
+    let ds = StudyDataSource()
+    @State var cancellables = Set<AnyCancellable>()
     
     init(studyId: String) {
         self.studyId = studyId
@@ -40,6 +44,19 @@ struct StudyHomeView: View {
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
+        }
+        .onAppear {
+            ds.getStudyFullInfo(studyId: studyId)
+                .sink { completion in
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                } receiveValue: { res in
+                    print(res)
+                }
+                .store(in: &cancellables)
         }
     }
     
