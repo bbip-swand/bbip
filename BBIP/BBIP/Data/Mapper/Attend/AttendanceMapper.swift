@@ -37,3 +37,9 @@ struct GetStatusMapper{
                 )
     }
 }
+
+struct GetAttendRecordMapper{
+    func toVO(dto:GetAttendRecordDTO) -> getAttendRecordVO{
+        return getAttendRecordVO(session: dto.session, userName: dto.userName, profileImageUrl: dto.profileImageUrl, status: dto.status)
+    }
+}

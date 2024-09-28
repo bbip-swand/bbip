@@ -42,17 +42,13 @@ struct AttendanceCertificationView: View {
         timer = nil
     }
     
-    //    init(remainingTime: Int) {
-    //        self.remainingTime = $remainingTime
-    //    }
-    
     var body: some View {
         VStack(spacing: 0) {
             Image("glove")
                 .resizable()
                 .frame(width: 32, height: 32)
-                .padding(.top, remainingTime == 0 ? 22 : 50)
-                .padding(.bottom, remainingTime == 0 ? 12 : 20)
+                .padding(.top, 22)
+                .padding(.bottom, 12)
             
             Text("출석 인증 코드 입력")
                 .foregroundStyle(.mainWhite)
@@ -62,21 +58,8 @@ struct AttendanceCertificationView: View {
             Text("생성된 4자리 코드를 입력하세요")
                 .foregroundStyle(.gray6)
                 .font(.bbip(.caption1_m16))
-                .padding(.bottom, remainingTime == 0 ? 41 : 48)
+                .padding(.bottom, 82)
             
-            if remainingTime == 0 {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(.gray8)
-                    
-                    Text(studyName)
-                        .font(.bbip(.title3_sb20))
-                        .foregroundColor(.mainWhite)
-                }
-                .frame(maxWidth: .infinity, maxHeight: 34)
-                .padding(.horizontal, 38)
-                .padding(.bottom, 8)
-            }
             
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
@@ -104,7 +87,6 @@ struct AttendanceCertificationView: View {
             
             if remainingTime != 0 {
                 HStack(spacing: 12) {
-                    Spacer(minLength: 38)
                     ForEach(0..<4, id: \.self) { index in
                         CustomTextFieldComponent(
                             text: $viewModel.codeDigits[index],
@@ -121,9 +103,10 @@ struct AttendanceCertificationView: View {
                             isFilled: !viewModel.codeDigits[index].isEmpty
                         )
                     }
-                    Spacer(minLength: 39)
+                    
                 }
                 .padding(.top, 20)
+                .padding(.horizontal,38)
                 
                 createWarningLabel()
             }
