@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 
+//TODO: 스터디홈에서 여기로 넘어올때 출석 시간 끝났는지 안끝났는지 확인해줘야함.
+//TODO: 스터디홈에서 remainingTime 남아있으면 출석현황 화면으로
 struct CreateCodeOnboardingView: View{
     @State var goNext = false
     
@@ -46,7 +48,7 @@ struct CreateCodeOnboardingView: View{
         .backButtonStyle(isReversal: true)
         .background(.gray9)
         .navigationDestination(isPresented: $goNext){
-            CreateCodeView()
+            CreateCodeView(viewModel: CreateCodeViewModel(createCodeUseCase: (any CreateCodeUseCaseProtocol).self as! CreateCodeUseCaseProtocol))
         }
     }
 }

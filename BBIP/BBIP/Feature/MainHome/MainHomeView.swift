@@ -66,8 +66,3 @@ struct MainHomeView: View {
         .navigationBarBackButtonHidden()
     }
 }
-
-
-#Preview {
-    MainHomeView()
-}

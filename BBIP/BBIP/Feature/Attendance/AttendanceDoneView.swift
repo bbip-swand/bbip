@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct AttendanceDoneView: View{
-    @State private var gohome: Bool = false
-    
-    init() {
-        setNavigationBarAppearance()
-    }
+    @EnvironmentObject private var appState: AppStateManager
     
     var body : some View{
         VStack(spacing:0){
@@ -33,14 +29,12 @@ struct AttendanceDoneView: View{
             Spacer()
             
             MainButton(text: "돌아가기") {
-                gohome = true
+                appState.popToRoot() //TODO: 왜 작동안하는지 검사하기
             }
             .padding(.bottom, 22)
         }
         .backButtonStyle(isReversal: true)
         .background(.gray9)
-        .navigationDestination(isPresented: $gohome){
-            MainHomeView()
-        }
+        
     }
 }

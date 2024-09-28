@@ -45,6 +45,7 @@ final class AppStateManager: ObservableObject {
     }
     
     func popToRoot() {
+        print("popToRoot called")
         setLightMode()
         path = .init()
     }

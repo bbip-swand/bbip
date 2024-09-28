@@ -7,12 +7,32 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 struct CreateCodeView: View{
-    //vo로 받은 코드 String 변환 작업 해야함
-    var attendCode : String = "0318"
-    var startAttend: Bool = false
+    //TODO: vo로 받은 코드 String 변환 작업 해야함
+    @StateObject var viewModel: CreateCodeViewModel
+    @State var attendCode : String = ""
+    @State var startAttend: Bool = false
+    @State var remainingTime: Int = 600
+    @State private var timer: AnyCancellable?
     
+    private func startTimer() {
+        if timer == nil {
+            
+            timer = Timer.publish(every: 1, on: .main, in: .common)
+                .autoconnect()
+                .sink { _ in
+                    guard remainingTime > 0 else {
+                        timer?.cancel()
+                        timer = nil // 타이머가 종료되었으므로 nil로 설정
+                        return
+                    }
+                    remainingTime -= 1
+                }
+        }
+        print("remainingTime: \(remainingTime)")
+    }
     
     var body: some View{
         VStack(spacing:0){
@@ -62,17 +82,21 @@ struct CreateCodeView: View{
             Spacer()
             
             MainButton(text:"시작하기", enable: true){
-                
+                startAttend = true
+                startTimer()
             }
             .padding(.bottom,22)
+            
         }
         .backButtonStyle(isReversal: true)
         .background(.gray9)
+        .navigationDestination(isPresented: $startAttend){
+            CreateCodeDoneView(attendCode: $attendCode, remainingTime: $remainingTime)
+        }
+        .onAppear {
+                    
+                    attendCode = viewModel.getCode
+                }
         
     }
-}
-
-
-#Preview{
-    CreateCodeView()
 }

@@ -10,9 +10,6 @@ struct AttendanceCertificationView: View {
     @Binding var remainingTime: Int
     @State private var showAttendanceDone: Bool = false
     
-    
-    var studyName: String = "StudyName"
-    
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
         let seconds = seconds % 60
