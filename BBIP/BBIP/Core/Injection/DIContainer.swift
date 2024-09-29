@@ -47,12 +47,14 @@ class DIContainer {
     private let studyInfoMapper = StudyInfoMapper()
     private let createStudyInfoMapper = CreateStudyInfoMapper()
     private let currentWeekStudyInfoMapper = CurrentWeekStudyInfoMapper()
+    private let fullStudyInfoMapper = FullStudyInfoMapper()
     
     private lazy var studyRepository: StudyRepository = StudyRepositoryImpl(
         dataSource: studyDataSource,
         studyInfoMapper: studyInfoMapper,
         createStudyInfoMapper: createStudyInfoMapper,
-        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper
+        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper, 
+        fullStudyInfoMapper: fullStudyInfoMapper
     )
     
     private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
@@ -65,6 +67,9 @@ class DIContainer {
         repository: studyRepository
     )
     private lazy var joinStudyUseCase: JoinStudyUseCaseProtocol = JoinStudyUseCase(
+        repository: studyRepository
+    )
+    private lazy var getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol = GetFullStudyInfoUseCase(
         repository: studyRepository
     )
     
@@ -137,8 +142,12 @@ class DIContainer {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
     
-    //Attend
+    // Attend
     func makeAttendRecordViewModel()-> AttendanceCertificationViewModel{
         return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase)
+    
+    // StudyHome
+    func makeStudyHomeViewModel() -> StudyHomeViewModel {
+        return StudyHomeViewModel(getFullStudyInfoUseCase: getFullStudyInfoUseCase)
     }
 }

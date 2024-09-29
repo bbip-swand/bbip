@@ -19,7 +19,7 @@ extension PostingAPI: BaseAPI {
     var path: String {
         switch self {
         case .getCurrentWeekPosting:
-            return "/posting"
+            return "/posting/recent"
         case .getPostingInfo:
             return "/posting"
         case .createPosting:

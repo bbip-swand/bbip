@@ -17,6 +17,7 @@ enum AppState: String {
 enum MainHomeViewDestination {
     case notice
     case mypage
+    case studyDetail
     case startSIS       // sis startPoint
     case SIS            // study into setup
     case completeSIS    // sis endPoing

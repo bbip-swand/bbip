@@ -20,22 +20,24 @@ struct MainHomeView: View {
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false
     
+    private func studyNameForHeader() -> String {
+        if case .studyHome(_, let studyName) = selectedTab {
+            return studyName
+        }
+        return .init()
+    }
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 switch selectedTab {
                 case .userHome:
-                    BBIPHearderView(
+                    UserHomeHeaderView(
                         showDot: $hasNotice,
-                        onNoticeTapped: {
-                            appState.push(.notice)
-                        },
-                        onProfileTapped: {
-                            appState.push(.mypage)
-                        }
+                        tabState: selectedTab
                     )
                     UserHomeView(viewModel: viewModel)
-                case .studyHome(let studyId):
+                case .studyHome(let studyId, _):
                     StudyHomeView(studyId: studyId)
                 case .calendar:
                     CalendarView()

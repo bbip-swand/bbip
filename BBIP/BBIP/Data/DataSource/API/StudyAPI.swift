@@ -11,7 +11,7 @@ import Moya
 enum StudyAPI {
     case getThisWeekStudy
     case getOngoingStudy
-    case getStudyInfo(studyId: String)      // param
+    case getFullStudyInfo(studyId: String)      // param
     case getInviteInfo(inviteCode: String)  // param
     case createStudy(dto: CreateStudyInfoDTO)
     case joinStudy(studyId: String)         // param
@@ -24,8 +24,8 @@ extension StudyAPI: BaseAPI {
             return "/study/this-week"
         case .getOngoingStudy:
             return "/study/ongoing"
-        case .getStudyInfo:
-            return "/study"
+        case .getFullStudyInfo(let studyId):
+            return "/study/search/\(studyId)"
         case .getInviteInfo:
             return "/study/invite-info"
         case .createStudy:
@@ -37,7 +37,7 @@ extension StudyAPI: BaseAPI {
     
     var method: Moya.Method {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy, .getStudyInfo, .getInviteInfo:
+        case .getThisWeekStudy, .getOngoingStudy, .getFullStudyInfo, .getInviteInfo:
             return .get
         case .createStudy, .joinStudy:
             return .post
@@ -49,9 +49,8 @@ extension StudyAPI: BaseAPI {
         case .getThisWeekStudy, .getOngoingStudy:
             return .requestPlain
             
-        case .getStudyInfo(let studyId):
-            let param = ["studyId" : studyId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .getFullStudyInfo(let studyId):
+            return .requestPlain
             
         case .getInviteInfo(let inviteCode):
             let param = ["inviteCode" : inviteCode]
