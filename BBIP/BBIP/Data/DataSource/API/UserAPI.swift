@@ -12,6 +12,7 @@ enum UserAPI {
     case resign
     case createInfo(dto: UserInfoDTO)
     case updateInfo(dto: UserInfoDTO)
+    case postFCMToken(token: String)
 }
 
 extension UserAPI: BaseAPI {
@@ -25,16 +26,14 @@ extension UserAPI: BaseAPI {
             return "/users/create/info"
         case .updateInfo:
             return "/users/update/info"
+        case .postFCMToken:
+            return "/users/fcmToken"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .signUp:
-            return .post
-        case .resign:
-            return .post
-        case .createInfo:
+        case .signUp, .resign, .createInfo, .postFCMToken:
             return .post
         case .updateInfo:
             return .put
@@ -51,6 +50,9 @@ extension UserAPI: BaseAPI {
             return .requestJSONEncodable(dto)
         case .updateInfo(let dto):
             return .requestJSONEncodable(dto)
+        case .postFCMToken(token: let token):
+            let param = ["fcmToken" : token]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
 }
