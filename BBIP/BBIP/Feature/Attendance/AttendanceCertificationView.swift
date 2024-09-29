@@ -2,13 +2,15 @@ import SwiftUI
 import Combine
 
 struct AttendanceCertificationView: View {
-    @ObservedObject private var viewModel: AttendanceCertificationViewModel = .init()
+    @StateObject var viewModel: AttendanceCertificationViewModel
     @FocusState private var focusedIndex: Int?
     
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
     @State private var showAttendanceDone: Bool = false
+    
+
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetAttendRecordUseCaseProtocol{
-    func execute(studyId: String) -> AnyPublisher<getAttendRecordVO, Error>
+    func execute(studyId: String) -> AnyPublisher<[getAttendRecordVO], Error>
 }
 
 final class GetAttendRecordUseCase: GetAttendRecordUseCaseProtocol{
@@ -19,7 +19,7 @@ final class GetAttendRecordUseCase: GetAttendRecordUseCaseProtocol{
         self.repository = repository
     }
     
-    func execute(studyId: String) -> AnyPublisher<getAttendRecordVO, any Error> {
+    func execute(studyId: String) -> AnyPublisher<[getAttendRecordVO], any Error> {
         return repository.getAttendRecord(studyId: studyId)
             .eraseToAnyPublisher()
     }

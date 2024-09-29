@@ -25,15 +25,17 @@ struct CreateCodeResponseDTO: Decodable{
 }
 
 struct GetStatusResponseDTO: Decodable{
-    let code: Int
+    let studyName: String
+    let studyId: String
+    let session: Int
     let startTime: String
     let ttl: Int
-    let studyId: String
+    let isManager: Bool
 }
 
 struct GetAttendRecordDTO: Decodable{
     let session: Int
     let userName: String
-    let profileImageUrl: String
+    let profileImageUrl: String?
     let status: AttendanceStatus
 }

@@ -25,6 +25,7 @@ struct StudySwitchView: View {
                                 .onTapGesture {
                                     presentationMode.wrappedValue.dismiss()
                                     selectedTab = .studyHome(studyId: studies[index].studyId)
+                                    print("studyid: \(studies[1].studyId)")
                                 }
                         }
                     }

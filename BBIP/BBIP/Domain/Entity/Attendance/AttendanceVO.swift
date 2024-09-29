@@ -21,6 +21,7 @@ struct GetStatusVO {
     let session: Int
     let startTime: Date
     let ttl: Int
+    let isManager: Bool
 }
 
 struct getAttendRecordVO{

@@ -128,10 +128,10 @@ final class AttendDataSource{
     }
     
     //MARK: -GET
-    func getAttendRecord(studyId: String) -> AnyPublisher<GetAttendRecordDTO, Error>{
+    func getAttendRecord(studyId: String) -> AnyPublisher<[GetAttendRecordDTO], Error> {
         provider.requestPublisher(.getAttendRecord(studyId: studyId))
-            .tryMap{ response in
-                guard(200...299).contains(response.statusCode) else{
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
                     if (400...499).contains(response.statusCode) {
                         // 400번대 에러일 때 ErrorResponseDTO로 파싱
                         if let errorDTO = try? JSONDecoder().decode(ErrorResponseDTO.self, from: response.data) {
@@ -143,7 +143,6 @@ final class AttendDataSource{
                                 userInfo: [NSLocalizedDescriptionKey: errorDTO.message]
                             )
                         } else {
-                            // ErrorResponseDTO로 파싱 실패 시
                             throw NSError(
                                 domain: "Fail get Attend record",
                                 code: response.statusCode,
@@ -157,10 +156,16 @@ final class AttendDataSource{
                         userInfo: [NSLocalizedDescriptionKey: "[getAttendRecord] getAttendRecord() failed with \(response.statusCode)"]
                     )
                 }
+                // Print response data as a string for debugging
+                if let jsonString = String(data: response.data, encoding: .utf8) {
+                    print("Response data: \(jsonString)")
+                } else {
+                    print("Failed to convert response data to String")
+                }
                 return response.data
             }
-            .decode(type: GetAttendRecordDTO.self, decoder: JSONDecoder())
-            .mapError{error in return error}
+            .decode(type: [GetAttendRecordDTO].self, decoder: JSONDecoder()) // 여기서 배열 형태로 디코딩
+            .mapError { error in return error }
             .eraseToAnyPublisher()
     }
 }

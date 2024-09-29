@@ -8,7 +8,10 @@
 import SwiftUI
 import Combine
 
+//TODO: remainingTime 받아오고 전역으로 관리하기 (활성화되었을때 타임링 시간 표시해주기)
+
 struct BBIPTimeRingView: View {
+    @State var startAttend: Bool = false
     @State private var progress: Double
     private var vo: ImpendingStudyVO
     
@@ -102,6 +105,21 @@ struct BBIPTimeRingView: View {
                         .font(.bbip(.body2_b14))
                         .foregroundStyle(.gray5)
                 }
+//            Button {
+//                startAttend = true
+//            } label: {
+//                RoundedRectangle(cornerRadius: 10)
+//                    .foregroundStyle(.primary3)
+//                    .frame(width: 130, height: 43)
+//                    .overlay {
+//                        Text("출석인증")
+//                            .font(.bbip(.body2_b14))
+//                            .foregroundStyle(.mainWhite)
+//                    }
+//            }
+//            .navigationDestination(isPresented: $startAttend){
+//                CreateCodeOnboardingView()
+//            }
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
@@ -110,7 +128,7 @@ struct BBIPTimeRingView: View {
 
 struct ActivatedBBIPTimeRingView: View {
     @State private var progress: Double = 0
-    @State private var remainingTime: Int
+    @Binding var remainingTime: Int
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
     @State private var showCircle: Bool = false
@@ -125,11 +143,11 @@ struct ActivatedBBIPTimeRingView: View {
     
     init(
         studyTitle: String,
-        remainingTime: Int,
+        remainingTime: Binding<Int>,
         completion: (() -> Void)? = nil
     ) {
         self.studyTitle = studyTitle
-        self.remainingTime = remainingTime
+        self._remainingTime = remainingTime
         self.completion = completion
     }
     
@@ -242,27 +260,12 @@ struct ActivatedBBIPTimeRingView: View {
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
-            AttendanceCertificationView(remainingTime: $remainingTime)
+//            AttendanceCertificationView(
+//                viewModel: AttendanceCertificationViewModel(getAttendRecordUseCase: GetAttendRecordUseCase(repository: AttendRepository.self as! AttendRepository)),
+//                    remainingTime: $remainingTime
+//                )
+            AttendRecordView()
         }
     }
 }
 
-#Preview {
-    
-    VStack(spacing: 40) {
-        BBIPTimeRingView(
-            progress: 0.4,
-            vo: ImpendingStudyVO(
-                leftDay: 0,
-                title: "TOEIC / IELTS",
-                time: "18:00 - 20:00",
-                location: "예대 4층")
-        )
-        
-//        AttendanceCertificationView(
-//            studyTitle: "TOEIC / IELTS",
-//            remainingTime: 40
-//        )
-    }
-    
-}

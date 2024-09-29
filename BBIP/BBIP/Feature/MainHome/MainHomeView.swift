@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
+
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
+    
+    
     
     // MARK: - Navigation Destination
     @State private var hasNotice: Bool = false

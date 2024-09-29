@@ -12,7 +12,7 @@ protocol AttendRepository{
     func getAttendCode() -> AnyPublisher<GetStatusVO, Error> //getStatus - 반환있음
     func createCode(vo:AttendVO) -> AnyPublisher<CreateCodeResponseDTO, Error> //createcode - 반환 있음
     func enterCode(vo:AttendVO) -> AnyPublisher<Void,Error> // entercode - 반환 없음
-    func getAttendRecord(studyId:String) -> AnyPublisher<getAttendRecordVO,Error>
+    func getAttendRecord(studyId:String) -> AnyPublisher<[getAttendRecordVO],Error>
 }
 
 final class AttendRepositoryImpl: AttendRepository{
@@ -62,10 +62,11 @@ final class AttendRepositoryImpl: AttendRepository{
     }
     
     //MARK: -GET
-    func getAttendRecord(studyId: String) -> AnyPublisher<getAttendRecordVO, any Error>{
+    func getAttendRecord(studyId: String) -> AnyPublisher<[getAttendRecordVO], any Error> {
         dataSource.getAttendRecord(studyId: studyId)
-            .map{ dto in
-                return self.getRecordMapper.toVO(dto: dto)
+            .map { dtos in
+                print("Mapped DTOs: \(dtos)")
+                return self.getRecordMapper.toVOList(dtos: dtos)
             }
             .eraseToAnyPublisher()
     }

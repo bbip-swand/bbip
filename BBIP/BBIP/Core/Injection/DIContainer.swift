@@ -136,4 +136,9 @@ class DIContainer {
     func makeJoinStudyViewModel() -> JoinStudyViewModel {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
+    
+    //Attend
+    func makeAttendRecordViewModel()-> AttendanceCertificationViewModel{
+        return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase)
+    }
 }

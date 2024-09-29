@@ -22,24 +22,50 @@ struct EnterCodeMapper{
 
 struct GetStatusMapper{
     func toVo(dto:GetStatusResponseDTO) -> GetStatusVO{
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR") // "오전/오후"를 처리하기 위해 로케일 설정
-        dateFormatter.dateFormat = "yyyy. M. d. a h:mm:ss"
+        print("StartTime: \(dto.startTime)")
         
-        let startTime: Date = dateFormatter.date(from: dto.startTime) ?? Date()
+        // 1. 먼저 ISO 8601 형식의 문자열을 Date로 변환 (UTC 기준)
+        let isoDateFormatter = DateFormatter()
+        isoDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // ISO 8601 형식
+        isoDateFormatter.timeZone = TimeZone(secondsFromGMT: 0) // UTC로 설정
         
+        // ISO 8601 형식에서 Date로 변환
+        let startTimeUTC: Date = isoDateFormatter.date(from: dto.startTime) ?? Date()
+        
+        // 2. UTC에서 9시간을 빼서 한국 시간대 기준으로 변환된 Date 생성
+        let nineHours: TimeInterval = 0// 9시간을 초 단위로 변환
+        let startTimeKST = startTimeUTC.addingTimeInterval(nineHours)
+        
+        
+        
+        print("StartTime in KST: \(startTimeKST)")
         return GetStatusVO(
-                    studyName: dto.studyId,
-                    studyId: dto.studyId,
-                    session: dto.ttl,
-                    startTime: startTime,
-                    ttl: dto.ttl
-                )
+            studyName: dto.studyName,
+            studyId: dto.studyId,
+            session: dto.session,
+            startTime: startTimeKST,
+            ttl: dto.ttl,
+            isManager: dto.isManager
+        )
     }
 }
 
 struct GetAttendRecordMapper{
+    
     func toVO(dto:GetAttendRecordDTO) -> getAttendRecordVO{
-        return getAttendRecordVO(session: dto.session, userName: dto.userName, profileImageUrl: dto.profileImageUrl, status: dto.status)
+        let vo = getAttendRecordVO(
+            session: dto.session,
+            userName: dto.userName,
+            profileImageUrl: dto.profileImageUrl ?? "profile_default",
+            status: dto.status)
+        print("Mapping DTO: \(dto) to VO")
+        print("Mapping VO: \(vo)")
+        print("")
+        
+        return vo
+    }
+    func toVOList(dtos: [GetAttendRecordDTO]) -> [getAttendRecordVO] {
+        print("toVOList: \(dtos.map { toVO(dto: $0) })")
+        return dtos.map { toVO(dto: $0) }
     }
 }

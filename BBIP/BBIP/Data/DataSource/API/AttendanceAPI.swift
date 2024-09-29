@@ -47,7 +47,8 @@ extension AttendanceAPI: BaseAPI{
             
         case .getAttendRecord(let studyId):
             let param = ["studyId" : studyId]
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+//            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            return .requestPlain
         }
     }
 }

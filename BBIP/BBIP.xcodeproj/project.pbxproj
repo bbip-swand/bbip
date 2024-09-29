@@ -25,6 +25,15 @@
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
 		084C022F2C8056F300E54D0C /* BBIPHearderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022E2C8056F300E54D0C /* BBIPHearderView.swift */; };
 		086330802CA68AC400F1775B /* ErrorResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */; };
+		086330822CA7C67200F1775B /* GetAttendRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330812CA7C67200F1775B /* GetAttendRecordUseCase.swift */; };
+		086330852CA7C79400F1775B /* CreateCodeOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330842CA7C79400F1775B /* CreateCodeOnboardingView.swift */; };
+		086330872CA7D00B00F1775B /* CreateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330862CA7D00B00F1775B /* CreateCodeView.swift */; };
+		086330892CA7FA1600F1775B /* CreateCodeDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330882CA7FA1600F1775B /* CreateCodeDoneView.swift */; };
+		0863308B2CA83C3800F1775B /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C62780DF2C8886F000065F98 /* GoogleService-Info.plist */; };
+		0863308D2CA8415100F1775B /* CreateCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */; };
+		0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308E2CA8590E00F1775B /* AttendRecordView.swift */; };
+		086330912CA85BF800F1775B /* TODOList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330902CA85BF800F1775B /* TODOList.swift */; };
+		086330932CA91DB300F1775B /* errorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330922CA91DB300F1775B /* errorExtension.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */; };
 		08B098E12CA5DFCF00653F72 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */; };
@@ -204,6 +213,14 @@
 		084C022C2C7F20F300E54D0C /* BBIPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPTabView.swift; sourceTree = "<group>"; };
 		084C022E2C8056F300E54D0C /* BBIPHearderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPHearderView.swift; sourceTree = "<group>"; };
 		0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponseDTO.swift; sourceTree = "<group>"; };
+		086330812CA7C67200F1775B /* GetAttendRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAttendRecordUseCase.swift; sourceTree = "<group>"; };
+		086330842CA7C79400F1775B /* CreateCodeOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeOnboardingView.swift; sourceTree = "<group>"; };
+		086330862CA7D00B00F1775B /* CreateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeView.swift; sourceTree = "<group>"; };
+		086330882CA7FA1600F1775B /* CreateCodeDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeDoneView.swift; sourceTree = "<group>"; };
+		0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeViewModel.swift; sourceTree = "<group>"; };
+		0863308E2CA8590E00F1775B /* AttendRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendRecordView.swift; sourceTree = "<group>"; };
+		086330902CA85BF800F1775B /* TODOList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOList.swift; sourceTree = "<group>"; };
+		086330922CA91DB300F1775B /* errorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorExtension.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
@@ -411,6 +428,7 @@
 				08B098E52CA5DFD800653F72 /* CreateCodeUseCase.swift */,
 				08B098E62CA5DFD800653F72 /* EnterCodeUseCase.swift */,
 				08B098E72CA5DFD800653F72 /* GetStatusUseCase.swift */,
+				086330812CA7C67200F1775B /* GetAttendRecordUseCase.swift */,
 			);
 			path = Attend;
 			sourceTree = "<group>";
@@ -421,6 +439,17 @@
 				08B098ED2CA5DFEB00653F72 /* AttendanceMapper.swift */,
 			);
 			path = Attend;
+			sourceTree = "<group>";
+		};
+		086330832CA7C78100F1775B /* CreateCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				086330842CA7C79400F1775B /* CreateCodeOnboardingView.swift */,
+				086330862CA7D00B00F1775B /* CreateCodeView.swift */,
+				086330882CA7FA1600F1775B /* CreateCodeDoneView.swift */,
+				0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */,
+			);
+			path = CreateCodeView;
 			sourceTree = "<group>";
 		};
 		08E51E632CA5525E00547086 /* Calendar */ = {
@@ -620,6 +649,7 @@
 				C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */,
 				C6B00C162C590A0E009AC4E2 /* RootView.swift */,
 				C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */,
+				086330902CA85BF800F1775B /* TODOList.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -722,6 +752,7 @@
 				C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */,
 				C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */,
 				C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */,
+				086330922CA91DB300F1775B /* errorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1064,9 +1095,11 @@
 		C6FA55F62C95359900E537D7 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				086330832CA7C78100F1775B /* CreateCodeView */,
 				C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */,
 				C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */,
 				082539562C9C6E7900632582 /* AttendanceDoneView.swift */,
+				0863308E2CA8590E00F1775B /* AttendRecordView.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -1197,6 +1230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0863308B2CA83C3800F1775B /* GoogleService-Info.plist in Sources */,
 				08B098EA2CA5DFD800653F72 /* GetStatusUseCase.swift in Sources */,
 				08B098EC2CA5DFE100653F72 /* AttendanceVO.swift in Sources */,
 				C6FA56042C9552C900E537D7 /* CalendarVO.swift in Sources */,
@@ -1211,6 +1245,7 @@
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
 				0834FED52CA310D700A20721 /* (null) in Sources */,
 				082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */,
+				0863308D2CA8415100F1775B /* CreateCodeViewModel.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
@@ -1266,6 +1301,7 @@
 				C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */,
 				C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */,
 				C6FA560E2C9597B200E537D7 /* StudySwitchViewModel.swift in Sources */,
+				086330932CA91DB300F1775B /* errorExtension.swift in Sources */,
 				C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
@@ -1290,9 +1326,11 @@
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				0825395F2C9E9BAB00632582 /* (null) in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
+				086330852CA7C79400F1775B /* CreateCodeOnboardingView.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
 				C6CF226A2CA2EF3300988748 /* CreateStudyDTO.swift in Sources */,
 				08B098F02CA5DFF300653F72 /* AttendRepository.swift in Sources */,
+				086330892CA7FA1600F1775B /* CreateCodeDoneView.swift in Sources */,
 				08E51E622CA54B4900547086 /* CalendarAPI.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */,
@@ -1317,6 +1355,7 @@
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
+				0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */,
 				08B098E92CA5DFD800653F72 /* EnterCodeUseCase.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				08B098EE2CA5DFEB00653F72 /* AttendanceMapper.swift in Sources */,
@@ -1327,9 +1366,11 @@
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,
 				08E51E772CA5CF9F00547086 /* createScheduleUseCase.swift in Sources */,
+				086330822CA7C67200F1775B /* GetAttendRecordUseCase.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
+				086330912CA85BF800F1775B /* TODOList.swift in Sources */,
 				C6CF22682CA2E7AE00988748 /* StudyInfoVO.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
@@ -1348,6 +1389,7 @@
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				08B098F42CA5E00B00653F72 /* AttendDataSource.swift in Sources */,
+				086330872CA7D00B00F1775B /* CreateCodeView.swift in Sources */,
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
 				C6FA55BC2C902F3200E537D7 /* HomeBulletnboardCell.swift in Sources */,
 				08E51E732CA5CD3A00547086 /* getDateUseCase.swift in Sources */,
@@ -1499,10 +1541,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
-				DEVELOPMENT_TEAM = 6JLYLDSW4U;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BBIP/Info.plist;
@@ -1523,6 +1567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = swand.BBIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Development_Profile_BBIP;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
