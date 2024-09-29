@@ -10,16 +10,6 @@
 		082539502C9C6BF700632582 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825394F2C9C6BF700632582 /* CustomTextField.swift */; };
 		082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539562C9C6E7900632582 /* AttendanceDoneView.swift */; };
 		0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = 082539592C9C6F4100632582 /* CodeCheck.json */; };
-		0825395F2C9E9BAB00632582 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		082539612C9ECD0000632582 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		082539652C9FFAA900632582 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FEC22CA28BCF00A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FEC92CA28BEF00A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FED52CA310D700A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FED72CA314B500A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FED92CA318C500A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FEDE2CA324FD00A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		0834FEE32CA4136300A20721 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
 		08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */; };
 		084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C022C2C7F20F300E54D0C /* BBIPTabView.swift */; };
@@ -33,7 +23,6 @@
 		0863308D2CA8415100F1775B /* CreateCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */; };
 		0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308E2CA8590E00F1775B /* AttendRecordView.swift */; };
 		086330912CA85BF800F1775B /* TODOList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330902CA85BF800F1775B /* TODOList.swift */; };
-		086330932CA91DB300F1775B /* errorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330922CA91DB300F1775B /* errorExtension.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */; };
 		08B098E12CA5DFCF00653F72 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */; };
@@ -232,7 +221,6 @@
 		0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeViewModel.swift; sourceTree = "<group>"; };
 		0863308E2CA8590E00F1775B /* AttendRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendRecordView.swift; sourceTree = "<group>"; };
 		086330902CA85BF800F1775B /* TODOList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOList.swift; sourceTree = "<group>"; };
-		086330922CA91DB300F1775B /* errorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorExtension.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
@@ -474,6 +462,14 @@
 				0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */,
 			);
 			path = CreateCodeView;
+			sourceTree = "<group>";
+		};
+		086330942CA9905D00F1775B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				086330922CA91DB300F1775B /* errorExtension.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		08E51E632CA5525E00547086 /* Calendar */ = {
@@ -962,6 +958,7 @@
 			children = (
 				C6B00C132C590A0E009AC4E2 /* BBIP */,
 				C6B00C122C590A0E009AC4E2 /* Products */,
+				086330942CA9905D00F1775B /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1586,7 +1583,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
