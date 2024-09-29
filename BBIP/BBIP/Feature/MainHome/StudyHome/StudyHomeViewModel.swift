@@ -26,6 +26,15 @@ final class StudyHomeViewModel: ObservableObject {
         self.getStudyPostingUseCase = getStudyPostingUseCase
     }
     
+    func reloadFullStudyInfo(studyId: String) {
+        fullStudyInfo = nil
+        studyBulletnData = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.requestFullStudyInfo(studyId: studyId)
+            self.getStudyPosting(studyId: studyId)
+        }
+    }
+    
     func requestFullStudyInfo(studyId: String) {
         isFullInfoLoaded = true
         getFullStudyInfoUseCase.excute(studyId: studyId)
@@ -42,13 +51,6 @@ final class StudyHomeViewModel: ObservableObject {
                 self.isFullInfoLoaded = false
             }
             .store(in: &cancellables)
-    }
-    
-    func reloadFullStudyInfo(studyId: String) {
-        fullStudyInfo = nil
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.requestFullStudyInfo(studyId: studyId)
-        }
     }
     
     func getStudyPosting(studyId: String) {

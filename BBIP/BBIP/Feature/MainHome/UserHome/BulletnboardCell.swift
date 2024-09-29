@@ -7,11 +7,21 @@
 
 import SwiftUI
 
-struct HomeBulletnboardCell: View {
+enum BulletnboardCellType {
+    case userHome
+    case studyHome
+}
+
+struct BulletnboardCell: View {
     private var vo: PostVO
+    private var type: BulletnboardCellType
     
-    init(vo: PostVO) {
+    init(
+        vo: PostVO,
+        type: BulletnboardCellType
+    ) {
         self.vo = vo
+        self.type = type
     }
     
     var capsuleViewType: CapsuleViewType {
@@ -27,8 +37,13 @@ struct HomeBulletnboardCell: View {
                 .foregroundStyle(.mainWhite)
             
             VStack(alignment: .leading, spacing: 0) {
-                CapsuleView(title: vo.studyName, type: capsuleViewType)
-                    .padding(.bottom, 12)
+                if type == .userHome {
+                    CapsuleView(title: vo.studyName, type: capsuleViewType)
+                        .padding(.bottom, 12)
+                } else {
+                    CapsuleView(title: vo.postType == .notice ? "공지" : "0주차", type: capsuleViewType)
+                        .padding(.bottom, 12)
+                }
                 
                 Text(vo.title)
                     .frame(maxWidth: 137, maxHeight: 34, alignment: .leading)

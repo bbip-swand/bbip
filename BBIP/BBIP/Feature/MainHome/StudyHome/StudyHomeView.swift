@@ -312,19 +312,20 @@ struct StudyHomeView: View {
                 HStack(spacing: 8) {
                     if viewModel.studyBulletnData == nil {
                         ForEach(0..<5, id: \.self) { _ in
-                            HomeBulletnboardCell(vo: .placeholderVO())
+                            BulletnboardCell(vo: .placeholderVO(), type: .studyHome)
                                 .redacted(reason: .placeholder)
                         }
                     } else if let data = viewModel.studyBulletnData, data.isEmpty {
                         HomeBulletnboardCellPlaceholder()
                     } else if let data = viewModel.studyBulletnData {
                         ForEach(0..<data.count, id: \.self) { index in
-                            HomeBulletnboardCell(vo: data[index])
+                            BulletnboardCell(vo: data[index], type: .studyHome)
                         }
                     }
                 }
                 .animation(.easeInOut, value: viewModel.studyBulletnData)
                 .padding(.horizontal, 17)
+                .frame(height: 120)
             }
             .bbipShadow1()
         }
