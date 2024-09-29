@@ -53,7 +53,7 @@ class DIContainer {
         dataSource: studyDataSource,
         studyInfoMapper: studyInfoMapper,
         createStudyInfoMapper: createStudyInfoMapper,
-        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper, 
+        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper,
         fullStudyInfoMapper: fullStudyInfoMapper
     )
     
@@ -145,6 +145,7 @@ class DIContainer {
     // Attend
     func makeAttendRecordViewModel()-> AttendanceCertificationViewModel{
         return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase)
+    }
     
     // StudyHome
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
