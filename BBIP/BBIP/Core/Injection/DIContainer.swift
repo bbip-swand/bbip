@@ -85,6 +85,9 @@ class DIContainer {
     private lazy var getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol = GetCurrentWeekPostUseCase(
         repository: postingRepository
     )
+    private lazy var getStudyPostingUseCase: GetStudyPostingUseCaseProtocol = GetStudyPostingUseCase(
+        repository: postingRepository
+    )
     
     // MARK: - ViewModels
     // Login
@@ -120,6 +123,9 @@ class DIContainer {
     }
     
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
-        return StudyHomeViewModel(getFullStudyInfoUseCase: getFullStudyInfoUseCase)
+        return StudyHomeViewModel(
+            getFullStudyInfoUseCase: getFullStudyInfoUseCase,
+            getStudyPostingUseCase: getStudyPostingUseCase
+        )
     }
 }
