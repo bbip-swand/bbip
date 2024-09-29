@@ -35,7 +35,7 @@ private extension StudyDetailView {
                 )
             
             Text(vo.studyName)
-                .font(.bbip(.title3_m20))
+                .font(.bbip(family: .Bold, size: 20))
                 .padding(.bottom, 30)
         }
     }
@@ -118,7 +118,7 @@ struct StudyDetailRowView: View {
                 .foregroundStyle(.gray9)
 
             if let additional = additionalValue {
-                Text(additional)
+                Text("(\(additional))")
                     .font(.bbip(.body2_m14))
                     .foregroundStyle(.gray9)
                     .padding(.leading, 10)
@@ -145,7 +145,7 @@ struct StudyDayTimeRow: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(dayName(for: day))
-                        Text("(\(time.startTime) ~ \(time.endTime))")
+                        Text("\(time.startTime) ~ \(time.endTime)")
                     }
                     .font(.bbip(.body2_m14))
                 }

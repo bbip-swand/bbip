@@ -194,6 +194,8 @@ struct StudyHomeView: View {
                     // go attendance
                 } label: {
                     Image("studyHome_attendance")
+                        .resizable()
+                        .frame(width: 50, height: 50)
                 }
                 
                 Text("출석 인증")
@@ -206,6 +208,8 @@ struct StudyHomeView: View {
                     // go location
                 } label: {
                     Image("studyHome_location")
+                        .resizable()
+                        .frame(width: 50, height: 50)
                 }
                 
                 Text("장소 확인")
@@ -218,6 +222,8 @@ struct StudyHomeView: View {
                     // go archive
                 } label: {
                     Image("studyHome_archive")
+                        .resizable()
+                        .frame(width: 50, height: 50)
                 }
                 
                 Text("아카이브")
@@ -349,7 +355,9 @@ struct StudyHomeView: View {
                             StudyMemberCell(vo: studyMembers[index])
                         }
                         
-                        StudyMemberInviteCell(inviteCode: "")
+                        if let code = viewModel.fullStudyInfo?.inviteCode {
+                            StudyMemberInviteCell(inviteCode: code)
+                        }
                     } else {
                         ForEach(0..<4, id: \.self) { index in
                             StudyMemberCell(vo: .placeholderMock())
