@@ -25,9 +25,14 @@ struct BulletnboardCell: View {
     }
     
     var capsuleViewType: CapsuleViewType {
-        vo.postType == .normal
-        ? .normal
-        : .highlight
+        switch (type, vo.postType) {
+        case (_, .notice):
+            return .highlight
+        case (.userHome, .normal):
+            return .normal
+        case (.studyHome, .normal):
+            return .fill
+        }
     }
     
     var body: some View {
@@ -41,7 +46,7 @@ struct BulletnboardCell: View {
                     CapsuleView(title: vo.studyName, type: capsuleViewType)
                         .padding(.bottom, 12)
                 } else {
-                    CapsuleView(title: vo.postType == .notice ? "공지" : "0주차", type: capsuleViewType)
+                    CapsuleView(title: vo.postType == .notice ? "공지" : "\(vo.week)주차", type: capsuleViewType)
                         .padding(.bottom, 12)
                 }
                 

@@ -16,53 +16,57 @@ struct StudyHomeView: View {
     init(studyId: String) {
         self.studyId = studyId
     }
-
+    
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                studyHeaderView
-                
-                headerView
-                    .zIndex(1)
-                
-                StudyHomeInnerView {
-                    coreFeatureButtons
-                        .padding(.top, 50)
-                        .padding(.bottom, 27)
-                        .padding(.horizontal, 17)
+        ZStack(alignment: .top) {
+            navBar
+                .zIndex(2)
+            
+            ScrollView {
+                VStack(spacing: 0) {
+                    headerView
+                        .zIndex(1)
                     
-                    studyProgress
-                        .padding(.bottom, 32)
-                        .padding(.horizontal, 17)
-                        .id(viewModel.isFullInfoLoaded)
+                    StudyHomeInnerView {
+                        coreFeatureButtons
+                            .padding(.top, 50)
+                            .padding(.bottom, 27)
+                            .padding(.horizontal, 17)
+                        
+                        studyProgress
+                            .padding(.bottom, 32)
+                            .padding(.horizontal, 17)
+                            .id(viewModel.isFullInfoLoaded)
+                        
+                        weeklyContent
+                            .padding(.bottom, 32)
+                            .padding(.horizontal, 17)
+                        
+                        studyBulletn
+                            .padding(.bottom, 32)
+                        
+                        studyMember
+                    }
+                    .frame(height: 1100)
                     
-                    weeklyContent
-                        .padding(.bottom, 32)
-                        .padding(.horizontal, 17)
-                    
-                    studyBulletn
-                        .padding(.bottom, 32)
-                    
-                    studyMember
+                    Spacer()
                 }
-                .frame(height: 1100)
-                
-                Spacer()
             }
-        }
-        .background(
-            VStack {
-                Color.gray9
-                    .frame(height: 300)
-                    .ignoresSafeArea(edges: .top)
-                Color.gray1
+            .padding(.top, 54)
+            .background(
+                VStack(spacing: 0) {
+                    Color.gray9
+                        .frame(height: 400)
+                        .ignoresSafeArea(edges: .top)
+                    Color.gray1
+                }
+            )
+            .frame(maxHeight: .infinity)
+            .scrollIndicators(.never)
+            .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
+                scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                scrollView.refreshControl?.tintColor = .primary3
             }
-        )
-        .frame(maxHeight: .infinity)
-        .scrollIndicators(.never)
-        .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
-            scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-            scrollView.refreshControl?.tintColor = .primary3
         }
         .refreshable {
             viewModel.reloadFullStudyInfo(studyId: studyId)
@@ -81,7 +85,7 @@ struct StudyHomeView: View {
         }
     }
     
-    private var studyHeaderView: some View {
+    private var navBar: some View {
         HStack {
             if let studyName = viewModel.fullStudyInfo?.studyName {
                 Text(studyName)
@@ -261,7 +265,7 @@ struct StudyHomeView: View {
         }
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.totalWeeks)
     }
-
+    
     private var weeklyContent: some View {
         VStack(spacing: 12) {
             HStack {
@@ -374,7 +378,7 @@ struct StudyHomeView: View {
 
 private struct StudyHomeInnerView<Content: View>: View {
     @ViewBuilder let content: Content
-
+    
     var body: some View {
         ZStack(alignment: .top) {
             Color.gray1
@@ -395,7 +399,7 @@ extension StudyHomeView {
         
         return dateFormatter.date(from: dateString) ?? Date()
     }
-
+    
     func formatDate(from date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")

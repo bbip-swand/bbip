@@ -28,7 +28,7 @@ struct MainHomeView: View {
             VStack(spacing: 0) {
                 switch selectedTab {
                 case .userHome:
-                    UserHomeHeaderView(
+                    UserHomeNavBar(
                         showDot: $hasNotice,
                         tabState: selectedTab
                     )

@@ -16,7 +16,7 @@ struct StudyMemberCell: View {
     }
     
     var memberPositionString: String {
-        vo.isManager ? "팀원" : "팀장"
+        vo.isManager ? "팀장" : "팀원"
     }
     
     var body: some View {

@@ -15,6 +15,7 @@ struct PostDTO: Decodable {
     let content: String
     let isNotice: Bool
     let createdAt: Date
+    let week: Int?
 }
 
 /*[

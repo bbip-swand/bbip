@@ -1,11 +1,31 @@
 import Foundation
 import SwiftUI
 
-struct UserHomeHeaderView: View {
+struct UserHomeNavBar: View {
     @EnvironmentObject var appState: AppStateManager
     @Binding var showDot: Bool
     var tabState: MainHomeTab
 
+    var body: some View {
+        if tabState != .calendar {
+            HStack(spacing: 0) {
+                Text("홈")
+                    .font(.bbip(.title3_m20))
+                    .foregroundStyle(.mainBlack)
+                    .frame(maxWidth: titleMaxWidth, alignment: .leading)
+                    .padding(.leading, 20)
+
+                Spacer()
+                HStack(spacing: 24) {
+                    noticeButton
+                    profileButton
+                }
+            }
+            .frame(height: 42)
+            .background(.gray1)
+        }
+    }
+    
     private var titleMaxWidth: CGFloat {
         UIScreen.main.bounds.width - 144
     }
@@ -39,26 +59,6 @@ struct UserHomeHeaderView: View {
                 .renderingMode(.template)
                 .foregroundStyle(.mainBlack)
                 .padding(.trailing, 28)
-        }
-    }
-
-    var body: some View {
-        if tabState != .calendar {
-            HStack(spacing: 0) {
-                Text("홈")
-                    .font(.bbip(.title3_m20))
-                    .foregroundStyle(.mainBlack)
-                    .frame(maxWidth: titleMaxWidth, alignment: .leading)
-                    .padding(.leading, 20)
-
-                Spacer()
-                HStack(spacing: 24) {
-                    noticeButton
-                    profileButton
-                }
-            }
-            .frame(height: 42)
-            .background(.gray1)
         }
     }
 }

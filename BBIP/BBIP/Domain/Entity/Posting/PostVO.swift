@@ -23,6 +23,7 @@ struct PostVO: Equatable {
     let title: String
     let content: String
     let postType: PostType
+    let week: Int
 }
 
 extension PostVO {
@@ -34,7 +35,8 @@ extension PostVO {
             studyName: "placeholder",
             title: "placeholder",
             content: "placeholder",
-            postType: .normal
+            postType: .normal, 
+            week: 0
         )
     }
 }
