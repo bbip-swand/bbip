@@ -29,13 +29,14 @@ struct WeeklyStudyContentCell: View {
         HStack(alignment: .top, spacing: 16) {
             Circle()
                 .foregroundStyle(isCurrentWeek ? .primary3 : .gray3)
-                .frame(width: 36)
+                .frame(width: 36, height: 36)
                 .overlay() {
                     Text(weekVal.description)
                         .font(.bbip(.body1_sb16))
                         .foregroundStyle(isCurrentWeek ? .mainWhite : .gray8)
                 }
                 .padding(.leading, 18)
+                .fixedSize()
             
             VStack(alignment: .leading, spacing: 3) {
                 if let content {

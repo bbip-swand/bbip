@@ -10,6 +10,7 @@ import Combine
 
 protocol PostingRepository {
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error>
+    func getStudyPosting(studyId: String) -> AnyPublisher<RecentPostVO, Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
@@ -26,6 +27,15 @@ final class PostingRepositoryImpl: PostingRepository {
     
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error> {
         return dataSource.getCurrentWeekPosting()
+            .map { [weak self] dto in
+                guard let self = self else { return [] }
+                return self.mapper.toVO(dto: dto)
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func getStudyPosting(studyId: String) -> AnyPublisher<RecentPostVO, Error> {
+        return dataSource.getStudyPosting(studyId: studyId)
             .map { [weak self] dto in
                 guard let self = self else { return [] }
                 return self.mapper.toVO(dto: dto)

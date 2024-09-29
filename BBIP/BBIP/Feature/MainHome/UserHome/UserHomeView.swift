@@ -101,14 +101,14 @@ struct UserHomeView: View {
                 HStack(spacing: 8) {
                     if viewModel.homeBulletnData == nil {
                         ForEach(0..<5, id: \.self) { _ in
-                            HomeBulletnboardCell(vo: .placeholderVO())
+                            BulletnboardCell(vo: .placeholderVO(), type: .userHome)
                                 .redacted(reason: .placeholder)
                         }
                     } else if let data = viewModel.homeBulletnData, data.isEmpty {
                         HomeBulletnboardCellPlaceholder()
                     } else if let data = viewModel.homeBulletnData {
                         ForEach(0..<data.count, id: \.self) { index in
-                            HomeBulletnboardCell(vo: data[index])
+                            BulletnboardCell(vo: data[index], type: .userHome)
                         }
                     }
                 }

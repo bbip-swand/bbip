@@ -13,6 +13,7 @@ enum PostingAPI {
     case getPostingInfo(postingId: String)                  // param
     case createPosting(dto: CreatePostingDTO)
     case createComment(postingId: String, content: String)  // param
+    case getStudyPosting(studyId: String)
 }
 
 extension PostingAPI: BaseAPI {
@@ -26,18 +27,16 @@ extension PostingAPI: BaseAPI {
             return "/posting/create"
         case .createComment:
             return "/posting/create/comment"
+        case .getStudyPosting(let studyId):
+            return "/posting/all/\(studyId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getCurrentWeekPosting:
+        case .getCurrentWeekPosting, .getPostingInfo, .getStudyPosting:
             return .get
-        case .getPostingInfo:
-            return .get
-        case .createPosting:
-            return .post
-        case .createComment:
+        case .createPosting, .createComment:
             return .post
         }
     }
@@ -55,6 +54,8 @@ extension PostingAPI: BaseAPI {
             let param = ["postingId": postingId]
             let body = ["content": content]
             return .requestCompositeParameters(bodyParameters: body, bodyEncoding: JSONEncoding.default, urlParameters: param)
+        case .getStudyPosting:
+            return .requestPlain
         }
     }
     

@@ -40,12 +40,14 @@ struct StudyHomeView: View {
                         .padding(.bottom, 32)
                         .padding(.horizontal, 17)
                     
+                    studyBulletn
+                        .padding(.bottom, 32)
+                    
                     studyMember
                 }
-                .frame(height: 1020)
+                .frame(height: 1100)
                 
                 Spacer()
-                    .frame(minHeight: 150)
             }
         }
         .background(
@@ -67,6 +69,7 @@ struct StudyHomeView: View {
         }
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
+            viewModel.getStudyPosting(studyId: studyId)
         }
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)
@@ -229,6 +232,7 @@ struct StudyHomeView: View {
             HStack {
                 Text("스터디 진척도")
                     .font(.bbip(.body1_b16))
+                    .foregroundStyle(.gray8)
                     .padding(.leading, 11)
                 
                 Spacer()
@@ -257,6 +261,7 @@ struct StudyHomeView: View {
             HStack {
                 Text("주차별 활동")
                     .font(.bbip(.body1_b16))
+                    .foregroundStyle(.gray8)
                     .padding(.leading, 11)
                 
                 Spacer()
@@ -292,11 +297,46 @@ struct StudyHomeView: View {
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyContents)
     }
     
+    private var studyBulletn: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("게시판")
+                    .font(.bbip(.body1_b16))
+                    .foregroundStyle(.gray8)
+                    .padding(.leading, 28)
+                
+                Spacer()
+            }
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 8) {
+                    if viewModel.studyBulletnData == nil {
+                        ForEach(0..<5, id: \.self) { _ in
+                            BulletnboardCell(vo: .placeholderVO(), type: .studyHome)
+                                .redacted(reason: .placeholder)
+                        }
+                    } else if let data = viewModel.studyBulletnData, data.isEmpty {
+                        HomeBulletnboardCellPlaceholder()
+                    } else if let data = viewModel.studyBulletnData {
+                        ForEach(0..<data.count, id: \.self) { index in
+                            BulletnboardCell(vo: data[index], type: .studyHome)
+                        }
+                    }
+                }
+                .animation(.easeInOut, value: viewModel.studyBulletnData)
+                .padding(.horizontal, 17)
+                .frame(height: 120)
+            }
+            .bbipShadow1()
+        }
+    }
+    
     private var studyMember: some View {
         VStack(spacing: 12) {
             HStack {
                 Text("스터디원")
                     .font(.bbip(.body1_b16))
+                    .foregroundStyle(.gray8)
                     .padding(.leading, 28)
                 
                 Spacer()

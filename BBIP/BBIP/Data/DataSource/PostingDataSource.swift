@@ -23,4 +23,15 @@ final class PostingDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func getStudyPosting(studyId: String) -> AnyPublisher<[PostDTO], Error> {
+        return provider.requestPublisher(.getStudyPosting(studyId: studyId))
+            .map(\.data)
+            .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .mapError { error in
+                print("Error: \(error.localizedDescription)")
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
 }
