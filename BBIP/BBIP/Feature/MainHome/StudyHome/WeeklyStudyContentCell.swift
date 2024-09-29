@@ -9,42 +9,65 @@ import SwiftUI
 
 struct WeeklyStudyContentCell: View {
     private let weekVal: Int
-    private let content: String
+    private let content: String?
+    private let dateStr: String
+    private let isCurrentWeek: Bool
     
-    init(weekVal: Int, content: String) {
+    init(
+        weekVal: Int,
+        content: String,
+        dateStr: String,
+        isCurrentWeek: Bool
+    ) {
         self.weekVal = weekVal
         self.content = content
+        self.dateStr = dateStr
+        self.isCurrentWeek = isCurrentWeek
     }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundStyle(.mainWhite)
-                .frame(height: 70)
+        HStack(alignment: .top, spacing: 16) {
+            Circle()
+                .foregroundStyle(isCurrentWeek ? .primary3 : .gray3)
+                .frame(width: 36)
+                .overlay() {
+                    Text(weekVal.description)
+                        .font(.bbip(.body1_sb16))
+                        .foregroundStyle(isCurrentWeek ? .mainWhite : .gray8)
+                }
+                .padding(.leading, 18)
             
-            HStack(spacing: 16) {
-                Circle()
-                    .foregroundStyle(.gray3)
-                    .frame(width: 36)
-                    .overlay() {
-                        Text(weekVal.description)
-                            .font(.bbip(.body1_sb16))
-                            .foregroundStyle(.gray8)
-                    }
-                    .padding(.leading, 18)
-                
-                VStack(spacing: 5) {
+            VStack(alignment: .leading, spacing: 3) {
+                if let content {
                     Text(content)
                         .font(.bbip(.body1_sb16))
+                } else {
+                    Text("아직 입력된 주차 계획이 없어요")
+                        .font(.bbip(.body1_sb16))
+                        .foregroundStyle(.gray5)
                 }
                 
-                Spacer()
+                Text(dateStr)
+                    .font(.bbip(.caption2_m12))
+                    .foregroundStyle(.gray6)
             }
+            
+            Spacer()
         }
-        .bbipShadow1()
+        .padding(.vertical, 15)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.mainWhite)
+                .bbipShadow1()
+        )
     }
 }
 
 #Preview {
-    WeeklyStudyContentCell(weekVal: 8, content: "리스닝 리딩")
+    WeeklyStudyContentCell(
+        weekVal: 1,
+        content: "ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅁㄴ",
+        dateStr: "aa",
+        isCurrentWeek: false
+    )
 }

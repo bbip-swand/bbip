@@ -68,16 +68,13 @@ struct StudyProgressBar: View {
                                 .frame(width: 12, height: 12)
                                 .foregroundColor(.primary3)
                                 .position(x: redDotPositionX + 6)
-                                .offset(x: -6.5, y: 3.25)
+                                .offset(x: progress.isZero ? 0 : -6.5, y: 3.25)
                                 .animation(.smooth(duration: 1), value: progress)
                         }
                 }
             }
         }
         .onAppear {
-            withAnimation { progress = targetProgress }
-        }
-        .onChange(of: progress) { _, newVal in
             withAnimation { progress = targetProgress }
         }
         .bbipShadow1()

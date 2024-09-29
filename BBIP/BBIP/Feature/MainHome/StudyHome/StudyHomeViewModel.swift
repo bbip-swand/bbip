@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-class StudyHomeViewModel: ObservableObject {
-    // Datas
+final class StudyHomeViewModel: ObservableObject {
+    @Published var isFullInfoLoaded: Bool = false
     @Published var fullStudyInfo: FullStudyInfoVO?
     
     // UseCases
@@ -23,6 +23,7 @@ class StudyHomeViewModel: ObservableObject {
     }
     
     func requestFullStudyInfo(studyId: String) {
+        isFullInfoLoaded = true
         getFullStudyInfoUseCase.excute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -31,9 +32,19 @@ class StudyHomeViewModel: ObservableObject {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { response in
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
                 self.fullStudyInfo = response
+                print(response)
+                self.isFullInfoLoaded = false
             }
             .store(in: &cancellables)
+    }
+    
+    func reloadFullStudyInfo(studyId: String) {
+        fullStudyInfo = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.requestFullStudyInfo(studyId: studyId)
+        }
     }
 }

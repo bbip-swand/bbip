@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 struct StudyHomeView: View {
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
     private let studyId: String
@@ -27,13 +26,13 @@ struct StudyHomeView: View {
                     coreFeatureButtons
                         .padding(.top, 50)
                         .padding(.bottom, 27)
-//                    
                     
                     studyProgress
                         .padding(.bottom, 32)
+                        .id(viewModel.isFullInfoLoaded)
                     
                     weeklyContent
-                   
+                    
                 }
                 .frame(height: 1020)
                 
@@ -44,7 +43,7 @@ struct StudyHomeView: View {
         .background(VStack{Color.gray9.frame(height: 300); Color.gray1})
         .frame(maxHeight: .infinity)
         .refreshable {
-            // refresh
+            viewModel.reloadFullStudyInfo(studyId: studyId)
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
@@ -52,11 +51,10 @@ struct StudyHomeView: View {
             scrollView.refreshControl?.tintColor = .primary3
         }
         .onAppear {
-            print(studyId)
             viewModel.requestFullStudyInfo(studyId: studyId)
         }
         .onChange(of: studyId) { _, newVal in
-            viewModel.requestFullStudyInfo(studyId: newVal)
+            viewModel.reloadFullStudyInfo(studyId: newVal)
         }
     }
     
@@ -82,13 +80,25 @@ struct StudyHomeView: View {
                             if let currentWeek = viewModel.fullStudyInfo?.currentWeek {
                                 Text(currentWeek.description + "R")
                                     .font(.bbip(.caption2_m12))
+                            } else {
+                                Text("currentWeekPlaceholder")
+                                    .redacted(reason: .placeholder)
                             }
                         }
                     
                     if let currentContent = viewModel.fullStudyInfo?.currentWeekContent {
-                        Text(currentContent)
-                            .font(.bbip(.body2_m14))
-                            .frame(maxWidth: UIScreen.main.bounds.width - 160, maxHeight: 20, alignment: .leading)
+                        if currentContent.isEmpty {
+                            Text("미정")
+                                .font(.bbip(.body2_m14))
+                                .foregroundStyle(.gray5)
+                        } else {
+                            Text(currentContent)
+                                .font(.bbip(.body2_m14))
+                                .frame(maxWidth: UIScreen.main.bounds.width - 160, maxHeight: 20, alignment: .leading)
+                        }
+                    } else {
+                        Text("currentContentPlaceholder")
+                            .redacted(reason: .placeholder)
                     }
                     
                     Spacer()
@@ -106,6 +116,10 @@ struct StudyHomeView: View {
                         Text(dateStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
+                    } else {
+                        Text("0월 0일 (0) / 00:00 ~ 00:00")
+                            .foregroundStyle(.gray2)
+                            .redacted(reason: .placeholder)
                     }
                     
                     Spacer()
@@ -116,6 +130,7 @@ struct StudyHomeView: View {
             }
             .frame(maxHeight: 320)
         }
+        .animation(.easeInOut, value: viewModel.isFullInfoLoaded)
     }
     
     var coreFeatureButtons: some View {
@@ -176,8 +191,8 @@ struct StudyHomeView: View {
                 )
             } else {
                 StudyProgressBar(
-                    totalWeek: 50,
-                    currentWeek: 1,
+                    totalWeek: 1,
+                    currentWeek: 0,
                     periodString: "placeholderplaceholder"
                 )
                 .redacted(reason: .placeholder)
@@ -185,7 +200,7 @@ struct StudyHomeView: View {
         }
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.totalWeeks)
     }
-    
+
     var weeklyContent: some View {
         VStack(spacing: 12) {
             HStack {
@@ -196,26 +211,38 @@ struct StudyHomeView: View {
                 Spacer()
             }
             
-            if let contents = viewModel.fullStudyInfo?.studyContents {
-                let currentWeek = viewModel.fullStudyInfo?.currentWeek ?? 0
-                let maxWeeks = min(3, contents.count - currentWeek)
+            if let fullStudyInfo = viewModel.fullStudyInfo {
+                let currentWeek = fullStudyInfo.currentWeek - 1 // 0-based index
+                let totalWeeks = fullStudyInfo.totalWeeks
+                let contents = fullStudyInfo.studyContents
+                let remainingWeeks = totalWeeks - currentWeek
+                let maxWeeks = min(3, remainingWeeks)
+                
+                // Start date (first week's date)
+                let startDate = calculateStartDate(from: fullStudyInfo.pendingDateStr)
                 
                 ForEach(0..<maxWeeks, id: \.self) { index in
                     let weekIndex = currentWeek + index
-                    let content = contents[weekIndex].isEmpty ? "미정" : contents[weekIndex]
-                    WeeklyStudyContentCell(weekVal: weekIndex, content: content)
+                    let content = contents[weekIndex]
+                    
+                    // Calculate date for each week by adding 'index' weeks to the startDate
+                    let weekDate = formatDate(from: startDate.addingTimeInterval(TimeInterval(7 * index * 24 * 60 * 60)))
+                    VStack(alignment: .leading, spacing: 5) {
+                        WeeklyStudyContentCell(weekVal: weekIndex + 1, content: content, dateStr: weekDate, isCurrentWeek: index == 0)
+                    }
                 }
             } else {
-                // You can handle the empty state here
-                Text("No contents available")
+                ForEach(0..<3, id: \.self) { index in
+                    WeeklyStudyContentCell(weekVal: index, content: "placeholder", dateStr: "00월 00일 (0)", isCurrentWeek: false)
+                        .redacted(reason: .placeholder)
+                }
             }
         }
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyContents)
     }
-
 }
 
-struct StudyHomeInnerView<Content: View>: View {
+private struct StudyHomeInnerView<Content: View>: View {
     @ViewBuilder let content: Content
 
     var body: some View {
@@ -230,6 +257,25 @@ struct StudyHomeInnerView<Content: View>: View {
     }
 }
 
+extension StudyHomeView {
+    func calculateStartDate(from dateString: String) -> Date {
+        // Assume the date format is "MM월 dd일 (E)" -> "10월 2일 (수)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "M월 d일 (E)"
+        
+        return dateFormatter.date(from: dateString) ?? Date()
+    }
+
+    func formatDate(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "M월 d일 (E)"
+        return dateFormatter.string(from: date)
+    }
+}
+
 #Preview {
     StudyHomeView(studyId: "a")
 }
+
