@@ -52,7 +52,7 @@ struct FullStudyInfoMapper {
             studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,
             pendingDateTimeStr: pendingDateTimeStr, 
-            inviteCode: dto.inviteCode
+            inviteCode: dto.studyInviteCode
         )
     }
 }

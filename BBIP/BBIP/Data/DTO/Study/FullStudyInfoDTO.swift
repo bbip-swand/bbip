@@ -20,5 +20,5 @@ struct FullStudyInfoDTO: Decodable {
     let studyMembers: [StudyMemberDTO]
     let pendingDate: String
     let pendingDateIndex: Int
-    let inviteCode: String
+    let studyInviteCode: String
 }

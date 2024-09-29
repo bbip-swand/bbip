@@ -26,15 +26,9 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                BBIPHearderView(
-                    studyName: studyNameForHeader(),
+                BBIPHeaderView(
                     showDot: $hasNotice,
-                    onNoticeTapped: {
-                        appState.push(.notice)
-                    },
-                    onProfileTapped: {
-                        appState.push(.mypage)
-                    },
+                    studyName: studyNameForHeader(),
                     tabState: selectedTab
                 )
                 
@@ -67,6 +61,8 @@ struct MainHomeView: View {
                 NoticeView()
             case .mypage:
                 MypageView()
+            case .studyDetail:
+                StudyDetailView()
             case .startSIS:
                 StartCreateStudyView()
             default:
