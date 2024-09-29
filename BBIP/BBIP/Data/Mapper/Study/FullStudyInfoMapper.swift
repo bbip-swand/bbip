@@ -26,6 +26,16 @@ struct FullStudyInfoMapper {
             return "\(times.startTime) ~ \(times.endTime)"
         }
         
+        let studyMembers = dto.studyMembers.map { member in
+            let interests = member.interest.compactMap { StudyCategory.from(int: Int($0)!) }
+            return StudyMemberVO(
+                memberName: member.memberName,
+                isManager: member.isManager,
+                memberImageURL: member.memberImageURL,
+                interest: interests
+            )
+        }
+        
         // VO로 변환
         return FullStudyInfoVO(
             studyName: dto.studyName,
@@ -39,9 +49,10 @@ struct FullStudyInfoMapper {
             studyTimes: studyTimes,
             studyDescription: dto.studyDescription,
             studyContents: dto.studyContents,
-            studyMembers: dto.studyMembers,
+            studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,
-            pendingDateTimeStr: pendingDateTimeStr
+            pendingDateTimeStr: pendingDateTimeStr, 
+            inviteCode: dto.inviteCode
         )
     }
 }

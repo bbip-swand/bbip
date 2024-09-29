@@ -26,12 +26,18 @@ struct StudyHomeView: View {
                     coreFeatureButtons
                         .padding(.top, 50)
                         .padding(.bottom, 27)
+                        .padding(.horizontal, 17)
                     
                     studyProgress
                         .padding(.bottom, 32)
+                        .padding(.horizontal, 17)
                         .id(viewModel.isFullInfoLoaded)
                     
                     weeklyContent
+                        .padding(.bottom, 32)
+                        .padding(.horizontal, 17)
+                    
+                    studyMember
                     
                 }
                 .frame(height: 1020)
@@ -240,6 +246,37 @@ struct StudyHomeView: View {
         }
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyContents)
     }
+    
+    var studyMember: some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text("스터디원")
+                    .font(.bbip(.body1_b16))
+                    .padding(.leading, 28)
+                
+                Spacer()
+            }
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 8) {
+                    if let studyMembers = viewModel.fullStudyInfo?.studyMembers {
+                        ForEach(0..<studyMembers.count, id: \.self) { index in
+                            StudyMemberCell(vo: studyMembers[index])
+                        }
+                        
+                        StudyMemberInviteCell(inviteCode: "")
+                    } else {
+                        ForEach(0..<4, id: \.self) { index in
+                            StudyMemberCell(vo: .placeholderMock())
+                                .redacted(reason: .placeholder)
+                        }
+                    }
+                }
+                .padding(.horizontal, 17)
+            }
+            .bbipShadow1()
+        }
+    }
 }
 
 private struct StudyHomeInnerView<Content: View>: View {
@@ -252,7 +289,6 @@ private struct StudyHomeInnerView<Content: View>: View {
             VStack {
                 content
             }
-            .padding(.horizontal, 17)
         }
     }
 }

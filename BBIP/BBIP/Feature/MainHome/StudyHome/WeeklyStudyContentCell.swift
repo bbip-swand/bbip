@@ -39,12 +39,14 @@ struct WeeklyStudyContentCell: View {
             
             VStack(alignment: .leading, spacing: 3) {
                 if let content {
-                    Text(content)
-                        .font(.bbip(.body1_sb16))
-                } else {
-                    Text("아직 입력된 주차 계획이 없어요")
-                        .font(.bbip(.body1_sb16))
-                        .foregroundStyle(.gray5)
+                    if content.isEmpty {
+                        Text("아직 입력된 주차 계획이 없어요")
+                            .font(.bbip(.body1_sb16))
+                            .foregroundStyle(.gray5)
+                    } else {
+                        Text(content)
+                            .font(.bbip(.body1_sb16))
+                    }
                 }
                 
                 Text(dateStr)

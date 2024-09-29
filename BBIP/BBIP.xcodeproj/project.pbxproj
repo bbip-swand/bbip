@@ -139,6 +139,8 @@
 		C6F7008E2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7008D2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift */; };
 		C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */; };
 		C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */; };
+		C6F98F2C2CA9354900F0D8E8 /* StudyMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */; };
+		C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -300,6 +302,8 @@
 		C6F7008D2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekStudyInfoMapper.swift; sourceTree = "<group>"; };
 		C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekStudyInfoUseCase.swift; sourceTree = "<group>"; };
 		C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeView.swift; sourceTree = "<group>"; };
+		C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberCell.swift; sourceTree = "<group>"; };
+		C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberVO.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 				C6989E962C96E396003CE4D5 /* StudySessionVO.swift */,
 				C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */,
 				C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */,
+				C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -917,6 +922,7 @@
 				C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */,
 				C6F074402CA717CC00A37501 /* StudyProgressBar.swift */,
 				C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */,
+				C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */,
 				C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */,
 			);
 			path = StudyHome;
@@ -1188,6 +1194,7 @@
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
 				C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */,
 				C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */,
+				C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */,
 				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
@@ -1205,6 +1212,7 @@
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
+				C6F98F2C2CA9354900F0D8E8 /* StudyMemberCell.swift in Sources */,
 				C6CF22682CA2E7AE00988748 /* StudyInfoVO.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
