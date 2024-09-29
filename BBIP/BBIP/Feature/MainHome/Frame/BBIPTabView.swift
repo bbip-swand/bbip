@@ -11,7 +11,7 @@ import SwiftUI
 
 enum MainHomeTab: Equatable {
     case userHome
-    case studyHome(studyId: String)
+    case studyHome(studyId: String, studyName: String)
     case calendar
 }
 
