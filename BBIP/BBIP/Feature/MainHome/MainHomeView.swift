@@ -26,14 +26,12 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                BBIPHeaderView(
-                    showDot: $hasNotice,
-                    studyName: studyNameForHeader(),
-                    tabState: selectedTab
-                )
-                
                 switch selectedTab {
                 case .userHome:
+                    UserHomeHeaderView(
+                        showDot: $hasNotice,
+                        tabState: selectedTab
+                    )
                     UserHomeView(viewModel: viewModel)
                 case .studyHome(let studyId, _):
                     StudyHomeView(studyId: studyId)
@@ -61,8 +59,6 @@ struct MainHomeView: View {
                 NoticeView()
             case .mypage:
                 MypageView()
-            case .studyDetail:
-                StudyDetailView()
             case .startSIS:
                 StartCreateStudyView()
             default:

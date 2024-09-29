@@ -10,15 +10,18 @@ import Combine
 
 struct StudyHomeView: View {
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
+    @State var showDetailView: Bool = false
     private let studyId: String
     
     init(studyId: String) {
         self.studyId = studyId
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
+                studyHeaderView
+                
                 headerView
                     .zIndex(1)
                 
@@ -38,7 +41,6 @@ struct StudyHomeView: View {
                         .padding(.horizontal, 17)
                     
                     studyMember
-                    
                 }
                 .frame(height: 1020)
                 
@@ -46,15 +48,22 @@ struct StudyHomeView: View {
                     .frame(minHeight: 150)
             }
         }
-        .background(VStack{Color.gray9.frame(height: 300); Color.gray1})
+        .background(
+            VStack {
+                Color.gray9
+                    .frame(height: 300)
+                    .ignoresSafeArea(edges: .top)
+                Color.gray1
+            }
+        )
         .frame(maxHeight: .infinity)
-        .refreshable {
-            viewModel.reloadFullStudyInfo(studyId: studyId)
-        }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
+        }
+        .refreshable {
+            viewModel.reloadFullStudyInfo(studyId: studyId)
         }
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
@@ -62,9 +71,45 @@ struct StudyHomeView: View {
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)
         }
+        .navigationDestination(isPresented: $showDetailView) {
+            if let vo = viewModel.fullStudyInfo {
+                StudyDetailView(vo: vo)
+            }
+        }
     }
     
-    var headerView: some View {
+    private var studyHeaderView: some View {
+        HStack {
+            if let studyName = viewModel.fullStudyInfo?.studyName {
+                Text(studyName)
+                    .font(.bbip(.title4_sb24))
+                    .foregroundColor(.mainWhite)
+                    .padding(.leading, 20)
+            } else {
+                Text("studyName")
+                    .font(.bbip(.title4_sb24))
+                    .foregroundColor(.mainWhite)
+                    .padding(.leading, 20)
+                    .redacted(reason: .placeholder)
+            }
+            
+            Spacer()
+            
+            Button {
+                showDetailView = true
+            } label: {
+                Image("more")
+                    .foregroundColor(.mainWhite)
+                    .padding(.trailing, 20)
+            }
+
+        }
+        .frame(height: 42)
+        .background(Color.gray9)
+        .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyName)
+    }
+
+    private var headerView: some View {
         ZStack() {
             Color.gray9
                 .frame(height: 320)
@@ -139,7 +184,7 @@ struct StudyHomeView: View {
         .animation(.easeInOut, value: viewModel.isFullInfoLoaded)
     }
     
-    var coreFeatureButtons: some View {
+    private var coreFeatureButtons: some View {
         HStack {
             VStack(spacing: 12) {
                 Button {
@@ -179,7 +224,7 @@ struct StudyHomeView: View {
         .padding(.horizontal, 33)
     }
     
-    var studyProgress: some View {
+    private var studyProgress: some View {
         VStack(spacing: 12) {
             HStack {
                 Text("스터디 진척도")
@@ -207,7 +252,7 @@ struct StudyHomeView: View {
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.totalWeeks)
     }
 
-    var weeklyContent: some View {
+    private var weeklyContent: some View {
         VStack(spacing: 12) {
             HStack {
                 Text("주차별 활동")
@@ -247,7 +292,7 @@ struct StudyHomeView: View {
         .animation(.easeInOut, value: viewModel.fullStudyInfo?.studyContents)
     }
     
-    var studyMember: some View {
+    private var studyMember: some View {
         VStack(spacing: 12) {
             HStack {
                 Text("스터디원")

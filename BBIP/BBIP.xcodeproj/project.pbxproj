@@ -482,7 +482,6 @@
 				C69445912C9D55DF003945CC /* CreateStudyInfoVO.swift */,
 				C6F074382CA6DC6800A37501 /* FullStudyInfoVO.swift */,
 				C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */,
-				C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -923,10 +922,11 @@
 			isa = PBXGroup;
 			children = (
 				C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */,
+				C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */,
 				C6F074402CA717CC00A37501 /* StudyProgressBar.swift */,
 				C6F074422CA721E800A37501 /* WeeklyStudyContentCell.swift */,
 				C6F98F2B2CA9354900F0D8E8 /* StudyMemberCell.swift */,
-				C6F0743E2CA6EB4B00A37501 /* StudyHomeViewModel.swift */,
+				C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */,
 			);
 			path = StudyHome;
 			sourceTree = "<group>";

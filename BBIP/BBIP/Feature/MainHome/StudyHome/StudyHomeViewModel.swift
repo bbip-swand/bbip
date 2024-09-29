@@ -35,7 +35,6 @@ final class StudyHomeViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.fullStudyInfo = response
-                print(response)
                 self.isFullInfoLoaded = false
             }
             .store(in: &cancellables)
