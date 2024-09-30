@@ -14,18 +14,23 @@ protocol ArchiveRepository {
 
 final class ArchiveRepositoryImpl: ArchiveRepository {
     private let dataSource: ArchiveDataSource
-//    private let mapper: CurrentWeekPostMapper
+    private let mapper: ArchivedFileInfoMapper
 
     init(
-        dataSource: ArchiveDataSource
-//        mapper: CurrentWeekPostMapper
+        dataSource: ArchiveDataSource,
+        mapper: ArchivedFileInfoMapper
     ) {
         self.dataSource = dataSource
-//        self.mapper = mapper
+        self.mapper = mapper
     }
     
     func getArchivedFile(studyId: String) -> AnyPublisher<[ArchivedFileInfoVO], any Error> {
         dataSource.getArchivedFile(studyId: studyId)
+            .map { [weak self] dto in
+                guard let self = self else { return [] }
+                return self.mapper.toVO(dto: dto)
+            }
+            .eraseToAnyPublisher()
     }
 }
 
