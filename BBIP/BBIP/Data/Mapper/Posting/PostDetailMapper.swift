@@ -24,7 +24,7 @@ struct PostDetailMapper {
             postId: dto.postingId,
             createdAt: dateFormatter.string(from: dto.createdAt.adjustedToKST()),
             writer: dto.writer,
-            isManager: dto.isManager,
+            isManager: dto.isManager ?? false,
             profileImageUrl: dto.profileImageUrl,
             studyName: dto.studyName,
             title: dto.title,

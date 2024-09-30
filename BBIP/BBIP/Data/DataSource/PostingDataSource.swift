@@ -18,7 +18,7 @@ final class PostingDataSource {
             .map(\.data)
             .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
-                print("Error: \(error.localizedDescription)")
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()

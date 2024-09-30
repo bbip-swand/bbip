@@ -14,3 +14,15 @@ struct CommentVO {
     let profileImageUrl: String?
     let isManager: Bool
 }
+
+extension CommentVO {
+    static func placeholderMock() -> CommentVO {
+        return .init(
+            writer: "000",
+            content: "content placeholder",
+            timeAgo: "00시간 전",
+            profileImageUrl: "",
+            isManager: false
+        )
+    }
+}

@@ -37,13 +37,15 @@ struct CurrentWeekStudyInfoCardView: View {
                                 .foregroundStyle(.primary3)
                             
                             if let description = vo.currentStudyDescription {
-                                Text(description)
-                                    .font(.bbip(.body2_m14))
-                                    .foregroundStyle(.gray8)
-                            } else {
-                                Text("미입력")
-                                    .font(.bbip(.body2_m14))
-                                    .foregroundStyle(.gray5)
+                                if description.isEmpty {
+                                    Text("미입력")
+                                        .font(.bbip(.body2_m14))
+                                        .foregroundStyle(.gray5)
+                                } else {
+                                    Text(description)
+                                        .font(.bbip(.body2_m14))
+                                        .foregroundStyle(.gray8)
+                                }
                             }
                         }
                     }

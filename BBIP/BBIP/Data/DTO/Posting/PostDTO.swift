@@ -10,7 +10,7 @@ import Foundation
 struct PostDTO: Decodable {
     let studyName: String
     let writer: String
-    let isManager: Bool
+    let isManager: Bool?
     let profileImageUrl: String?
     let postingId: String
     let title: String
