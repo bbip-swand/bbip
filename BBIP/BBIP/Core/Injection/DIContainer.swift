@@ -90,6 +90,9 @@ class DIContainer {
     private lazy var getStudyPostingUseCase: GetStudyPostingUseCaseProtocol = GetStudyPostingUseCase(
         repository: postingRepository
     )
+    private lazy var getPostDetailUseCase: GetPostDetailUseCaseProtocol = GetPostDetailUseCase(
+        repository: postingRepository
+    )
     
     // MARK: - Archive
     private let archiveDataSource = ArchiveDataSource()
@@ -148,6 +151,13 @@ class DIContainer {
     func makeArchiveViewModel() -> ArchiveViewModel {
         return ArchiveViewModel(
             getArchivedFileInfoUseCase: getArchivedFileInfoUseCase
+        )
+    }
+    
+    // Posting Detail
+    func makePostingDetailViewModel() -> PostingDetailViewModel {
+        return PostingDetailViewModel(
+            getPostDetailUseCase: getPostDetailUseCase
         )
     }
 }

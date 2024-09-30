@@ -9,7 +9,7 @@ import Foundation
 
 struct PostDetailVO {
     let postId: String
-    let createdAt: Date
+    let createdAt: String
     let writer: String
     let studyName: String
     let title: String

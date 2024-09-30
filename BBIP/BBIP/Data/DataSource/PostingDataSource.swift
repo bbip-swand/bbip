@@ -35,12 +35,12 @@ final class PostingDataSource {
             .eraseToAnyPublisher()
     }
     
-    func getPostingDetails(postingId: String) -> AnyPublisher<[PostDTO], Error> {
+    func getPostingDetails(postingId: String) -> AnyPublisher<PostDTO, Error> {
         return provider.requestPublisher(.getPostingDetail(postingId: postingId))
             .map(\.data)
-            .decode(type: [PostDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .decode(type: PostDTO.self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
-                print("Error: \(error.localizedDescription)")
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()

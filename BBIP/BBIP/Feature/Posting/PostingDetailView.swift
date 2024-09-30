@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PostingDetailView: View {
+    @ObservedObject var viewModel: PostingDetailViewModel = DIContainer.shared.makePostingDetailViewModel()
     private let postId: String
     
     init(postId: String) {
@@ -16,5 +17,8 @@ struct PostingDetailView: View {
     
     var body: some View {
          Text(postId)
+            .onAppear {
+                viewModel.getPostDetail(postingId: postId)
+            }
     }
 }
