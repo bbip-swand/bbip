@@ -25,8 +25,8 @@ struct ArchiveView: View {
             VStack(spacing: 8) {
                 if let fileInfo = viewModel.archivedFileInfo {
                     if fileInfo.isEmpty {
-                        Spacer()
                         Image("archive_placeholder")
+                            .frame(maxHeight: .infinity, alignment: .center)
                     } else {
                         ForEach(0..<fileInfo.count, id: \.self) { index in
                             ArchivedFileCardView(fileInfo: fileInfo[index])

@@ -10,7 +10,7 @@ import Moya
 
 enum PostingAPI {
     case getCurrentWeekPosting
-    case getPostingInfo(postingId: String)                  // param
+    case getPostingDetail(postingId: String)                  // param
     case createPosting(dto: CreatePostingDTO)
     case createComment(postingId: String, content: String)  // param
     case getStudyPosting(studyId: String)
@@ -21,8 +21,8 @@ extension PostingAPI: BaseAPI {
         switch self {
         case .getCurrentWeekPosting:
             return "/posting/recent"
-        case .getPostingInfo:
-            return "/posting"
+        case .getPostingDetail(let postingId):
+            return "/posting/details/\(postingId)"
         case .createPosting:
             return "/posting/create"
         case .createComment:
@@ -34,7 +34,7 @@ extension PostingAPI: BaseAPI {
     
     var method: Moya.Method {
         switch self {
-        case .getCurrentWeekPosting, .getPostingInfo, .getStudyPosting:
+        case .getCurrentWeekPosting, .getPostingDetail, .getStudyPosting:
             return .get
         case .createPosting, .createComment:
             return .post
@@ -43,19 +43,14 @@ extension PostingAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getCurrentWeekPosting:
+        case .getCurrentWeekPosting, .getPostingDetail, .getStudyPosting:
             return .requestPlain
-        case .getPostingInfo(let postingId):
-            let param = ["postingId" : postingId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .createPosting(let dto):
             return .requestJSONEncodable(dto)
         case .createComment(let postingId, let content):
             let param = ["postingId": postingId]
             let body = ["content": content]
             return .requestCompositeParameters(bodyParameters: body, bodyEncoding: JSONEncoding.default, urlParameters: param)
-        case .getStudyPosting:
-            return .requestPlain
         }
     }
     
