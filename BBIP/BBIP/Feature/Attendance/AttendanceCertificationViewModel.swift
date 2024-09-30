@@ -13,7 +13,9 @@ final class AttendanceCertificationViewModel: ObservableObject {
     @Published var records: [getAttendRecordVO] = []
     private var cancellables = Set<AnyCancellable>()
     
-    
+    //MARK: - apply code
+    @Published var remainingTime:Int = 600
+    @Published var getStatusData: GetStatusVO?
     
     // MARK: - Code
     @Published var codeDigits: [String] = ["", "", "", ""]
@@ -26,16 +28,19 @@ final class AttendanceCertificationViewModel: ObservableObject {
     
     //UseCase
     private let getAttendRecordUseCase: GetAttendRecordUseCaseProtocol
+    private let getStatusUseCase: GetStatusUseCaseProtocol
     
     init(
         getAttendRecordUseCase: GetAttendRecordUseCaseProtocol,
-        cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
+        cancellables: Set<AnyCancellable> = Set<AnyCancellable>(),
+        getStatusUseCase: GetStatusUseCaseProtocol
     ){
         self.cancellables = cancellables
         self.getAttendRecordUseCase = getAttendRecordUseCase
+        self.getStatusUseCase = getStatusUseCase
     }
     
-    //function
+    //MARK: -getAttendRecord
     func getAttendRecord(studyId: String){
         getAttendRecordUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
@@ -55,6 +60,30 @@ final class AttendanceCertificationViewModel: ObservableObject {
             .store(in: &cancellables)
         
         
+    }
+    //MARK: -GET status
+    //TODO: 시간 계산을 여기서 하는 게 맞을까?
+    func getStatusAttend() {
+        getStatusUseCase.execute()
+                .receive(on: DispatchQueue.main) // UI 업데이트를 위해 메인 스레드에서 받음
+                .sink{completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        error.handleDecodingError()
+                        print("fail load attend status: \(error.localizedDescription)")
+                    }
+                }receiveValue: { [weak self] response in
+                    guard let self = self else { return }
+                    self.getStatusData = response
+                    // remainingTime 계산
+                    let currentTime = Date()
+                    let expirationTime = response.startTime.addingTimeInterval(TimeInterval(response.ttl))
+                    self.remainingTime = max(0, Int(expirationTime.timeIntervalSince(currentTime)))
+                }
+                .store(in: &cancellables)
+
     }
     
     func handleTextFieldChange(index: Int, newValue: String) -> Int? {

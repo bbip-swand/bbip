@@ -11,7 +11,7 @@ import Combine
 
 struct AttendRecordView: View{
     //TODO: - remainingTime필요
-    @StateObject private var viewModel = DIContainer.shared.makeAttendRecordViewModel()
+    @StateObject private var viewModel = DIContainer.shared.makeAttendViewModel()
     @State private var isRefresh: Bool = false
     
     var index : Int = 0

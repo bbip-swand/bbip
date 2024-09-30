@@ -43,6 +43,7 @@ final class AttendDataSource{
                         userInfo: [NSLocalizedDescriptionKey: "[CreateCodeDataSource] createAttendCode() failed with status code \(response.statusCode)"]
                     )
                 }
+                
                 return response.data
             }
             .decode(type: CreateCodeResponseDTO.self, decoder: JSONDecoder())

@@ -122,8 +122,7 @@ class DIContainer {
         return MainHomeViewModel(
             getCurrentWeekPostUseCase: getCurrentWeekPostUseCase,
             getCurrentWeekStudyInfoUseCase: getCurrentWeekStudyInfoUseCase,
-            getOngoingStudyInfoUseCase: getOngoingStudyInfoUseCase,
-            getStatusUseCase: getStatusUseCase
+            getOngoingStudyInfoUseCase: getOngoingStudyInfoUseCase
         )
     }
     
@@ -138,7 +137,11 @@ class DIContainer {
     }
     
     //Attend
-    func makeAttendRecordViewModel()-> AttendanceCertificationViewModel{
-        return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase)
+    func makeAttendViewModel()-> AttendanceCertificationViewModel{
+        return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase, getStatusUseCase: getStatusUseCase)
+    }
+    
+    func createAttendCodeViewModel()-> CreateCodeViewModel{
+        return CreateCodeViewModel(createCodeUseCase: createCodeUseCase)
     }
 }
