@@ -89,6 +89,18 @@ class DIContainer {
         repository: postingRepository
     )
     
+    // MARK: - Archive
+    private let archiveDataSource = ArchiveDataSource()
+    private let archivedFileInfoMapper = ArchivedFileInfoMapper()
+    private lazy var archiveRepository: ArchiveRepository = ArchiveRepositoryImpl(
+        dataSource: archiveDataSource,
+        mapper: archivedFileInfoMapper
+    )
+    
+    private lazy var getArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol = GetArchivedFileInfoUseCase(
+        repository: archiveRepository
+    )
+    
     // MARK: - ViewModels
     // Login
     func makeLoginViewModel() -> LoginViewModel {
@@ -122,10 +134,18 @@ class DIContainer {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
     
+    // StudyHome
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
         return StudyHomeViewModel(
             getFullStudyInfoUseCase: getFullStudyInfoUseCase,
             getStudyPostingUseCase: getStudyPostingUseCase
+        )
+    }
+    
+    // Archive
+    func makeArchiveViewModel() -> ArchiveViewModel {
+        return ArchiveViewModel(
+            getArchivedFileInfoUseCase: getArchivedFileInfoUseCase
         )
     }
 }

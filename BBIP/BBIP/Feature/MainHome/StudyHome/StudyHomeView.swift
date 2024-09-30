@@ -10,7 +10,9 @@ import Combine
 
 struct StudyHomeView: View {
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
-    @State var showDetailView: Bool = false
+    
+    @State private var showDetailView: Bool = false
+    @State private var showArchiveView: Bool = false
     private let studyId: String
     
     init(studyId: String) {
@@ -82,6 +84,9 @@ struct StudyHomeView: View {
             if let vo = viewModel.fullStudyInfo {
                 StudyDetailView(vo: vo)
             }
+        }
+        .navigationDestination(isPresented: $showArchiveView) {
+            ArchiveView(studyId: studyId)
         }
     }
     
@@ -223,7 +228,7 @@ struct StudyHomeView: View {
             
             VStack(spacing: 12) {
                 Button {
-                    // go archive
+                    showArchiveView = true
                 } label: {
                     Image("studyHome_archive")
                         .resizable()

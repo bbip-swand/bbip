@@ -143,6 +143,18 @@
 		C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */; };
 		C6F98F302CA94E1B00F0D8E8 /* StudyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */; };
 		C6F98F332CA997F600F0D8E8 /* GetStudyPostingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F322CA997F600F0D8E8 /* GetStudyPostingUseCase.swift */; };
+		C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */; };
+		C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */; };
+		C6F98F3C2CAA82DA00F0D8E8 /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F3B2CAA82DA00F0D8E8 /* DocumentPicker.swift */; };
+		C6F98F3F2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */; };
+		C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */; };
+		C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */; };
+		C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */; };
+		C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */; };
+		C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */; };
+		C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */; };
+		C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */; };
+		C6F98F522CAAB90800F0D8E8 /* QuickLookPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F512CAAB90800F0D8E8 /* QuickLookPreview.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -308,6 +320,18 @@
 		C6F98F2D2CA9370700F0D8E8 /* StudyMemberVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberVO.swift; sourceTree = "<group>"; };
 		C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDetailView.swift; sourceTree = "<group>"; };
 		C6F98F322CA997F600F0D8E8 /* GetStudyPostingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudyPostingUseCase.swift; sourceTree = "<group>"; };
+		C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileCardView.swift; sourceTree = "<group>"; };
+		C6F98F3B2CAA82DA00F0D8E8 /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoVO.swift; sourceTree = "<group>"; };
+		C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
+		C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
+		C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
+		C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
+		C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
+		C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArchivedFileInfoUseCase.swift; sourceTree = "<group>"; };
+		C6F98F512CAAB90800F0D8E8 /* QuickLookPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookPreview.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -371,6 +395,8 @@
 			children = (
 				C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */,
 				C62780C12C8598AA00065F98 /* ImagePicker.swift */,
+				C6F98F3B2CAA82DA00F0D8E8 /* DocumentPicker.swift */,
+				C6F98F512CAAB90800F0D8E8 /* QuickLookPreview.swift */,
 			);
 			path = UIVCRepresentable;
 			sourceTree = "<group>";
@@ -573,6 +599,7 @@
 				C6A10ACE2C6C7CC4001AA74E /* UserInfoSetup */,
 				C695BDE82C649F67009DEC3C /* Login */,
 				C695BDE72C649F63009DEC3C /* MainHome */,
+				C6F98F362CAA7F2300F0D8E8 /* Archive */,
 				C6FA55F62C95359900E537D7 /* Attendance */,
 				C6FA55982C8EBFE200E537D7 /* Notice */,
 				C6FA559A2C8EC00B00E537D7 /* Mypage */,
@@ -676,6 +703,7 @@
 				C62781012C8C76A000065F98 /* User */,
 				C694459B2C9D5B19003945CC /* Study */,
 				C6F700712C9ED0A9000CCC80 /* Posting */,
+				C6F98F402CAA929900F0D8E8 /* Archive */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -687,6 +715,7 @@
 				C6F700802C9EF896000CCC80 /* User */,
 				C6F700812C9EF8A3000CCC80 /* Study */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
+				C6F98F492CAA948100F0D8E8 /* Archive */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -699,6 +728,7 @@
 				C62781062C8C798F00065F98 /* UserDataSource.swift */,
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
 				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
+				C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -713,6 +743,7 @@
 				C62780FF2C8C72C900065F98 /* UserAPI.swift */,
 				C69445992C9D5A3E003945CC /* StudyAPI.swift */,
 				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
+				C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -724,6 +755,7 @@
 				C62781082C8C814000065F98 /* UserRepository.swift */,
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
+				C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -744,6 +776,7 @@
 				C627810C2C8C841700065F98 /* User */,
 				C69445962C9D590C003945CC /* Study */,
 				C6F700842CA158B6000CCC80 /* Posting */,
+				C6F98F4E2CAA98FD00F0D8E8 /* Archive */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -758,6 +791,7 @@
 				C69445942C9D5616003945CC /* Calendar */,
 				C69445952C9D562D003945CC /* Study */,
 				C6F7007A2C9EEF72000CCC80 /* Posting */,
+				C6F98F3D2CAA922000F0D8E8 /* Archive */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -932,6 +966,48 @@
 				C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */,
 			);
 			path = StudyHome;
+			sourceTree = "<group>";
+		};
+		C6F98F362CAA7F2300F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */,
+				C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */,
+				C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F3D2CAA922000F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F402CAA929900F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F492CAA948100F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F4E2CAA98FD00F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		C6FA55982C8EBFE200E537D7 /* Notice */ = {
@@ -1125,6 +1201,7 @@
 				C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */,
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
+				C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */,
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
@@ -1132,6 +1209,9 @@
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
+				C6F98F3C2CAA82DA00F0D8E8 /* DocumentPicker.swift in Sources */,
+				C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */,
+				C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
@@ -1140,6 +1220,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
+				C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
@@ -1151,6 +1232,7 @@
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
 				C6F7008E2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift in Sources */,
+				C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
@@ -1180,10 +1262,13 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
+				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
 				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
+				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
+				C6F98F522CAAB90800F0D8E8 /* QuickLookPreview.swift in Sources */,
 				C6CF226A2CA2EF3300988748 /* CreateStudyDTO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
 				C6F98F302CA94E1B00F0D8E8 /* StudyDetailView.swift in Sources */,
@@ -1204,6 +1289,7 @@
 				C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */,
 				C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */,
 				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
+				C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
@@ -1217,6 +1303,7 @@
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,
+				C6F98F3F2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
@@ -1246,6 +1333,7 @@
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
+				C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
@@ -1385,7 +1473,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1428,7 +1516,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
