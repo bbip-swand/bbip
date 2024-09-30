@@ -9,9 +9,10 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
-    @StateObject var attendviewModel : AttendanceCertificationViewModel
+    @StateObject var attendviewModel  = DIContainer.shared.makeAttendViewModel()
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
+    @State private var attendstatusData : GetStatusVO?
     
     var body: some View {
         ScrollView {
@@ -22,10 +23,11 @@ struct UserHomeView: View {
             
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
-                    studyTitle: "TOEIC / IELTS",
-                    remainingTime: $attendviewModel.remainingTime) {
-                        withAnimation { timeRingStart = false }
-                    }
+                        studyTitle: attendstatusData?.studyName ?? "스터디",
+                        remainingTime: $attendviewModel.remainingTime
+                ) {
+                    withAnimation { timeRingStart = false }
+                }
             } else {
                 BBIPTimeRingView(
                     progress: 0.4,
@@ -37,9 +39,6 @@ struct UserHomeView: View {
                     )
                 )
                 .redacted(reason: isRefresh ? .placeholder : [])
-                .onTapGesture {
-                    withAnimation { timeRingStart = true }
-                }
             }
             
             mainBulletn
@@ -62,12 +61,23 @@ struct UserHomeView: View {
         .refreshable {
             // refresh
             viewModel.refreshHomeData()
-            attendviewModel.getStatusAttend()
-            
-            isRefresh = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                withAnimation { isRefresh = false }
+            attendviewModel.getStatusAttend { getStatusData in
+                if let getStatusData = getStatusData {
+                    // 성공적으로 데이터를 받았을 경우
+                    withAnimation {
+                        timeRingStart = true
+                    }
+                    attendstatusData = getStatusData
+                }
+                isRefresh = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    withAnimation { isRefresh = false }
+                }
             }
+        }
+        .onAppear{
+            timeRingStart = false
+            attendstatusData = attendviewModel.getStatusData
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in

@@ -13,6 +13,7 @@ import Combine
 struct BBIPTimeRingView: View {
     @State var startAttend: Bool = false
     @State private var progress: Double
+    @EnvironmentObject var appState: AppStateManager
     private var vo: ImpendingStudyVO
     
     private var lineWidth: CGFloat = 8
@@ -105,21 +106,22 @@ struct BBIPTimeRingView: View {
                         .font(.bbip(.body2_b14))
                         .foregroundStyle(.gray5)
                 }
-//            Button {
-//                startAttend = true
-//            } label: {
-//                RoundedRectangle(cornerRadius: 10)
-//                    .foregroundStyle(.primary3)
-//                    .frame(width: 130, height: 43)
-//                    .overlay {
-//                        Text("출석인증")
-//                            .font(.bbip(.body2_b14))
-//                            .foregroundStyle(.mainWhite)
-//                    }
-//            }
-//            .navigationDestination(isPresented: $startAttend){
-//                CreateCodeOnboardingView()
-//            }
+            Button {
+                startAttend = true
+                appState.push(.createCode)
+            } label: {
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundStyle(.primary3)
+                    .frame(width: 130, height: 43)
+                    .overlay {
+                        Text("출석인증")
+                            .font(.bbip(.body2_b14))
+                            .foregroundStyle(.mainWhite)
+                    }
+            }
+            .navigationDestination(isPresented: $startAttend){
+                CreateCodeOnboardingView()
+            }
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
@@ -127,6 +129,7 @@ struct BBIPTimeRingView: View {
 }
 
 struct ActivatedBBIPTimeRingView: View {
+    @StateObject private var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @State private var progress: Double = 0
     @Binding var remainingTime: Int
     @State private var formattedTime: String = "00:00"
@@ -134,12 +137,13 @@ struct ActivatedBBIPTimeRingView: View {
     @State private var showCircle: Bool = false
     @State private var shakeStick: Bool = false
     @State private var showAttendanceCertificationView: Bool = false
-    
-    private let initialTime: Int = 60 // for test
+    @State private var showAttendRecordView: Bool = false
+    private let initialTime: Int = 600 // for test
     private var studyTitle: String
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
+    @State private var attendstatusData: GetStatusVO?
     
     init(
         studyTitle: String,
@@ -174,7 +178,7 @@ struct ActivatedBBIPTimeRingView: View {
                 formattedTime = formatTime(remainingTime)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                     if !showCircle { showCircle = true }
+                    if !showCircle { showCircle = true }
                 }
             }
     }
@@ -237,7 +241,9 @@ struct ActivatedBBIPTimeRingView: View {
                     .offset(x: 30, y: 62)
                     .unredacted()
             }
+            
             Button {
+//                showAttendRecordView = true
                 showAttendanceCertificationView = true
                 timer?.cancel()
             } label: {
@@ -257,11 +263,16 @@ struct ActivatedBBIPTimeRingView: View {
                     .frame(width: 130, height: 43)
             )
         }
+        .onAppear(){
+            attendstatusData = attendviewModel.getStatusData
+        }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
             AttendanceCertificationView(remainingTime: $remainingTime)
-//            AttendRecordView()
+        }
+        .navigationDestination(isPresented: $showAttendRecordView) {
+            AttendRecordView(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42", code: String(7858) , remainingTime: $remainingTime)
         }
     }
 }

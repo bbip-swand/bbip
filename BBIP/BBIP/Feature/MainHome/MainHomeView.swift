@@ -64,6 +64,8 @@ struct MainHomeView: View {
                 MypageView()
             case .startSIS:
                 StartCreateStudyView()
+            case .createCode:
+                CreateCodeOnboardingView()
             default:
                 EmptyView()
             }

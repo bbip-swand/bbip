@@ -18,7 +18,6 @@ struct MypageView: View {
             
             
         }
-        .ignoresSafeArea(.keyboard)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray1)
         .navigationTitle("마이페이지")
