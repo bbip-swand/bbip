@@ -9,14 +9,15 @@ import Foundation
 import Moya
 
 enum AWSS3API {
-    case requestPresignedUrl(fileName: String)
-    case upload(imageData: Data, url: String)
+    case requestImagePresignedUrl(fileName: String)
+    case requestFilePresignedUrl(fileName: String, fileKey: String, studyId: String)
+    case upload(fileData: Data, url: String)
 }
 
 extension AWSS3API: TargetType {
     var baseURL: URL {
         switch self {
-        case .requestPresignedUrl:
+        case .requestImagePresignedUrl, .requestFilePresignedUrl:
             guard let baseURL = Bundle.main.infoDictionary?["API_BASE_URL"] as? String else {
                 return URL(string: "dummy")!
             }
@@ -28,8 +29,10 @@ extension AWSS3API: TargetType {
     
     var path: String {
         switch self {
-        case .requestPresignedUrl:
+        case .requestImagePresignedUrl:
             return "/aws-s3/upload-image/presigned-url"
+        case .requestFilePresignedUrl:
+            return "/aws-s3/upload-file/presigned-url"
         case .upload:
             return ""
         }
@@ -37,7 +40,7 @@ extension AWSS3API: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .requestPresignedUrl:
+        case .requestImagePresignedUrl, .requestFilePresignedUrl:
             return .post
         case .upload:
             return .put
@@ -46,30 +49,32 @@ extension AWSS3API: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .requestPresignedUrl(let fileName):
-            let body = AWSS3RequestPresignedUrlDTO(fileName: fileName)
-            return .requestJSONEncodable(body)
-        case .upload(let imageData, _):
-            return .requestData(imageData)
+        case .requestImagePresignedUrl(let fileName):
+            return .requestParameters(parameters: ["fileName": fileName], encoding: JSONEncoding.default)
+            
+        case .requestFilePresignedUrl(let fileName, let fileKey, let studyId):
+            let parameters: [String: Any] = [
+                "fileName": fileName,
+                "fileKey": fileKey,
+                "studyId": studyId
+            ]
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+            
+        case .upload(let fileData, _):
+            return .requestData(fileData)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .requestPresignedUrl:
+        case .requestImagePresignedUrl, .requestFilePresignedUrl:
             let token = UserDefaultsManager.shared.getAccessToken()!
             return [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(token)"
             ]
         case .upload:
-            return ["Content-Type": "image/jpeg"]
+            return .none
         }
-    }
-}
-
-fileprivate extension AWSS3API {
-    struct AWSS3RequestPresignedUrlDTO: Codable {
-        let fileName: String
     }
 }
