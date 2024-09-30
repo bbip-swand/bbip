@@ -24,21 +24,21 @@ class CreateCodeViewModel: ObservableObject{
     func createCode() {
         // TODO: studyhome에서 이어붙이기
         let attendVO = AttendVO(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42", session: 1, code: postCode)
-        
         createCodeUseCase.execute(attendVO: attendVO)
             .map { $0.code } // CreateCodeResponseDTO에서 code만 추출
-            .sink(receiveCompletion: { completion in
+            .sink{ completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
+                    error.handleDecodingError()
                     print("Error occurred: \(error.localizedDescription)")
                 }
-            }, receiveValue: { [weak self] code in
-                self?.getCode = String(code)// 받은 코드를 저장
-            })
+            }receiveValue: { [weak self] code in
+                self!.getCode = String(code)
+                print("Received code: \(code)")
+                print("Received getCode: \(self!.getCode)")
+            }
             .store(in: &cancellables)
-        
-        print(getCode)
     }
 }

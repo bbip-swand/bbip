@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct CreateCodeDoneView: View{
-    //TODO: vo로 받은 코드 String 변환 작업 해야함
+    @EnvironmentObject private var appState: AppStateManager
     @Binding var attendCode : String
     @Binding var remainingTime : Int
     @State private var formattedTime: String = "00:00"
@@ -105,7 +105,7 @@ struct CreateCodeDoneView: View{
             Spacer()
             
             MainButton(text:"홈으로 가기", enable: true){
-                //TODO: StudyHome으로 갈 수 있도록 네비게이션 설정하기
+                appState.popToRoot()
             }
             .padding(.bottom,22)
         }

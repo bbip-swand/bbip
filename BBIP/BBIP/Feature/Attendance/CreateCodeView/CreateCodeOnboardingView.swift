@@ -12,7 +12,9 @@ import Combine
 //TODO: 스터디홈에서 여기로 넘어올때 출석 시간 끝났는지 안끝났는지 확인해줘야함.
 //TODO: 스터디홈에서 remainingTime 남아있으면 출석현황 화면으로
 struct CreateCodeOnboardingView: View{
+    @StateObject private var viewModel = DIContainer.shared.createAttendCodeViewModel()
     @State var goNext = false
+    @State var generatedCode: String = ""
     
     var body: some View{
         VStack(spacing:0){
@@ -39,16 +41,22 @@ struct CreateCodeOnboardingView: View{
                 .frame(maxWidth:.infinity)
                 .padding(.horizontal,22)
                 .padding(.bottom,97)
-               
+            
             MainButton(text: "코드 생성하기", enable: true){
-                goNext = true
+                viewModel.createCode()  // 코드 생성 호출
             }
             .padding(.bottom,22)
         }
         .backButtonStyle(isReversal: true)
         .background(.gray9)
+        .onReceive(viewModel.$getCode) { code in
+            if !code.isEmpty {
+                self.generatedCode = code
+                goNext = true
+            }
+        }
         .navigationDestination(isPresented: $goNext){
-            CreateCodeView(viewModel: CreateCodeViewModel(createCodeUseCase: (any CreateCodeUseCaseProtocol).self as! CreateCodeUseCaseProtocol))
+            CreateCodeView(attendCode:generatedCode)
         }
     }
 }

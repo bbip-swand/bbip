@@ -11,9 +11,9 @@ import Combine
 
 struct CreateCodeView: View{
     //TODO: vo로 받은 코드 String 변환 작업 해야함
-    @StateObject var viewModel: CreateCodeViewModel
-    @State var attendCode : String = ""
+    @StateObject var viewModel = DIContainer.shared.createAttendCodeViewModel()
     @State var startAttend: Bool = false
+    @State var attendCode: String
     @State var remainingTime: Int = 600
     @State private var timer: AnyCancellable?
     
@@ -47,7 +47,7 @@ struct CreateCodeView: View{
                 .padding(.top,12)
             
             HStack(spacing:12){
-                ForEach(attendCode.map { String($0) }, id: \.self) { digit in
+                ForEach(attendCode.map{ String($0) }, id: \.self) { digit in
                     Text(digit)
                         .font(.bbip(.title1_sb42))
                         .foregroundColor(.mainWhite)
@@ -94,9 +94,8 @@ struct CreateCodeView: View{
             CreateCodeDoneView(attendCode: $attendCode, remainingTime: $remainingTime)
         }
         .onAppear {
-                    
-                    attendCode = viewModel.getCode
-                }
+            print("Received attendCode: \(attendCode)")
+        }
         
     }
 }
