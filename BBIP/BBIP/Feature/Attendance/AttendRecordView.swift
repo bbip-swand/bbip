@@ -11,15 +11,54 @@ import Combine
 
 struct AttendRecordView: View{
     //TODO: - remainingTime필요
+    @State private var formattedTime: String = "00:00"
+    @State private var timer: AnyCancellable?
     @StateObject private var viewModel = DIContainer.shared.makeAttendViewModel()
     @State private var isRefresh: Bool = false
+    @Binding var remainingTime: Int
+    var studyId: String
+    var code: String
+    private var completion: (() -> Void)?
     
-    var index : Int = 0
-    
-    init(){
+    init(
+        studyId: String,
+        code: String,
+        remainingTime: Binding<Int>,
+        completion: (() -> Void)? = nil
+    ) {
+        self.studyId = studyId
+        self.code = code
+        self._remainingTime = remainingTime
+        self.completion = completion
         setNavigationBarAppearance(forDarkView: true)
     }
+    
+    private func formatTime(_ seconds: Int) -> String {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    private func startTimer() {
+        formattedTime = formatTime(remainingTime)
+        
+        timer?.cancel()
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                guard remainingTime > 0 else {
+                    timer?.cancel()
+                    completion?()
+                    return
+                }
+                remainingTime -= 1
+                formattedTime = formatTime(remainingTime)
+            }
+    }
+    
+    
     var body: some View{
+        
         ScrollView{
             VStack(spacing:0){
                 HStack(spacing:0){
@@ -39,7 +78,7 @@ struct AttendRecordView: View{
                                 .font(.bbip(.body1_sb16))
                                 .foregroundStyle(.mainWhite)
                             
-                            Text("10:00")
+                            Text(formattedTime)
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                         }
@@ -59,7 +98,7 @@ struct AttendRecordView: View{
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                             
-                            Text("0318")
+                            Text(code)
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                         }
@@ -116,11 +155,11 @@ struct AttendRecordView: View{
         .navigationTitle("출결 현황")
         .navigationBarTitleDisplayMode(.inline)
         .background(.gray9)
-        .onAppear {
-            viewModel.getAttendRecord(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42")
+        .onAppear{
+            viewModel.getAttendRecord(studyId:studyId)
         }
         .refreshable {
-            viewModel.getAttendRecord(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42")
+            viewModel.getAttendRecord(studyId:studyId)
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation { isRefresh = false }
@@ -132,6 +171,7 @@ struct AttendRecordView: View{
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
         }
+        
     }
 }
 
@@ -166,9 +206,3 @@ struct studyEntryCard: View{
         
     }
 }
-
-
-#Preview{
-    studyEntryCard(vo: getAttendRecordVO(session:1, userName: "예림", profileImageUrl: "profile_default", status:AttendanceStatus.attended))
-}
-

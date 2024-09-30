@@ -15,12 +15,13 @@ struct AttendVO{
     let code: Int
 }
 
-struct GetStatusVO {
+struct GetStatusVO{
     let studyName: String
     let studyId: String
     let session: Int
     let startTime: Date
     let ttl: Int
+    let code: Int?
     let isManager: Bool
 }
 

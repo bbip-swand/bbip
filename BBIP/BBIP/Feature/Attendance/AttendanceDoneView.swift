@@ -28,7 +28,7 @@ struct AttendanceDoneView: View{
             
             Spacer()
             
-            MainButton(text: "돌아가기") {
+            MainButton(text: "돌아가기", enable:true) {
                 appState.popToRoot() //TODO: 왜 작동안하는지 검사하기
             }
             .padding(.bottom, 22)

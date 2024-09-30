@@ -8,8 +8,6 @@ struct AttendanceCertificationView: View {
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
-    @State private var showAttendanceDone: Bool = false
-    
 
     
     private func formatTime(_ seconds: Int) -> String {
@@ -88,19 +86,18 @@ struct AttendanceCertificationView: View {
                 HStack(spacing: 12) {
                     ForEach(0..<4, id: \.self) { index in
                         CustomTextFieldComponent(
-                            text: $viewModel.codeDigits[index],
-                            isRight: $viewModel.isRight,
-                            focusedField: $focusedIndex,
-                            index: index,
-                            font: .bbip(.title1_sb42),
-                            viewModel: viewModel
-                        )
-                        .customFieldStyle(
-                            isFocused: focusedIndex == index,
-                            isRight: viewModel.isRight,
-                            isComplete: viewModel.isComplete(),
-                            isFilled: !viewModel.codeDigits[index].isEmpty
-                        )
+                                                   text: $viewModel.codeDigits[index],
+                                                   showInvalidCodeWarning: $viewModel.showInvalidCodeWarning,
+                                                   focusedField: $focusedIndex,
+                                                   index: index,
+                                                   font: .bbip(.title1_sb42),
+                                                   viewModel: viewModel
+                                               )
+                                               .customFieldStyle(
+                                                   isFocused: focusedIndex == index,
+                                                   isWrong: viewModel.showInvalidCodeWarning,
+                                                   isFilled: !viewModel.codeDigits[index].isEmpty
+                                               )
                     }
                     
                 }
@@ -120,15 +117,11 @@ struct AttendanceCertificationView: View {
             }
             
             MainButton(text: "파이트!", enable: remainingTime != 0 ? true : false) {
-                //TODO: 출석코드 검사로직 + 시간 체크로직 수정필요
-                if viewModel.isRight {
-                    showAttendanceDone = true
-                } else {
-                    // Handle incorrect code case
-                }
+                viewModel.enterCode()
             }
             .padding(.bottom, 22)
         }
+        .ignoresSafeArea(.keyboard)
         .backButtonStyle(isReversal: true)
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
@@ -136,14 +129,14 @@ struct AttendanceCertificationView: View {
         .onTapGesture {
             focusedIndex = nil
         }
-        .navigationDestination(isPresented: $showAttendanceDone){
+        .navigationDestination(isPresented: $viewModel.showAttendanceDone){
             AttendanceDoneView()
         }
     }
     
     private func createWarningLabel() -> some View {
         HStack(spacing: 6) {
-            if viewModel.isComplete() && !viewModel.isRight {
+            if viewModel.showInvalidCodeWarning {
                 WarningLabel(errorText: "코드가 올바르지 않습니다.")
             }
         }
@@ -155,16 +148,15 @@ struct AttendanceCertificationView: View {
 }
 
 fileprivate extension View {
-    func customFieldStyle(isFocused: Bool, isRight: Bool, isComplete: Bool, isFilled: Bool) -> some View {
+    func customFieldStyle(isFocused: Bool, isWrong: Bool, isFilled: Bool) -> some View {
         self
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(
-                        (isComplete && !isRight) || isFocused || isFilled ? .primary3 : Color.clear,
+                        isWrong || isFocused || isFilled ? .primary3 : Color.clear,
                         lineWidth: 2
                     )
             )
     }
 }
-

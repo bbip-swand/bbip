@@ -36,15 +36,18 @@ struct GetStatusMapper{
         let nineHours: TimeInterval = 0// 9시간을 초 단위로 변환
         let startTimeKST = startTimeUTC.addingTimeInterval(nineHours)
         
+        let code = dto.code ?? 0
         
         
-        print("StartTime in KST: \(startTimeKST)")
+        print("StartTime in KST: \(startTimeUTC)")
+        print("Not a Manger you can't get code: \(dto.isManager)")
         return GetStatusVO(
             studyName: dto.studyName,
             studyId: dto.studyId,
             session: dto.session,
-            startTime: startTimeKST,
+            startTime: startTimeUTC,
             ttl: dto.ttl,
+            code: code,
             isManager: dto.isManager
         )
     }

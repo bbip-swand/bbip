@@ -138,7 +138,7 @@ class DIContainer {
     
     //Attend
     func makeAttendViewModel()-> AttendanceCertificationViewModel{
-        return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase, getStatusUseCase: getStatusUseCase)
+        return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase, getStatusUseCase: getStatusUseCase, enterCodeUseCse: enterCodeUseCase)
     }
     
     func createAttendCodeViewModel()-> CreateCodeViewModel{
