@@ -13,6 +13,9 @@ final class AttendanceCertificationViewModel: ObservableObject {
     @Published var records: [getAttendRecordVO] = []
      var cancellables = Set<AnyCancellable>()
     
+    @Published var formattedTime: String = "00:00"
+    private var timer: AnyCancellable?
+    
     //MARK: - apply code
     @Published var remainingTime:Int = 600
     @Published var getStatusData: GetStatusVO?
@@ -66,7 +69,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
         
     }
     //MARK: -GET status
-    func getStatusAttend(completion: @escaping (GetStatusVO?) -> Void) {
+    func getStatusAttend() {
         getStatusUseCase.execute()
             .receive(on: DispatchQueue.main) // UI 업데이트를 위해 메인 스레드에서 받음
             .sink { completionStatus in
@@ -76,22 +79,18 @@ final class AttendanceCertificationViewModel: ObservableObject {
                 case .failure(let error):
                     error.handleDecodingError()
                     print("fail load attend status: \(error.localizedDescription)")
-                    completion(nil) // 실패 시 nil을 반환하여 호출자에게 알림
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.getStatusData = response
                 // remainingTime 계산
-                // 현재 시간에서 9시간을 빼기
                 let currentTime = Date()
-                print("currentTime: \(currentTime)")
                 let expirationTime = response.startTime.addingTimeInterval(TimeInterval(response.ttl))
-                print("expirationTime: \(expirationTime)")
                 self.remainingTime = max(0, Int(expirationTime.timeIntervalSince(currentTime)) - 9*60*60)
+                print("currentTime: \(currentTime)")
+                print("expirationTime: \(expirationTime)")
                 print("Response ttl : \(response.ttl)")
-                print("RemainingTime: \(remainingTime)")
-                completion(response)
-                print(response)
+                print("RemainingTime: \(self.remainingTime)")
             }
             .store(in: &cancellables)
     }
@@ -153,11 +152,38 @@ final class AttendanceCertificationViewModel: ObservableObject {
         print(combinedCode)
     }
     
-    private func resetWarning() {
+    func resetWarning() {
             if codeDigits.contains(where: { $0.isEmpty }) {
                 showInvalidCodeWarning = false
             }
         }
     
+    func stopTimer() {
+        timer?.cancel()
+        timer = nil
+    }
     
+    func formatTime(_ seconds: Int) -> String {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func startTimer() {
+        if timer == nil {
+            formattedTime = formatTime(remainingTime)
+            
+            timer = Timer.publish(every: 1, on: .main, in: .common)
+                .autoconnect()
+                .sink { [self] _ in
+                    guard self.remainingTime > 0 else {
+                        self.timer?.cancel()
+                        self.timer = nil
+                        return
+                    }
+                    self.remainingTime -= 1
+                    formattedTime = self.formatTime(remainingTime)
+                }
+        }
+    }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AttendanceDoneView: View{
-    @EnvironmentObject private var appState: AppStateManager
+    @EnvironmentObject  var appState: AppStateManager
     
     var body : some View{
         VStack(spacing:0){
@@ -33,7 +33,7 @@ struct AttendanceDoneView: View{
             }
             .padding(.bottom, 22)
         }
-        .backButtonStyle(isReversal: true)
+        .backButtonStyle(isReversal: false)
         .background(.gray9)
         
     }

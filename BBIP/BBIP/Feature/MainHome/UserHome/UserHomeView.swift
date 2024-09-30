@@ -23,8 +23,8 @@ struct UserHomeView: View {
             
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
-                        studyTitle: attendstatusData?.studyName ?? "스터디",
-                        remainingTime: $attendviewModel.remainingTime
+                    studyTitle: attendstatusData?.studyName ?? "스터디",
+                    remainingTime: $attendviewModel.remainingTime
                 ) {
                     withAnimation { timeRingStart = false }
                 }
@@ -59,25 +59,18 @@ struct UserHomeView: View {
         }
         .frame(maxHeight: .infinity)
         .refreshable {
-            // refresh
             viewModel.refreshHomeData()
-            attendviewModel.getStatusAttend { getStatusData in
-                if let getStatusData = getStatusData {
-                    // 성공적으로 데이터를 받았을 경우
-                    withAnimation {
-                        timeRingStart = true
-                    }
-                    attendstatusData = getStatusData
-                }
-                isRefresh = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    withAnimation { isRefresh = false }
-                }
+            attendviewModel.getStatusAttend()
+            attendstatusData = attendviewModel.getStatusData
+            
+            // 데이터 출력 (디버깅용)
+            if let attendstatusData = attendstatusData {
+                print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
+                timeRingStart = true
             }
         }
         .onAppear{
             timeRingStart = false
-            attendstatusData = attendviewModel.getStatusData
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in
