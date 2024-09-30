@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
+    @StateObject var attendviewModel : AttendanceCertificationViewModel
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
     
@@ -22,7 +23,7 @@ struct UserHomeView: View {
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
                     studyTitle: "TOEIC / IELTS",
-                    remainingTime: $viewModel.remainingTime) {
+                    remainingTime: $attendviewModel.remainingTime) {
                         withAnimation { timeRingStart = false }
                     }
             } else {
@@ -61,7 +62,7 @@ struct UserHomeView: View {
         .refreshable {
             // refresh
             viewModel.refreshHomeData()
-            viewModel.getStatusAttend()
+            attendviewModel.getStatusAttend()
             
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

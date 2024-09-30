@@ -12,6 +12,7 @@ import SwiftUI
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
     @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
+    @StateObject private var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
@@ -34,7 +35,7 @@ struct MainHomeView: View {
                             appState.push(.mypage)
                         }
                     )
-                    UserHomeView(viewModel: viewModel)
+                    UserHomeView(viewModel: viewModel, attendviewModel: attendviewModel)
                 case .studyHome(let studyId):
                     StudyHomeView(studyId: studyId)
                 case .calendar:
