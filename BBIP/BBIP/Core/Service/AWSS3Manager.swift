@@ -40,7 +40,7 @@ final class AWSS3Manager {
     }
     
     // Presigned URL 요청
-    func requestImagePresignedURL(with uuid: String) -> AnyPublisher<String, Error> {
+    private func requestImagePresignedURL(with uuid: String) -> AnyPublisher<String, Error> {
         return provider.requestPublisher(.requestImagePresignedUrl(fileName: uuid))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -59,7 +59,7 @@ final class AWSS3Manager {
     }
     
     // presigned URL에 이미지 업로드
-    func uploadImageToBinary(imageData: Data, urlString: String) -> AnyPublisher<Void, Error> {
+    private func uploadImageToBinary(imageData: Data, urlString: String) -> AnyPublisher<Void, Error> {
         provider.requestPublisher(.upload(fileData: imageData, url: urlString))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -93,7 +93,7 @@ final class AWSS3Manager {
     }
     
     // Presigned URL 요청 for Files
-    func requestFilePresignedURL(fileName: String, fileKey: String, studyId: String) -> AnyPublisher<String, Error> {
+    private func requestFilePresignedURL(fileName: String, fileKey: String, studyId: String) -> AnyPublisher<String, Error> {
         return provider.requestPublisher(.requestFilePresignedUrl(fileName: fileName, fileKey: fileKey, studyId: studyId))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
@@ -112,7 +112,7 @@ final class AWSS3Manager {
     }
     
     // presigned URL에 파일 업로드
-    func uploadFileToBinary(fileData: Data, urlString: String) -> AnyPublisher<Void, Error> {
+    private func uploadFileToBinary(fileData: Data, urlString: String) -> AnyPublisher<Void, Error> {
         provider.requestPublisher(.upload(fileData: fileData, url: urlString))
             .tryMap { response in
                 guard (200...299).contains(response.statusCode) else {
