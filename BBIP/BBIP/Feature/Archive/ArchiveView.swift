@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct ArchiveView: View {
+    @StateObject var viewModel: ArchiveViewModel = DIContainer.shared.makeArchiveViewModel()
     @State private var isDocumentPickerPresented: Bool = false
     @State private var cancellables = Set<AnyCancellable>()
     private let studyId: String
@@ -24,6 +25,9 @@ struct ArchiveView: View {
         .navigationTitle("아카이브")
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
+        .onAppear {
+            viewModel.getArchivedFile(studyId: studyId)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {

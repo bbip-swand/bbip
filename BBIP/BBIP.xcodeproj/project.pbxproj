@@ -152,6 +152,8 @@
 		C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */; };
 		C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */; };
 		C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */; };
+		C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */; };
+		C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -326,6 +328,8 @@
 		C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
 		C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
 		C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
+		C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
+		C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArchivedFileInfoUseCase.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -769,6 +773,7 @@
 				C627810C2C8C841700065F98 /* User */,
 				C69445962C9D590C003945CC /* Study */,
 				C6F700842CA158B6000CCC80 /* Posting */,
+				C6F98F4E2CAA98FD00F0D8E8 /* Archive */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F98F372CAA7F3400F0D8E8 /* ArchiveView.swift */,
+				C6F98F4C2CAA98A900F0D8E8 /* ArchiveViewModel.swift */,
 				C6F98F392CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift */,
 			);
 			path = Archive;
@@ -989,6 +995,14 @@
 			isa = PBXGroup;
 			children = (
 				C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F4E2CAA98FD00F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F4F2CAA991100F0D8E8 /* GetArchivedFileInfoUseCase.swift */,
 			);
 			path = Archive;
 			sourceTree = "<group>";
@@ -1203,6 +1217,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
+				C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
@@ -1244,6 +1259,7 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
+				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
 				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
 				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
