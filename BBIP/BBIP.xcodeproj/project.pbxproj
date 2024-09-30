@@ -150,6 +150,8 @@
 		C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */; };
 		C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */; };
 		C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */; };
+		C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */; };
+		C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -322,6 +324,8 @@
 		C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
 		C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
 		C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
+		C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
+		C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -704,6 +708,7 @@
 				C6F700802C9EF896000CCC80 /* User */,
 				C6F700812C9EF8A3000CCC80 /* Study */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
+				C6F98F492CAA948100F0D8E8 /* Archive */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -743,6 +748,7 @@
 				C62781082C8C814000065F98 /* UserRepository.swift */,
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
+				C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -975,6 +981,14 @@
 			isa = PBXGroup;
 			children = (
 				C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		C6F98F492CAA948100F0D8E8 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				C6F98F4A2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift */,
 			);
 			path = Archive;
 			sourceTree = "<group>";
@@ -1255,6 +1269,7 @@
 				C6CF226E2CA2F17A00988748 /* CreateStudyInfoMapper.swift in Sources */,
 				C6F98F2E2CA9370700F0D8E8 /* StudyMemberVO.swift in Sources */,
 				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
+				C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
@@ -1298,6 +1313,7 @@
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
+				C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */,
 				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
