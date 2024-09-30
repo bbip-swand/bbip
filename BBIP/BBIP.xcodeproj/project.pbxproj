@@ -149,6 +149,7 @@
 		C6F98F3F2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */; };
 		C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */; };
 		C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */; };
+		C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */; };
 		C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */; };
 		C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */; };
 		C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */; };
@@ -320,6 +321,7 @@
 		C6F98F3E2CAA924100F0D8E8 /* ArchivedFileInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoVO.swift; sourceTree = "<group>"; };
 		C6F98F412CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
 		C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
 		C6FA55922C8DCD5E00E537D7 /* BBIPLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPLottieView.swift; sourceTree = "<group>"; };
 		C6FA55962C8DDAB500E537D7 /* LoadableStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableStyle.swift; sourceTree = "<group>"; };
 		C6FA559B2C8EC01D00E537D7 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				C62781062C8C798F00065F98 /* UserDataSource.swift */,
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
 				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
+				C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -1197,6 +1200,7 @@
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
 				C6F7008E2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift in Sources */,
+				C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
