@@ -9,10 +9,10 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
-    @StateObject var attendviewModel  = DIContainer.shared.makeAttendViewModel()
+    @StateObject var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
-    @State private var attendstatusData : GetStatusVO?
+    @State private var attendstatusData: GetStatusVO?
     
     var body: some View {
         ScrollView {
@@ -63,14 +63,10 @@ struct UserHomeView: View {
             attendviewModel.getStatusAttend()
             attendstatusData = attendviewModel.getStatusData
             
-            // 데이터 출력 (디버깅용)
             if let attendstatusData = attendstatusData {
                 print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
                 timeRingStart = true
             }
-        }
-        .onAppear{
-            timeRingStart = false
         }
         .scrollIndicators(.never)
         .introspect(.scrollView, on: .iOS(.v17, .v18)) { scrollView in

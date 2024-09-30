@@ -17,12 +17,12 @@ struct AttendRecordView: View{
     @State private var isRefresh: Bool = false
     @Binding var remainingTime: Int
     var studyId: String
-    var code: String
+    var code: Int
     private var completion: (() -> Void)?
     
     init(
         studyId: String,
-        code: String,
+        code: Int,
         remainingTime: Binding<Int>,
         completion: (() -> Void)? = nil
     ) {
@@ -98,7 +98,7 @@ struct AttendRecordView: View{
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                             
-                            Text(code)
+                            Text(String(code))
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                         }

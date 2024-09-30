@@ -106,22 +106,6 @@ struct BBIPTimeRingView: View {
                         .font(.bbip(.body2_b14))
                         .foregroundStyle(.gray5)
                 }
-            Button {
-                startAttend = true
-                appState.push(.createCode)
-            } label: {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(.primary3)
-                    .frame(width: 130, height: 43)
-                    .overlay {
-                        Text("출석인증")
-                            .font(.bbip(.body2_b14))
-                            .foregroundStyle(.mainWhite)
-                    }
-            }
-            .navigationDestination(isPresented: $startAttend){
-                CreateCodeOnboardingView()
-            }
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
@@ -272,7 +256,7 @@ struct ActivatedBBIPTimeRingView: View {
             AttendanceCertificationView(remainingTime: $remainingTime)
         }
         .navigationDestination(isPresented: $showAttendRecordView) {
-            AttendRecordView(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42", code: String(7858) , remainingTime: $remainingTime)
+            AttendRecordView(studyId: attendstatusData?.studyId ?? "", code: attendstatusData?.code ?? 0 , remainingTime: $remainingTime)
         }
     }
 }
