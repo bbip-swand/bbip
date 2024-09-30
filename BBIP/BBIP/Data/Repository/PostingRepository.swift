@@ -16,16 +16,16 @@ protocol PostingRepository {
 
 final class PostingRepositoryImpl: PostingRepository {
     private let dataSource: PostingDataSource
-    private let currentWeekPostmapper: CurrentWeekPostMapper
+    private let recentPostMapper: RecentPostMapper
     private let postDetailMapper: PostDetailMapper
 
     init(
         dataSource: PostingDataSource,
-        currentWeekPostmapper: CurrentWeekPostMapper,
+        recentPostMapper: RecentPostMapper,
         postDetailMapper: PostDetailMapper
     ) {
         self.dataSource = dataSource
-        self.currentWeekPostmapper = currentWeekPostmapper
+        self.recentPostMapper = recentPostMapper
         self.postDetailMapper = postDetailMapper
     }
     
@@ -33,7 +33,7 @@ final class PostingRepositoryImpl: PostingRepository {
         return dataSource.getCurrentWeekPosting()
             .map { [weak self] dto in
                 guard let self = self else { return [] }
-                return self.currentWeekPostmapper.toVO(dto: dto)
+                return self.recentPostMapper.toVO(dto: dto)
             }
             .eraseToAnyPublisher()
     }
@@ -42,7 +42,7 @@ final class PostingRepositoryImpl: PostingRepository {
         return dataSource.getStudyPosting(studyId: studyId)
             .map { [weak self] dto in
                 guard let self = self else { return [] }
-                return self.currentWeekPostmapper.toVO(dto: dto)
+                return self.recentPostMapper.toVO(dto: dto)
             }
             .eraseToAnyPublisher()
     }

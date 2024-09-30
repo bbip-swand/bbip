@@ -129,6 +129,7 @@
 		C6F2DA1C2CAAE006002023B6 /* PostDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */; };
 		C6F2DA1E2CAAE033002023B6 /* CommentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */; };
 		C6F2DA202CAAE0C9002023B6 /* PostDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */; };
+		C6F2DA222CAAE2D1002023B6 /* GetPostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -137,7 +138,7 @@
 		C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700762C9EED44000CCC80 /* PostDTO.swift */; };
 		C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700782C9EEF30000CCC80 /* PostingRepository.swift */; };
 		C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007B2C9EEF89000CCC80 /* PostVO.swift */; };
-		C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */; };
+		C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* RecentPostMapper.swift */; };
 		C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */; };
 		C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */; };
 		C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */; };
@@ -312,6 +313,7 @@
 		C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVO.swift; sourceTree = "<group>"; };
 		C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVO.swift; sourceTree = "<group>"; };
 		C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMapper.swift; sourceTree = "<group>"; };
+		C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostDetailUseCase.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -320,7 +322,7 @@
 		C6F700762C9EED44000CCC80 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		C6F700782C9EEF30000CCC80 /* PostingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingRepository.swift; sourceTree = "<group>"; };
 		C6F7007B2C9EEF89000CCC80 /* PostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVO.swift; sourceTree = "<group>"; };
-		C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostMapper.swift; sourceTree = "<group>"; };
+		C6F7007D2C9EF58E000CCC80 /* RecentPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostMapper.swift; sourceTree = "<group>"; };
 		C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
 		C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
@@ -967,7 +969,7 @@
 		C6F700822C9EF8B3000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
+				C6F7007D2C9EF58E000CCC80 /* RecentPostMapper.swift */,
 				C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */,
 			);
 			path = Posting;
@@ -978,6 +980,7 @@
 			children = (
 				C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */,
 				C6F98F322CA997F600F0D8E8 /* GetStudyPostingUseCase.swift */,
+				C6F2DA212CAAE2D1002023B6 /* GetPostDetailUseCase.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */,
+				C6F2DA222CAAE2D1002023B6 /* GetPostDetailUseCase.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
@@ -1292,7 +1296,7 @@
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
 				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
-				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
+				C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */,
 				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,

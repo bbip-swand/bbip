@@ -76,10 +76,12 @@ class DIContainer {
     
     // MARK: - Posting
     private let postingDataSource = PostingDataSource()
-    private let currentWeekPostMapper = CurrentWeekPostMapper()
+    private let recentPostMapper = RecentPostMapper()
+    private let postDetailMapper = PostDetailMapper()
     private lazy var postingRepository: PostingRepository = PostingRepositoryImpl(
         dataSource: postingDataSource,
-        mapper: currentWeekPostMapper
+        recentPostMapper: recentPostMapper,
+        postDetailMapper: postDetailMapper
     )
     
     private lazy var getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol = GetCurrentWeekPostUseCase(
