@@ -15,13 +15,17 @@ struct PostDetailMapper {
         let commentVOs = dto.comments?.map { commentDTO in
             CommentVO(writer: commentDTO.writer,
                       content: commentDTO.content,
-                      timeAgo: timeAgo(date: commentDTO.createdAt))
+                      timeAgo: timeAgo(date: commentDTO.createdAt),
+                      profileImageUrl: commentDTO.profileImageUrl,
+                      isManager: commentDTO.isManager)
         } ?? []
         
         return PostDetailVO(
             postId: dto.postingId,
             createdAt: dateFormatter.string(from: dto.createdAt.adjustedToKST()),
             writer: dto.writer,
+            isManager: dto.isManager,
+            profileImageUrl: dto.profileImageUrl,
             studyName: dto.studyName,
             title: dto.title,
             content: dto.content,

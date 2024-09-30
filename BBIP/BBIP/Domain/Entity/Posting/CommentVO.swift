@@ -11,4 +11,6 @@ struct CommentVO {
     let writer: String
     let content: String
     let timeAgo: String
+    let profileImageUrl: String?
+    let isManager: Bool
 }

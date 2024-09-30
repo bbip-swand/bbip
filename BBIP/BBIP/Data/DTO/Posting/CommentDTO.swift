@@ -11,4 +11,6 @@ struct CommentDTO: Decodable {
     let writer: String
     let content: String
     let createdAt: Date
+    let profileImageUrl: String?
+    let isManager: Bool
 }

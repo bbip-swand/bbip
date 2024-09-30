@@ -9,8 +9,10 @@ import Foundation
 
 struct PostDTO: Decodable {
     let studyName: String
-    let postingId: String
     let writer: String
+    let isManager: Bool
+    let profileImageUrl: String?
+    let postingId: String
     let title: String
     let content: String
     let isNotice: Bool
@@ -21,13 +23,16 @@ struct PostDTO: Decodable {
 
 /*[
  {
-   "studyName": "쿠팡 상하차 스터디",
-   "postingId": "b01d0657-b9e3-4de7-9769-16ac0f69d3c8",
-   "writer": "김강릉",
-   "title": "오늘은 서울에서 진행합니다",
-   "content": "다들 일정 확인해주세요",
-   "isNotice": false,
-   "createdAt": "2024-09-23T17:35:52.822Z"
+   "studyName": "고양이 식빵",
+   "writer": "고현준",
+   "isManager": false,
+   "profileImageUrl": null,
+   "comments": [],
+   "createdAt": "2024-09-30T20:58:44.045Z",
+   "postingId": "5a16b8b6-33d1-45d3-97a4-0b8a8c3a1cd8",
+   "title": "강희주 퇴사 완료",
+   "content": "string",
+   "week": 1,
+   "isNotice": false
  }
-]
  */

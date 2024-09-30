@@ -11,6 +11,8 @@ struct PostDetailVO {
     let postId: String
     let createdAt: String
     let writer: String
+    let isManager: Bool
+    let profileImageUrl: String?
     let studyName: String
     let title: String
     let content: String
