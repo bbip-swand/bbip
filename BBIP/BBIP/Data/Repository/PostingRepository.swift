@@ -11,6 +11,7 @@ import Combine
 protocol PostingRepository {
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error>
     func getStudyPosting(studyId: String) -> AnyPublisher<RecentPostVO, Error>
+    func getPostingDetail(postingId: String) -> AnyPublisher<PostDetailVO, Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
@@ -41,5 +42,9 @@ final class PostingRepositoryImpl: PostingRepository {
                 return self.mapper.toVO(dto: dto)
             }
             .eraseToAnyPublisher()
+    }
+    
+    func getPostingDetail(postingId: String) -> AnyPublisher<PostDetailVO, Error> {
+//        return dataSource.getPostingDetails(postingId: postingId)
     }
 }

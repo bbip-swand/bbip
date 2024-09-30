@@ -126,6 +126,9 @@
 		C6F2DA162CAACF1E002023B6 /* PostingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA152CAACF1E002023B6 /* PostingDetailView.swift */; };
 		C6F2DA182CAACF50002023B6 /* PostingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA172CAACF50002023B6 /* PostingDetailViewModel.swift */; };
 		C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA192CAAD56E002023B6 /* CommentDTO.swift */; };
+		C6F2DA1C2CAAE006002023B6 /* PostDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */; };
+		C6F2DA1E2CAAE033002023B6 /* CommentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */; };
+		C6F2DA202CAAE0C9002023B6 /* PostDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -306,6 +309,9 @@
 		C6F2DA152CAACF1E002023B6 /* PostingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDetailView.swift; sourceTree = "<group>"; };
 		C6F2DA172CAACF50002023B6 /* PostingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDetailViewModel.swift; sourceTree = "<group>"; };
 		C6F2DA192CAAD56E002023B6 /* CommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
+		C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVO.swift; sourceTree = "<group>"; };
+		C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVO.swift; sourceTree = "<group>"; };
+		C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailMapper.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -925,6 +931,8 @@
 			isa = PBXGroup;
 			children = (
 				C6F7007B2C9EEF89000CCC80 /* PostVO.swift */,
+				C6F2DA1B2CAAE006002023B6 /* PostDetailVO.swift */,
+				C6F2DA1D2CAAE033002023B6 /* CommentVO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -960,6 +968,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
+				C6F2DA1F2CAAE0C9002023B6 /* PostDetailMapper.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1201,6 +1210,7 @@
 				084C022F2C8056F300E54D0C /* UserHomeNavBar.swift in Sources */,
 				C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */,
 				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
+				C6F2DA1C2CAAE006002023B6 /* PostDetailVO.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				C6F7008C2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift in Sources */,
 				C6F98F332CA997F600F0D8E8 /* GetStudyPostingUseCase.swift in Sources */,
@@ -1278,6 +1288,7 @@
 				C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
+				C6F2DA1E2CAAE033002023B6 /* CommentVO.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
 				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
@@ -1316,6 +1327,7 @@
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
 				C6F0743F2CA6EB4B00A37501 /* StudyHomeViewModel.swift in Sources */,
+				C6F2DA202CAAE0C9002023B6 /* PostDetailMapper.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
