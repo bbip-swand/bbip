@@ -11,26 +11,29 @@ import Combine
 protocol PostingRepository {
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error>
     func getStudyPosting(studyId: String) -> AnyPublisher<RecentPostVO, Error>
-    func getPostingDetail(postingId: String) -> AnyPublisher<PostDetailVO, Error>
+    func getPostingDetail(postingId: String) -> AnyPublisher<[PostDetailVO], Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
     private let dataSource: PostingDataSource
-    private let mapper: CurrentWeekPostMapper
+    private let currentWeekPostmapper: CurrentWeekPostMapper
+    private let postDetailMapper: PostDetailMapper
 
     init(
         dataSource: PostingDataSource,
-        mapper: CurrentWeekPostMapper
+        currentWeekPostmapper: CurrentWeekPostMapper,
+        postDetailMapper: PostDetailMapper
     ) {
         self.dataSource = dataSource
-        self.mapper = mapper
+        self.currentWeekPostmapper = currentWeekPostmapper
+        self.postDetailMapper = postDetailMapper
     }
     
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error> {
         return dataSource.getCurrentWeekPosting()
             .map { [weak self] dto in
                 guard let self = self else { return [] }
-                return self.mapper.toVO(dto: dto)
+                return self.currentWeekPostmapper.toVO(dto: dto)
             }
             .eraseToAnyPublisher()
     }
@@ -39,12 +42,17 @@ final class PostingRepositoryImpl: PostingRepository {
         return dataSource.getStudyPosting(studyId: studyId)
             .map { [weak self] dto in
                 guard let self = self else { return [] }
-                return self.mapper.toVO(dto: dto)
+                return self.currentWeekPostmapper.toVO(dto: dto)
             }
             .eraseToAnyPublisher()
     }
     
-    func getPostingDetail(postingId: String) -> AnyPublisher<PostDetailVO, Error> {
-//        return dataSource.getPostingDetails(postingId: postingId)
+    func getPostingDetail(postingId: String) -> AnyPublisher<[PostDetailVO], Error> {
+        return dataSource.getPostingDetails(postingId: postingId)
+            .map { [weak self] dto in
+                guard let self = self else { return [] }
+                return self.postDetailMapper.toVO(dto: dto)
+            }
+            .eraseToAnyPublisher()
     }
 }

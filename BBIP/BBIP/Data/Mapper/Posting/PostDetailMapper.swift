@@ -8,26 +8,28 @@
 import Foundation
 
 struct PostDetailMapper {
-    static func map(dto: PostDTO) -> PostDetailVO {
-        let postType: PostType = dto.isNotice ? .notice : .normal
-        
-        let commentVOs = dto.comments?.map { commentDTO in
-            CommentVO(writer: commentDTO.writer,
-                      content: commentDTO.content,
-                      timeAgo: timeAgo(date: commentDTO.createdAt))
-        } ?? []
-        
-        return PostDetailVO(
-            postId: dto.postingId,
-            createdAt: dto.createdAt,
-            writer: dto.writer,
-            studyName: dto.studyName,
-            title: dto.title,
-            content: dto.content,
-            postType: postType,
-            week: dto.week,
-            commnets: commentVOs
-        )
+    func toVO(dto: [PostDTO]) -> [PostDetailVO] {
+        return dto.map { singleDTO in
+            let postType: PostType = singleDTO.isNotice ? .notice : .normal
+            
+            let commentVOs = singleDTO.comments?.map { commentDTO in
+                CommentVO(writer: commentDTO.writer,
+                          content: commentDTO.content,
+                          timeAgo: timeAgo(date: commentDTO.createdAt))
+            } ?? []
+            
+            return PostDetailVO(
+                postId: singleDTO.postingId,
+                createdAt: singleDTO.createdAt,
+                writer: singleDTO.writer,
+                studyName: singleDTO.studyName,
+                title: singleDTO.title,
+                content: singleDTO.content,
+                postType: postType,
+                week: singleDTO.week,
+                commnets: commentVOs
+            )
+        }
     }
 }
 
