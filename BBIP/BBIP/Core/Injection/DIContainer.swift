@@ -93,6 +93,9 @@ class DIContainer {
     private lazy var getPostDetailUseCase: GetPostDetailUseCaseProtocol = GetPostDetailUseCase(
         repository: postingRepository
     )
+    private lazy var createCommentUseCase: CreateCommentUseCaseProtocol = CreateCommentUseCase(
+        repository: postingRepository
+    )
     
     // MARK: - Archive
     private let archiveDataSource = ArchiveDataSource()
@@ -157,7 +160,8 @@ class DIContainer {
     // Posting Detail
     func makePostingDetailViewModel() -> PostingDetailViewModel {
         return PostingDetailViewModel(
-            getPostDetailUseCase: getPostDetailUseCase
+            getPostDetailUseCase: getPostDetailUseCase,
+            createCommentUseCase: createCommentUseCase
         )
     }
 }

@@ -13,10 +13,15 @@ final class PostingDetailViewModel: ObservableObject {
     @Published var commentText: String = ""
     
     private let getPostDetailUseCase: GetPostDetailUseCaseProtocol
+    private let createCommentUseCase: CreateCommentUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(getPostDetailUseCase: GetPostDetailUseCaseProtocol) {
+    init(
+        getPostDetailUseCase: GetPostDetailUseCaseProtocol,
+        createCommentUseCase: CreateCommentUseCaseProtocol
+    ) {
         self.getPostDetailUseCase = getPostDetailUseCase
+        self.createCommentUseCase = createCommentUseCase
     }
     
     func getPostDetail(postingId: String) {

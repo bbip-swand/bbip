@@ -45,4 +45,13 @@ final class PostingDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func createCommnet(postingId: String, content: String) -> AnyPublisher<Bool, Error> {
+        return provider.requestPublisher(.createComment(postingId: postingId, content: content))
+            .map { response in
+                return (200...299).contains(response.statusCode)
+            }
+            .mapError { $0 }
+            .eraseToAnyPublisher()
+    }
 }

@@ -12,6 +12,7 @@ protocol PostingRepository {
     func getCurrentWeekPost() -> AnyPublisher<RecentPostVO, Error>
     func getStudyPosting(studyId: String) -> AnyPublisher<RecentPostVO, Error>
     func getPostingDetail(postingId: String) -> AnyPublisher<PostDetailVO, Error>
+    func createComment(postingId: String, content: String) -> AnyPublisher<Bool, Error>
 }
 
 final class PostingRepositoryImpl: PostingRepository {
@@ -52,5 +53,9 @@ final class PostingRepositoryImpl: PostingRepository {
             .map { self.postDetailMapper.toVO(dto: $0) }
             .eraseToAnyPublisher()
     }
-
+    
+    func createComment(postingId: String, content: String) -> AnyPublisher<Bool, Error> {
+        return dataSource.createCommnet(postingId: postingId, content: content)
+            .eraseToAnyPublisher()
+    }
 }

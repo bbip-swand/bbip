@@ -25,8 +25,8 @@ extension PostingAPI: BaseAPI {
             return "/posting/details/\(postingId)"
         case .createPosting:
             return "/posting/create"
-        case .createComment:
-            return "/posting/create/comment"
+        case .createComment(let postingId, _):
+            return "/posting/create/comment\(postingId)"
         case .getStudyPosting(let studyId):
             return "/posting/all/\(studyId)"
         }
@@ -48,9 +48,8 @@ extension PostingAPI: BaseAPI {
         case .createPosting(let dto):
             return .requestJSONEncodable(dto)
         case .createComment(let postingId, let content):
-            let param = ["postingId": postingId]
-            let body = ["content": content]
-            return .requestCompositeParameters(bodyParameters: body, bodyEncoding: JSONEncoding.default, urlParameters: param)
+            let param = ["content": content]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         }
     }
     
