@@ -9,10 +9,16 @@ import SwiftUI
 
 struct CheckStudyLocationView: View {
     @EnvironmentObject private var appState: AppStateManager
+    @Environment(\.presentationMode) var presentationMode
     private let location: String?
+    private let isManager: Bool
     
-    init(location: String?) {
+    init(
+        location: String?,
+        isManager: Bool
+    ) {
         self.location = location
+        self.isManager = isManager
     }
     
     var body: some View {
@@ -40,7 +46,11 @@ struct CheckStudyLocationView: View {
             Spacer()
             
             MainButton(text: "돌아가기") {
-                appState.popToRoot()
+                if isManager {
+                    appState.popToRoot()
+                } else {
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
             .padding(.bottom, 22)
         }

@@ -21,4 +21,7 @@ struct FullStudyInfoDTO: Decodable {
     let pendingDate: String
     let pendingDateIndex: Int
     let studyInviteCode: String
+    let session: Int
+    let isManager: Bool
+    let place: String
 }

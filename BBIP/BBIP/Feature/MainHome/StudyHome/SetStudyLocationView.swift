@@ -55,7 +55,7 @@ struct SetStudyLocationView: View {
         .backButtonStyle()
         .background(.gray1)
         .navigationDestination(isPresented: $showLocationCheckView) {
-            CheckStudyLocationView(location: locationText)
+            CheckStudyLocationView(location: locationText, isManager: true)
         }
     }
 }

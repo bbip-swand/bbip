@@ -14,7 +14,7 @@ struct StudyHomeView: View {
     
     @State private var showDetailView: Bool = false
     @State private var showArchiveView: Bool = false
-    @State private var showLocationView: Bool = false
+    @State private var showCheckLocationView: Bool = false
     
     private let studyId: String
     
@@ -90,6 +90,9 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showArchiveView) {
             ArchiveView(studyId: studyId)
+        }
+        .navigationDestination(isPresented: $showCheckLocationView) {
+            CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
         }
     }
     
@@ -230,7 +233,13 @@ struct StudyHomeView: View {
             
             VStack(spacing: 12) {
                 Button {
-                    appState.push(.setLocation)
+                    if let vo = viewModel.fullStudyInfo {
+                        if vo.isManager {
+                            appState.push(.setLocation)
+                        } else {
+                            showCheckLocationView = true
+                        }
+                    }
                 } label: {
                     Image("studyHome_location")
                         .resizable()
