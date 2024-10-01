@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @ObservedObject var viewModel: CalendarViewModel = .init()
-    
+    @StateObject var calendarviewModel = DIContainer.shared.makeCalendarVieModel()
+    @State var addScheduleView = false
     @State var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
     
@@ -32,12 +32,22 @@ struct CalendarView: View {
                     .padding(.leading, 20)
                 
                 Spacer()
+                
+                Button{
+                    addScheduleView = true
+                }label: {
+                    Image("add_schedule")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .padding(.trailing, 28)
+                }
+            
             }
             .frame(height: 42)
             
             
             BBIPCalendar(
-                vo: viewModel.vo,
+                vo: calendarviewModel.getYMdata,
                 selectedDate: $selectedDate,
                 currentMonthTitle: $currentMonthTitle
             )
@@ -50,6 +60,9 @@ struct CalendarView: View {
                 .frame(height: 1)
             
             SelectedDateEventView(selectedDate: selectedDate)
+        }
+        .navigationDestination(isPresented: $addScheduleView){
+            CreateSchedule()
         }
     }
 }

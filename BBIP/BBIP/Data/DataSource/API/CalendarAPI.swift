@@ -14,6 +14,7 @@ enum CalendarAPI {
     case getUpcoming
     case createSchedule(dto:CreateScheduleDTO)
     case updateSchedule(scheduleId: String, dto: CreateScheduleDTO) //path param
+    case getMyStudy
 }
 
 extension CalendarAPI: BaseAPI {
@@ -33,12 +34,15 @@ extension CalendarAPI: BaseAPI {
             
         case .updateSchedule(let scheduleId, _):
             return "/calendar/update/\(scheduleId)"
+        
+        case .getMyStudy:
+            return "/study/my-study"
         }
     }
     
     var method: Moya.Method{
         switch self{
-        case .getScheduleYM, .getScheduleDate, .getUpcoming:
+        case .getScheduleYM, .getScheduleDate, .getUpcoming , .getMyStudy:
             return .get
         case .createSchedule:
             return .post
@@ -49,7 +53,7 @@ extension CalendarAPI: BaseAPI {
     
     var task: Moya.Task{
         switch self{
-        case . getUpcoming:
+        case .getUpcoming , .getMyStudy :
             return .requestPlain
             
         case .getScheduleYM(let year, let month):

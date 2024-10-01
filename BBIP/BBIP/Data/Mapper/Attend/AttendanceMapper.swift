@@ -67,6 +67,7 @@ struct GetAttendRecordMapper{
         
         return vo
     }
+    
     func toVOList(dtos: [GetAttendRecordDTO]) -> [getAttendRecordVO] {
         print("toVOList: \(dtos.map { toVO(dto: $0) })")
         return dtos.map { toVO(dto: $0) }

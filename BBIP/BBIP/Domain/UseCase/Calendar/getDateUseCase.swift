@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetDateUseCaseProtocol{
-    func execute(date:String) -> AnyPublisher<CalendarHomeVO, Error>
+    func execute(date:String) -> AnyPublisher<[CalendarHomeVO], Error>
 }
 
 final class GetDateUseCase: GetDateUseCaseProtocol{
@@ -19,7 +19,7 @@ final class GetDateUseCase: GetDateUseCaseProtocol{
         self.repository = repository
     }
     
-    func execute(date: String) -> AnyPublisher<CalendarHomeVO, any Error> {
+    func execute(date: String) -> AnyPublisher<[CalendarHomeVO], any Error> {
         return repository.getScheduleDate(date: date)
             .eraseToAnyPublisher()
     }

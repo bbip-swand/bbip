@@ -8,18 +8,13 @@
 import Foundation
 
 struct CalendarVO {
-    struct StudyEvent {
-        let studyName: String
-        let eventTitle: String
-        let eventTime: String
-    }
-    
     let date: Date
-    let events: [StudyEvent]
+    let events: [CalendarHomeVO]
 }
 
 //userhome 및 캘린더뷰에서 사용될 캘린더VO (뷰에 뿌릴 거)
 struct CalendarHomeVO{
+    let scheduldId: String
     let studyName: String
     let scheduleTitle: String
     let isHomeView: Bool
@@ -37,4 +32,9 @@ struct CreateScheduleVO{
     let endDate: Date
     let isHomeView: Bool
     let icon: Int
+}
+
+struct selectStudyVO{
+    let studyId: String
+    let studyName: String
 }

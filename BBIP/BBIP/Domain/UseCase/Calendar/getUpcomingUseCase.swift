@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetUpcomingUseCaseProtocol{
-    func execute() -> AnyPublisher<CalendarHomeVO,Error>
+    func execute() -> AnyPublisher<[CalendarHomeVO],Error>
 }
 
 final class GetUpcomingUseCase: GetUpcomingUseCaseProtocol{
@@ -19,8 +19,9 @@ final class GetUpcomingUseCase: GetUpcomingUseCaseProtocol{
         self.repository = repository
     }
     
-    func execute() -> AnyPublisher<CalendarHomeVO, any Error> {
+    func execute() -> AnyPublisher<[CalendarHomeVO], any Error> {
         return repository.getUpcoming()
             .eraseToAnyPublisher()
+        
     }
 }

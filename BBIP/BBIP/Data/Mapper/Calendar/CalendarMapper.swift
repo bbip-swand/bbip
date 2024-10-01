@@ -8,9 +8,27 @@
 import Foundation
 import UIKit
 
+
+//studyresponsedto -> studyvo
+struct GetMyStudyMapper{
+    func toVO(dto: MyStudyResponseDTO) -> selectStudyVO{
+        let vo = selectStudyVO(
+            studyId: dto.studyId, studyName: dto.studyName
+        )
+        return vo
+    }
+    
+    func toVOList(dtos: [MyStudyResponseDTO]) -> [selectStudyVO]{
+        print("toVOList: \(dtos.map {toVO(dto:$0)})")
+        return dtos.map{toVO(dto:$0)}
+    }
+}
+
+
+
 //ResponseDto -> CalendarHomeVO(캘린더뷰, 유저홈뷰에서 쓸 내용)
 struct GetScheduleMapper{
-    func toVo(dto: ScheduleResponseDTO) -> CalendarHomeVO{
+    func toVO(dto: ScheduleResponseDTO) -> CalendarHomeVO{
         // DateFormatter 설정
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
@@ -25,7 +43,8 @@ struct GetScheduleMapper{
         // 날짜 차이 계산 (D-day)
         let leftDays = calendar.dateComponents([.day], from: currentDate, to: startDate).day ?? 0
         
-        return CalendarHomeVO(
+       let vo = CalendarHomeVO(
+            scheduldId: dto.scheduleId,
             studyName: dto.studyName,
             scheduleTitle: dto.title,
             isHomeView: dto.isHomeView,
@@ -34,6 +53,12 @@ struct GetScheduleMapper{
             startDate: dto.startDate,
             endDate:dto.endDate
         )
+        return vo
+    }
+    
+    func toVOList(dtos: [ScheduleResponseDTO]) -> [CalendarHomeVO] {
+        print("toVOList: \(dtos.map { toVO(dto: $0) })")
+        return dtos.map { toVO(dto: $0) }
     }
 }
 

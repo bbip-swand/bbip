@@ -90,6 +90,26 @@ class DIContainer {
     
     private lazy var getAttendRecordUseCase: GetAttendRecordUseCaseProtocol = GetAttendRecordUseCase(repository: attendRepository)
     
+    //MARK: -Calendar
+    private let calendarDataSource = CalendarDataSource()
+    private let getScheduleMapper = GetScheduleMapper()
+    private let createScheduleMapper = CreateScheduleMapper()
+    private let getMyStudyMapper = GetMyStudyMapper()
+    
+    private lazy var calendarRepository : CalendarRepository = CalendarRepositoryImpl(
+        dataSource: calendarDataSource,
+        getScheduleMapper: getScheduleMapper,
+        createScheduleMapper: createScheduleMapper,
+        getMystudyMapper: getMyStudyMapper
+    )
+    
+    private lazy var getScheduleYMUseCase: GetYMUseCaseProtocol = GetYMUseCase(repository: calendarRepository)
+    private lazy var getScheduleDUseCase: GetDateUseCaseProtocol = GetDateUseCase(repository: calendarRepository)
+    private lazy var getUpcomingUseCase: GetUpcomingUseCaseProtocol = GetUpcomingUseCase(repository: calendarRepository)
+    private lazy var createScheduleUseCase: CreateScheduleUseCaseProtocol = CreateScheduleUseCase(repository: calendarRepository)
+    private lazy var updateScheduleUseCase: UpdateScheduleUseCaseProtocol = UpdateScheduleUseCase(repository: calendarRepository)
+    private lazy var getMyStudyUseCase: GetMyStudyUseCaseProtocol = GetMystudyUseCase(repository: calendarRepository)
+    
     
     // MARK: - Posting
     private let postingDataSource = PostingDataSource()
@@ -141,7 +161,13 @@ class DIContainer {
         return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase, getStatusUseCase: getStatusUseCase, enterCodeUseCse: enterCodeUseCase)
     }
     
+    //Create Code
     func createAttendCodeViewModel()-> CreateCodeViewModel{
         return CreateCodeViewModel(createCodeUseCase: createCodeUseCase)
+    }
+    
+    //Calender
+    func makeCalendarVieModel() -> CalendarViewModel{
+        return CalendarViewModel(getScheduleYMUseCase: getScheduleYMUseCase, getScheduleDUseCase: getScheduleDUseCase, getUpcomingUseCase: getUpcomingUseCase, createScheduleUseCase: createScheduleUseCase, updateScheduleUseCase: updateScheduleUseCase, getMyStudyUseCase: getMyStudyUseCase )
     }
 }

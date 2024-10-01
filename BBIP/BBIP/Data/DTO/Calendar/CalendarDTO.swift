@@ -19,11 +19,17 @@ struct CreateScheduleDTO : Encodable{
 
 //ResponseDTO (월,일,upcoming조회)
 struct ScheduleResponseDTO : Decodable{
-    let studyId: String
+    let scheduleId: String
     let studyName: String
     let title: String
     let startDate: Date
     let endDate: Date
     let isHomeView: Bool
     let icon: Int
+}
+
+//select study
+struct MyStudyResponseDTO : Decodable{
+    let studyId: String
+    let studyName: String
 }

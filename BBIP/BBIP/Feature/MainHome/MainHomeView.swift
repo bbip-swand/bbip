@@ -66,6 +66,8 @@ struct MainHomeView: View {
                 StartCreateStudyView()
             case .createCode:
                 CreateCodeOnboardingView()
+            case .calendar:
+                CalendarView()
             default:
                 EmptyView()
             }

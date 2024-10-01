@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol UpdateScheduleUseCaseProtocol{
-    func execute(studyId:String, calendarVO:CreateScheduleVO) -> AnyPublisher<Void,Error>
+    func execute(scheduleId:String, calendarVO:CreateScheduleVO) -> AnyPublisher<Void,Error>
 }
 
 final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol{
@@ -19,8 +19,8 @@ final class UpdateScheduleUseCase: UpdateScheduleUseCaseProtocol{
         self.repository = repository
     }
     
-    func execute(studyId: String, calendarVO: CreateScheduleVO) -> AnyPublisher<Void, any Error> {
-        return repository.updateSchedule(studyId: studyId, vo: calendarVO)
+    func execute(scheduleId: String, calendarVO: CreateScheduleVO) -> AnyPublisher<Void, any Error> {
+        return repository.updateSchedule(scheduleId: scheduleId, vo: calendarVO)
             .eraseToAnyPublisher()
     }
 }
