@@ -10,6 +10,7 @@ import Combine
 
 final class PostingDetailViewModel: ObservableObject {
     @Published var postDetailData: PostDetailVO?
+    @Published var commentText: String = ""
     
     private let getPostDetailUseCase: GetPostDetailUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostingDetailView: View {
     @ObservedObject var viewModel: PostingDetailViewModel = DIContainer.shared.makePostingDetailViewModel()
+    @FocusState private var isFocused: Bool
+    
     private let postId: String
     
     init(postId: String) {
@@ -16,36 +18,38 @@ struct PostingDetailView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    postInfo
-                        .padding(.top, 16)
-                        .padding(.bottom, 20)
-                        .padding(.horizontal, 26)
-                    
-                    content
-                        .padding(.bottom, 30)
-                        .padding(.horizontal, 26)
-                    
-                    Rectangle()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 1)
-                        .foregroundStyle(.gray3)
-                    
-                    comments
-                    
-                    Spacer()
-                        .frame(height: 150)
-                }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                postInfo
+                    .padding(.top, 16)
+                    .padding(.bottom, 20)
+                    .padding(.horizontal, 26)
+                
+                content
+                    .padding(.bottom, 30)
+                    .padding(.horizontal, 26)
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 1)
+                    .foregroundStyle(.gray3)
+                
+                comments
+                
+                Spacer()
+                    .frame(height: 150)
             }
-            .scrollIndicators(.never)
-            .frame(maxHeight: .infinity)
+            .keyboardHideable()
+        }
+        .overlay(alignment: .bottom) {
+            commentTextfieldArea
+                .bbipShadow1()
         }
         .ignoresSafeArea(.container, edges: .bottom)
+        .scrollIndicators(.never)
         .backButtonStyle()
         .toolbar {
-            // edit & removeable
+            // edit & removeable button
         }
         .onAppear {
             viewModel.getPostDetail(postingId: postId)
@@ -146,4 +150,79 @@ struct PostingDetailView: View {
             }
         }
     }
+    
+    private var commentTextfieldArea: some View {
+        ZStack(alignment: .top) {
+            Rectangle()
+                .fill(.mainWhite)
+                .frame(height: isFocused ? 80 : 114)
+                .clipShape(RoundedCorner(radius: 12, corners: [.topLeft, .topRight]))
+                .overlay(
+                    RoundedCorner(radius: 12, corners: [.topLeft, .topRight])
+                        .stroke(.gray2, lineWidth: 1)
+                )
+            
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .frame(height: 40)
+                    .foregroundStyle(.gray2)
+                    .padding(.horizontal, 20)
+                
+                HStack(spacing: 10) {
+                    TextField("댓글을 입력하세요", text: $viewModel.commentText)
+                        .font(.bbip(.body1_m16))
+                        .foregroundStyle(.mainBlack)
+                        .focused($isFocused)
+                    
+                    Button {
+                        //
+                    } label: {
+                        Image("comment_send")
+                    }
+                }
+                .padding(.horizontal, 35)
+            }
+            .padding(.top, 20)
+        }
+        .animation(.easeInOut, value: isFocused)
+    }
 }
+
+
+//struct test: View {
+//    var body: some View {
+//        ZStack {
+//            Rectangle()
+//                .fill(.mainWhite)
+//                .frame(height: 80)
+//                .clipShape(RoundedCorner(radius: 12, corners: [.topLeft, .topRight]))
+//                .overlay(
+//                    RoundedCorner(radius: 12, corners: [.topLeft, .topRight])
+//                        .stroke(.gray2, lineWidth: 1)
+//                )
+//            
+//            HStack {
+//                TextField("댓글을 입력하세요", text: .constant(""))
+//                    .font(.bbip(.body1_m16))
+//                    .foregroundStyle(.mainBlack)
+//                
+//                Button {
+//                    //
+//                } label: {
+//                    Image("comment_send")
+//                }
+//            }
+//            .padding(.horizontal, 35)
+//            .background(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .frame(height: 40)
+//                    .foregroundStyle(.gray2)
+//                    .padding(.horizontal, 20)
+//            )
+//        }
+//    }
+//}
+//
+//#Preview {
+//    test()
+//}
