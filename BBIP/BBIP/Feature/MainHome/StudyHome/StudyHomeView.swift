@@ -31,7 +31,7 @@ struct StudyHomeView: View {
                     
                     StudyHomeInnerView {
                         coreFeatureButtons
-                            .padding(.top, 50)
+                            .padding(.top, 52)
                             .padding(.bottom, 27)
                             .padding(.horizontal, 17)
                         
@@ -54,7 +54,7 @@ struct StudyHomeView: View {
                     Spacer()
                 }
             }
-            .padding(.top, 54)
+            .padding(.top, 42)
             .background(
                 VStack(spacing: 0) {
                     Color.gray9
@@ -131,9 +131,22 @@ struct StudyHomeView: View {
                         .zIndex(1)
                 }
             VStack(spacing: 0) {
-                NoticeBannerView(pendingNotice: "다음주 스터디 하루 쉬어갑니다! 확인 해주세요...!", isDark: true)
-                    .padding(.top, 22)
-                    .padding(.bottom, 28)
+                Group {
+                    if let studyBulletnData = viewModel.studyBulletnData {
+                        NoticeBannerView(
+                            postVO: studyBulletnData.filter({ $0.postType == .notice }).first,
+                            isDark: true
+                        )
+                    } else {
+                        NoticeBannerView(
+                            postVO: .placeholderVO(),
+                            isDark: true
+                        )
+                        .redacted(reason: .placeholder)
+                    }
+                }
+                .padding(.top, 22)
+                .padding(.bottom, 28)
                 
                 HStack(spacing: 10) {
                     RoundedRectangle(cornerRadius: 10)
