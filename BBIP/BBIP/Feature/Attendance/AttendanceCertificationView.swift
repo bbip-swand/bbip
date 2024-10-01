@@ -34,11 +34,6 @@ struct AttendanceCertificationView: View {
         }
     }
     
-    private func stopTimer() {
-        timer?.cancel()
-        timer = nil
-    }
-    
     var body: some View {
         VStack(spacing: 0) {
             Image("glove")
@@ -75,9 +70,6 @@ struct AttendanceCertificationView: View {
                         .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
                         .onAppear {
                             startTimer()
-                        }
-                        .onDisappear {
-                            stopTimer()
                         }
                 }
             }
@@ -131,6 +123,9 @@ struct AttendanceCertificationView: View {
         }
         .navigationDestination(isPresented: $viewModel.showAttendanceDone){
             AttendanceDoneView()
+        }
+        .onDisappear(){
+            timer?.cancel()
         }
     }
     

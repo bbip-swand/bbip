@@ -128,7 +128,7 @@ struct ActivatedBBIPTimeRingView: View {
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
     @State private var attendstatusData: GetStatusVO?
-    
+
     init(
         studyTitle: String,
         remainingTime: Binding<Int>,
@@ -138,16 +138,16 @@ struct ActivatedBBIPTimeRingView: View {
         self._remainingTime = remainingTime
         self.completion = completion
     }
-    
+
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
         let seconds = seconds % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-    
+
     private func startTimer() {
         formattedTime = formatTime(remainingTime)
-        
+
         timer?.cancel()
         timer = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
@@ -158,15 +158,15 @@ struct ActivatedBBIPTimeRingView: View {
                     return
                 }
                 remainingTime -= 1
-                progress = Double(remainingTime) / Double(initialTime)
+                progress = Double(remainingTime) / Double(attendstatusData?.ttl ?? 600)
                 formattedTime = formatTime(remainingTime)
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     if !showCircle { showCircle = true }
                 }
             }
     }
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             GeometryReader { geometry in
@@ -174,18 +174,18 @@ struct ActivatedBBIPTimeRingView: View {
                 let angle = Angle(degrees: progress * 360 - 90)
                 let xOffset = cos(angle.radians) * radius
                 let yOffset = sin(angle.radians) * radius
-                
+
                 ZStack {
                     Circle()
                         .foregroundStyle(.primary3)
-                    
+
                     Group {
                         Circle()
                             .stroke(
                                 .primary2,
                                 style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                             )
-                        
+
                         Circle()
                             .trim(from: 0, to: progress)
                             .stroke(
@@ -196,7 +196,7 @@ struct ActivatedBBIPTimeRingView: View {
                             .animation(.easeInOut(duration: 0.25), value: progress)
                     }
                     .padding(18)
-                    
+
                     Circle()
                         .foregroundStyle(.mainWhite)
                         .frame(width: endCircleSize, height: endCircleSize)
@@ -210,7 +210,7 @@ struct ActivatedBBIPTimeRingView: View {
                         Text(studyTitle)
                             .font(.bbip(.title3_m20))
                             .foregroundStyle(.mainWhite)
-                        
+
                         Text(formattedTime)
                             .font(.bbip(.title1_sb42))
                             .foregroundStyle(.mainWhite)
@@ -225,10 +225,17 @@ struct ActivatedBBIPTimeRingView: View {
                     .offset(x: 30, y: 62)
                     .unredacted()
             }
-            
+
             Button {
-//                showAttendRecordView = true
-                showAttendanceCertificationView = true
+                print("isManager: \(String(describing: attendstatusData?.isManager))")
+                // 출석 인증 버튼을 눌렀을 때의 로직
+                if attendstatusData?.isManager == true {
+                    showAttendRecordView = true
+                    showAttendanceCertificationView = false
+                } else {
+                    showAttendanceCertificationView = true
+                    showAttendRecordView = false
+                }
                 timer?.cancel()
             } label: {
                 RoundedRectangle(cornerRadius: 10)
@@ -247,17 +254,26 @@ struct ActivatedBBIPTimeRingView: View {
                     .frame(width: 130, height: 43)
             )
         }
-        .onAppear(){
-            attendstatusData = attendviewModel.getStatusData
+        .onAppear {
+            // 출석 상태 데이터를 가져오는 함수 호출
+            attendviewModel.getStatusAttend()
+            // 데이터가 업데이트되면 반영하도록 구독 설정
+            attendviewModel.$getStatusData
+                .receive(on: DispatchQueue.main)
+                .sink { statusData in
+                            self.attendstatusData = statusData
+                        }
+                .store(in: &attendviewModel.cancellables)
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
+        .navigationDestination(isPresented: $showAttendRecordView) {
+            AttendRecordView(code: attendstatusData?.code ?? 0, remainingTime: $remainingTime, attendstatusData: attendstatusData)
+        }
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
             AttendanceCertificationView(remainingTime: $remainingTime)
         }
-        .navigationDestination(isPresented: $showAttendRecordView) {
-            AttendRecordView(studyId: attendstatusData?.studyId ?? "", code: attendstatusData?.code ?? 0 , remainingTime: $remainingTime)
-        }
     }
 }
+
 

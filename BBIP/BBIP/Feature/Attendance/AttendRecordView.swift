@@ -1,35 +1,28 @@
-//
-//  AttendRecordView.swift
-//  BBIP
-//
-//  Created by 조예린 on 9/29/24.
-//
-
 import Foundation
 import SwiftUI
 import Combine
 
-struct AttendRecordView: View{
-    //TODO: - remainingTime필요
+struct AttendRecordView: View {
     @State private var formattedTime: String = "00:00"
+    @Binding var remainingTime: Int
     @State private var timer: AnyCancellable?
     @StateObject private var viewModel = DIContainer.shared.makeAttendViewModel()
     @State private var isRefresh: Bool = false
-    @Binding var remainingTime: Int
     var studyId: String
     var code: Int
     private var completion: (() -> Void)?
     
+    // `remainingTime`을 `Binding`으로 받도록 수정
     init(
-        studyId: String,
         code: Int,
         remainingTime: Binding<Int>,
+        attendstatusData: GetStatusVO?,
         completion: (() -> Void)? = nil
     ) {
-        self.studyId = studyId
-        self.code = code
-        self._remainingTime = remainingTime
+        self._remainingTime = remainingTime // `Binding`을 `_`와 함께 사용하여 초기화
         self.completion = completion
+        self.studyId = attendstatusData?.studyId ?? ""
+        self.code = code
         setNavigationBarAppearance(forDarkView: true)
     }
     
@@ -56,12 +49,10 @@ struct AttendRecordView: View{
             }
     }
     
-    
-    var body: some View{
-        
-        ScrollView{
-            VStack(spacing:0){
-                HStack(spacing:0){
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
                             .frame(height: 30)
@@ -71,7 +62,7 @@ struct AttendRecordView: View{
                         HStack(spacing: 9) {
                             Image("alarm")
                                 .resizable()
-                                .frame(width: 21,height: 21)
+                                .frame(width: 21, height: 21)
                                 .foregroundColor(.mainWhite)
                             
                             Text("남은 시간:")
@@ -81,16 +72,17 @@ struct AttendRecordView: View{
                             Text(formattedTime)
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
+                                .onAppear(){
+                                    startTimer()
+                                }
                         }
-                        
                     }
-                    Spacer().frame(width:19)
-                    
+                    Spacer().frame(width: 19)
                     
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
                             .frame(height: 30)
-                            .frame(width:149)
+                            .frame(width: 149)
                             .foregroundStyle(.gray8)
                         
                         HStack(spacing: 9) {
@@ -102,23 +94,21 @@ struct AttendRecordView: View{
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                         }
-                        .padding(.horizontal,20)
+                        .padding(.horizontal, 20)
                     }
-                    
-                    
                 }
-                .padding(.horizontal,20)
-                .padding(.top,23)
+                .padding(.horizontal, 20)
+                .padding(.top, 23)
                 
                 Text("경기 참여")
                     .font(.bbip(.body1_sb16))
                     .foregroundStyle(.mainWhite)
-                    .frame(maxWidth: .infinity, alignment:.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 28)
                     .padding(.leading, 26)
-                    .padding(.bottom,12)
+                    .padding(.bottom, 12)
                 
-                //경기참가한 사람들의 studyEntryCard필요
+                // 경기참가한 사람들의 studyEntryCard 필요
                 ForEach(0..<viewModel.records.filter { $0.status == .attended }.count, id: \.self) { index in
                     let record = viewModel.records.filter { $0.status == .attended }[index]
                     studyEntryCard(vo: record)
@@ -137,12 +127,13 @@ struct AttendRecordView: View{
                     .font(.bbip(.caption2_m12))
                     .foregroundStyle(.gray6)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top,6)
-                    .padding(.leading,26)
-                    .padding(.bottom,12)
+                    .padding(.top, 6)
+                    .padding(.leading, 26)
+                    .padding(.bottom, 12)
                 
-                //경기 미참여한 사람들의 studyEntryCard 필요
-                ForEach(0..<viewModel.records.filter { $0.status == .absent }.count, id: \.self) { index in
+                
+                // 경기 미참여한 사람들의 studyEntryCard 필요
+                ForEach(0..<viewModel.records.filter { $0.status == .absent }.count, id: \.self) {index in
                     let record = viewModel.records.filter { $0.status == .absent }[index]
                     studyEntryCard(vo: record)
                         .padding(.horizontal, 20)
@@ -155,11 +146,15 @@ struct AttendRecordView: View{
         .navigationTitle("출결 현황")
         .navigationBarTitleDisplayMode(.inline)
         .background(.gray9)
-        .onAppear{
-            viewModel.getAttendRecord(studyId:studyId)
+        .onAppear {
+            viewModel.getAttendRecord(studyId: studyId)
+            startTimer()
+        }
+        .onDisappear {
+            timer?.cancel()
         }
         .refreshable {
-            viewModel.getAttendRecord(studyId:studyId)
+            viewModel.getAttendRecord(studyId: studyId)
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation { isRefresh = false }
@@ -171,38 +166,34 @@ struct AttendRecordView: View{
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
         }
-        
     }
 }
 
-
-struct studyEntryCard: View{
+struct studyEntryCard: View {
     private let vo: getAttendRecordVO
     
-    init(vo: getAttendRecordVO){
+    init(vo: getAttendRecordVO) {
         self.vo = vo
     }
     
-    var body: some View{
-        ZStack{
+    var body: some View {
+        ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .frame(height: 68)
                 .frame(maxWidth: .infinity)
                 .foregroundStyle(.gray8)
             
-            HStack(spacing:0) {
-                LoadableImageView(imageUrl: vo.profileImageUrl, size:48)
-                    .padding(.trailing,19)
+            HStack(spacing: 0) {
+                LoadableImageView(imageUrl: vo.profileImageUrl, size: 48)
+                    .padding(.trailing, 19)
                 
                 Text(vo.userName)
                     .font(.bbip(.body1_sb16))
                     .foregroundStyle(.mainWhite)
                 
                 Spacer()
-                
             }
-            .padding(.horizontal,14)
+            .padding(.horizontal, 14)
         }
-        
     }
 }

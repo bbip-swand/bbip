@@ -40,7 +40,7 @@ struct GetStatusMapper{
         
         
         print("StartTime in KST: \(startTimeUTC)")
-        print("Not a Manger you can't get code: \(dto.isManager)")
+
         return GetStatusVO(
             studyName: dto.studyName,
             studyId: dto.studyId,

@@ -12,10 +12,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
     //MARK: - get attend record
     @Published var records: [getAttendRecordVO] = []
      var cancellables = Set<AnyCancellable>()
-    
-    @Published var formattedTime: String = "00:00"
-    private var timer: AnyCancellable?
-    
+
     //MARK: - apply code
     @Published var remainingTime:Int = 600
     @Published var getStatusData: GetStatusVO?
@@ -157,33 +154,5 @@ final class AttendanceCertificationViewModel: ObservableObject {
                 showInvalidCodeWarning = false
             }
         }
-    
-    func stopTimer() {
-        timer?.cancel()
-        timer = nil
-    }
-    
-    func formatTime(_ seconds: Int) -> String {
-        let minutes = seconds / 60
-        let seconds = seconds % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-    
-    func startTimer() {
-        if timer == nil {
-            formattedTime = formatTime(remainingTime)
-            
-            timer = Timer.publish(every: 1, on: .main, in: .common)
-                .autoconnect()
-                .sink { [self] _ in
-                    guard self.remainingTime > 0 else {
-                        self.timer?.cancel()
-                        self.timer = nil
-                        return
-                    }
-                    self.remainingTime -= 1
-                    formattedTime = self.formatTime(remainingTime)
-                }
-        }
-    }
+
 }

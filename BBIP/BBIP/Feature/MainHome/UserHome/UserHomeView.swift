@@ -61,11 +61,15 @@ struct UserHomeView: View {
         .refreshable {
             viewModel.refreshHomeData()
             attendviewModel.getStatusAttend()
-            attendstatusData = attendviewModel.getStatusData
             
-            if let attendstatusData = attendstatusData {
-                print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
-                timeRingStart = true
+            // Use DispatchQueue to ensure the values are updated before setting `timeRingStart`
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                attendstatusData = attendviewModel.getStatusData
+                
+                if let attendstatusData = attendstatusData {
+                    print("새로고침 후 받은 getStatusVO 데이터: \(attendstatusData)")
+                    timeRingStart = true
+                }
             }
         }
         .scrollIndicators(.never)
