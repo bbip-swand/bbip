@@ -174,11 +174,15 @@ struct PostingDetailView: View {
                         .foregroundStyle(.mainBlack)
                         .focused($isFocused)
                     
-                    Button {
-                        //
-                    } label: {
-                        Image("comment_send")
+                    if viewModel.isCommentButtonEnabled {
+                        Button {
+                            viewModel.createComment(postingId: postId, commentContent: viewModel.commentText)
+                        } label: {
+                            Image("comment_send")
+                        }
+                        .animation(.easeInOut, value: viewModel.isCommentButtonEnabled)
                     }
+                    
                 }
                 .padding(.horizontal, 35)
             }

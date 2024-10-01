@@ -10,7 +10,12 @@ import Combine
 
 final class PostingDetailViewModel: ObservableObject {
     @Published var postDetailData: PostDetailVO?
-    @Published var commentText: String = ""
+    @Published var commentText: String = "" {
+        didSet {
+            validateCommentText()
+        }
+    }
+    @Published var isCommentButtonEnabled: Bool = false
     
     private let getPostDetailUseCase: GetPostDetailUseCaseProtocol
     private let createCommentUseCase: CreateCommentUseCaseProtocol
@@ -22,6 +27,10 @@ final class PostingDetailViewModel: ObservableObject {
     ) {
         self.getPostDetailUseCase = getPostDetailUseCase
         self.createCommentUseCase = createCommentUseCase
+    }
+    
+    private func validateCommentText() {
+        isCommentButtonEnabled = !commentText.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
     func getPostDetail(postingId: String) {
@@ -36,7 +45,23 @@ final class PostingDetailViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.postDetailData = response
-                print(postDetailData)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func createComment(postingId: String, commentContent: String) {
+        createCommentUseCase.excute(postingId: postingId, content: commentContent)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed createComment: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.getPostDetail(postingId: postingId)
+                self.commentText = ""
             }
             .store(in: &cancellables)
     }

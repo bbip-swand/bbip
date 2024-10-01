@@ -29,7 +29,7 @@ func timeAgo(date: Date) -> String {
         return "\(hours)시간 전"
     } else if let minutes = components.minute, minutes < 60 && minutes > 0 {
         return "\(minutes)분 전"
-    } else if let seconds = components.second, seconds < 60 && seconds > 0 {
+    } else if let seconds = components.second, seconds < 60 && seconds >= 0 {
         return "방금 전"
     } else {
         return "날짜 변환 오류"
