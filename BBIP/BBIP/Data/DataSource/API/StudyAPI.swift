@@ -49,7 +49,7 @@ extension StudyAPI: BaseAPI {
         case .getThisWeekStudy, .getOngoingStudy:
             return .requestPlain
             
-        case .getFullStudyInfo(let studyId):
+        case .getFullStudyInfo:
             return .requestPlain
             
         case .getInviteInfo(let inviteCode):
@@ -63,5 +63,9 @@ extension StudyAPI: BaseAPI {
             let param = ["studyId": studyId]
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
+    }
+    
+    var validationType: ValidationType {
+        return .successCodes
     }
 }

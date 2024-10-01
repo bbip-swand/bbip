@@ -39,7 +39,7 @@ struct CommentCell: View {
         .overlay(alignment: .bottom) {
             Rectangle()
                 .frame(height: 1)
-                .foregroundStyle(.gray3)
+                .foregroundStyle(.gray2)
         }
     }
 }
