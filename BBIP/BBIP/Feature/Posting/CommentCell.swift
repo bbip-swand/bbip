@@ -36,7 +36,6 @@ struct CommentCell: View {
         }
         .padding(.vertical, 20)
         .padding(.horizontal, 26)
-        .background(.gray1)
         .overlay(alignment: .bottom) {
             Rectangle()
                 .frame(height: 1)

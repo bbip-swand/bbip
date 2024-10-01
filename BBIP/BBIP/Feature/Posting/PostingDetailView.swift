@@ -18,18 +18,15 @@ struct PostingDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                VStack(spacing: 0) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        postInfo
-                            .padding(.top, 16)
-                            .padding(.bottom, 20)
-                            .padding(.horizontal, 26)
-
-                        content
-                            .padding(.bottom, 30)
-                            .padding(.horizontal, 26)
-                    }
-                    .background(.mainWhite)
+                VStack(alignment: .leading, spacing: 0) {
+                    postInfo
+                        .padding(.top, 16)
+                        .padding(.bottom, 20)
+                        .padding(.horizontal, 26)
+                    
+                    content
+                        .padding(.bottom, 30)
+                        .padding(.horizontal, 26)
                     
                     Rectangle()
                         .frame(maxWidth: .infinity)
@@ -37,9 +34,9 @@ struct PostingDetailView: View {
                         .foregroundStyle(.gray3)
                     
                     comments
-                        .containerRelativeFrame([.horizontal, .vertical], alignment: .top)
-                        .background(.gray1)
                     
+                    Spacer()
+                        .frame(height: 150)
                 }
             }
             .scrollIndicators(.never)
@@ -116,6 +113,7 @@ struct PostingDetailView: View {
                     
                     Text(vo.content)
                         .font(.bbip(.body2_m14))
+                        .frame(minHeight: 44, alignment: .topLeading)
                 }
                 // TODO: - Images...
             } else {
