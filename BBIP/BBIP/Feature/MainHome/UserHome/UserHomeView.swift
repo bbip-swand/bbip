@@ -15,10 +15,17 @@ struct UserHomeView: View {
     
     var body: some View {
         ScrollView {
-            NoticeBannerView(pendingNotice: "이번 주 스터디는 대체공휴일로 하루 쉬어가겠습니다!")
-                .padding(.top, 22)
-                .padding(.bottom, 35)
-                .redacted(reason: isRefresh ? .placeholder : [])
+            Group {
+                if let homeBulletnData = viewModel.homeBulletnData {
+                    NoticeBannerView(postVO: homeBulletnData.filter({ $0.postType == .notice }).first)
+                } else {
+                    NoticeBannerView(postVO: .placeholderVO())
+                        .redacted(reason: .placeholder)
+                }
+            }
+            .padding(.top, 22)
+            .padding(.bottom, 35)
+           
             
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
