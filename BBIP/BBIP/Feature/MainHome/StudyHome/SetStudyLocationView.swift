@@ -6,11 +6,27 @@
 //
 
 import SwiftUI
+import Combine
 
 /// 팀장만 접근 가능
 struct SetStudyLocationView: View {
     @State private var locationText: String = ""
     @State private var showLocationCheckView: Bool = false
+    
+    private let studyId: String
+    private let session: Int
+    
+    init(
+        prevLocation: String,
+        studyId: String,
+        session: Int
+    ) {
+        self.locationText = prevLocation
+        self.studyId = studyId
+        self.session = session
+    }
+    
+    let dataSource = StudyDataSource()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -46,8 +62,15 @@ struct SetStudyLocationView: View {
             
             Spacer()
             
-            MainButton(text: "다음", enable: !locationText.isEmpty) {
-                showLocationCheckView = true
+            MainButton(text: "다음", enable: !locationText.trimmingCharacters(in: .whitespaces).isEmpty) {
+                dataSource.editStudyLocation(studyId: studyId, session: session, location: locationText) { result in
+                    switch result {
+                    case .success:
+                        showLocationCheckView = true
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
             }
             .padding(.bottom, 22)
         }
@@ -60,7 +83,3 @@ struct SetStudyLocationView: View {
     }
 }
 
-
-#Preview {
-    SetStudyLocationView()
-}
