@@ -61,6 +61,8 @@ struct MainHomeView: View {
                 MypageView()
             case .startSIS:
                 StartCreateStudyView()
+            case .setLocation:
+                SetStudyLocationView()
             default:
                 EmptyView()
             }

@@ -17,10 +17,14 @@ enum AppState: String {
 enum MainHomeViewDestination {
     case notice
     case mypage
-    case studyDetail
+    
+    // MARK: - UserHome
     case startSIS       // sis startPoint
     case SIS            // study into setup
     case completeSIS    // sis endPoing
+    
+    // MARK: - StudyHome
+    case setLocation
 }
 
 final class AppStateManager: ObservableObject {

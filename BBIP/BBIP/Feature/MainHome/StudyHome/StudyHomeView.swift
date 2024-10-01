@@ -9,10 +9,13 @@ import SwiftUI
 import Combine
 
 struct StudyHomeView: View {
+    @EnvironmentObject private var appState: AppStateManager
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
     
     @State private var showDetailView: Bool = false
     @State private var showArchiveView: Bool = false
+    @State private var showLocationView: Bool = false
+    
     private let studyId: String
     
     init(studyId: String) {
@@ -227,7 +230,7 @@ struct StudyHomeView: View {
             
             VStack(spacing: 12) {
                 Button {
-                    // go location
+                    appState.push(.setLocation)
                 } label: {
                     Image("studyHome_location")
                         .resizable()
