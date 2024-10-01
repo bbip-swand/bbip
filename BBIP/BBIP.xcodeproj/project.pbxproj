@@ -58,7 +58,7 @@
 		C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */; };
 		C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */; };
 		C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */; };
-		C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBC2C821A1F006AA652 /* View+Extension.swift */; };
+		C6934BBD2C821A1F006AA652 /* SetNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBC2C821A1F006AA652 /* SetNavigationBar.swift */; };
 		C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */; };
 		C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC12C822066006AA652 /* SISCategoryView.swift */; };
 		C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6934BC32C8220A6006AA652 /* SISPeriodView.swift */; };
@@ -245,7 +245,7 @@
 		C6934BB62C81F8D0006AA652 /* CreateStudyContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudyContent.swift; sourceTree = "<group>"; };
 		C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
 		C6934BBA2C81FD61006AA652 /* TabViewProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewProgressBar.swift; sourceTree = "<group>"; };
-		C6934BBC2C821A1F006AA652 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		C6934BBC2C821A1F006AA652 /* SetNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNavigationBar.swift; sourceTree = "<group>"; };
 		C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C6934BC12C822066006AA652 /* SISCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISCategoryView.swift; sourceTree = "<group>"; };
 		C6934BC32C8220A6006AA652 /* SISPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SISPeriodView.swift; sourceTree = "<group>"; };
@@ -672,7 +672,6 @@
 		C695BDEB2C649FE3009DEC3C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C6934BBC2C821A1F006AA652 /* View+Extension.swift */,
 				C61A472F2C6687690016986D /* Font+Extension.swift */,
 				C6934BB82C81FC6A006AA652 /* Binding+Extension.swift */,
 				C6934BBE2C821F0A006AA652 /* UIColor+Extension.swift */,
@@ -913,6 +912,7 @@
 		C6F2DA352CABD45E002023B6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C6934BBC2C821A1F006AA652 /* SetNavigationBar.swift */,
 				C6FA55DE2C906F5400E537D7 /* TimeAgo.swift */,
 				C6F2DA362CABD477002023B6 /* RoundedCorner.swift */,
 			);
@@ -1389,7 +1389,7 @@
 				C694459D2C9D5B5A003945CC /* StudyInfoDTO.swift in Sources */,
 				C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */,
 				C6F98F4B2CAA949100F0D8E8 /* ArchivedFileInfoMapper.swift in Sources */,
-				C6934BBD2C821A1F006AA652 /* View+Extension.swift in Sources */,
+				C6934BBD2C821A1F006AA652 /* SetNavigationBar.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C6F2DA242CAAF70D002023B6 /* CommentCell.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
@@ -1529,7 +1529,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1572,7 +1572,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
