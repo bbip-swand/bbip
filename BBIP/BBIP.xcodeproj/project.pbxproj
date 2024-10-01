@@ -36,6 +36,7 @@
 		086330912CA85BF800F1775B /* TODOList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330902CA85BF800F1775B /* TODOList.swift */; };
 		086330932CA91DB300F1775B /* errorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330922CA91DB300F1775B /* errorExtension.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
+		088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */; };
 		08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */; };
 		08B098E12CA5DFCF00653F72 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */; };
 		08B098E22CA5DFCF00653F72 /* StudySetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DD2CA5DFCF00653F72 /* StudySetView.swift */; };
@@ -224,6 +225,7 @@
 		086330902CA85BF800F1775B /* TODOList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOList.swift; sourceTree = "<group>"; };
 		086330922CA91DB300F1775B /* errorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorExtension.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
+		088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
 		08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
 		08B098DD2CA5DFCF00653F72 /* StudySetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetView.swift; sourceTree = "<group>"; };
@@ -1113,6 +1115,7 @@
 				C6FA56052C956D3700E537D7 /* CalendarView.swift */,
 				C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */,
 				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
+				088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
+				088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */,
 				086330912CA85BF800F1775B /* TODOList.swift in Sources */,
 				C6CF22682CA2E7AE00988748 /* StudyInfoVO.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,

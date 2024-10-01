@@ -21,6 +21,7 @@ enum MainHomeViewDestination {
     case SIS            // study into setup
     case completeSIS    // sis endPoing
     case createCode
+    case calendar
 }
 
 final class AppStateManager: ObservableObject {
