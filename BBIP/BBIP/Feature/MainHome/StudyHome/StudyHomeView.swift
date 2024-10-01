@@ -9,10 +9,13 @@ import SwiftUI
 import Combine
 
 struct StudyHomeView: View {
+    @EnvironmentObject private var appState: AppStateManager
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
     
     @State private var showDetailView: Bool = false
     @State private var showArchiveView: Bool = false
+    @State private var showCheckLocationView: Bool = false
+    
     private let studyId: String
     
     init(studyId: String) {
@@ -87,6 +90,9 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showArchiveView) {
             ArchiveView(studyId: studyId)
+        }
+        .navigationDestination(isPresented: $showCheckLocationView) {
+            CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
         }
     }
     
@@ -200,7 +206,29 @@ struct StudyHomeView: View {
                     
                     Spacer()
                 }
+                .frame(height: 16)
                 .padding(.horizontal, 16)
+                .padding(.bottom, 10)
+                
+                HStack(spacing: 10) {
+                    Image("study_home")
+                        .renderingMode(.template)
+                        .foregroundColor(.gray6)
+                    
+                    if let vo = viewModel.fullStudyInfo {
+                        Text(vo.location ?? "미정")
+                            .font(.bbip(.caption2_m12))
+                            .foregroundStyle(.gray2)
+                    } else {
+                        Text("place")
+                            .foregroundStyle(.gray2)
+                            .redacted(reason: .placeholder)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 16)
+                .frame(height: 16)
                 
                 Spacer()
             }
@@ -227,7 +255,13 @@ struct StudyHomeView: View {
             
             VStack(spacing: 12) {
                 Button {
-                    // go location
+                    if let vo = viewModel.fullStudyInfo {
+                        if vo.isManager {
+                            appState.push(.setLocation(prevLocation: vo.location ?? "", studyId: studyId, session: vo.session))
+                        } else {
+                            showCheckLocationView = true
+                        }
+                    }
                 } label: {
                     Image("studyHome_location")
                         .resizable()

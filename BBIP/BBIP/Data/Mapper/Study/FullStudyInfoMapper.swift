@@ -51,7 +51,10 @@ struct FullStudyInfoMapper {
             studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,
             pendingDateTimeStr: pendingDateTimeStr, 
-            inviteCode: dto.studyInviteCode
+            inviteCode: dto.studyInviteCode,
+            session: dto.session,
+            isManager: dto.isManager,
+            location: dto.place.isEmpty ? nil : dto.place
         )
     }
 }

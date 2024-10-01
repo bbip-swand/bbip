@@ -15,6 +15,7 @@ enum StudyAPI {
     case getInviteInfo(inviteCode: String)  // param
     case createStudy(dto: CreateStudyInfoDTO)
     case joinStudy(studyId: String)         // param
+    case editStudyLocation(studyId: String, session: Int, location: String)
 }
 
 extension StudyAPI: BaseAPI {
@@ -32,6 +33,8 @@ extension StudyAPI: BaseAPI {
             return "/study/create"
         case .joinStudy(let studyId):
             return "/study/join/\(studyId)"
+        case .editStudyLocation(let studyId, _, _):
+            return "/study/place/\(studyId)"
         }
     }
     
@@ -41,6 +44,8 @@ extension StudyAPI: BaseAPI {
             return .get
         case .createStudy, .joinStudy:
             return .post
+        case .editStudyLocation:
+            return .put
         }
     }
     
@@ -61,6 +66,10 @@ extension StudyAPI: BaseAPI {
             
         case .joinStudy(let studyId):
             let param = ["studyId": studyId]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            
+        case .editStudyLocation(_, let session, let location):
+            let param = ["session" : session, "place" : location] as [String : Any]
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }

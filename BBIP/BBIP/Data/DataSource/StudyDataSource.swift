@@ -81,4 +81,22 @@ final class StudyDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func editStudyLocation(
+        studyId: String,
+        session: Int,
+        location: String,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        provider.request(.editStudyLocation(studyId: studyId, session: session, location: location)) { result in
+            print(studyId)
+            switch result {
+            case .success(let response):
+                let isSuccess = (200...299).contains(response.statusCode)
+                completion(.success(isSuccess))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

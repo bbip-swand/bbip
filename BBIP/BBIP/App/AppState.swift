@@ -14,13 +14,17 @@ enum AppState: String {
     case home
 }
 
-enum MainHomeViewDestination {
+enum MainHomeViewDestination: Hashable {
     case notice
     case mypage
-    case studyDetail
+    
+    // MARK: - UserHome
     case startSIS       // sis startPoint
     case SIS            // study into setup
     case completeSIS    // sis endPoing
+    
+    // MARK: - StudyHome
+    case setLocation(prevLocation:String, studyId: String, session: Int)
 }
 
 final class AppStateManager: ObservableObject {

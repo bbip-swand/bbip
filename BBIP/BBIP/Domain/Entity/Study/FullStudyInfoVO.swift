@@ -24,4 +24,8 @@ struct FullStudyInfoVO {
     let pendingDateStr: String
     let pendingDateTimeStr: String
     let inviteCode: String
+    
+    let session: Int
+    let isManager: Bool
+    let location: String?
 }

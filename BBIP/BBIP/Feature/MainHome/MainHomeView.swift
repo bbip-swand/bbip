@@ -61,6 +61,8 @@ struct MainHomeView: View {
                 MypageView()
             case .startSIS:
                 StartCreateStudyView()
+            case .setLocation(let prevLocation, let studyId, let session):
+                SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
             default:
                 EmptyView()
             }
