@@ -135,14 +135,14 @@ struct StudyDayTimeRow: View {
     let studyTimes: [StudyTime]
 
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             Text("요일")
                 .font(.bbip(.body1_m16))
                 .foregroundStyle(.gray7)
                 .padding(.trailing, 63)
             
-            ForEach(Array(zip(daysOfWeek, studyTimes)), id: \.0) { day, time in
-                VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(Array(zip(daysOfWeek, studyTimes)), id: \.0) { day, time in
                     HStack {
                         Text(dayName(for: day))
                         Text("\(time.startTime) ~ \(time.endTime)")
@@ -151,7 +151,7 @@ struct StudyDayTimeRow: View {
                 }
                 .padding(.trailing, 16)
             }
-
+            
             Spacer()
         }
     }
