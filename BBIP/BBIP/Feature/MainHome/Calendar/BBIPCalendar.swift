@@ -71,11 +71,13 @@ struct BBIPCalendar: UIViewRepresentable {
         }
 
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            calendar.select(date)
-            calendar.deselect(parent.selectedDate)
+         
+            if parent.selectedDate != date {
+                calendar.deselect(parent.selectedDate) // 이전 선택 해제
+            }
             parent.selectedDate = date
+            calendar.reloadData() // 선택 상태 업데이트 후 UI 갱신
         }
-
 
         // 일요일 날짜의 글씨를 빨간색으로 설정
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
@@ -87,22 +89,30 @@ struct BBIPCalendar: UIViewRepresentable {
             }
         }
 
-//        func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-//            return parent.vo.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })?.events.count ?? 0
-//        }
+        func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+            let relevantEvents = parent.vo.filter { event in
+                Calendar.current.isDate(date, inSameDayAs: event.startDate) ||
+                Calendar.current.isDate(date, inSameDayAs: event.endDate) ||
+                (date > event.startDate && date < event.endDate)
+            }
+            return min(relevantEvents.count, 3) // 한 날짜에 최대 3개의 점을 표시
+        }
 
-        // 이벤트 색상 설정
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
             let currentMonth = Calendar.current.dateComponents([.year, .month], from: calendar.currentPage)
             let dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
             
-            if currentMonth == dateComponents {
-                return [.primary3] // 현재 월의 이벤트 색상
+            if currentMonth == dateComponents && parent.vo.contains(where: { event in
+                Calendar.current.isDate(date, inSameDayAs: event.startDate) ||
+                Calendar.current.isDate(date, inSameDayAs: event.endDate) ||
+                (date > event.startDate && date < event.endDate)
+            }) {
+                return [.primary3]
             } else {
-                return [.primary2] // placeholder 날짜의 색상
+                return nil
             }
         }
-        
+
         // 페이지 변경 후 처리
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
             let currentPage = calendar.currentPage
@@ -114,7 +124,6 @@ struct BBIPCalendar: UIViewRepresentable {
             if let year = calendarComponents.year, let month = calendarComponents.month {
                 parent.currentYear = String(year)
                 parent.currentMonth = String(format: "%02d", month)
-                print("Page Changed Year: \(parent.currentYear), Month: \(parent.currentMonth)")
 
                 // 현재 월 텍스트 업데이트
                 parent.currentMonthTitle = formatter.string(from: currentPage)
@@ -127,3 +136,4 @@ struct BBIPCalendar: UIViewRepresentable {
         }
     }
 }
+

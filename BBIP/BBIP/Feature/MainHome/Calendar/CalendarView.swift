@@ -74,7 +74,7 @@ struct CalendarView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 1)
             
-            SelectedDateEventView(selectedDate: selectedDate)
+            SelectedDateEventView(selectedDate: selectedDate, events: calendarviewModel.getYMdata)
         }
         .navigationDestination(isPresented: $addScheduleView) {
             CreateSchedule()
@@ -90,51 +90,83 @@ struct CalendarView: View {
 
 private struct SelectedDateEventView: View {
     var selectedDate: Date
-    
+    var events: [CalendarHomeVO]
+
     private func formattedDate(for date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "d"
         return dateFormatter.string(from: date)
     }
-    
+
     private func formattedWeekday(for date: Date) -> String {
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.locale = Locale(identifier: "ko_KR")
         weekdayFormatter.dateFormat = "E"
         return weekdayFormatter.string(from: date)
     }
-    
+
     var body: some View {
-        
         ZStack {
             Color.gray1
-            
+
             VStack {
                 HStack(spacing: 5) {
                     Text(formattedDate(for: selectedDate))
                         .monospacedDigit()
                         .font(.bbip(.title3_sb20))
-                    
+
                     Text(formattedWeekday(for: selectedDate))
                         .font(.bbip(.title3_m20))
-                    
+
                     Spacer()
                 }
                 .foregroundStyle(.black)
-                .padding(.top,22)
-                ScrollView(.vertical){
-                    //예시
-                    scheduleCardView(scheduleTitle: "점심밥메뉴")
-                    scheduleCardView(studyName: "UIXUX스터디")
-                    scheduleCardView()
-                    scheduleCardView()
-                    scheduleCardView(scheduleTitle: "아침밥메뉴")
+                .padding(.top, 22)
+
+                ScrollView(.vertical) {
+                    ForEach(events.filter { event in
+                        Calendar.current.isDate(selectedDate, inSameDayAs: event.startDate) ||
+                        Calendar.current.isDate(selectedDate, inSameDayAs: event.endDate) ||
+                        (selectedDate > event.startDate && selectedDate < event.endDate)
+                    }, id: \.scheduldId) { event in
+                        scheduleCardView(
+                            scheduleTitle: event.scheduleTitle,
+                            studyName: event.studyName,
+                            timeRanges: formattedTimeRanges(for: event)
+                        )
+                    }
                 }
-                .padding(.bottom,75)
+                .padding(.bottom, 90)
             }
             .padding(.horizontal, 20)
         }
+    }
+
+    private func formattedTimeRanges(for event: CalendarHomeVO) -> [String] {
+        var timeRanges: [String] = []
+        let calendar = Calendar.current
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        print("Event.event.StartDate : \(event.startDate)")
+
+        if calendar.isDate(event.startDate, inSameDayAs: event.endDate) {
+            timeRanges.append("\(formatter.string(from: event.startDate)) ~ \(formatter.string(from: event.endDate))")
+        } else {
+            // 여러 날에 걸친 일정 처리
+            var currentDay = event.startDate
+            while currentDay <= event.endDate {
+                if calendar.isDate(currentDay, inSameDayAs: event.startDate) {
+                    timeRanges.append("\(formatter.string(from: currentDay)) ~ 24:00")
+                } else if calendar.isDate(currentDay, inSameDayAs: event.endDate) {
+                    timeRanges.append("00:00 ~ \(formatter.string(from: event.endDate))")
+                } else {
+                    timeRanges.append("00:00 ~ 24:00")
+                }
+                currentDay = calendar.date(byAdding: .day, value: 1, to: currentDay)!
+            }
+        }
+        return timeRanges
     }
 }
 
@@ -201,10 +233,16 @@ struct scheduleCardView: View{
                 .padding(.leading,13)
                 .padding(.bottom,4)
                 
-                Text("21:00 ~ 23:00")
-                    .font(.bbip(.caption3_r12))
-                    .foregroundStyle(.gray7)
-                    .padding(.leading,13)
+//                Text("21:00 ~ 23:00")
+//                    .font(.bbip(.caption3_r12))
+//                    .foregroundStyle(.gray7)
+//                    .padding(.leading,13)
+                ForEach(timeRanges, id: \.self) { timeRange in
+                                   Text(timeRange)
+                                       .font(.bbip(.caption3_r12))
+                                       .foregroundStyle(.gray7)
+                                       .padding(.leading, 13)
+                               }
             }
             .padding(.vertical,12)
             
