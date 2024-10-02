@@ -139,6 +139,7 @@
 		C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA452CAD0CC7002023B6 /* StartGuideView.swift */; };
 		C6F2DA4A2CAD2E6A002023B6 /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */; };
 		C6F2DA4C2CAD32A5002023B6 /* UserStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA4B2CAD32A5002023B6 /* UserStateManager.swift */; };
+		C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA4D2CADD1E0002023B6 /* SafeAreaInsets.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -332,6 +333,7 @@
 		C6F2DA452CAD0CC7002023B6 /* StartGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGuideView.swift; sourceTree = "<group>"; };
 		C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
 		C6F2DA4B2CAD32A5002023B6 /* UserStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateManager.swift; sourceTree = "<group>"; };
+		C6F2DA4D2CADD1E0002023B6 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 				C6934BBC2C821A1F006AA652 /* SetNavigationBar.swift */,
 				C6FA55DE2C906F5400E537D7 /* TimeAgo.swift */,
 				C6F2DA362CABD477002023B6 /* RoundedCorner.swift */,
+				C6F2DA4D2CADD1E0002023B6 /* SafeAreaInsets.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1313,6 +1316,7 @@
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
+				C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */,
 				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C6F2DA3B2CAC25AD002023B6 /* SetStudyLocationView.swift in Sources */,
