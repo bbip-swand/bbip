@@ -27,6 +27,11 @@ struct RootView: View {
                     UserInfoSetupView()
                 }
                 
+            case .startGuide:
+                NavigationStack {
+                    StartGuideView()
+                }
+                
             case .home:
                 NavigationStack(path: $appStateManager.path) {
                     MainHomeView()

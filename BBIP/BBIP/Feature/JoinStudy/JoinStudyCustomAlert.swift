@@ -71,6 +71,9 @@ struct JoinStudyCustomAlert: View {
                     Button {
                         viewModel.joinStudy(studyId: inviteData.studyId) {
                             appState.showJoinFailAlert = true
+                            
+                            // Handle StartGuideView!
+                            if appState.state != .home { appState.switchRoot(.home) }
                         }
                         
                         withAnimation { appState.showDeepLinkAlert = false }

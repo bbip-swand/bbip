@@ -40,12 +40,13 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
             if newValue {
-                withAnimation { appState.switchRoot(.infoSetup) }
+                appState.switchRoot(.infoSetup)
             }
         }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
             if newValue {
-                withAnimation { appState.switchRoot(.home) }
+                // check new user
+                appState.switchRoot(.home)
             }
         }
         .navigationBarBackButtonHidden()
