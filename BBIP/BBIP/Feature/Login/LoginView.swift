@@ -10,7 +10,8 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @ObservedObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    @StateObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    private let userStateManager = UserStateManager()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -40,12 +41,15 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.UISDataIsEmpty) { _, newValue in
             if newValue {
-                withAnimation { appState.switchRoot(.infoSetup) }
+                appState.switchRoot(.infoSetup)
             }
         }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
             if newValue {
-                withAnimation { appState.switchRoot(.home) }
+                userStateManager.updateIsExistingUser {
+                    let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                    appState.switchRoot(isExistingUser ? .home : .startGuide)
+                }
             }
         }
         .navigationBarBackButtonHidden()

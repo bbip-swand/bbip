@@ -18,6 +18,7 @@ final class UserDefaultsManager {
         case fcmToken
         
         case isLoggedIn
+        case isNewUser
     }
 
     // MARK: - Setters
@@ -32,6 +33,10 @@ final class UserDefaultsManager {
     func setIsLoggedIn(_ value: Bool) {
         defaults.set(value, forKey: UserDefaultKeys.isLoggedIn.rawValue)
     }
+    
+    func setIsExistingUser(_ value: Bool) {
+        defaults.set(value, forKey: UserDefaultKeys.isNewUser.rawValue)
+    }
 
     // MARK: - Getters
     func getAccessToken() -> String? {
@@ -44,6 +49,10 @@ final class UserDefaultsManager {
     
     func checkLoginStatus() -> Bool {
         return defaults.bool(forKey: UserDefaultKeys.isLoggedIn.rawValue)
+    }
+    
+    func isExistingUser() -> Bool {
+        return defaults.bool(forKey: UserDefaultKeys.isNewUser.rawValue)
     }
 
     // MARK: - Clear Data

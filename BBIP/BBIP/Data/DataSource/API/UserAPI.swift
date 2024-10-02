@@ -13,6 +13,7 @@ enum UserAPI {
     case createInfo(dto: UserInfoDTO)
     case updateInfo(dto: UserInfoDTO)
     case postFCMToken(token: String)
+    case checkNewUser
 }
 
 extension UserAPI: BaseAPI {
@@ -28,6 +29,8 @@ extension UserAPI: BaseAPI {
             return "/users/update/info"
         case .postFCMToken:
             return "/users/fcmToken"
+        case .checkNewUser:
+            return "/users/check/new-user"
         }
     }
     
@@ -37,6 +40,8 @@ extension UserAPI: BaseAPI {
             return .post
         case .updateInfo:
             return .put
+        case .checkNewUser:
+            return .get
         }
     }
     
@@ -44,7 +49,7 @@ extension UserAPI: BaseAPI {
         switch self {
         case .signUp(let dto):
             return .requestJSONEncodable(dto)
-        case .resign:
+        case .resign, .checkNewUser:
             return .requestPlain
         case .createInfo(let dto):
             return .requestJSONEncodable(dto)

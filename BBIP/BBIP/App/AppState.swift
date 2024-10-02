@@ -11,6 +11,7 @@ import SwiftUI
 enum AppState: String {
     case onboarding
     case infoSetup
+    case startGuide
     case home
 }
 
@@ -55,7 +56,7 @@ final class AppStateManager: ObservableObject {
     }
     
     func switchRoot(_ state: AppState) {
-        self.state = state
+        withAnimation { self.state = state }
         print("Switch Root to \(state.rawValue)")
     }
     
@@ -65,6 +66,12 @@ final class AppStateManager: ObservableObject {
     
     init() {
         let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
-        self.state = isLoggedIn ? .home : .onboarding
+        let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+        
+        if isLoggedIn {
+            self.state = isExistingUser ? .home : .startGuide
+        } else {
+            self.state = .onboarding
+        }
     }
 }

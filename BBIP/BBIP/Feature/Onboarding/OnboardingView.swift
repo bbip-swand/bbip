@@ -18,6 +18,7 @@ struct OnboardingView: View {
                 OnboardingContentView(onboardingViewModel: onboardingViewModel)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .ignoresSafeArea(.all)
             .introspect(.tabView(style: .page), on: .iOS(.v17, .v18)) { tabView in
                 tabView.isScrollEnabled = false
             }
@@ -27,15 +28,9 @@ struct OnboardingView: View {
                 selectedIndex: $selectedIndex
             )
             
-            VStack(spacing: 5) {
-                Text(onboardingViewModel.onboardingContents[selectedIndex].firstTitle)
-                    .font(.bbip(family: .Regular, size: 28))
-                Text(onboardingViewModel.onboardingContents[selectedIndex].secondTitle)
-                    .font(.bbip(.title1_sb28))
-                    .monospacedDigit()
-            }
-            .frame(maxHeight: .infinity, alignment: .top)
-            .padding(.top, 113)
+            Image(onboardingViewModel.onboardingContents[selectedIndex].textImageName)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.top, 110)
             
             Rectangle()
                 .frame(height: 160)
@@ -76,10 +71,8 @@ private struct OnboardingContentView: View {
     }
     
     fileprivate var body: some View {
-        // 추후 이미지로 변경
         ForEach(Array(onboardingViewModel.onboardingContents.enumerated()), id: \.element) { index, content in
-            RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(Color.gray4)
+            Image(onboardingViewModel.onboardingContents[index].imageName)
                 .padding(.horizontal, 58)
                 .padding(.top, 230)
                 .tag(index)
@@ -108,7 +101,7 @@ private struct TabViewPageIndicator: View {
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.top, 52)
+        .padding(.top, 48)
     }
 }
 
