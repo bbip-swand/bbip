@@ -22,7 +22,7 @@ struct BBIPGuideButton: View {
             .frame(width: UIScreen.main.bounds.width - 34)
             .bbipShadow1()
             .onTapGesture {
-                openURL("https://www.youtube.com/watch?v=w9nWhEB1E5U")
+                openURL("https://bbip.site/bbip_how_to_use.pdf")
             }
     }
 }
