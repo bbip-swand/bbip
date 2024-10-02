@@ -33,7 +33,6 @@
 		0863308B2CA83C3800F1775B /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = C62780DF2C8886F000065F98 /* GoogleService-Info.plist */; };
 		0863308D2CA8415100F1775B /* CreateCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */; };
 		0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863308E2CA8590E00F1775B /* AttendRecordView.swift */; };
-		086330912CA85BF800F1775B /* TODOList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330902CA85BF800F1775B /* TODOList.swift */; };
 		086330932CA91DB300F1775B /* errorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086330922CA91DB300F1775B /* errorExtension.swift */; };
 		0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0865DA732C7AB56B00779741 /* UISBirthView.swift */; };
 		088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */; };
@@ -222,7 +221,6 @@
 		086330882CA7FA1600F1775B /* CreateCodeDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeDoneView.swift; sourceTree = "<group>"; };
 		0863308C2CA8415100F1775B /* CreateCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeViewModel.swift; sourceTree = "<group>"; };
 		0863308E2CA8590E00F1775B /* AttendRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendRecordView.swift; sourceTree = "<group>"; };
-		086330902CA85BF800F1775B /* TODOList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOList.swift; sourceTree = "<group>"; };
 		086330922CA91DB300F1775B /* errorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorExtension.swift; sourceTree = "<group>"; };
 		0865DA732C7AB56B00779741 /* UISBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISBirthView.swift; sourceTree = "<group>"; };
 		088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
@@ -456,6 +454,13 @@
 			path = CreateCodeView;
 			sourceTree = "<group>";
 		};
+		088C0E702CAC585C00FF2533 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		08E51E632CA5525E00547086 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,7 +658,6 @@
 				C695BE0C2C64CCA0009DEC3C /* AppDelegate.swift */,
 				C6B00C162C590A0E009AC4E2 /* RootView.swift */,
 				C695BE0E2C64CD59009DEC3C /* Launch Screen.storyboard */,
-				086330902CA85BF800F1775B /* TODOList.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -937,6 +941,7 @@
 			children = (
 				C6B00C132C590A0E009AC4E2 /* BBIP */,
 				C6B00C122C590A0E009AC4E2 /* Products */,
+				088C0E702CAC585C00FF2533 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1377,7 +1382,6 @@
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
 				088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */,
-				086330912CA85BF800F1775B /* TODOList.swift in Sources */,
 				C6CF22682CA2E7AE00988748 /* StudyInfoVO.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				08129BEF2CAB1F60003233D2 /* TimerControl.swift in Sources */,
