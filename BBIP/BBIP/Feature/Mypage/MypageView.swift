@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct MypageView: View {
+    
+    init() {
+        setNavigationBarAppearance(forDarkView: false)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             MypageProfileView().padding(.top,26)
@@ -22,7 +27,7 @@ struct MypageView: View {
         .background(.gray1)
         .navigationTitle("마이페이지")
         .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle()
+        .backButtonStyle(isReversal: true)
     }
 }
 

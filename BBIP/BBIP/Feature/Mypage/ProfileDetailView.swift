@@ -139,7 +139,7 @@ struct ProfileDetailView: View{
             
         }
         .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle()
+        .backButtonStyle(isReversal: true)
         .navigationTitle("내 정보 관리")
         .background(.gray1)
     }
