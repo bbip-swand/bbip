@@ -62,7 +62,7 @@ struct CreateSchedule: View{
             
             Spacer()
         }
-        .backButtonStyle(isReversal: false, isReversalText: "취소")
+        .textBackButtonStyle(buttonText: "취소")
         .background(.gray1)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

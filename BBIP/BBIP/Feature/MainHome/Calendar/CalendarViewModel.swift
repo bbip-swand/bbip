@@ -23,7 +23,6 @@ final class CalendarViewModel: ObservableObject{
     @Published var getDdata: [CalendarHomeVO] = []
     
     
-    
     //UseCase
     private let getScheduleYMUseCase: GetYMUseCaseProtocol
     private let getScheduleDUseCase: GetDateUseCaseProtocol
@@ -48,8 +47,7 @@ final class CalendarViewModel: ObservableObject{
         self.createScheduleUseCase = createScheduleUseCase
         self.getMyStudyUseCase = getMyStudyUseCase
         self.updateScheduleUseCase = updateScheduleUseCase
-    }
-    
+    }    
     //MARK: -getMystudy
     func getMystudy(){
         getMyStudyUseCase.execute()

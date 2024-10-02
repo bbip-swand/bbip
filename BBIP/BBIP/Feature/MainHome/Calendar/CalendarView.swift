@@ -91,39 +91,39 @@ struct CalendarView: View {
 private struct SelectedDateEventView: View {
     var selectedDate: Date
     var events: [CalendarHomeVO]
-
+    
     private func formattedDate(for date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "d"
         return dateFormatter.string(from: date)
     }
-
+    
     private func formattedWeekday(for date: Date) -> String {
         let weekdayFormatter = DateFormatter()
         weekdayFormatter.locale = Locale(identifier: "ko_KR")
         weekdayFormatter.dateFormat = "E"
         return weekdayFormatter.string(from: date)
     }
-
+    
     var body: some View {
         ZStack {
             Color.gray1
-
+            
             VStack {
                 HStack(spacing: 5) {
                     Text(formattedDate(for: selectedDate))
                         .monospacedDigit()
                         .font(.bbip(.title3_sb20))
-
+                    
                     Text(formattedWeekday(for: selectedDate))
                         .font(.bbip(.title3_m20))
-
+                    
                     Spacer()
                 }
                 .foregroundStyle(.black)
                 .padding(.top, 22)
-
+                
                 ScrollView(.vertical) {
                     ForEach(events.filter { event in
                         Calendar.current.isDate(selectedDate, inSameDayAs: event.startDate) ||
@@ -133,7 +133,7 @@ private struct SelectedDateEventView: View {
                         scheduleCardView(
                             scheduleTitle: event.scheduleTitle,
                             studyName: event.studyName,
-                            timeRanges: formattedTimeRanges(for: event)
+                            timeRange: formattedTimeRange(start: event.startDate, end: event.endDate)
                         )
                     }
                 }
@@ -142,48 +142,30 @@ private struct SelectedDateEventView: View {
             .padding(.horizontal, 20)
         }
     }
-
-    private func formattedTimeRanges(for event: CalendarHomeVO) -> [String] {
-        var timeRanges: [String] = []
-        let calendar = Calendar.current
+    
+    private func formattedTimeRange(start: Date, end: Date) -> String {
+        let adjustedStart = start.addingTimeInterval(-9 * 3600)
+        let adjustedEnd = end.addingTimeInterval(-9 * 3600)
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        print("Event.event.StartDate : \(event.startDate)")
-
-        if calendar.isDate(event.startDate, inSameDayAs: event.endDate) {
-            timeRanges.append("\(formatter.string(from: event.startDate)) ~ \(formatter.string(from: event.endDate))")
-        } else {
-            // 여러 날에 걸친 일정 처리
-            var currentDay = event.startDate
-            while currentDay <= event.endDate {
-                if calendar.isDate(currentDay, inSameDayAs: event.startDate) {
-                    timeRanges.append("\(formatter.string(from: currentDay)) ~ 24:00")
-                } else if calendar.isDate(currentDay, inSameDayAs: event.endDate) {
-                    timeRanges.append("00:00 ~ \(formatter.string(from: event.endDate))")
-                } else {
-                    timeRanges.append("00:00 ~ 24:00")
-                }
-                currentDay = calendar.date(byAdding: .day, value: 1, to: currentDay)!
-            }
-        }
-        return timeRanges
+        formatter.dateFormat = "MM/dd HH:mm"
+        return "\(formatter.string(from: adjustedStart)) ~ \(formatter.string(from: adjustedEnd))"
     }
 }
 
-struct scheduleCardView: View{
+struct scheduleCardView: View {
     var scheduleTitle: String = ""
     var studyName: String = ""
-    var timeRanges: [String] = []
+    var timeRange: String = ""
     
-    var body : some View{
-        ZStack{
+    var body: some View {
+        ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(.mainWhite)
-                .frame(maxWidth:.infinity)
+                .frame(maxWidth: .infinity)
                 .frame(maxHeight: .infinity)
             
-            VStack(alignment:.leading, spacing:1){
-                HStack(alignment: .top){
+            VStack(alignment: .leading, spacing: 1) {
+                HStack(alignment: .top) {
                     if textWidth(for: scheduleTitle, font: UIFont.systemFont(ofSize: 14)) > 180 {
                         // 텍스트 길이가 일정한 기준보다 클 때
                         ScrollView(.vertical, showsIndicators: false) {
@@ -198,54 +180,43 @@ struct scheduleCardView: View{
                         Text(scheduleTitle)
                             .font(.bbip(.body2_m14))
                             .foregroundColor(.mainBlack)
-                            .frame(width: 180,alignment: .leading) // 좌측 상단 정렬
+                            .frame(width: 180, alignment: .leading) // 좌측 상단 정렬
                     }
                     
                     Spacer()
                     
-                    ZStack{
+                    ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.gray2)
-                            .frame(width: textWidth(for:studyName, font :UIFont.systemFont(ofSize: 12)) > 100 ? 116 : textWidth(for:studyName, font :UIFont.systemFont(ofSize: 12)) + 16 )
-                            .frame(height:24)
+                            .frame(width: textWidth(for: studyName, font: UIFont.systemFont(ofSize: 12)) > 100 ? 116 : textWidth(for: studyName, font: UIFont.systemFont(ofSize: 12)) + 16)
+                            .frame(height: 24)
                         
-                        if textWidth(for:studyName, font :UIFont.systemFont(ofSize: 12)) > 100
-                        {
-                            ScrollView(.horizontal, showsIndicators: false){
+                        if textWidth(for: studyName, font: UIFont.systemFont(ofSize: 12)) > 100 {
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 Text(studyName)
                                     .font(.bbip(.caption2_m12))
                                     .foregroundColor(.mainBlack)
-                                
                             }
                             .frame(width: 100) // ScrollView의 크기를 고정
                             .clipped()
-                        } else{
+                        } else {
                             Text(studyName)
                                 .font(.bbip(.caption2_m12))
                                 .foregroundColor(.mainBlack)
                                 .frame(alignment: .center)
                         }
-                        
-                       
                     }
-                    .padding(.trailing,11)
+                    .padding(.trailing, 11)
                 }
-                .padding(.leading,13)
-                .padding(.bottom,4)
+                .padding(.leading, 13)
+                .padding(.bottom, 4)
                 
-//                Text("21:00 ~ 23:00")
-//                    .font(.bbip(.caption3_r12))
-//                    .foregroundStyle(.gray7)
-//                    .padding(.leading,13)
-                ForEach(timeRanges, id: \.self) { timeRange in
-                                   Text(timeRange)
-                                       .font(.bbip(.caption3_r12))
-                                       .foregroundStyle(.gray7)
-                                       .padding(.leading, 13)
-                               }
+                Text(timeRange)
+                    .font(.bbip(.caption3_r12))
+                    .foregroundStyle(.gray7)
+                    .padding(.leading, 13)
             }
-            .padding(.vertical,12)
-            
+            .padding(.vertical, 12)
         }
     }
     
@@ -254,4 +225,5 @@ struct scheduleCardView: View{
         let size = (text as NSString).size(withAttributes: attributes)
         return size.width
     }
+    
 }

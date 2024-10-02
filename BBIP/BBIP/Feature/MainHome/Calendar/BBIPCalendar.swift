@@ -56,7 +56,7 @@ struct BBIPCalendar: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: FSCalendar, context: Context) {
-        uiView.reloadData()
+//        uiView.reloadData()
     }
 
     func makeCoordinator() -> Coordinator {
@@ -76,7 +76,7 @@ struct BBIPCalendar: UIViewRepresentable {
                 calendar.deselect(parent.selectedDate) // 이전 선택 해제
             }
             parent.selectedDate = date
-            calendar.reloadData() // 선택 상태 업데이트 후 UI 갱신
+//            calendar.reloadData() // 이거 해야 잔상 안남음
         }
 
         // 일요일 날짜의 글씨를 빨간색으로 설정
@@ -89,27 +89,26 @@ struct BBIPCalendar: UIViewRepresentable {
             }
         }
 
-        func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-            let relevantEvents = parent.vo.filter { event in
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+            // 주어진 날짜에 관련된 이벤트가 있는지 확인합니다.
+            let hasRelevantEvent = parent.vo.contains { event in
                 Calendar.current.isDate(date, inSameDayAs: event.startDate) ||
                 Calendar.current.isDate(date, inSameDayAs: event.endDate) ||
                 (date > event.startDate && date < event.endDate)
             }
-            return min(relevantEvents.count, 3) // 한 날짜에 최대 3개의 점을 표시
-        }
-
-        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-            let currentMonth = Calendar.current.dateComponents([.year, .month], from: calendar.currentPage)
-            let dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
             
-            if currentMonth == dateComponents && parent.vo.contains(where: { event in
-                Calendar.current.isDate(date, inSameDayAs: event.startDate) ||
-                Calendar.current.isDate(date, inSameDayAs: event.endDate) ||
-                (date > event.startDate && date < event.endDate)
-            }) {
-                return [.primary3]
+            // 이벤트가 있고 현재 달의 이벤트라면 색상을 설정합니다.
+            if hasRelevantEvent {
+                let currentMonth = Calendar.current.dateComponents([.year, .month], from: calendar.currentPage)
+                let dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
+                
+                if currentMonth == dateComponents {
+                    return [.primary3] // 현재 월의 이벤트 색상
+                } else {
+                    return [.primary2] // placeholder 날짜의 색상
+                }
             } else {
-                return nil
+                return nil // 이벤트가 없는 경우 Dot을 표시하지 않습니다.
             }
         }
 
