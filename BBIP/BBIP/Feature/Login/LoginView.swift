@@ -18,7 +18,7 @@ struct LoginView: View {
             Spacer()
             
             Text("새로운 형태의 스터디 보조 서비스")
-                .foregroundStyle(.gray6)
+                .foregroundStyle(.gray5)
                 .font(.bbip(.body1_m16))
                 .padding(.bottom, 10)
             
@@ -29,10 +29,10 @@ struct LoginView: View {
                 .font(.bbip(.title1_sb28))
                 .padding(.bottom, 60)
             
-            Image("mockImg")
+            Image("bbip-logo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .padding(.horizontal, 58)
+                .padding(.horizontal, 100)
             
             Spacer()
             
