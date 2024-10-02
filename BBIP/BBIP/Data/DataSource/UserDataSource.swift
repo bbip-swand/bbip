@@ -106,7 +106,7 @@ final class UserDataSource {
         }
     }
     
-    func getUserInfo() -> AnyPublisher<UserProfileVO, Error>{
+    func getUserInfo() -> AnyPublisher<ProfileDTO, Error>{
         provider.requestPublisher(.getUserInfo)
             .tryMap{ response in
                 guard (200...299).contains(response.statusCode) else {
@@ -137,7 +137,7 @@ final class UserDataSource {
                 }
                 return response.data
             }
-            .decode(type: UserProfileVO.self, decoder:JSONDecoder())
+            .decode(type:ProfileDTO.self, decoder:JSONDecoder())
             .mapError{ error in
                 return error}
             .eraseToAnyPublisher()
