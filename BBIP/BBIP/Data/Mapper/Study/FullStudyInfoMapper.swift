@@ -42,7 +42,7 @@ struct FullStudyInfoMapper {
             studyField: category,
             totalWeeks: dto.totalWeeks,
             currentWeek: dto.currentWeek,
-            currentWeekContent: dto.studyContents[dto.currentWeek],
+            currentWeekContent: dto.studyContents[dto.currentWeek - 1],
             studyPeriodString: periodString,
             daysOfWeek: dto.daysOfWeek,
             studyTimes: studyTimes,

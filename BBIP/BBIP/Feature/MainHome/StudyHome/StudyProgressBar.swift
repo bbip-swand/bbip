@@ -67,7 +67,10 @@ struct StudyProgressBar: View {
                             Circle()
                                 .frame(width: 12, height: 12)
                                 .foregroundColor(.primary3)
-                                .position(x: redDotPositionX + 6)
+                                .position(x: progress == 1
+                                          ? redDotPositionX + 3.25
+                                          : redDotPositionX + 6
+                                )
                                 .offset(x: progress.isZero ? 0 : -6.5, y: 3.25)
                                 .animation(.smooth(duration: 1), value: progress)
                         }
