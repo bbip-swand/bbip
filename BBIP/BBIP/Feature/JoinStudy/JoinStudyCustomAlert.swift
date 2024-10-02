@@ -78,6 +78,7 @@ struct JoinStudyCustomAlert: View {
                             appState.switchRoot(.home)
                         }
                         withAnimation { appState.showDeepLinkAlert = false }
+                        withAnimation { appState.showJoinSuccessAlert = true }
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)
