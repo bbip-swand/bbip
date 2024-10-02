@@ -64,6 +64,7 @@ struct RootView: View {
     }
     
     private func handleDeepLink(_ url: URL) {
+        guard UserDefaultsManager.shared.checkLoginStatus() else { return }
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         if urlComponents?.host == "inviteStudy" {
             if let queryItems = urlComponents?.queryItems {
