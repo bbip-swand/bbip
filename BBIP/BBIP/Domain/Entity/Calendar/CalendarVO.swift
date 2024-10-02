@@ -28,8 +28,8 @@ struct CalendarHomeVO{
 struct CreateScheduleVO{
     let studyId: String
     let scheduleTitle: String
-    let startDate: Date
-    let endDate: Date
+    let startDate: String
+    let endDate: String
     let isHomeView: Bool
     let icon: Int
 }

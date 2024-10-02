@@ -11,8 +11,8 @@ import Foundation
 struct CreateScheduleDTO : Encodable{
     let studyId: String
     let title: String
-    let startDate: Date
-    let endDate: Date
+    let startDate: String
+    let endDate: String
     let isHomeView: Bool
     let icon: Int
 }

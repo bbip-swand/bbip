@@ -22,6 +22,8 @@ struct CreateSchedule: View{
     @State private var showEndTimePicker: Bool = false
     @State var isHomeView:Bool = false
     @State var iconType : Int = 0
+    @State var selectedStudyId: String = ""
+    
     
     // 날짜와 시간 데이터
     @State private var startDate: Date?
@@ -64,7 +66,8 @@ struct CreateSchedule: View{
         .background(.gray1)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
+                Button{
+                    createSchedule()
                     appState.popToRoot()
                 } label: {
                     Text("완료")
@@ -110,6 +113,7 @@ struct CreateSchedule: View{
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(calendarviewModel.mystudies.filter { !$0.studyName.isEmpty }, id: \.studyId) { mystudy in
                         Button(action: {
+                            selectedStudyId = mystudy.studyId
                             selectedStudyName = mystudy.studyName
                             isDropdownVisible = false
                         }) {
@@ -147,7 +151,7 @@ struct CreateSchedule: View{
             TextField("", text: $titleText, prompt: Text("제목 입력").foregroundColor(.gray5))
                 .padding(.horizontal, 14) // 텍스트 필드 안쪽의 여백
                 .font(.bbip(.body2_m14))
-                .foregroundColor(.mainBlack) // 입력 중 폰트 색상
+                .foregroundColor(.mainBlack)// 입력 중 폰트 색상
         }
     }
     
@@ -258,7 +262,9 @@ struct CreateSchedule: View{
         .sheet(isPresented: $showStartDatePicker) {
             DatePicker(
                 "시작일",
-                selection: Binding(get: { startDate ?? Date() }, set: { startDate = $0 }),
+                selection: Binding(get: { startDate ?? Date() }, set: { newValue in
+                    startDate = combineDateAndTime(date: newValue, time: startTime)
+                }),
                 in: Date()...,
                 displayedComponents: .date
             )
@@ -266,31 +272,44 @@ struct CreateSchedule: View{
             .padding()
             .presentationDetents([.height(400)])
             .presentationDragIndicator(.visible)
+            .accentColor(.mainWhite)
+            .colorMultiply(startDate != nil ? .primary3 : .primary3 )
         }
         .sheet(isPresented: $showEndDatePicker) {
-            DatePicker("종료일", selection: Binding(get: { endDate ?? Date() }, set: { endDate = $0 }),
+            DatePicker("종료일", selection: Binding(get: { endDate ?? Date() }, set: { newValue in
+                endDate = combineDateAndTime(date: newValue, time: endTime)
+            }),
                        in: Date()...,
                        displayedComponents: .date)
             .datePickerStyle(GraphicalDatePickerStyle())
             .padding()
             .presentationDetents([.height(400)])
             .presentationDragIndicator(.visible)
+            .accentColor(.mainWhite)
+            .colorMultiply(startDate != nil ? .primary3 : .primary3 )
         }
         .sheet(isPresented: $showStartTimePicker) {
-            DatePicker("",selection:  Binding(get: { startTime ?? Date() }, set: { startTime = $0 }), displayedComponents: .hourAndMinute)
-                .datePickerStyle(WheelDatePickerStyle())
-                .padding()
-                .presentationDetents([.height(250)])
-                .presentationDragIndicator(.visible)
+            DatePicker("", selection:  Binding(get: { startTime ?? Date() }, set: { newValue in
+                startDate = combineDateAndTime(date: startDate, time: newValue)
+                startTime = newValue
+            }), displayedComponents: .hourAndMinute)
+            .datePickerStyle(WheelDatePickerStyle())
+            .padding()
+            .presentationDetents([.height(250)])
+            .presentationDragIndicator(.visible)
         }
         .sheet(isPresented: $showEndTimePicker) {
-            DatePicker("",selection:  Binding(get: { endTime ?? Date() }, set: { endTime = $0 }), displayedComponents: .hourAndMinute)
-                .datePickerStyle(WheelDatePickerStyle())
-                .padding()
-                .presentationDetents([.height(250)])
-                .presentationDragIndicator(.visible)
+            DatePicker("", selection:  Binding(get: { endTime ?? Date() }, set: { newValue in
+                endDate = combineDateAndTime(date: endDate, time: newValue)
+                endTime = newValue
+            }), displayedComponents: .hourAndMinute)
+            .datePickerStyle(WheelDatePickerStyle())
+            .padding()
+            .presentationDetents([.height(250)])
+            .presentationDragIndicator(.visible)
         }
     }
+    
     
     var seeHomeView: some View{
         ZStack{
@@ -343,15 +362,15 @@ struct CreateSchedule: View{
                 .foregroundColor(.mainWhite)
                 .frame(maxWidth: .infinity)
                 .frame(height: 142) // 높이 설정은 한 번만
-
+            
             HStack(alignment: .top, spacing: 0) {
                 Text("아이콘")
                     .font(.bbip(.body2_m14))
                     .foregroundColor(.mainBlack)
                     .padding(.leading, 14)
-
+                
                 Spacer()
-
+                
                 VStack(spacing: 12) {
                     HStack(spacing: 12) {
                         ForEach(1...4, id: \.self) { index in
@@ -361,6 +380,10 @@ struct CreateSchedule: View{
                                 Image("dday_icon\(index)")
                                     .resizable()
                                     .frame(width: 53, height: 53)
+                                    .overlay(
+                                        Circle()
+                                            .stroke(.primary3, lineWidth: iconType == index ? 1.5 : 0)
+                                    )
                             }
                         }
                     }
@@ -372,6 +395,10 @@ struct CreateSchedule: View{
                                 Image("dday_icon\(index)")
                                     .resizable()
                                     .frame(width: 53, height: 53)
+                                    .overlay(
+                                        Circle()
+                                            .stroke(.primary3, lineWidth: iconType == index ? 1.5 : 0)
+                                    )
                             }
                         }
                     }
@@ -383,16 +410,74 @@ struct CreateSchedule: View{
         .bbipShadow1()
     }
     
+    // 날짜와 시간을 합쳐 새로운 Date 객체로 반환하는 함수
+    private func combineDateAndTime(date: Date?, time: Date?) -> Date {
+        guard let date = date else { return Date() }
+        guard let time = time else { return date }
+        
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+        
+        var combinedComponents = DateComponents()
+        combinedComponents.year = dateComponents.year
+        combinedComponents.month = dateComponents.month
+        combinedComponents.day = dateComponents.day
+        combinedComponents.hour = timeComponents.hour
+        combinedComponents.minute = timeComponents.minute
+        
+        return calendar.date(from: combinedComponents) ?? date
+    }
+    
+    // 날짜를 형식에 맞춰 변환하는 함수
     private func formattedDate(for date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: date)
     }
     
+    // 시간을 형식에 맞춰 변환하는 함수
     private func formattedTime(for date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
     }
+    
+    private func formatToISO8601(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        return dateFormatter.string(from: date)
+    }
+    
+    private func createSchedule() {
+        guard let startDate = startDate, let endDate = endDate else {
+            print("날짜가 선택되지 않았습니다.")
+            return
+        }
+        
+        print("(STartDate: \(startDate)")
+
+        // startDate와 endDate를 ISO 8601 형식으로 포맷팅
+        let formattedStartDate = formatToISO8601(date: startDate)
+        let formattedEndDate = formatToISO8601(date: endDate)
+        print("FormattedStartDate: \(formattedStartDate)")
+            let createSchedulevo = CreateScheduleVO(
+                studyId: selectedStudyId,
+                scheduleTitle: titleText,
+                startDate: formattedStartDate,
+                endDate: formattedEndDate,
+                isHomeView: isHomeView,
+                icon: iconType
+            )
+        
+        // Use the created VO
+        print(createSchedulevo)
+        
+        calendarviewModel.createSchedule(scheduleVO: createSchedulevo)
+    }
+    
+    
+    
 }
 

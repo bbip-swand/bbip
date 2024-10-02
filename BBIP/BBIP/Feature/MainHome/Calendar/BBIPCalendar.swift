@@ -44,7 +44,7 @@ struct BBIPCalendar: UIViewRepresentable {
         // 이벤트 Dot
         calendar.appearance.eventSelectionColor = .primary3
         calendar.appearance.eventOffset = .init(x: 0, y: 2)
-        calendar.placeholderType = .fillHeadTail
+        calendar.placeholderType = .none
         
         // 일요일만 빨간색 (상단 요일)
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3

@@ -109,6 +109,3 @@ private struct SelectedDateEventView: View {
     }
 }
 
-#Preview {
-    CalendarView()
-}

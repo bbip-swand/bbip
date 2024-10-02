@@ -11,6 +11,7 @@ import Combine
 
 final class CalendarViewModel: ObservableObject{
     //
+    @Published var commingScheduleData: [CommingScheduleVO] = []
     @Published var mystudies: [selectStudyVO] = []
     //UpdateSchedule
    
@@ -84,6 +85,13 @@ final class CalendarViewModel: ObservableObject{
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.getUpcomingData = response
+                print("getUpcomingData : \(response)")
+                
+                self.commingScheduleData = response
+                                .filter { $0.isHomeView }
+                                .map {
+                                    CommingScheduleVO(iconType: $0.icon, leftDay: $0.leftDays, scheduleTitle: $0.scheduleTitle)
+                                }
             }
             .store(in: &cancellables)
     }
