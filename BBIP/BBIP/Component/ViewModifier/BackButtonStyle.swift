@@ -1,42 +1,32 @@
+//
+//  BackButtonStyle.swift
+//  BBIP
+//
+//  Created by 이건우 on 8/14/24.
+//
+
 import SwiftUI
 
 struct BackButtonModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     private let isReversal: Bool
-    private let isReversalText: String
     
-    init(
-        isReversal: Bool,
-        isReversalText: String
-    ) {
+    init(isReversal: Bool) {
         self.isReversal = isReversal
-        self.isReversalText = isReversalText
     }
 
     func body(content: Content) -> some View {
         content
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if isReversal {
-                        // 백 버튼 (이미지) - isReversal가 true일 때
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image("backButton")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(.mainBlack)
-                        }
-                    } else if !isReversal && !isReversalText.isEmpty {
-                        // 백 버튼 (텍스트) - isReversal가 false이고 isReversalText가 비어있지 않을 때
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Text(isReversalText)
-                                .foregroundStyle(.gray5)
-                                .font(.bbip(.button2_m16))
-                        }
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image("backButton")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(isReversal ? .mainWhite : .gray9)
                     }
                 }
             }
@@ -44,61 +34,73 @@ struct BackButtonModifier: ViewModifier {
 }
 
 extension View {
-    func backButtonStyle(isReversal: Bool = false, isReversalText: String = "") -> some View {
+    func backButtonStyle(isReversal: Bool = false) -> some View {
         self
             .navigationBarBackButtonHidden(true)
-            .modifier(BackButtonModifier(isReversal: isReversal, isReversalText: isReversalText))
+            .modifier(BackButtonModifier(isReversal: isReversal))
+    }
+    
+    func textBackButtonStyle(buttonText: String = "뒤로") -> some View {
+            self
+                .navigationBarBackButtonHidden(true)
+                .modifier(TextBackButtonModifier(buttonText: buttonText))
+        }
+}
+
+struct TextBackButtonModifier: ViewModifier {
+    @Environment(\.presentationMode) var presentationMode
+    private let buttonText: String
+
+    init(buttonText: String) {
+        self.buttonText = buttonText
+    }
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text(buttonText)
+                            .foregroundStyle(.gray5)
+                            .font(.bbip(.button2_m16))
+                    }
+                }
+            }
     }
 }
+
 
 struct BackButtonHandlingModifier: ViewModifier {
     @Environment(\.presentationMode) var presentationMode
     @Binding var currentIndex: Int
     private let isReversal: Bool
-    private let isReversalText: String
-
+    
     init(
         currentIndex: Binding<Int>,
-        isReversal: Bool,
-        isReversalText: String
+        isReversal: Bool
     ) {
         self._currentIndex = currentIndex
         self.isReversal = isReversal
-        self.isReversalText = isReversalText
     }
     
     func body(content: Content) -> some View {
         content
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if isReversal {
-                        // 백 버튼 (이미지) - isReversal가 true일 때
-                        Button {
-                            if currentIndex > 0 {
-                                withAnimation { currentIndex -= 1 }
-                            } else {
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        } label: {
-                            Image("backButton")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(.mainWhite)
+                    Button {
+                        if currentIndex > 0 {
+                            withAnimation { currentIndex -= 1 }
+                        } else {
+                            presentationMode.wrappedValue.dismiss()
                         }
-                    } else if !isReversal && !isReversalText.isEmpty {
-                        // 백 버튼 (텍스트) - isReversal가 false이고 isReversalText가 비어있지 않을 때
-                        Button {
-                            if currentIndex > 0 {
-                                withAnimation { currentIndex -= 1 }
-                            } else {
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        } label: {
-                            Text(isReversalText)
-                                .foregroundStyle(.gray5)
-                                .font(.bbip(.button2_m16))
-                        }
+                    } label: {
+                        Image("backButton")
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(isReversal ? .mainWhite : .gray9)
                     }
                 }
             }
@@ -109,12 +111,10 @@ struct BackButtonHandlingModifier: ViewModifier {
 extension View {
     func handlingBackButtonStyle(
         currentIndex: Binding<Int>,
-        isReversal: Bool = false,
-        isReversalText: String = ""
+        isReversal: Bool = false
     ) -> some View {
         self
             .navigationBarBackButtonHidden(true)
-            .modifier(BackButtonHandlingModifier(currentIndex: currentIndex, isReversal: isReversal, isReversalText: isReversalText))
+            .modifier(BackButtonHandlingModifier(currentIndex: currentIndex, isReversal: isReversal))
     }
 }
-

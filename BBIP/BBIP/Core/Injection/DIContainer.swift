@@ -28,9 +28,11 @@ class DIContainer {
     // MARK: - User
     private let userDataSource = UserDataSource()
     private let userInfoMapper = UserInfoMapper()
+    private let getprofilemapper = GetProfileMapper()
     private lazy var userRepository: UserRepository = UserRepositoryImpl(
         dataSource: userDataSource,
-        mapper: userInfoMapper
+        mapper: userInfoMapper,
+        getprofilemapper: getprofilemapper
     )
     
     private lazy var signUpUseCase: SignUpUseCaseProtocol = SignUpUseCase(
@@ -39,6 +41,8 @@ class DIContainer {
     private lazy var createUserInfoUseCase: CreateUserInfoUseCaseProtocol = CreateUserInfoUseCase(
         repository: userRepository
     )
+    
+    private lazy var getProfileUseCase: GetProfileUseCaseProtocol = GetProfileUseCase(repository: userRepository)
     
     //MARK: - Attend
     private let attendDataSource = AttendDataSource()
@@ -219,5 +223,10 @@ class DIContainer {
             getPostDetailUseCase: getPostDetailUseCase,
             createCommentUseCase: createCommentUseCase
         )
+    }
+    
+    //get user info
+    func makeMypageDetailViewModel() -> MypageViewModel{
+        return MypageViewModel(getProfileUseCase: getProfileUseCase)
     }
 }
