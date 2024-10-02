@@ -60,7 +60,7 @@ final class CalendarViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     error.handleDecodingError()
-                    print("fail load attendance records: \(error.localizedDescription)")
+                    print("fail load mystudy records: \(error.localizedDescription)")
                 }
             }receiveValue: { [weak self] records in
                 guard let self = self else { return }
@@ -80,7 +80,7 @@ final class CalendarViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     error.handleDecodingError()
-                    print("fail load attend status: \(error.localizedDescription)")
+                    print("fail load getUpcoming status: \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
@@ -97,7 +97,7 @@ final class CalendarViewModel: ObservableObject{
     }
     
     //MARK: -getYear
-    func getYearMonth(year: Int, month: Int){
+    func getYearMonth(year: String, month: String){
         getScheduleYMUseCase.execute(year: year, month: month)
             .receive(on: DispatchQueue.main)
             .sink{completion in
@@ -106,7 +106,7 @@ final class CalendarViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     error.handleDecodingError()
-                    print("fail load attendance records: \(error.localizedDescription)")
+                    print("fail load getYerMonth records: \(error.localizedDescription)")
                 }
             }receiveValue: { [weak self] records in
                 guard let self = self else { return }
@@ -126,7 +126,7 @@ final class CalendarViewModel: ObservableObject{
                     break
                 case .failure(let error):
                     error.handleDecodingError()
-                    print("fail load attendance records: \(error.localizedDescription)")
+                    print("fail load getDate records: \(error.localizedDescription)")
                 }
             }receiveValue: { [weak self] records in
                 guard let self = self else { return }

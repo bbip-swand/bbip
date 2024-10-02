@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetYMUseCaseProtocol{
-    func execute(year:Int, month:Int) -> AnyPublisher<[CalendarHomeVO], Error>
+    func execute(year:String, month:String) -> AnyPublisher<[CalendarHomeVO], Error>
 }
 
 final class GetYMUseCase: GetYMUseCaseProtocol{
@@ -19,7 +19,7 @@ final class GetYMUseCase: GetYMUseCaseProtocol{
         self.repository = repository
     }
     
-    func execute(year:Int, month:Int) -> AnyPublisher<[CalendarHomeVO],Error>{
+    func execute(year:String, month:String) -> AnyPublisher<[CalendarHomeVO],Error>{
         return repository.getScheduleYM(year: year, month: month)
             .eraseToAnyPublisher()
     }

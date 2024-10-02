@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum CalendarAPI {
-    case getScheduleYM(year:Int, month:Int) //path param
+    case getScheduleYM(year:String, month:String) //path param
     case getScheduleDate(date: String) //path param
     case getUpcoming
     case createSchedule(dto:CreateScheduleDTO)
@@ -21,10 +21,10 @@ extension CalendarAPI: BaseAPI {
     var path: String{
         switch self{
         case .getScheduleYM(let year, let month):
-            return "/calendar/list/\(year)/\(month)"
+            return "/calendar/list"
             
         case .getScheduleDate(let date):
-            return "/calendar/list/\(date)"
+            return "/calendar/list"
             
         case .getUpcoming:
             return "/calendar/schedule/upcoming"
@@ -34,7 +34,7 @@ extension CalendarAPI: BaseAPI {
             
         case .updateSchedule(let scheduleId, _):
             return "/calendar/update/\(scheduleId)"
-        
+            
         case .getMyStudy:
             return "/study/my-study"
         }
@@ -57,16 +57,17 @@ extension CalendarAPI: BaseAPI {
             return .requestPlain
             
         case .getScheduleYM(let year, let month):
-            let param = ["year" : year, "month" : month]
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            return .requestParameters(
+                parameters: ["year": year, "month": month],
+                encoding: URLEncoding.queryString
+            )
             
         case .getScheduleDate(let date):
-            let param = ["date" : date]
-            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
-        
+            return .requestPlain
+            
         case .createSchedule(let dto):
             return .requestJSONEncodable(dto)
-        
+            
         case .updateSchedule(_, let dto):
             return .requestJSONEncodable(dto)
         }

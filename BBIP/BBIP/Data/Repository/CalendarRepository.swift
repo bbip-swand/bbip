@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol CalendarRepository{
-    func getScheduleYM(year:Int, month:Int) -> AnyPublisher<[CalendarHomeVO], Error>
+    func getScheduleYM(year:String, month:String) -> AnyPublisher<[CalendarHomeVO], Error>
     func getScheduleDate(date:String) -> AnyPublisher<[CalendarHomeVO],Error>
     func getUpcoming() -> AnyPublisher<[CalendarHomeVO], Error>
     func createSchedule(vo:CreateScheduleVO) -> AnyPublisher<Void,Error>
@@ -45,7 +45,7 @@ final class CalendarRepositoryImpl: CalendarRepository{
     }
     
     //MARK: -GET
-    func getScheduleYM(year: Int, month: Int) -> AnyPublisher<[CalendarHomeVO], any Error>{
+    func getScheduleYM(year: String, month: String) -> AnyPublisher<[CalendarHomeVO], any Error>{
         dataSource.getScheduleYM(year: year, month: month)
             .map{ dtos in
                 return self.getScheduleMapper.toVOList(dtos: dtos)

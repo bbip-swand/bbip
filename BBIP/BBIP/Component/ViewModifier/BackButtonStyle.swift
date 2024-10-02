@@ -26,7 +26,7 @@ struct BackButtonModifier: ViewModifier {
                                 .resizable()
                                 .renderingMode(.template)
                                 .frame(width: 24, height: 24)
-                                .foregroundStyle(.mainWhite)
+                                .foregroundStyle(.mainBlack)
                         }
                     } else if !isReversal && !isReversalText.isEmpty {
                         // 백 버튼 (텍스트) - isReversal가 false이고 isReversalText가 비어있지 않을 때

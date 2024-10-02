@@ -14,8 +14,8 @@ final class CalendarDataSource{
     private let provider = MoyaProvider<CalendarAPI>(plugins: [TokenPlugin()])
     
     //MARK: -GET
-    func getScheduleYM(year: Int, month: Int) -> AnyPublisher<[ScheduleResponseDTO], Error>{
-        provider.requestPublisher(.getScheduleYM(year: year, month: year))
+    func getScheduleYM(year: String, month: String) -> AnyPublisher<[ScheduleResponseDTO], Error>{
+        provider.requestPublisher(.getScheduleYM(year: year, month: month))
             .tryMap{ response in
                 guard(200...299).contains(response.statusCode) else{
                     throw NSError(
