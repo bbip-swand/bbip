@@ -8,7 +8,9 @@ struct AttendanceCertificationView: View {
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
-
+    @Binding var studyId: String
+    @Binding var session: Int
+    
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
@@ -33,6 +35,7 @@ struct AttendanceCertificationView: View {
                 }
         }
     }
+    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -78,18 +81,18 @@ struct AttendanceCertificationView: View {
                 HStack(spacing: 12) {
                     ForEach(0..<4, id: \.self) { index in
                         CustomTextFieldComponent(
-                                                   text: $viewModel.codeDigits[index],
-                                                   showInvalidCodeWarning: $viewModel.showInvalidCodeWarning,
-                                                   focusedField: $focusedIndex,
-                                                   index: index,
-                                                   font: .bbip(.title1_sb42),
-                                                   viewModel: viewModel
-                                               )
-                                               .customFieldStyle(
-                                                   isFocused: focusedIndex == index,
-                                                   isWrong: viewModel.showInvalidCodeWarning,
-                                                   isFilled: !viewModel.codeDigits[index].isEmpty
-                                               )
+                            text: $viewModel.codeDigits[index],
+                            showInvalidCodeWarning: $viewModel.showInvalidCodeWarning,
+                            focusedField: $focusedIndex,
+                            index: index,
+                            font: .bbip(.title1_sb42),
+                            viewModel: viewModel
+                        )
+                        .customFieldStyle(
+                            isFocused: focusedIndex == index,
+                            isWrong: viewModel.showInvalidCodeWarning,
+                            isFilled: !viewModel.codeDigits[index].isEmpty
+                        )
                     }
                     
                 }
@@ -109,6 +112,11 @@ struct AttendanceCertificationView: View {
             }
             
             MainButton(text: "파이트!", enable: remainingTime != 0 ? true : false) {
+                viewModel.attendVO = AttendVO(
+                    studyId: studyId,
+                    session: session,
+                    code: viewModel.combinedCode
+                )
                 viewModel.enterCode()
             }
             .padding(.bottom, 22)
@@ -126,6 +134,10 @@ struct AttendanceCertificationView: View {
         }
         .onDisappear(){
             timer?.cancel()
+        }
+        .onAppear(){
+            setNavigationBarAppearance(forDarkView: true)
+            
         }
     }
     

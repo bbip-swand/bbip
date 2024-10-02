@@ -24,7 +24,9 @@ final class AttendanceCertificationViewModel: ObservableObject {
     @Published var stringCode: String = ""
     @Published var combinedCode:Int = 0
     //TODO: -studyID식별
-    @Published var studyId:String = "6e9d9656-62c4-4b81-acee-0edb1bc71b02"
+    @Published var studyId:String = ""
+    @Published var session: Int = 0
+    @Published var attendVO : AttendVO?
     
     
     //UseCase
@@ -46,7 +48,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
     
     //MARK: -getAttendRecord
     func getAttendRecord(studyId: String){
-        getAttendRecordUseCase.execute(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42")
+        getAttendRecordUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink{completion in
                 switch completion {
@@ -67,6 +69,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
     }
     //MARK: -GET status
     func getStatusAttend() {
+
         getStatusUseCase.execute()
             .receive(on: DispatchQueue.main) // UI 업데이트를 위해 메인 스레드에서 받음
             .sink { completionStatus in
@@ -84,35 +87,39 @@ final class AttendanceCertificationViewModel: ObservableObject {
                 let currentTime = Date()
                 let expirationTime = response.startTime.addingTimeInterval(TimeInterval(response.ttl))
                 self.remainingTime = max(0, Int(expirationTime.timeIntervalSince(currentTime)) - 9*60*60)
+                self.studyId = getStatusData?.studyId ?? ""
+                self.session = getStatusData?.session ?? 0
                 print("currentTime: \(currentTime)")
                 print("expirationTime: \(expirationTime)")
                 print("Response ttl : \(response.ttl)")
                 print("RemainingTime: \(self.remainingTime)")
+                print("GETstatusData: \(getStatusData)")
             }
             .store(in: &cancellables)
     }
     
     //MARK: - PUT attend/apply
     func enterCode() {
-        let attendVO = AttendVO(studyId: studyId, session: 1, code: combinedCode)
-        
-        enterCodeUseCase.execute(attendVO: attendVO)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    self.showAttendanceDone = true
-                    self.showInvalidCodeWarning = false
-                    break
-                case .failure(let error):
-                    self.showAttendanceDone = false
-                    self.showInvalidCodeWarning = true
-                    print("Failed to enter the code: \(error.localizedDescription)")
-                }
-            }, receiveValue: {
-            
-            })
-            .store(in: &cancellables)
-    }
+            guard let attendVO = attendVO else {
+                print("AttendVO is nil. Cannot execute enterCode.")
+                return
+            }
+
+            enterCodeUseCase.execute(attendVO: attendVO)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        self.showAttendanceDone = true
+                        self.showInvalidCodeWarning = false
+                        break
+                    case .failure(let error):
+                        self.showAttendanceDone = false
+                        self.showInvalidCodeWarning = true
+                        print("Failed to enter the code: \(error.localizedDescription)")
+                    }
+                }, receiveValue: {})
+                .store(in: &cancellables)
+        }
     
     
     func handleTextFieldChange(index: Int, newValue: String) -> Int? {

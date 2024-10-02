@@ -116,6 +116,8 @@ struct ActivatedBBIPTimeRingView: View {
     @StateObject private var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @State private var progress: Double = 0
     @Binding var remainingTime: Int
+    @Binding var studyId: String
+    @Binding var session: Int
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
     @State private var showCircle: Bool = false
@@ -132,8 +134,12 @@ struct ActivatedBBIPTimeRingView: View {
     init(
         studyTitle: String,
         remainingTime: Binding<Int>,
+        studyId: Binding<String>,
+        session: Binding<Int>,
         completion: (() -> Void)? = nil
     ) {
+        self._studyId = studyId
+        self._session = session
         self.studyTitle = studyTitle
         self._remainingTime = remainingTime
         self.completion = completion
@@ -271,7 +277,7 @@ struct ActivatedBBIPTimeRingView: View {
             AttendRecordView(code: attendstatusData?.code ?? 0, remainingTime: $remainingTime, attendstatusData: attendstatusData)
         }
         .navigationDestination(isPresented: $showAttendanceCertificationView) {
-            AttendanceCertificationView(remainingTime: $remainingTime)
+            AttendanceCertificationView(remainingTime: $remainingTime, studyId: $studyId, session: $session)
         }
     }
 }
