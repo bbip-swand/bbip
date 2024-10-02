@@ -1,10 +1,3 @@
-//
-//  BBIPCalendar.swift
-//  BBIP
-//
-//  Created by 이건우 on 9/14/24.
-//
-
 import SwiftUI
 import FSCalendar
 
@@ -59,19 +52,12 @@ struct BBIPCalendar: UIViewRepresentable {
         // 일요일만 빨간색 (상단 요일)
         calendar.calendarWeekdayView.weekdayLabels[0].textColor = .primary3
 
-        // 좌우 inset
-        calendar.calendarWeekdayView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            calendar.calendarWeekdayView.leadingAnchor.constraint(equalTo: calendar.leadingAnchor, constant: 20),
-            calendar.calendarWeekdayView.trailingAnchor.constraint(equalTo: calendar.trailingAnchor, constant: -20),
-            calendar.calendarWeekdayView.heightAnchor.constraint(equalToConstant: 10)
-        ])
-        calendar.collectionViewLayout.sectionInsets = .init(top: 0, left: 20, bottom: 0, right: 20)
-
         return calendar
     }
 
-    func updateUIView(_ uiView: FSCalendar, context: Context) { }
+    func updateUIView(_ uiView: FSCalendar, context: Context) {
+        uiView.reloadData()
+    }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -85,9 +71,38 @@ struct BBIPCalendar: UIViewRepresentable {
         }
 
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+            calendar.select(date)
+            calendar.deselect(parent.selectedDate)
             parent.selectedDate = date
         }
 
+
+        // 일요일 날짜의 글씨를 빨간색으로 설정
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+            let weekday = Calendar.current.component(.weekday, from: date)
+            if weekday == 1 {
+                return .red // 일요일은 빨간색
+            } else {
+                return .black // 나머지 날짜는 검은색
+            }
+        }
+
+//        func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+//            return parent.vo.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })?.events.count ?? 0
+//        }
+
+        // 이벤트 색상 설정
+        func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+            let currentMonth = Calendar.current.dateComponents([.year, .month], from: calendar.currentPage)
+            let dateComponents = Calendar.current.dateComponents([.year, .month], from: date)
+            
+            if currentMonth == dateComponents {
+                return [.primary3] // 현재 월의 이벤트 색상
+            } else {
+                return [.primary2] // placeholder 날짜의 색상
+            }
+        }
+        
         // 페이지 변경 후 처리
         func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
             let currentPage = calendar.currentPage
