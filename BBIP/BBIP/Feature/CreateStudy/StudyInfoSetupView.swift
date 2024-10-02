@@ -53,8 +53,8 @@ struct StudyInfoSetupView: View {
                 )
                 .padding(.top, 48)
                 .padding(.bottom, 16) // scrollable view에서 header와 contentView의 간격
-                .background(Color.gray9)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.gray9)
                 .padding(.horizontal, 20)
 
                 Spacer()

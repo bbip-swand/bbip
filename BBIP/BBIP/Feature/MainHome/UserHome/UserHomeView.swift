@@ -12,6 +12,7 @@ struct UserHomeView: View {
     
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
+    @Binding var selectedTab: MainHomeTab
     
     var body: some View {
         ScrollView {
@@ -151,6 +152,9 @@ struct UserHomeView: View {
                 } else if let data = viewModel.currentWeekStudyData {
                     ForEach(0..<data.count, id: \.self) { index in
                         CurrentWeekStudyInfoCardView(vo: data[index])
+                            .onTapGesture {
+                                selectedTab = .studyHome(studyId: data[index].studyId, studyName: data[index].title)
+                            }
                     }
                 }
             }
