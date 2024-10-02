@@ -44,7 +44,7 @@ struct StartGuideView: View {
                         Text("생성하기")
                             .font(.bbip(.button1_m20))
                             .foregroundColor(.mainWhite)
-                            .frame(width: UIScreen.main.bounds.width - 72, height: 50)
+                            .frame(width: UIScreen.main.bounds.width - 72, height: 54)
                             .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary3))
                     }
                     .padding(.bottom, 17)
