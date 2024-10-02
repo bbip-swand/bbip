@@ -16,10 +16,10 @@ struct OnboardingContent: Hashable {
 extension OnboardingContent {
     static func generate() -> [OnboardingContent] {
         return [
-            OnboardingContent(firstTitle: "한눈에 보이는 학습", secondTitle: "함께하는 도전1", imageName: "a"),
-            OnboardingContent(firstTitle: "두눈에 보이는 학습", secondTitle: "함께하는 도전2", imageName: "b"),
-            OnboardingContent(firstTitle: "세눈에 보이는 학습", secondTitle: "함께하는 도전3", imageName: "c"),
-            OnboardingContent(firstTitle: "네눈에 보이는 학습", secondTitle: "함께하는 도전4", imageName: "d")
+            OnboardingContent(firstTitle: "한눈에 보이는 학습", secondTitle: "함께하는 도전1", imageName: "onboarding_1"),
+            OnboardingContent(firstTitle: "두눈에 보이는 학습", secondTitle: "함께하는 도전2", imageName: "onboarding_2"),
+            OnboardingContent(firstTitle: "세눈에 보이는 학습", secondTitle: "함께하는 도전3", imageName: "onboarding_3"),
+            OnboardingContent(firstTitle: "네눈에 보이는 학습", secondTitle: "함께하는 도전4", imageName: "onboarding_4")
         ]
     }
 }

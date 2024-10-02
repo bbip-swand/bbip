@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
-    @ObservedObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    @StateObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
