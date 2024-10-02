@@ -1,4 +1,4 @@
-# BBIP_iOS
+# BBIP_iOS 🥊
 
 <!-- ![bbip-thumbnail](https://github.com/user-attachments/assets/b3fd4a4e-9bf5-44f2-bdb4-36b9a03f30f5) -->
 ![bbip-reflat](https://github.com/user-attachments/assets/efb534a7-9692-4410-b359-e64c9465fa78)
@@ -19,7 +19,7 @@
 ### Management
 
 - The Clean Architecture (MVVM)
-![clean-architecture](https://github.com/user-attachments/assets/75ee7eae-5c83-42d7-a5e4-b8adb8c2599e)
+![clean-architecture](https://github.com/user-attachments/assets/7fdf49ff-f614-4ee9-9e99-7aa54111f425)
 ![folder_structure](https://github.com/user-attachments/assets/40a54f49-ff2d-4109-81e3-1ba4b98ec582) 
 
 ### UI
