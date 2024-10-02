@@ -81,6 +81,9 @@ class CreateStudyViewModel: ObservableObject {
             .sink { [weak self] (weekCount, periodIsSelected, selectedDayIndex, selectedDayStudySessions) in
                 guard let self = self else { return }
                 
+                // 같은 요일 방지
+                let noDuplicatesInDayIndex = Set(selectedDayIndex).count == selectedDayIndex.count
+                
                 // selectedDayIndex에 -1이 없고, selectedDayStudySession에 nil 값이 없는지 확인
                 let allDaysValid = !selectedDayIndex.contains(-1) && selectedDayIndex.count > 0
                 let allSessionsValid = !selectedDayStudySessions.contains { $0.startTime == nil || $0.endTime == nil }
@@ -94,7 +97,11 @@ class CreateStudyViewModel: ObservableObject {
                 self.showInvalidTimeAlert = !startTimeBeforeEndTime
                 
                 // canGoNext[1]을 true로 설정할 조건
-                self.canGoNext[1] = (weekCount > 0 && periodIsSelected) && allDaysValid && allSessionsValid && startTimeBeforeEndTime
+                self.canGoNext[1] = (weekCount > 0 && periodIsSelected)
+                                                && allDaysValid
+                                                && allSessionsValid
+                                                && startTimeBeforeEndTime
+                                                && noDuplicatesInDayIndex
             }
             .store(in: &cancellables)
     }
