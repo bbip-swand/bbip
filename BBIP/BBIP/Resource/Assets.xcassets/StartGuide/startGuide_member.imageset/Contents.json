@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "startGuide_member.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
