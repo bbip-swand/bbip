@@ -40,34 +40,6 @@ class DIContainer {
         repository: userRepository
     )
     
-    
-    // MARK: - Study
-    private let studyDataSource = StudyDataSource()
-    
-    private let studyInfoMapper = StudyInfoMapper()
-    private let createStudyInfoMapper = CreateStudyInfoMapper()
-    private let currentWeekStudyInfoMapper = CurrentWeekStudyInfoMapper()
-    
-    private lazy var studyRepository: StudyRepository = StudyRepositoryImpl(
-        dataSource: studyDataSource,
-        studyInfoMapper: studyInfoMapper,
-        createStudyInfoMapper: createStudyInfoMapper,
-        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper
-    )
-    
-    private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
-        repository: studyRepository
-    )
-    private lazy var getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol = GetCurrentWeekStudyInfoUseCase(
-        repository: studyRepository
-    )
-    private lazy var getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol = GetOngoingStudyInfoUseCase(
-        repository: studyRepository
-    )
-    private lazy var joinStudyUseCase: JoinStudyUseCaseProtocol = JoinStudyUseCase(
-        repository: studyRepository
-    )
-    
     //MARK: - Attend
     private let attendDataSource = AttendDataSource()
     private let getStatusMapper = GetStatusMapper()
@@ -110,19 +82,73 @@ class DIContainer {
     private lazy var updateScheduleUseCase: UpdateScheduleUseCaseProtocol = UpdateScheduleUseCase(repository: calendarRepository)
     private lazy var getMyStudyUseCase: GetMyStudyUseCaseProtocol = GetMystudyUseCase(repository: calendarRepository)
     
+    // MARK: - Study
+    private let studyDataSource = StudyDataSource()
+    
+    private let studyInfoMapper = StudyInfoMapper()
+    private let createStudyInfoMapper = CreateStudyInfoMapper()
+    private let currentWeekStudyInfoMapper = CurrentWeekStudyInfoMapper()
+    private let fullStudyInfoMapper = FullStudyInfoMapper()
+    
+    private lazy var studyRepository: StudyRepository = StudyRepositoryImpl(
+        dataSource: studyDataSource,
+        studyInfoMapper: studyInfoMapper,
+        createStudyInfoMapper: createStudyInfoMapper,
+        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper,
+        fullStudyInfoMapper: fullStudyInfoMapper
+    )
+    
+    private lazy var createStudyUseCase: CreateStudyUseCaseProtocol = CreateStudyUseCase(
+        repository: studyRepository
+    )
+    private lazy var getCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol = GetCurrentWeekStudyInfoUseCase(
+        repository: studyRepository
+    )
+    private lazy var getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol = GetOngoingStudyInfoUseCase(
+        repository: studyRepository
+    )
+    private lazy var joinStudyUseCase: JoinStudyUseCaseProtocol = JoinStudyUseCase(
+        repository: studyRepository
+    )
+    private lazy var getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol = GetFullStudyInfoUseCase(
+        repository: studyRepository
+    )
+    
     
     // MARK: - Posting
     private let postingDataSource = PostingDataSource()
-    private let currentWeekPostMapper = CurrentWeekPostMapper()
+    private let recentPostMapper = RecentPostMapper()
+    private let postDetailMapper = PostDetailMapper()
     private lazy var postingRepository: PostingRepository = PostingRepositoryImpl(
         dataSource: postingDataSource,
-        mapper: currentWeekPostMapper
+        recentPostMapper: recentPostMapper,
+        postDetailMapper: postDetailMapper
     )
     
     private lazy var getCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol = GetCurrentWeekPostUseCase(
         repository: postingRepository
     )
+    private lazy var getStudyPostingUseCase: GetStudyPostingUseCaseProtocol = GetStudyPostingUseCase(
+        repository: postingRepository
+    )
+    private lazy var getPostDetailUseCase: GetPostDetailUseCaseProtocol = GetPostDetailUseCase(
+        repository: postingRepository
+    )
+    private lazy var createCommentUseCase: CreateCommentUseCaseProtocol = CreateCommentUseCase(
+        repository: postingRepository
+    )
     
+    // MARK: - Archive
+    private let archiveDataSource = ArchiveDataSource()
+    private let archivedFileInfoMapper = ArchivedFileInfoMapper()
+    private lazy var archiveRepository: ArchiveRepository = ArchiveRepositoryImpl(
+        dataSource: archiveDataSource,
+        mapper: archivedFileInfoMapper
+    )
+    
+    private lazy var getArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol = GetArchivedFileInfoUseCase(
+        repository: archiveRepository
+    )
     // MARK: - ViewModels
     // Login
     func makeLoginViewModel() -> LoginViewModel {
@@ -155,6 +181,29 @@ class DIContainer {
     func makeJoinStudyViewModel() -> JoinStudyViewModel {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
+    
+//    // StudyHome
+//    func makeStudyHomeViewModel() -> StudyHomeViewModel {
+//        return StudyHomeViewModel(
+//            getFullStudyInfoUseCase: getFullStudyInfoUseCase,
+//            getStudyPostingUseCase: getStudyPostingUseCase
+//        )
+//    }
+//    
+//    // Archive
+//    func makeArchiveViewModel() -> ArchiveViewModel {
+//        return ArchiveViewModel(
+//            getArchivedFileInfoUseCase: getArchivedFileInfoUseCase
+//        )
+//    }
+//    
+//    // Posting Detail
+//    func makePostingDetailViewModel() -> PostingDetailViewModel {
+//        return PostingDetailViewModel(
+//            getPostDetailUseCase: getPostDetailUseCase,
+//            createCommentUseCase: createCommentUseCase
+//        )
+//    }
     
     //Attend
     func makeAttendViewModel()-> AttendanceCertificationViewModel{

@@ -10,51 +10,47 @@ import Moya
 
 enum PostingAPI {
     case getCurrentWeekPosting
-    case getPostingInfo(postingId: String)                  // param
+    case getPostingDetail(postingId: String)                  // param
     case createPosting(dto: CreatePostingDTO)
     case createComment(postingId: String, content: String)  // param
+    case getStudyPosting(studyId: String)
 }
 
 extension PostingAPI: BaseAPI {
     var path: String {
         switch self {
         case .getCurrentWeekPosting:
-            return "/posting"
-        case .getPostingInfo:
-            return "/posting"
+            return "/posting/recent"
+        case .getPostingDetail(let postingId):
+            return "/posting/details/\(postingId)"
         case .createPosting:
             return "/posting/create"
-        case .createComment:
-            return "/posting/create/comment"
+        case .createComment(let postingId, _):
+            return "/posting/create/comment/\(postingId)"
+        case .getStudyPosting(let studyId):
+            return "/posting/all/\(studyId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getCurrentWeekPosting:
+        case .getCurrentWeekPosting, .getPostingDetail, .getStudyPosting:
             return .get
-        case .getPostingInfo:
-            return .get
-        case .createPosting:
-            return .post
-        case .createComment:
+        case .createPosting, .createComment:
             return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .getCurrentWeekPosting:
+        case .getCurrentWeekPosting, .getPostingDetail, .getStudyPosting:
             return .requestPlain
-        case .getPostingInfo(let postingId):
-            let param = ["postingId" : postingId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
         case .createPosting(let dto):
             return .requestJSONEncodable(dto)
         case .createComment(let postingId, let content):
-            let param = ["postingId": postingId]
-            let body = ["content": content]
-            return .requestCompositeParameters(bodyParameters: body, bodyEncoding: JSONEncoding.default, urlParameters: param)
+            let param = ["content": content]
+            print(param)
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
     

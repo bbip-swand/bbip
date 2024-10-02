@@ -72,6 +72,24 @@
 		08B509492CAD88AA008480B9 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */; };
 		08B5094A2CAD88AA008480B9 /* CreateStudyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509442CAD88AA008480B9 /* CreateStudyDTO.swift */; };
 		08B5094B2CAD88AA008480B9 /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509452CAD88AA008480B9 /* StudyTime.swift */; };
+		08B509502CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */; };
+		08B5095B2CAD8E96008480B9 /* CommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509582CAD8E96008480B9 /* CommentDTO.swift */; };
+		08B5095C2CAD8E96008480B9 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509592CAD8E96008480B9 /* PostDTO.swift */; };
+		08B5095D2CAD8E96008480B9 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5095A2CAD8E96008480B9 /* CreatePostingDTO.swift */; };
+		08B509602CAD8F61008480B9 /* ArchivedFileInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5095F2CAD8F61008480B9 /* ArchivedFileInfoMapper.swift */; };
+		08B509632CAD8FB9008480B9 /* ArchivedFIleInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509622CAD8FB9008480B9 /* ArchivedFIleInfoVO.swift */; };
+		08B509652CAD8FD9008480B9 /* CommentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509642CAD8FD9008480B9 /* CommentVO.swift */; };
+		08B509672CAD8FFD008480B9 /* PostDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509662CAD8FFD008480B9 /* PostDetailVO.swift */; };
+		08B5096C2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5096B2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift */; };
+		08B5096E2CAD9077008480B9 /* GetStudyPostingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5096D2CAD9077008480B9 /* GetStudyPostingUseCase.swift */; };
+		08B509702CAD9094008480B9 /* GetPostDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5096F2CAD9094008480B9 /* GetPostDetailUseCase.swift */; };
+		08B509722CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509712CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift */; };
+		08B509742CAD90CB008480B9 /* CreateCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509732CAD90CB008480B9 /* CreateCommentUseCase.swift */; };
+		08B509762CAD9100008480B9 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509752CAD9100008480B9 /* ArchiveRepository.swift */; };
+		08B509782CAD9155008480B9 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509772CAD9155008480B9 /* ArchiveAPI.swift */; };
+		08B5097A2CAD918B008480B9 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509792CAD918B008480B9 /* ArchiveDataSource.swift */; };
+		08B5097C2CAD91E7008480B9 /* RecentPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */; };
+		08B5097E2CAD921C008480B9 /* PostDeatilMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */; };
 		08E51E622CA54B4900547086 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E612CA54B4900547086 /* CalendarAPI.swift */; };
 		08E51E652CA5526E00547086 /* CalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E642CA5526E00547086 /* CalendarDTO.swift */; };
 		08E51E672CA5926300547086 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E662CA5926300547086 /* CalendarDataSource.swift */; };
@@ -172,13 +190,9 @@
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
-		C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */; };
 		C6F700752C9ED526000CCC80 /* PostingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700742C9ED526000CCC80 /* PostingDataSource.swift */; };
-		C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700762C9EED44000CCC80 /* PostDTO.swift */; };
 		C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700782C9EEF30000CCC80 /* PostingRepository.swift */; };
 		C6F7007C2C9EEF89000CCC80 /* PostVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007B2C9EEF89000CCC80 /* PostVO.swift */; };
-		C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */; };
-		C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */; };
 		C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */; };
 		C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */; };
 		C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */; };
@@ -266,6 +280,24 @@
 		08B509432CAD88AA008480B9 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		08B509442CAD88AA008480B9 /* CreateStudyDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStudyDTO.swift; sourceTree = "<group>"; };
 		08B509452CAD88AA008480B9 /* StudyTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
+		08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoDTO.swift; sourceTree = "<group>"; };
+		08B509582CAD8E96008480B9 /* CommentDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
+		08B509592CAD8E96008480B9 /* PostDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		08B5095A2CAD8E96008480B9 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
+		08B5095F2CAD8F61008480B9 /* ArchivedFileInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFileInfoMapper.swift; sourceTree = "<group>"; };
+		08B509622CAD8FB9008480B9 /* ArchivedFIleInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedFIleInfoVO.swift; sourceTree = "<group>"; };
+		08B509642CAD8FD9008480B9 /* CommentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVO.swift; sourceTree = "<group>"; };
+		08B509662CAD8FFD008480B9 /* PostDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailVO.swift; sourceTree = "<group>"; };
+		08B5096B2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArchivedFileInfoUseCase.swift; sourceTree = "<group>"; };
+		08B5096D2CAD9077008480B9 /* GetStudyPostingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudyPostingUseCase.swift; sourceTree = "<group>"; };
+		08B5096F2CAD9094008480B9 /* GetPostDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPostDetailUseCase.swift; sourceTree = "<group>"; };
+		08B509712CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
+		08B509732CAD90CB008480B9 /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
+		08B509752CAD9100008480B9 /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
+		08B509772CAD9155008480B9 /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		08B509792CAD918B008480B9 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
+		08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostMapper.swift; sourceTree = "<group>"; };
+		08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeatilMapper.swift; sourceTree = "<group>"; };
 		08E51E612CA54B4900547086 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
 		08E51E642CA5526E00547086 /* CalendarDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDTO.swift; sourceTree = "<group>"; };
 		08E51E662CA5926300547086 /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
@@ -364,13 +396,9 @@
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
-		C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingDTO.swift; sourceTree = "<group>"; };
 		C6F700742C9ED526000CCC80 /* PostingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingDataSource.swift; sourceTree = "<group>"; };
-		C6F700762C9EED44000CCC80 /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		C6F700782C9EEF30000CCC80 /* PostingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingRepository.swift; sourceTree = "<group>"; };
 		C6F7007B2C9EEF89000CCC80 /* PostVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVO.swift; sourceTree = "<group>"; };
-		C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeekPostMapper.swift; sourceTree = "<group>"; };
-		C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentWeekPostUseCase.swift; sourceTree = "<group>"; };
 		C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		C6F700962CA2DA77000CCC80 /* StudyHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHomeView.swift; sourceTree = "<group>"; };
@@ -471,6 +499,38 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08B5094E2CAD8DBA008480B9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				08B5094F2CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		08B5095E2CAD8F39008480B9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				08B5095F2CAD8F61008480B9 /* ArchivedFileInfoMapper.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		08B509612CAD8FA0008480B9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				08B509622CAD8FB9008480B9 /* ArchivedFIleInfoVO.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		08B5096A2CAD902C008480B9 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				08B5096B2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		08E51E632CA5525E00547086 /* Calendar */ = {
@@ -819,6 +879,7 @@
 		C695BDFA2C64CB7F009DEC3C /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				08B5094E2CAD8DBA008480B9 /* Archive */,
 				0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */,
 				08E51E632CA5525E00547086 /* Calendar */,
 				0834FEC82CA28BEF00A20721 /* Attendance */,
@@ -833,6 +894,7 @@
 		C695BDFB2C64CB83009DEC3C /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
+				08B5095E2CAD8F39008480B9 /* Archive */,
 				08E51E6A2CA5AA9200547086 /* Calendar */,
 				0834FEDF2CA3310600A20721 /* Attend */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
@@ -853,6 +915,7 @@
 				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
 				08B098F32CA5E00B00653F72 /* AttendDataSource.swift */,
 				08E51E662CA5926300547086 /* CalendarDataSource.swift */,
+				08B509792CAD918B008480B9 /* ArchiveDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -869,6 +932,7 @@
 				C69445992C9D5A3E003945CC /* StudyAPI.swift */,
 				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
 				08E51E612CA54B4900547086 /* CalendarAPI.swift */,
+				08B509772CAD9155008480B9 /* ArchiveAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -882,6 +946,7 @@
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
 				08E51E6D2CA5B91800547086 /* CalendarRepository.swift */,
+				08B509752CAD9100008480B9 /* ArchiveRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -898,6 +963,7 @@
 		C695BE002C64CBC4009DEC3C /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				08B5096A2CAD902C008480B9 /* Archive */,
 				08E51E6F2CA5CAD900547086 /* Calendar */,
 				0834FEDC2CA324E100A20721 /* Attend */,
 				C62780ED2C8AEFD100065F98 /* Login */,
@@ -911,6 +977,7 @@
 		C695BE012C64CBC8009DEC3C /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				08B509612CAD8FA0008480B9 /* Archive */,
 				C6CF22752CA40FCF00988748 /* DeepLinkAlertData.swift */,
 				0834FED32CA310CA00A20721 /* Attendance */,
 				C6F7006D2C9EC1C0000CCC80 /* Auth */,
@@ -1024,8 +1091,9 @@
 		C6F700712C9ED0A9000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				C6F700762C9EED44000CCC80 /* PostDTO.swift */,
-				C6F700722C9ED0C9000CCC80 /* CreatePostingDTO.swift */,
+				08B509582CAD8E96008480B9 /* CommentDTO.swift */,
+				08B5095A2CAD8E96008480B9 /* CreatePostingDTO.swift */,
+				08B509592CAD8E96008480B9 /* PostDTO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1034,6 +1102,8 @@
 			isa = PBXGroup;
 			children = (
 				C6F7007B2C9EEF89000CCC80 /* PostVO.swift */,
+				08B509642CAD8FD9008480B9 /* CommentVO.swift */,
+				08B509662CAD8FFD008480B9 /* PostDetailVO.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1068,7 +1138,8 @@
 		C6F700822C9EF8B3000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				C6F7007D2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift */,
+				08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */,
+				08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1076,7 +1147,10 @@
 		C6F700842CA158B6000CCC80 /* Posting */ = {
 			isa = PBXGroup;
 			children = (
-				C6F700852CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift */,
+				08B5096D2CAD9077008480B9 /* GetStudyPostingUseCase.swift */,
+				08B5096F2CAD9094008480B9 /* GetPostDetailUseCase.swift */,
+				08B509712CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift */,
+				08B509732CAD90CB008480B9 /* CreateCommentUseCase.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1268,6 +1342,7 @@
 				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
 				08E51E6E2CA5B91800547086 /* CalendarRepository.swift in Sources */,
+				08B509742CAD90CB008480B9 /* CreateCommentUseCase.swift in Sources */,
 				08B098E42CA5DFCF00653F72 /* MypageSettingListView.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
 				C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */,
@@ -1277,6 +1352,7 @@
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
+				08B5096C2CAD903F008480B9 /* GetArchivedFileInfoUseCase.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */,
 				C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */,
@@ -1288,13 +1364,14 @@
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
 				08B098E22CA5DFCF00653F72 /* StudySetView.swift in Sources */,
-				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				08B509462CAD88AA008480B9 /* CurrentWeekStudyInfoDTO.swift in Sources */,
 				082539612C9ECD0000632582 /* (null) in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
+				08B509722CAD90B1008480B9 /* GetCurrentWeekPostUseCase.swift in Sources */,
+				08B509652CAD8FD9008480B9 /* CommentVO.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
@@ -1303,6 +1380,7 @@
 				08B509282CAD87FB008480B9 /* CurrentWeekStudyInfoMapper.swift in Sources */,
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
+				08B5097E2CAD921C008480B9 /* PostDeatilMapper.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				086330802CA68AC400F1775B /* ErrorResponseDTO.swift in Sources */,
 				08B509322CAD881E008480B9 /* FullStudyInfoVO.swift in Sources */,
@@ -1325,6 +1403,7 @@
 				08E51E672CA5926300547086 /* CalendarDataSource.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				08B509482CAD88AA008480B9 /* StudyInfoDTO.swift in Sources */,
+				08B509702CAD9094008480B9 /* GetPostDetailUseCase.swift in Sources */,
 				08B5093C2CAD882D008480B9 /* GetOngoingStudyUseCase.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
 				C6FA55B22C8F279700E537D7 /* StudyCategory.swift in Sources */,
@@ -1334,10 +1413,12 @@
 				086330932CA91DB300F1775B /* errorExtension.swift in Sources */,
 				C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
+				08B509672CAD8FFD008480B9 /* PostDetailVO.swift in Sources */,
 				08B509302CAD881E008480B9 /* StudyInfoVO.swift in Sources */,
 				08B5094A2CAD88AA008480B9 /* CreateStudyDTO.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
+				08B509632CAD8FB9008480B9 /* ArchivedFIleInfoVO.swift in Sources */,
 				08B509472CAD88AA008480B9 /* FullStudyInfoDTO.swift in Sources */,
 				08B509342CAD881E008480B9 /* CreateStudyInfoVO.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
@@ -1356,9 +1437,10 @@
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
 				0834FEC92CA28BEF00A20721 /* (null) in Sources */,
+				08B509782CAD9155008480B9 /* ArchiveAPI.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
-				C6F7007E2C9EF58E000CCC80 /* CurrentWeekPostMapper.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
+				08B5095B2CAD8E96008480B9 /* CommentDTO.swift in Sources */,
 				0825395F2C9E9BAB00632582 /* (null) in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				086330852CA7C79400F1775B /* CreateCodeOnboardingView.swift in Sources */,
@@ -1379,31 +1461,33 @@
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				08B098E32CA5DFCF00653F72 /* MypageViewModel.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
+				08B5095D2CAD8E96008480B9 /* CreatePostingDTO.swift in Sources */,
 				08E51E652CA5526E00547086 /* CalendarDTO.swift in Sources */,
 				08E51E712CA5CB2F00547086 /* getYMuseCase.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
-				C6F700732C9ED0C9000CCC80 /* CreatePostingDTO.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				08B509272CAD87FB008480B9 /* StudyInfoMapper.swift in Sources */,
 				08B5093F2CAD882D008480B9 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
+				08B509602CAD8F61008480B9 /* ArchivedFileInfoMapper.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
+				08B5095C2CAD8E96008480B9 /* PostDTO.swift in Sources */,
 				0863308F2CA8590E00F1775B /* AttendRecordView.swift in Sources */,
 				08B098E92CA5DFD800653F72 /* EnterCodeUseCase.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,
 				08B098EE2CA5DFEB00653F72 /* AttendanceMapper.swift in Sources */,
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
-				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				08E51E772CA5CF9F00547086 /* createScheduleUseCase.swift in Sources */,
 				086330822CA7C67200F1775B /* GetAttendRecordUseCase.swift in Sources */,
 				C695CB582C7EF80500BB3952 /* HideKeyboard.swift in Sources */,
+				08B509762CAD9100008480B9 /* ArchiveRepository.swift in Sources */,
 				C62780F22C8AFB9C00065F98 /* AuthAPI.swift in Sources */,
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
 				088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */,
@@ -1415,13 +1499,16 @@
 				08E51E6C2CA5AAA200547086 /* CalendarMapper.swift in Sources */,
 				08B509332CAD881E008480B9 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C6FA559C2C8EC01D00E537D7 /* NoticeView.swift in Sources */,
+				08B5097A2CAD918B008480B9 /* ArchiveDataSource.swift in Sources */,
 				C6F700882CA1C270000CCC80 /* DateFormatter+Extension.swift in Sources */,
 				0834FEE32CA4136300A20721 /* (null) in Sources */,
 				C62780CD2C86ADB900065F98 /* CustomTextEditor.swift in Sources */,
 				C695CB682C7F164300BB3952 /* KeychainManager.swift in Sources */,
 				0865DA742C7AB56B00779741 /* UISBirthView.swift in Sources */,
+				08B509502CAD8DD0008480B9 /* ArchivedFileInfoDTO.swift in Sources */,
 				C6FA55972C8DDAB500E537D7 /* LoadableStyle.swift in Sources */,
 				08E51E752CA5CF0300547086 /* getUpcomingUseCase.swift in Sources */,
+				08B5096E2CAD9077008480B9 /* GetStudyPostingUseCase.swift in Sources */,
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				08B098F42CA5E00B00653F72 /* AttendDataSource.swift in Sources */,
@@ -1435,6 +1522,7 @@
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
 				08B5093D2CAD882D008480B9 /* JoinStudyUseCase.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
+				08B5097C2CAD91E7008480B9 /* RecentPostMapper.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
 				08B509292CAD87FB008480B9 /* CreateStudyInfoMapper.swift in Sources */,
