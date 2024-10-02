@@ -19,9 +19,6 @@ struct OnboardingView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .ignoresSafeArea(.all)
-            .introspect(.tabView(style: .page), on: .iOS(.v17, .v18)) { tabView in
-                tabView.isScrollEnabled = false
-            }
             
             TabViewPageIndicator(
                 contentCount: onboardingViewModel.onboardingContents.count,
