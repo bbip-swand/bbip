@@ -46,9 +46,9 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.loginSuccess) { _, newValue in
             if newValue {
-                // check new user
-                userStateManager.checkIsNewUser { isNew in
-                    appState.switchRoot(isNew ? .startGuide : .home)
+                userStateManager.updateIsExistingUser {
+                    let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                    appState.switchRoot(isExistingUser ? .home : .startGuide)
                 }
             }
         }

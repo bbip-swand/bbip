@@ -39,7 +39,7 @@ struct StartGuideView: View {
                 .padding(.horizontal, 20)
                 .overlay(alignment: .bottom) {
                     Button {
-                        
+                        showCreateStudyView = true
                     } label: {
                         Text("생성하기")
                             .font(.bbip(.button1_m20))

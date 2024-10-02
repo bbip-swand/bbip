@@ -66,6 +66,12 @@ final class AppStateManager: ObservableObject {
     
     init() {
         let isLoggedIn = UserDefaultsManager.shared.checkLoginStatus()
-        self.state = isLoggedIn ? .home : .onboarding
+        let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+        
+        if isLoggedIn {
+            self.state = isExistingUser ? .home : .startGuide
+        } else {
+            self.state = .onboarding
+        }
     }
 }

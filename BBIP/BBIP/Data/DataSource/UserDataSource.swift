@@ -64,6 +64,7 @@ final class UserDataSource {
                 return true
             }
             .mapError { error in
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()
@@ -96,10 +97,11 @@ final class UserDataSource {
                    let isNewUser = json["isNewUser"] as? Bool {
                     completion(isNewUser)
                 } else {
-                    fatalError("checkIsNewUser() Decoding Error")
+                    print("Cannot CheckIsNewUser [No AccessToken]")
+                    completion(true)
                 }
             case .failure:
-                completion(false)
+                fatalError("FatalError: checkIsNewUser()")
             }
         }
     }

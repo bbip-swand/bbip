@@ -43,9 +43,8 @@ struct UISCompleteView: View {
             Spacer()
             
             MainButton(text: "시작하기") {
-                userStateManager.checkIsNewUser { isNew in
-                    appState.switchRoot(isNew ? .startGuide : .home)
-                }
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                appState.switchRoot(isExistingUser ? .home : .startGuide)
             }
             .padding(.bottom, 39)
         }

@@ -29,6 +29,7 @@ struct SISCompleteView: View {
                 
                 Button {
                     if appState.state == .startGuide {
+                        UserDefaultsManager.shared.setIsExistingUser(true)
                         appState.switchRoot(.home)
                     } else {
                         appState.popToRoot()

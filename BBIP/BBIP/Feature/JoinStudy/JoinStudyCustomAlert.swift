@@ -73,7 +73,10 @@ struct JoinStudyCustomAlert: View {
                             appState.showJoinFailAlert = true
                             
                             // Handle StartGuideView!
-                            if appState.state != .home { appState.switchRoot(.home) }
+                            if appState.state != .home {
+                                UserDefaultsManager.shared.setIsExistingUser(true)
+                                appState.switchRoot(.home)
+                            }
                         }
                         
                         withAnimation { appState.showDeepLinkAlert = false }
