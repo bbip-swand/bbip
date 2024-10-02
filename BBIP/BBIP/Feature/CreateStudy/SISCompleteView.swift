@@ -28,7 +28,12 @@ struct SISCompleteView: View {
                 Spacer()
                 
                 Button {
-                    appState.popToRoot()
+                    if appState.state == .startGuide {
+                        UserDefaultsManager.shared.setIsExistingUser(true)
+                        appState.switchRoot(.home)
+                    } else {
+                        appState.popToRoot()
+                    }
                 } label: {
                     Image("xmark")
                 }

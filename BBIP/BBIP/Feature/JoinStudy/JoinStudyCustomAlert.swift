@@ -70,9 +70,13 @@ struct JoinStudyCustomAlert: View {
                     
                     Button {
                         viewModel.joinStudy(studyId: inviteData.studyId) {
-                            appState.showJoinFailAlert = true
+                            appState.showJoinFailAlert = true   // handle fail
                         }
-                        
+                        // Handle StartGuideView!
+                        if appState.state != .home {
+                            UserDefaultsManager.shared.setIsExistingUser(true)
+                            appState.switchRoot(.home)
+                        }
                         withAnimation { appState.showDeepLinkAlert = false }
                     } label: {
                         ZStack {

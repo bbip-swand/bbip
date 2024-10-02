@@ -1,4 +1,3 @@
-
 //
 //  GetStudyPostingUseCase.swift
 //  BBIP
@@ -25,11 +24,4 @@ final class GetStudyPostingUseCase: GetStudyPostingUseCaseProtocol {
             .eraseToAnyPublisher()
     }
 }
-//
-//  GetStudyPostingUseCase.swift
-//  BBIP
-//
-//  Created by 조예린 on 10/2/24.
-//
 
-import Foundation

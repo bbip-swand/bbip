@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UISCompleteView: View {
     @EnvironmentObject private var appState: AppStateManager
+    private let userStateManager = UserStateManager()
     private let userName: String
     
     init(userName: String) {
@@ -42,7 +43,8 @@ struct UISCompleteView: View {
             Spacer()
             
             MainButton(text: "시작하기") {
-                withAnimation { appState.switchRoot(.home) }
+                let isExistingUser = UserDefaultsManager.shared.isExistingUser()
+                appState.switchRoot(isExistingUser ? .home : .startGuide)
             }
             .padding(.bottom, 39)
         }

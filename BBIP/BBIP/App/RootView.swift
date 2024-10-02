@@ -10,6 +10,10 @@ import SwiftUI
 struct RootView: View {
     @StateObject private var appStateManager = AppStateManager()
     
+    init() {
+        removeScrollEdgeAppearance()
+    }
+    
     var body: some View {
         Group {
             switch appStateManager.state {
@@ -21,6 +25,11 @@ struct RootView: View {
             case .infoSetup:
                 NavigationStack {
                     UserInfoSetupView()
+                }
+                
+            case .startGuide:
+                NavigationStack {
+                    StartGuideView()
                 }
                 
             case .home:
@@ -55,6 +64,7 @@ struct RootView: View {
     }
     
     private func handleDeepLink(_ url: URL) {
+        guard UserDefaultsManager.shared.checkLoginStatus() else { return }
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
         if urlComponents?.host == "inviteStudy" {
             if let queryItems = urlComponents?.queryItems {

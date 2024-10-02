@@ -19,7 +19,7 @@ struct RecentPostMapper {
                 studyName: dtoItem.studyName,
                 title: dtoItem.title,
                 content: dtoItem.content,
-                postType: postType,
+                postType: postType, 
                 week: dtoItem.week
             )
         }

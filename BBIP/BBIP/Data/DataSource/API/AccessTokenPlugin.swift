@@ -9,17 +9,12 @@ import Foundation
 import Moya
 
 struct TokenPlugin: PluginType {
-    let token: String
-    
-    init() {
-        self.token = UserDefaultsManager.shared.getAccessToken() ?? ""
-    }
-
     func prepare(
         _ request: URLRequest,
         target: TargetType
     ) -> URLRequest {
         var request = request
+        let token = UserDefaultsManager.shared.getAccessToken() ?? ""
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }

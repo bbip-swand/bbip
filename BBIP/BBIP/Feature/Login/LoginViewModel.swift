@@ -16,6 +16,7 @@ final class LoginViewModel: ObservableObject {
     
     private let requestLoginUseCase: RequestLoginUseCaseProtocol
     private let signUpUseCase: SignUpUseCaseProtocol
+    private let userStateManager = UserStateManager()
     private var cancellables = Set<AnyCancellable>()
     
     private var identityToken: String?
@@ -73,9 +74,11 @@ final class LoginViewModel: ObservableObject {
                 
                 // MARK: Login Success!
                 UserDefaultsManager.shared.setIsLoggedIn(true)
-                self.loginSuccess = true
-                self.isLoading = false
-                print("로그인 성공!")
+                userStateManager.updateIsExistingUser {
+                    self.loginSuccess = true
+                    self.isLoading = false
+                    print("로그인 성공!")
+                }
                 
             }.store(in: &cancellables)
     }
@@ -116,6 +119,7 @@ final class LoginViewModel: ObservableObject {
                 guard let self = self else { return }
                 print("지금 회원가입된 유저입니다")
                 UserDefaultsManager.shared.saveAccessToken(token: vo.accessToken)
+                print("Saved AccessToken is :", UserDefaultsManager.shared.getAccessToken() ?? "nil")
                 self.UISDataIsEmpty = true
                 self.isLoading = false
             }

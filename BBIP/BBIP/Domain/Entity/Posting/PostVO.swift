@@ -35,7 +35,7 @@ extension PostVO {
             studyName: "placeholder",
             title: "placeholder",
             content: "placeholder",
-            postType: .normal,
+            postType: .normal, 
             week: 0
         )
     }

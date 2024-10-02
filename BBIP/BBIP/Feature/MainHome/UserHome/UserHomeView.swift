@@ -14,13 +14,21 @@ struct UserHomeView: View {
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
     @State private var attendstatusData: GetStatusVO?
+    @Binding var selectedTab: MainHomeTab
     
     var body: some View {
         ScrollView {
-            NoticeBannerView(pendingNotice: "이번 주 스터디는 대체공휴일로 하루 쉬어가겠습니다!")
-                .padding(.top, 22)
-                .padding(.bottom, 35)
-                .redacted(reason: isRefresh ? .placeholder : [])
+            Group {
+                if let homeBulletnData = viewModel.homeBulletnData {
+                    NoticeBannerView(postVO: homeBulletnData.filter({ $0.postType == .notice }).first)
+                } else {
+                    NoticeBannerView(postVO: .placeholderVO())
+                        .redacted(reason: .placeholder)
+                }
+            }
+            .padding(.top, 22)
+            .padding(.bottom, 35)
+           
             
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
@@ -110,14 +118,14 @@ struct UserHomeView: View {
                 HStack(spacing: 8) {
                     if viewModel.homeBulletnData == nil {
                         ForEach(0..<5, id: \.self) { _ in
-                            HomeBulletnboardCell(vo: .placeholderVO())
+                            BulletnboardCell(vo: .placeholderVO(), type: .userHome)
                                 .redacted(reason: .placeholder)
                         }
                     } else if let data = viewModel.homeBulletnData, data.isEmpty {
                         HomeBulletnboardCellPlaceholder()
                     } else if let data = viewModel.homeBulletnData {
                         ForEach(0..<data.count, id: \.self) { index in
-                            HomeBulletnboardCell(vo: data[index])
+                            BulletnboardCell(vo: data[index], type: .userHome)
                         }
                     }
                 }
@@ -153,6 +161,9 @@ struct UserHomeView: View {
                 } else if let data = viewModel.currentWeekStudyData {
                     ForEach(0..<data.count, id: \.self) { index in
                         CurrentWeekStudyInfoCardView(vo: data[index])
+                            .onTapGesture {
+                                selectedTab = .studyHome(studyId: data[index].studyId, studyName: data[index].title)
+                            }
                     }
                 }
             }

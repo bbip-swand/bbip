@@ -1,22 +1,11 @@
 //
-//  View+Extension.swift
+//  RoundedCorner.swift
 //  BBIP
 //
-//  Created by 이건우 on 8/31/24.
+//  Created by 이건우 on 10/1/24.
 //
 
 import SwiftUI
-
-// MARK: - NavigationBar
-extension View {
-    /// Navigation title이 존재하는 뷰에서 전반적으로 사용될 appearance custom 함수
-    func setNavigationBarAppearance(forDarkView: Bool = false) {
-        UINavigationBar.appearance().titleTextAttributes = [
-            .font: UIFont(name: "WantedSans-Medium", size: 20)!,
-            .foregroundColor: forDarkView ? UIColor.white : UIColor(hexCode: "1F1F1F")
-        ]
-    }
-}
 
 struct RoundedCorner: Shape {
     let radius: CGFloat

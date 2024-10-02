@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Moya
 import Firebase
 import FirebaseMessaging
 
@@ -58,6 +59,26 @@ extension AppDelegate: MessagingDelegate {
     ) {
         if let token = fcmToken {
             UserDefaultsManager.shared.saveFCMToken(token: token)
+            postFCMTokenToServer(token: token)
+        }
+    }
+    
+    private func postFCMTokenToServer(token: String) {
+        let provider = MoyaProvider<UserAPI>(plugins: [TokenPlugin()])
+        provider.request(.postFCMToken(token: token)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let statusCode = response.statusCode
+                    if (200..<300).contains(statusCode) {
+                        print("FCM token successfully posted to the server")
+                    } else {
+                        print("Failed to post FCM token: \(statusCode)")
+                    }
+                }
+            case .failure(let error):
+                print("Error posting FCM token: \(error.localizedDescription)")
+            }
         }
     }
 }

@@ -1,4 +1,3 @@
-
 //
 //  CommentVO.swift
 //  BBIP
@@ -27,4 +26,3 @@ extension CommentVO {
         )
     }
 }
-

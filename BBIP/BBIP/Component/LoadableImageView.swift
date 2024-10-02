@@ -1,10 +1,3 @@
-//
-//  LoadableImageView.swift
-//  BBIP
-//
-//  Created by 이건우 on 9/25/24.
-//
-
 import SwiftUI
 
 struct LoadableImageView: View {
@@ -26,7 +19,7 @@ struct LoadableImageView: View {
                 AsyncImage(url: URL(string: url)) { phase in
                     switch phase {
                     case .empty:
-                        // loading
+                        // loading placeholder
                         Image("logo_placeholder")
                             .resizable()
                             .scaledToFill()
@@ -34,12 +27,12 @@ struct LoadableImageView: View {
                         image
                             .resizable()
                             .scaledToFill()
-                            .opacity(isLoaded ? 1 : 0)  // 로딩 후 애니메이션 적용
+                            .opacity(isLoaded ? 1 : 0)  // Smooth opacity animation
                             .onAppear {
-                                withAnimation(.easeIn(duration: 0.5)) { isLoaded = true }
+                                withAnimation(.easeInOut(duration: 0.4)) { isLoaded = true }
                             }
                     case .failure:
-                        // load fail
+                        // failed to load, fallback to placeholder
                         Image("logo_placeholder")
                             .resizable()
                             .scaledToFill()
@@ -60,4 +53,3 @@ struct LoadableImageView: View {
         }
     }
 }
-
