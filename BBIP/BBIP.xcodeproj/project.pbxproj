@@ -135,6 +135,7 @@
 		C6F2DA392CABEE98002023B6 /* CreateCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA382CABEE98002023B6 /* CreateCommentUseCase.swift */; };
 		C6F2DA3B2CAC25AD002023B6 /* SetStudyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */; };
 		C6F2DA3D2CAC2EB7002023B6 /* CheckStudyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */; };
+		C6F2DA432CAD048D002023B6 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA422CAD048D002023B6 /* Text+Extension.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -324,6 +325,7 @@
 		C6F2DA382CABEE98002023B6 /* CreateCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentUseCase.swift; sourceTree = "<group>"; };
 		C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStudyLocationView.swift; sourceTree = "<group>"; };
 		C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStudyLocationView.swift; sourceTree = "<group>"; };
+		C6F2DA422CAD048D002023B6 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				C6F700872CA1C270000CCC80 /* DateFormatter+Extension.swift */,
 				C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */,
 				C6F074362CA6D98D00A37501 /* Error+Extension.swift */,
+				C6F2DA422CAD048D002023B6 /* Text+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1324,6 +1327,7 @@
 				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
 				C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */,
 				C6F98F382CAA7F3400F0D8E8 /* ArchiveView.swift in Sources */,
+				C6F2DA432CAD048D002023B6 /* Text+Extension.swift in Sources */,
 				C6B00C172C590A0E009AC4E2 /* RootView.swift in Sources */,
 				C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */,
 				C62780FC2C8B0A3900065F98 /* LoginVO.swift in Sources */,
