@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct MypageView: View {
+    @StateObject var mypageviewModel = DIContainer.shared.makeMypageDetailViewModel()
+    @State var userInfodata: UserInfoVO?
+    @State private var showDetail:Bool = false
+    @State private var showStudying : Bool = false
+    @State private var showStudied : Bool = false
+    @State private var settinglist = SettingList.MypageSettingList()
+    
     
     init() {
-        setNavigationBarAppearance(forDarkView: false)
+        setNavigationBarAppearance()
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            MypageProfileView().padding(.top,26)
+            MypageProfileView.padding(.top,26)
             
-            MypageStudyView().padding(.top,24)
+            MypageStudyView.padding(.top,24)
             
-            MypageSettingListView()
+            MypageSettingListView
             
             
         }
@@ -27,75 +34,84 @@ struct MypageView: View {
         .background(.gray1)
         .navigationTitle("마이페이지")
         .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle(isReversal: true)
-    }
-}
-
-//MARK: MypageProfileView
-struct MypageProfileView: View{
-    @State var showDetail:Bool = false
-    
-    var body: some View{
-        HStack (spacing: 0){
-            Image("profile_default")
-                .resizable()
-                .frame(width:80, height: 80)
-                .padding(.leading, 26)
-            
-            VStack(spacing:0){
-                HStack(spacing:0){
-                    Text("채지영")
-                        .font(.bbip(.title3_m20))
-                        .foregroundStyle(.mainBlack)
-                        .padding(.trailing,17)
-                    
-                    Text("대학생")
-                        .font(.bbip(.caption3_r12))
-                        .foregroundStyle(.gray7)
-                    
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.bottom, 10)
+        .backButtonStyle()
+        .onAppear(){
+            mypageviewModel.getProfileInfo()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                userInfodata = mypageviewModel.profileData
                 
-                HStack(spacing:5){
-                    ForEach(0..<3, id: \.self) { index in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.gray8)
-                                .frame(maxWidth: 48, maxHeight: 24)//TODO: maxWidth 텍스트사이즈로 고정어케함
-                            
-                            Text("디자인")
-                                .font(.bbip(.caption2_m12))
-                                .foregroundStyle(.gray8)
-                        }
-                    }
-                    Spacer()
-                    
+                if let userInfodata = userInfodata{
+                    print("유저 userInfo데이터: \(userInfodata)")
                 }
-                .padding(.leading, 20)
+                
             }
-            Spacer()
-            
-            Button{
-                showDetail = true
-            }label: {
-                Image("info_open")
-                    .padding(.trailing,28)
-            }
-        }
-        .navigationDestination(isPresented: $showDetail){
-            ProfileDetailView()
         }
     }
-}
-
-//MARK: MypageStudyView
-struct MypageStudyView: View{
-    @State var showStudying : Bool = false
-    @State var showStudied : Bool = false
+        //MARK: MypageProfileView
+    var MypageProfileView: some View {
+            HStack (spacing: 0){
+                LoadableImageView(imageUrl: userInfodata?.profileImageUrl, size: 80)
+                    .padding(.leading, 26)
+                
+                VStack(spacing:0){
+                    HStack(spacing:0){
+                        Text(userInfodata?.userName ?? "티니핑")
+                            .font(.bbip(.title3_m20))
+                            .foregroundStyle(.mainBlack)
+                            .padding(.trailing,17)
+                        
+                        Text(mypageviewModel.parsedOccupation)
+                            .font(.bbip(.caption3_r12))
+                            .foregroundStyle(.gray7)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading, 20)
+                    .padding(.bottom, 10)
+                    
+                    HStack(spacing:5){
+                        ForEach(mypageviewModel.parsedInterests.prefix(3), id: \.self) { interest in
+                                let textWidth = textWidth(for: interest, font: UIFont.systemFont(ofSize: 12))
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.gray8)
+                                        .frame(width: textWidth + 16, height: 24) // 텍스트의 너비 + 좌우 여백 8씩 총 16
+                                    
+                                    Text(interest)
+                                        .font(.bbip(.caption2_m12))
+                                        .foregroundStyle(.gray8)
+                                        .padding(.horizontal, 8) // 좌우 여백 8
+                                }
+                            }
+                        Spacer()
+                        
+                    }
+                    .padding(.leading, 20)
+                }
+                Spacer()
+                
+                Button{
+                    showDetail = true
+                }label: {
+                    Image("info_open")
+                        .padding(.trailing,28)
+                }
+            }
+            .navigationDestination(isPresented: $showDetail){
+                ProfileDetailView(
+                    userName: userInfodata?.userName ?? "티니핑",
+                    profileImageUrl: userInfodata?.profileImageUrl ?? "profile_default",
+                    parsedArea: mypageviewModel.parsedArea,
+                    birthYear: userInfodata?.birthYear ?? "0000",
+                    parsedOccupation: mypageviewModel.parsedOccupation,
+                    parsedInterests: mypageviewModel.parsedInterests
+                )
+            }
+        }
     
-    var body: some View{
+    //MARK: MypageStudyView
+    var MypageStudyView:  some View {
         VStack(spacing: 0) {
             HStack(spacing:0){
                 Text("나의 스터디")
@@ -200,12 +216,11 @@ struct MypageStudyView: View{
             StudySetView()
         }
     }
-}
-
-//MARK: MypageSettingListView
-struct MypageSettingListView: View{
-    @State private var settinglist = SettingList.MypageSettingList()
-    var body: some View{
+    
+    
+    
+    //MARK: MypageSettingListView
+    var MypageSettingListView: some View{
         ZStack {
             Rectangle()
                 .foregroundColor(.mainWhite)
@@ -235,10 +250,13 @@ struct MypageSettingListView: View{
             }
             .padding(.top,29)
         }
+        
     }
-}
-
-#Preview{
-        MypageView()
-//    MypageProfileView()
+    
+    private func textWidth(for text: String, font: UIFont) -> CGFloat {
+        let attributes = [NSAttributedString.Key.font: font]
+        let size = (text as NSString).size(withAttributes: attributes)
+        return size.width
+    }
+    
 }

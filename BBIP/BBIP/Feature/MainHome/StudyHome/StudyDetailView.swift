@@ -19,7 +19,7 @@ struct StudyDetailView: View {
         .background(.gray1)
         .navigationTitle("스터디 정보")
         .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle()
+        .backButtonStyle(isReversal: true)
     }
 }
 

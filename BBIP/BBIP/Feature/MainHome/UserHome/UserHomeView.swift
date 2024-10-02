@@ -33,7 +33,9 @@ struct UserHomeView: View {
             if timeRingStart {
                 ActivatedBBIPTimeRingView(
                     studyTitle: attendstatusData?.studyName ?? "스터디",
-                    remainingTime: $attendviewModel.remainingTime
+                    remainingTime: $attendviewModel.remainingTime,
+                    studyId: $attendviewModel.studyId,
+                    session: $attendviewModel.session
                 ) {
                     withAnimation { timeRingStart = false }
                 }
