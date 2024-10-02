@@ -90,6 +90,7 @@
 		08B5097A2CAD918B008480B9 /* ArchiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B509792CAD918B008480B9 /* ArchiveDataSource.swift */; };
 		08B5097C2CAD91E7008480B9 /* RecentPostMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */; };
 		08B5097E2CAD921C008480B9 /* PostDeatilMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */; };
+		08B509802CAD9720008480B9 /* UserPofileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B5097F2CAD9720008480B9 /* UserPofileDTO.swift */; };
 		08E51E622CA54B4900547086 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E612CA54B4900547086 /* CalendarAPI.swift */; };
 		08E51E652CA5526E00547086 /* CalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E642CA5526E00547086 /* CalendarDTO.swift */; };
 		08E51E672CA5926300547086 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E51E662CA5926300547086 /* CalendarDataSource.swift */; };
@@ -298,6 +299,7 @@
 		08B509792CAD918B008480B9 /* ArchiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDataSource.swift; sourceTree = "<group>"; };
 		08B5097B2CAD91E7008480B9 /* RecentPostMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPostMapper.swift; sourceTree = "<group>"; };
 		08B5097D2CAD921C008480B9 /* PostDeatilMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDeatilMapper.swift; sourceTree = "<group>"; };
+		08B5097F2CAD9720008480B9 /* UserPofileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPofileDTO.swift; sourceTree = "<group>"; };
 		08E51E612CA54B4900547086 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
 		08E51E642CA5526E00547086 /* CalendarDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDTO.swift; sourceTree = "<group>"; };
 		08E51E662CA5926300547086 /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 			children = (
 				C62781042C8C786900065F98 /* SignUpDTO.swift */,
 				C62781022C8C775400065F98 /* UserInfoDTO.swift */,
+				08B5097F2CAD9720008480B9 /* UserPofileDTO.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1381,6 +1384,7 @@
 				C695CB502C7DE9FB00BB3952 /* GridButtonView.swift in Sources */,
 				C694459A2C9D5A3E003945CC /* StudyAPI.swift in Sources */,
 				08B5097E2CAD921C008480B9 /* PostDeatilMapper.swift in Sources */,
+				08B509802CAD9720008480B9 /* UserPofileDTO.swift in Sources */,
 				C6A10AD42C6C8CCC001AA74E /* UserInfoSetupViewModel.swift in Sources */,
 				086330802CA68AC400F1775B /* ErrorResponseDTO.swift in Sources */,
 				08B509322CAD881E008480B9 /* FullStudyInfoVO.swift in Sources */,

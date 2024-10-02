@@ -15,3 +15,12 @@ struct UserInfoVO {
     let birthYear: String
     let selectedJobIndex: [Int]
 }
+
+struct UserProfileVO : Decodable {
+    let selectedArea: [String?]
+    let selectedInterestIndex: [Int]
+    let userName: String
+    let profileImageUrl: String
+    let birthYear: String
+    let selectedJobIndex: [Int]
+}
