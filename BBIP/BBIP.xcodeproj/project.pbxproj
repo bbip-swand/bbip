@@ -137,6 +137,8 @@
 		C6F2DA3D2CAC2EB7002023B6 /* CheckStudyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */; };
 		C6F2DA432CAD048D002023B6 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA422CAD048D002023B6 /* Text+Extension.swift */; };
 		C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA452CAD0CC7002023B6 /* StartGuideView.swift */; };
+		C6F2DA4A2CAD2E6A002023B6 /* MoyaProvider+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */; };
+		C6F2DA4C2CAD32A5002023B6 /* UserStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F2DA4B2CAD32A5002023B6 /* UserStateManager.swift */; };
 		C6F3017D2C8D9A0C00D7FC59 /* AWSS3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */; };
 		C6F3017F2C8DB42F00D7FC59 /* AccessTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */; };
 		C6F700702C9EC248000CCC80 /* PostingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */; };
@@ -328,6 +330,8 @@
 		C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStudyLocationView.swift; sourceTree = "<group>"; };
 		C6F2DA422CAD048D002023B6 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		C6F2DA452CAD0CC7002023B6 /* StartGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGuideView.swift; sourceTree = "<group>"; };
+		C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Extension.swift"; sourceTree = "<group>"; };
+		C6F2DA4B2CAD32A5002023B6 /* UserStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateManager.swift; sourceTree = "<group>"; };
 		C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSS3API.swift; sourceTree = "<group>"; };
 		C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenPlugin.swift; sourceTree = "<group>"; };
 		C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingAPI.swift; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 				C6F700892CA1C282000CCC80 /* JSONDecoder+Extension.swift */,
 				C6F074362CA6D98D00A37501 /* Error+Extension.swift */,
 				C6F2DA422CAD048D002023B6 /* Text+Extension.swift */,
+				C6F2DA492CAD2E6A002023B6 /* MoyaProvider+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -711,6 +716,7 @@
 				C695CB652C7F160200BB3952 /* UserDefaultManager.swift */,
 				C695CB672C7F164300BB3952 /* KeychainManager.swift */,
 				C695CB6C2C7F2C2C00BB3952 /* HapticManager.swift */,
+				C6F2DA4B2CAD32A5002023B6 /* UserStateManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1323,6 +1329,7 @@
 				C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
 				C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */,
+				C6F2DA4C2CAD32A5002023B6 /* UserStateManager.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
 				C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
@@ -1371,6 +1378,7 @@
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
 				C61EDBA92C679C4600E8FF83 /* OnboardingView.swift in Sources */,
+				C6F2DA4A2CAD2E6A002023B6 /* MoyaProvider+Extension.swift in Sources */,
 				C6F0743F2CA6EB4B00A37501 /* StudyHomeViewModel.swift in Sources */,
 				C6F2DA202CAAE0C9002023B6 /* PostDetailMapper.swift in Sources */,
 				C69445A32C9D655C003945CC /* StudyRepository.swift in Sources */,

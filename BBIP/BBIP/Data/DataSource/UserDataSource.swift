@@ -87,4 +87,20 @@ final class UserDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func checkIsNewUser(completion: @escaping (Bool) -> Void) {
+        provider.request(.checkNewUser) { result in
+            switch result {
+            case .success(let response):
+                if let json = try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any],
+                   let isNewUser = json["isNewUser"] as? Bool {
+                    completion(isNewUser)
+                } else {
+                    fatalError("checkIsNewUser() Decoding Error")
+                }
+            case .failure:
+                completion(false)
+            }
+        }
+    }
 }

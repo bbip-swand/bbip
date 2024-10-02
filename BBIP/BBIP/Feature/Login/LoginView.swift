@@ -11,6 +11,7 @@ import AuthenticationServices
 struct LoginView: View {
     @EnvironmentObject private var appState: AppStateManager
     @StateObject var viewModel: LoginViewModel = DIContainer.shared.makeLoginViewModel()
+    private let userStateManager = UserStateManager()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -46,7 +47,9 @@ struct LoginView: View {
         .onChange(of: viewModel.loginSuccess) { _, newValue in
             if newValue {
                 // check new user
-                appState.switchRoot(.home)
+                userStateManager.checkIsNewUser { isNew in
+                    appState.switchRoot(isNew ? .startGuide : .home)
+                }
             }
         }
         .navigationBarBackButtonHidden()

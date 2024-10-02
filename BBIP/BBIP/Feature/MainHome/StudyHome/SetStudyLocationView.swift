@@ -13,6 +13,8 @@ struct SetStudyLocationView: View {
     @State private var locationText: String = ""
     @State private var showLocationCheckView: Bool = false
     
+    // simple task
+    private let dataSource = StudyDataSource()
     private let studyId: String
     private let session: Int
     
@@ -25,8 +27,6 @@ struct SetStudyLocationView: View {
         self.studyId = studyId
         self.session = session
     }
-    
-    let dataSource = StudyDataSource()
     
     var body: some View {
         VStack(spacing: 0) {
