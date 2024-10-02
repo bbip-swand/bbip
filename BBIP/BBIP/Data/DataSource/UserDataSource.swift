@@ -64,6 +64,7 @@ final class UserDataSource {
                 return true
             }
             .mapError { error in
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()
@@ -86,5 +87,22 @@ final class UserDataSource {
                 return error
             }
             .eraseToAnyPublisher()
+    }
+    
+    func checkIsNewUser(completion: @escaping (Bool) -> Void) {
+        provider.request(.checkNewUser) { result in
+            switch result {
+            case .success(let response):
+                if let json = try? JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any],
+                   let isNewUser = json["isNewUser"] as? Bool {
+                    completion(isNewUser)
+                } else {
+                    print("Cannot CheckIsNewUser [No AccessToken]")
+                    completion(true)
+                }
+            case .failure:
+                fatalError("FatalError: checkIsNewUser()")
+            }
+        }
     }
 }

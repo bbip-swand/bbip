@@ -14,6 +14,7 @@ final class StudyDataSource {
     private let provider = MoyaProvider<StudyAPI>(plugins: [TokenPlugin()])
     
     // MARK: - GET
+    /// 금주 스터디 조회 (UserHome)
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoDTO], Error> {
         provider.requestPublisher(.getThisWeekStudy)
             .map(\.data)
@@ -21,15 +22,29 @@ final class StudyDataSource {
             .eraseToAnyPublisher()
     }
     
+    /// 진행 중인 스터디 정보 조회
     func getOngoingStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error> {
         provider.requestPublisher(.getOngoingStudy)
             .map(\.data)
-            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+    
+    /// 스터디 단건 조회 (StudyHome)
+    func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoDTO, Error> {
+        provider.requestPublisher(.getFullStudyInfo(studyId: studyId))
+            .map(\.data)
+            .decode(type: FullStudyInfoDTO.self, decoder: JSONDecoder())
+            .mapError { error in
+                error.handleDecodingError()
+                return error
+            }
             .eraseToAnyPublisher()
     }
 
     
     // MARK: - POST
+    /// 스터디 생성
     func createStudy(dto: CreateStudyInfoDTO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         provider.requestPublisher(.createStudy(dto: dto))
             .tryMap { response in
@@ -65,5 +80,23 @@ final class StudyDataSource {
                 }
             }
             .eraseToAnyPublisher()
+    }
+    
+    func editStudyLocation(
+        studyId: String,
+        session: Int,
+        location: String,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        provider.request(.editStudyLocation(studyId: studyId, session: session, location: location)) { result in
+            print(studyId)
+            switch result {
+            case .success(let response):
+                let isSuccess = (200...299).contains(response.statusCode)
+                completion(.success(isSuccess))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

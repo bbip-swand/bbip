@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// 스터디 기본 정보 DTO
+/// ex) ongoingStudy...
 struct StudyInfoDTO: Decodable {
     let studyId: String
     let studyName: String

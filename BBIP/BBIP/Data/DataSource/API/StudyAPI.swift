@@ -11,10 +11,11 @@ import Moya
 enum StudyAPI {
     case getThisWeekStudy
     case getOngoingStudy
-    case getStudyInfo(studyId: String)      // param
+    case getFullStudyInfo(studyId: String)      // param
     case getInviteInfo(inviteCode: String)  // param
     case createStudy(dto: CreateStudyInfoDTO)
     case joinStudy(studyId: String)         // param
+    case editStudyLocation(studyId: String, session: Int, location: String)
 }
 
 extension StudyAPI: BaseAPI {
@@ -24,23 +25,27 @@ extension StudyAPI: BaseAPI {
             return "/study/this-week"
         case .getOngoingStudy:
             return "/study/ongoing"
-        case .getStudyInfo:
-            return "/study"
+        case .getFullStudyInfo(let studyId):
+            return "/study/search/\(studyId)"
         case .getInviteInfo:
             return "/study/invite-info"
         case .createStudy:
             return "/study/create"
         case .joinStudy(let studyId):
             return "/study/join/\(studyId)"
+        case .editStudyLocation(let studyId, _, _):
+            return "/study/place/\(studyId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getThisWeekStudy, .getOngoingStudy, .getStudyInfo, .getInviteInfo:
+        case .getThisWeekStudy, .getOngoingStudy, .getFullStudyInfo, .getInviteInfo:
             return .get
         case .createStudy, .joinStudy:
             return .post
+        case .editStudyLocation:
+            return .put
         }
     }
     
@@ -49,9 +54,8 @@ extension StudyAPI: BaseAPI {
         case .getThisWeekStudy, .getOngoingStudy:
             return .requestPlain
             
-        case .getStudyInfo(let studyId):
-            let param = ["studyId" : studyId]
-            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .getFullStudyInfo:
+            return .requestPlain
             
         case .getInviteInfo(let inviteCode):
             let param = ["inviteCode" : inviteCode]
@@ -63,6 +67,15 @@ extension StudyAPI: BaseAPI {
         case .joinStudy(let studyId):
             let param = ["studyId": studyId]
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
+            
+        case .editStudyLocation(_, let session, let location):
+            let param = ["session" : session, "place" : location] as [String : Any]
+            return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
+    
+    var validationType: ValidationType {
+        return .successCodes
+    }
 }
+
