@@ -94,11 +94,7 @@ class DIContainer {
         dataSource: studyDataSource,
         studyInfoMapper: studyInfoMapper,
         createStudyInfoMapper: createStudyInfoMapper,
-<<<<<<< HEAD
-        currentWeekStudyInfoMapper: currentWeekStudyInfoMapper,
-=======
         currentWeekStudyInfoMapper: currentWeekStudyInfoMapper, 
->>>>>>> dev
         fullStudyInfoMapper: fullStudyInfoMapper
     )
     
@@ -141,21 +137,6 @@ class DIContainer {
     private lazy var createCommentUseCase: CreateCommentUseCaseProtocol = CreateCommentUseCase(
         repository: postingRepository
     )
-<<<<<<< HEAD
-=======
-    
-    // MARK: - Archive
-    private let archiveDataSource = ArchiveDataSource()
-    private let archivedFileInfoMapper = ArchivedFileInfoMapper()
-    private lazy var archiveRepository: ArchiveRepository = ArchiveRepositoryImpl(
-        dataSource: archiveDataSource,
-        mapper: archivedFileInfoMapper
-    )
-    
-    private lazy var getArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol = GetArchivedFileInfoUseCase(
-        repository: archiveRepository
-    )
->>>>>>> dev
     
     // MARK: - Archive
     private let archiveDataSource = ArchiveDataSource()
@@ -201,30 +182,6 @@ class DIContainer {
         return JoinStudyViewModel(joinStudyUseCase: joinStudyUseCase)
     }
     
-<<<<<<< HEAD
-//    // StudyHome
-//    func makeStudyHomeViewModel() -> StudyHomeViewModel {
-//        return StudyHomeViewModel(
-//            getFullStudyInfoUseCase: getFullStudyInfoUseCase,
-//            getStudyPostingUseCase: getStudyPostingUseCase
-//        )
-//    }
-//    
-//    // Archive
-//    func makeArchiveViewModel() -> ArchiveViewModel {
-//        return ArchiveViewModel(
-//            getArchivedFileInfoUseCase: getArchivedFileInfoUseCase
-//        )
-//    }
-//    
-//    // Posting Detail
-//    func makePostingDetailViewModel() -> PostingDetailViewModel {
-//        return PostingDetailViewModel(
-//            getPostDetailUseCase: getPostDetailUseCase,
-//            createCommentUseCase: createCommentUseCase
-//        )
-//    }
-    
     //Attend
     func makeAttendViewModel()-> AttendanceCertificationViewModel{
         return AttendanceCertificationViewModel(getAttendRecordUseCase: getAttendRecordUseCase, getStatusUseCase: getStatusUseCase, enterCodeUseCse: enterCodeUseCase)
@@ -238,7 +195,9 @@ class DIContainer {
     //Calender
     func makeCalendarVieModel() -> CalendarViewModel{
         return CalendarViewModel(getScheduleYMUseCase: getScheduleYMUseCase, getScheduleDUseCase: getScheduleDUseCase, getUpcomingUseCase: getUpcomingUseCase, createScheduleUseCase: createScheduleUseCase, updateScheduleUseCase: updateScheduleUseCase, getMyStudyUseCase: getMyStudyUseCase )
-=======
+        
+    }
+    
     // StudyHome
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
         return StudyHomeViewModel(
@@ -260,6 +219,5 @@ class DIContainer {
             getPostDetailUseCase: getPostDetailUseCase,
             createCommentUseCase: createCommentUseCase
         )
->>>>>>> dev
     }
 }
