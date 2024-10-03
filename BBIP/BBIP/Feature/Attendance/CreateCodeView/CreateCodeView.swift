@@ -17,6 +17,7 @@ struct CreateCodeView: View{
     @State var remainingTime: Int = 600
     @State private var timer: AnyCancellable?
     
+    
     private func startTimer() {
         if timer == nil {
             

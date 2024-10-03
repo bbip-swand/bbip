@@ -21,9 +21,7 @@ class CreateCodeViewModel: ObservableObject{
         self.createCodeUseCase = createCodeUseCase
     }
     
-    func createCode() {
-        // TODO: studyhome에서 이어붙이기
-        let attendVO = AttendVO(studyId: "f1937080-0938-438b-aef5-2ae581bd8f42", session: 1, code: postCode)
+    func createCode(attendVO: AttendVO) {
         createCodeUseCase.execute(attendVO: attendVO)
             .map { $0.code } // CreateCodeResponseDTO에서 code만 추출
             .sink{ completion in

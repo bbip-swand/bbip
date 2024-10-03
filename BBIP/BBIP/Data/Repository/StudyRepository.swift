@@ -67,8 +67,8 @@ final class StudyRepositoryImpl: StudyRepository {
     func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], any Error> {
         dataSource.getFinishedStudyInfo()
             .map { [weak self] dtoArray in
-                return dtoArray.map { self.studyInfoMapper.toVO(dto: $0) }
                 guard let self = self else { return [] }
+                return dtoArray.map { self.studyInfoMapper.toVO(dto: $0) }
             }
             .eraseToAnyPublisher()
     }

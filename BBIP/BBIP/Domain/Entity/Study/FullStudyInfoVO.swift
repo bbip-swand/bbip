@@ -22,7 +22,6 @@ struct FullStudyInfoVO {
     let studyMembers: [StudyMemberVO]
     
     let pendingDateStr: String
-    let pendingDateTimeStr: String
     let inviteCode: String
     
     let session: Int

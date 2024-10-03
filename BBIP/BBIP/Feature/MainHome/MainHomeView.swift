@@ -72,8 +72,8 @@ struct MainHomeView: View {
                 StartCreateStudyView()
             case .setLocation(let prevLocation, let studyId, let session):
                 SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
-            case .createCode:
-                CreateCodeOnboardingView()
+            case .createCode (let studyId, let session):
+                CreateCodeOnboardingView(studyId: studyId, session: session)
             case .calendar:
                 CalendarView()
             default:

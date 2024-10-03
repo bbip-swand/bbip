@@ -32,13 +32,12 @@ struct SplashView: View {
     private let userStateManager = UserStateManager()
     
     var body: some View {
-        Text("splash")
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    userStateManager.updateIsExistingUser {
-                        withAnimation { showSplash = false }
-                    }
-                }
+        BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce) {
+            userStateManager.updateIsExistingUser {
+                withAnimation { showSplash = false }
             }
+        }
+        .frame(maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.all)
     }
 }

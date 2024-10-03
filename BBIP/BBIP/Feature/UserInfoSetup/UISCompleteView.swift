@@ -21,10 +21,9 @@ struct UISCompleteView: View {
             
             Spacer()
             
-            Image("mockImg")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .padding(.horizontal, 64)
+            BBIPLottieView(assetName: "Complete_SignIn", contentMode: .scaleAspectFit, loopMode: .playOnce)
+                .frame(maxWidth: UIScreen.main.bounds.width - 132)
+                .frame(height: 260)
             
             Text("회원가입 완료!")
                 .font(.bbip(.body1_m16))
@@ -36,11 +35,9 @@ struct UISCompleteView: View {
                 Text("\(userName)님,")
                     .padding(.bottom, 4)
                 Text("환영합니다!")
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 113)
             }
             .font(.bbip(.title1_sb28))
-            
-            Spacer()
             
             MainButton(text: "시작하기") {
                 let isExistingUser = UserDefaultsManager.shared.isExistingUser()

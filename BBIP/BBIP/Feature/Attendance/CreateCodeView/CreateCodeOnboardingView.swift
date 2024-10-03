@@ -15,6 +15,13 @@ struct CreateCodeOnboardingView: View{
     @StateObject private var viewModel = DIContainer.shared.createAttendCodeViewModel()
     @State var goNext = false
     @State var generatedCode: String = ""
+    private let studyId: String
+    private let session: Int
+    
+    init(studyId: String, session: Int) {
+        self.studyId = studyId
+        self.session = session
+    }
     
     var body: some View{
         VStack(spacing:0){
@@ -43,7 +50,7 @@ struct CreateCodeOnboardingView: View{
                 .padding(.bottom,97)
             
             MainButton(text: "코드 생성하기", enable: true){
-                viewModel.createCode()  // 코드 생성 호출
+                viewModel.createCode(attendVO: .init(studyId: studyId, session: session, code: 0))  // 코드 생성 호출
             }
             .padding(.bottom,22)
         }
@@ -61,6 +68,4 @@ struct CreateCodeOnboardingView: View{
     }
 }
 
-#Preview{
-    CreateCodeOnboardingView()
-}
+

@@ -21,8 +21,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="up1-19-beP">
-                                <rect key="frame" x="132.66666666666666" y="362" width="127.99999999999997" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="up1-19-beP">
+                                <rect key="frame" x="-13.666666666666657" y="409.66666666666669" width="420.33333333333326" height="33"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
@@ -31,8 +31,10 @@
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
                             <constraint firstItem="up1-19-beP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CUo-E4-gmv"/>
                             <constraint firstItem="up1-19-beP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DzT-d1-Yix"/>
+                            <constraint firstItem="up1-19-beP" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1.06955" id="Puu-Fc-uuc"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="up1-19-beP" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.0387324" id="mYL-hF-CAc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="128" height="128"/>
+        <image name="launchScreen_logo" width="420" height="132"/>
     </resources>
 </document>

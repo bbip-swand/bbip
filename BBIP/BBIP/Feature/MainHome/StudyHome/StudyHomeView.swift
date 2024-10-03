@@ -11,7 +11,9 @@ import Combine
 struct StudyHomeView: View {
     @EnvironmentObject private var appState: AppStateManager
     @StateObject private var viewModel: StudyHomeViewModel = DIContainer.shared.makeStudyHomeViewModel()
+    @StateObject private var createcodeviewModel: CreateCodeViewModel = DIContainer.shared.createAttendCodeViewModel()
     
+    @State private var showCreateCodeView: Bool = false
     @State private var showDetailView: Bool = false
     @State private var showArchiveView: Bool = false
     @State private var showCheckLocationView: Bool = false
@@ -133,7 +135,7 @@ struct StudyHomeView: View {
                 .frame(height: 320)
                 .overlay(alignment: .bottomTrailing) {
                     Image("boxing_ring")
-                        .offset(y: 37)
+                        .offset(y: 43.5)
                         .zIndex(1)
                 }
             VStack(spacing: 0) {
@@ -194,8 +196,8 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let dateStr = viewModel.fullStudyInfo?.pendingDateStr {
-                        Text(dateStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
+                    if let pendingDateStr = viewModel.fullStudyInfo?.pendingDateStr {
+                        Text(pendingDateStr)
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                     } else {
@@ -242,6 +244,13 @@ struct StudyHomeView: View {
             VStack(spacing: 12) {
                 Button {
                     // go attendance
+                    if let vo = viewModel.fullStudyInfo {
+                        if vo.isManager {
+                            appState.push(.createCode(studyId: studyId, session: vo.session))
+                        } else {
+                            
+                        }
+                    }
                 } label: {
                     Image("studyHome_attendance")
                         .resizable()

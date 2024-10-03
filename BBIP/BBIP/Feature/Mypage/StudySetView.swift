@@ -2,12 +2,11 @@ import Foundation
 import SwiftUI
 
 struct StudySetView: View {
+    @StateObject var mypageviewModel = DIContainer.shared.makeMypageDetailViewModel()
     @State var selectedIndex: Int
-    var study: [StudyInfoVO]
     
-    init(initialIndex: Int , study: [StudyInfoVO]) {
+    init(initialIndex: Int) {
         _selectedIndex = State(initialValue: initialIndex)
-        self.study = study
     }
     
     var body: some View {
@@ -41,8 +40,8 @@ struct StudySetView: View {
                 
                 Button(action: {
                     withAnimation {
-                            selectedIndex = 1
-                        }
+                        selectedIndex = 1
+                    }
                 }) {
                     ZStack {
                         Rectangle()
@@ -61,36 +60,13 @@ struct StudySetView: View {
                     }
                 }
             }
-            
-            ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
-                    if selectedIndex == 0 {
-                        Spacer().frame(height: 20)
-                        ForEach(study, id: \.studyId) { study in
-                            StudyCardView(study: study, isFinished: false)
-                                .padding(.bottom,8)
-                        }
-                        .transition(.move(edge: .leading).combined(with: .opacity))
-                    } else {
-                        Spacer().frame(height: 8)
-                        ForEach(study, id: \.studyId) { study in
-                            Text("\(study.studyStartDate)")
-                                .font(.bbip(.body1_sb16))
-                                .foregroundStyle(.gray7)
-                                .padding(.top,12)
-                                .padding(.leading,16)
-                            StudyCardView(study: study,isFinished: selectedIndex == 1)
-                                .padding(.top,12)
-                                .transition(.move(edge: .trailing).combined(with: .opacity))
-                        }
-                        .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
-                }
-                .padding(.horizontal, 16)
-            }
             .animation(.easeInOut, value: selectedIndex)
-            .background(.gray1)
             
+            if selectedIndex == 0 {
+                OngoingStudyView(study: $mypageviewModel.ongoingStudyData)
+            } else {
+                FinishedStudyView(study: $mypageviewModel.finishedStudyData)
+            }
             
             Spacer()
         }
@@ -102,45 +78,121 @@ struct StudySetView: View {
     }
 }
 
+struct OngoingStudyView: View {
+    @Binding var study: [StudyInfoVO]?
+    
+    var body: some View {
+        if let study = study, !study.isEmpty {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    Spacer().frame(height: 20)
+                    ForEach(study, id: \.studyId) { study in
+                        StudyCardView(study: study, isFinished: false)
+                            .padding(.bottom, 8)
+                    }
+                    .transition(.move(edge: .leading).combined(with: .opacity))
+                }
+                .padding(.horizontal, 16)
+            }
+            .background(.gray1)
+        } else {
+            VStack(spacing: 0) {
+                Spacer()
+                Image("nostudy")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                
+                Text("아직 진행 중인 스터디가 없어요")
+                    .font(.bbip(.title3_sb20))
+                    .foregroundStyle(.gray7)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 23)
+                Spacer()
+            }
+            .background(.gray1)
+        }
+    }
+}
+
+struct FinishedStudyView: View {
+    @Binding var study: [StudyInfoVO]?
+    
+    var body: some View {
+        if let study = study, !study.isEmpty {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    Spacer().frame(height: 8)
+                    ForEach(study, id: \.studyId) { study in
+                        Text("\(study.studyStartDate)")
+                            .font(.bbip(.body1_sb16))
+                            .foregroundStyle(.gray7)
+                            .padding(.top, 12)
+                            .padding(.leading, 16)
+                        
+                        StudyCardView(study: study, isFinished: true)
+                            .padding(.top, 12)
+                            .transition(.move(edge: .trailing).combined(with: .opacity))
+                    }
+                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                }
+                .padding(.horizontal, 16)
+            }
+            .background(.gray1)
+        } else {
+            VStack(spacing: 0) {
+                Spacer()
+                Image("nostudy")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                
+                Text("아직 종료된 스터디가 없어요")
+                    .font(.bbip(.title3_sb20))
+                    .foregroundStyle(.gray7)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 23)
+                Spacer()
+            }
+            .background(.gray1)
+        }
+    }
+}
 
 
-struct StudyCardView : View{
+struct StudyCardView: View {
     var study: StudyInfoVO
     var isFinished: Bool
     
-    var body: some View{
-        ZStack{
-            RoundedRectangle(cornerRadius:12)
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.mainWhite)
-                .frame(height:97)
+                .frame(height: 97)
                 .bbipShadow1()
             
-            VStack(alignment: .leading, spacing:0){
-                HStack(alignment:.center, spacing:0){
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(alignment: .center, spacing: 0) {
                     LoadableImageView(imageUrl: study.imageUrl, size: 32)
-                    
                     
                     Text(study.studyName)
                         .font(.bbip(.body1_sb16))
                         .foregroundStyle(.mainBlack)
-                        .padding(.leading,12)
+                        .padding(.leading, 12)
                     
                     Spacer()
                     
-                    CapsuleView(title: study.category.rawValue, type:.fill)
+                    CapsuleView(title: study.category.rawValue, type: .fill)
                         .frame(height: 24, alignment: .center)
-                    
                 }
-                .padding(.top,12)
-                .padding(.leading,12)
-                .padding(.trailing,15.35)
+                .padding(.top, 12)
+                .padding(.leading, 12)
+                .padding(.trailing, 15.35)
                 
                 Rectangle()
                     .fill(.gray3)
                     .frame(height: 1)
                     .padding(.top, 13)
-                    .padding(.leading,12)
-                    .padding(.trailing,10.5)
+                    .padding(.leading, 12)
+                    .padding(.trailing, 10.5)
                 
                 HStack(spacing: 0) {
                     Image("calendar_nonactive")
@@ -160,13 +212,11 @@ struct StudyCardView : View{
                     
                     Spacer()
                 }
-                .padding(.leading,12)
-                .padding(.vertical,12)
+                .padding(.leading, 12)
+                .padding(.vertical, 12)
                 .font(.bbip(.caption2_m12))
                 .foregroundStyle(.gray7)
             }
-            
         }
-        
     }
 }
