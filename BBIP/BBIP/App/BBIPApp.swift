@@ -15,15 +15,14 @@ struct BBIPApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            if showSplash {
-//                SplashView(showSplash: $showSplash)
-//            } else {
-//                RootView()
-//                    .onAppear {
-//                        print(UserDefaultsManager.shared.getAccessToken())
-//                    }
-//            }
-            StartGuideView()
+            if showSplash {
+                SplashView(showSplash: $showSplash)
+            } else {
+                RootView()
+                    .onAppear {
+                        print(UserDefaultsManager.shared.getAccessToken())
+                    }
+            }
         }
     }
 }
