@@ -14,6 +14,9 @@ struct MypageView: View {
     @State private var showStudying : Bool = false
     @State private var showStudied : Bool = false
     @State private var settinglist = SettingList.MypageSettingList()
+    @State var ongoingStudyCount: Int = 0
+    @State var finishedStudyCount: Int = 0
+    @State var isLoading: Bool = true
     
     
     init() {
@@ -21,31 +24,35 @@ struct MypageView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            MypageProfileView.padding(.top,26)
-            
-            MypageStudyView.padding(.top,24)
-            
-            MypageSettingListView
-            
-            
-        }
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray1)
-        .navigationTitle("마이페이지")
-        .navigationBarTitleDisplayMode(.inline)
-        .backButtonStyle()
-        .onAppear(){
-            mypageviewModel.getProfileInfo()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                userInfodata = mypageviewModel.profileData
-                
-                if let userInfodata = userInfodata{
-                    print("유저 userInfo데이터: \(userInfodata)")
+        if isLoading {
+            ProgressView()
+                .frame(width: 20, height: 20) // 데이터가 로드 중일 때 ProgressView 표시
+                .onAppear {
+                    mypageviewModel.getProfileInfo()
+                    mypageviewModel.getOngoingStudyInfo()
+                    mypageviewModel.getFinishedStudyInfo()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        userInfodata = mypageviewModel.profileData
+                        ongoingStudyCount = mypageviewModel.ongoingStudyCount
+                        finishedStudyCount = mypageviewModel.finishedStudyCount
+                        if let userInfodata = userInfodata{
+                            print("유저 userInfo데이터: \(userInfodata)")
+                            isLoading = false // 데이터 로드 완료 후 로딩 상태 해제
+                        }
+                    }
                 }
-                
-            }
-        }
+                } else {
+                    VStack(spacing: 0) {
+                        MypageProfileView.padding(.top, 26)
+                        MypageStudyView.padding(.top, 24)
+                        MypageSettingListView
+                    }
+                    .containerRelativeFrame([.horizontal, .vertical])
+                    .background(.gray1)
+                    .navigationTitle("마이페이지")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .backButtonStyle()
+                }
     }
         //MARK: MypageProfileView
     var MypageProfileView: some View {
@@ -55,7 +62,7 @@ struct MypageView: View {
                 
                 VStack(spacing:0){
                     HStack(spacing:0){
-                        Text(userInfodata?.userName ?? "티니핑")
+                        Text(userInfodata?.userName ?? "이름없음")
                             .font(.bbip(.title3_m20))
                             .foregroundStyle(.mainBlack)
                             .padding(.trailing,17)
@@ -140,7 +147,7 @@ struct MypageView: View {
                                     .foregroundStyle(.gray7)
                                 
                                 HStack(spacing:0){
-                                    Text("3")
+                                    Text("\(ongoingStudyCount)")
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.primary3)
                                         .padding(.top, 4)
@@ -181,7 +188,7 @@ struct MypageView: View {
                                     .foregroundStyle(.gray7)
                                 
                                 HStack(spacing:0){
-                                    Text("3")
+                                    Text("\(finishedStudyCount)")
                                         .font(.bbip(.body1_sb16))
                                         .foregroundStyle(.primary3)
                                         .padding(.top, 4)
@@ -209,11 +216,11 @@ struct MypageView: View {
             }
             .padding(.top,12)
         }
-        .navigationDestination(isPresented: $showStudying){
-            StudySetView()
+        .navigationDestination(isPresented: $showStudying) {
+            StudySetView(initialIndex: 0, study: mypageviewModel.ongoingStudyData ?? [] ) // 진행 중인 스터디로 초기화
         }
-        .navigationDestination(isPresented: $showStudied){
-            StudySetView()
+        .navigationDestination(isPresented: $showStudied) {
+            StudySetView(initialIndex: 1, study: mypageviewModel.finishedStudyData ?? []) // 종료된 스터디로 초기화
         }
     }
     

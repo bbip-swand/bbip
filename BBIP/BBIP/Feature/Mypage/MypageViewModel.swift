@@ -18,15 +18,25 @@ final class MypageViewModel : ObservableObject{
     @Published var parsedArea: String = ""
     @Published var parsedInterests: [String] = []
     @Published var parsedOccupation: String = ""
+    @Published var finishedStudyData: [StudyInfoVO]?
+    @Published var ongoingStudyCount: Int = 0
+    @Published var finishedStudyCount: Int = 0
+    @Published var ongoingStudyData: [StudyInfoVO]?
     
     private let getProfileUseCase: GetProfileUseCaseProtocol
+    private let getFinishedStudyUseCase : GetFinishedStudyInfoUseCaseProtocol
+    private let getOngoingStudyUseCase : GetOngoingStudyInfoUseCaseProtocol
     
     init(
         getProfileUseCase : GetProfileUseCaseProtocol,
+        getFinishedStudyUseCase : GetFinishedStudyInfoUseCaseProtocol,
+        getOngoingStudyUseCase : GetOngoingStudyInfoUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ){
         self.cancellables = cancellables
         self.getProfileUseCase = getProfileUseCase
+        self.getFinishedStudyUseCase = getFinishedStudyUseCase
+        self.getOngoingStudyUseCase = getOngoingStudyUseCase
     }
     
     func getProfileInfo() {
@@ -63,4 +73,44 @@ final class MypageViewModel : ObservableObject{
                 OccupationCategory.from(int: index)?.rawValue
             }.first ?? "알 수 없음"
         }
+    
+    func getOngoingStudyInfo() {
+          getOngoingStudyUseCase.execute()
+              .receive(on: DispatchQueue.main)
+              .sink { completion in
+                  switch completion {
+                  case .finished:
+                      break
+                  case .failure(let error):
+                      print("failed to load ongoing study: \(error.localizedDescription)")
+                  }
+              } receiveValue: { [weak self] response in
+                  guard let self = self else { return }
+                  self.ongoingStudyData = response
+                  self.ongoingStudyCount = response.count
+                  print("OngoingStudyCOunt: \(ongoingStudyCount)")
+                  print("ongoingStudyData: \(ongoingStudyData)")
+              }
+              .store(in: &cancellables)
+      }
+
+      func getFinishedStudyInfo() {
+          getFinishedStudyUseCase.execute()
+              .receive(on: DispatchQueue.main)
+              .sink { completion in
+                  switch completion {
+                  case .finished:
+                      break
+                  case .failure(let error):
+                      print("failed to load finished study: \(error.localizedDescription)")
+                  }
+              } receiveValue: { [weak self] response in
+                  guard let self = self else { return }
+                  self.finishedStudyData = response
+                  self.finishedStudyCount = response.count
+                  print("FinishedStudyCount: \(finishedStudyCount)")
+                  print("FinishedStudyData: \(finishedStudyData)")
+              }
+              .store(in: &cancellables)
+      }
 }

@@ -117,6 +117,7 @@ class DIContainer {
     private lazy var getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol = GetFullStudyInfoUseCase(
         repository: studyRepository
     )
+    private lazy var getFinishedStudyInfoUseCase : GetFinishedStudyInfoUseCaseProtocol = GetFinishedStudyInfoUseCase(repository: studyRepository)
     
     
     // MARK: - Posting
@@ -227,6 +228,6 @@ class DIContainer {
     
     //get user info
     func makeMypageDetailViewModel() -> MypageViewModel{
-        return MypageViewModel(getProfileUseCase: getProfileUseCase)
+        return MypageViewModel(getProfileUseCase: getProfileUseCase, getFinishedStudyUseCase: getFinishedStudyInfoUseCase, getOngoingStudyUseCase: getOngoingStudyInfoUseCase )
     }
 }

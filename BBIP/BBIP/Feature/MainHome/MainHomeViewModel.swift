@@ -69,7 +69,7 @@ class MainHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getOngoingStudyInfoUseCase.excute()
+        getOngoingStudyInfoUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
