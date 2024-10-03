@@ -9,8 +9,9 @@ import SwiftUI
 
 struct UserHomeView: View {
     @StateObject var viewModel: MainHomeViewModel
-    @StateObject var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @StateObject var calviewModel = DIContainer.shared.makeCalendarVieModel()
+    @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
+    
     @State private var timeRingStart: Bool = false
     @State private var isRefresh: Bool = false
     @State private var attendstatusData: GetStatusVO?

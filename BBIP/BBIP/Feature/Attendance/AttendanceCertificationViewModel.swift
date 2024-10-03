@@ -69,7 +69,6 @@ final class AttendanceCertificationViewModel: ObservableObject {
     }
     //MARK: -GET status
     func getStatusAttend() {
-
         getStatusUseCase.execute()
             .receive(on: DispatchQueue.main) // UI 업데이트를 위해 메인 스레드에서 받음
             .sink { completionStatus in
@@ -99,27 +98,22 @@ final class AttendanceCertificationViewModel: ObservableObject {
     }
     
     //MARK: - PUT attend/apply
-    func enterCode() {
-            guard let attendVO = attendVO else {
-                print("AttendVO is nil. Cannot execute enterCode.")
-                return
-            }
-
-            enterCodeUseCase.execute(attendVO: attendVO)
-                .sink(receiveCompletion: { completion in
-                    switch completion {
-                    case .finished:
-                        self.showAttendanceDone = true
-                        self.showInvalidCodeWarning = false
-                        break
-                    case .failure(let error):
-                        self.showAttendanceDone = false
-                        self.showInvalidCodeWarning = true
-                        print("Failed to enter the code: \(error.localizedDescription)")
-                    }
-                }, receiveValue: {})
-                .store(in: &cancellables)
-        }
+    func enterCode(vo: AttendVO) {
+        enterCodeUseCase.execute(attendVO: vo)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    self.showAttendanceDone = true
+                    self.showInvalidCodeWarning = false
+                    break
+                case .failure(let error):
+                    self.showAttendanceDone = false
+                    self.showInvalidCodeWarning = true
+                    print("Failed to enter the code: \(error.localizedDescription)")
+                }
+            }, receiveValue: {})
+            .store(in: &cancellables)
+    }
     
     
     func handleTextFieldChange(index: Int, newValue: String) -> Int? {
@@ -128,7 +122,7 @@ final class AttendanceCertificationViewModel: ObservableObject {
         } else {
             codeDigits[index] = String(newValue.prefix(1))
             updateCombinedCode()
-            resetWarning() 
+            resetWarning()
             if isComplete() {
                 
             }
@@ -157,9 +151,9 @@ final class AttendanceCertificationViewModel: ObservableObject {
     }
     
     func resetWarning() {
-            if codeDigits.contains(where: { $0.isEmpty }) {
-                showInvalidCodeWarning = false
-            }
+        if codeDigits.contains(where: { $0.isEmpty }) {
+            showInvalidCodeWarning = false
         }
-
+    }
+    
 }

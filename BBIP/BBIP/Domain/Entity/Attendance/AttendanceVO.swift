@@ -23,6 +23,7 @@ struct GetStatusVO{
     let ttl: Int
     let code: Int?
     let isManager: Bool
+    let status: Bool
 }
 
 struct getAttendRecordVO{

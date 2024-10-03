@@ -27,6 +27,12 @@
 		088C0E6F2CABB42F00FF2533 /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */; };
 		08A72F8A2CADAB7200633257 /* ArchiveFileInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F892CADAB7200633257 /* ArchiveFileInfoVO.swift */; };
 		08A72F8C2CADF0C700633257 /* GetProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */; };
+		08A72F932CAEA29C00633257 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F922CAEA28800633257 /* SafeAreaInsets.swift */; };
+		08A72F952CAEA2F400633257 /* JoinStudyCompleteAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */; };
+		08A72F992CAEA3DA00633257 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A72F962CAEA3DA00633257 /* Splash.json */; };
+		08A72F9A2CAEA3DA00633257 /* Complete_CreateStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A72F972CAEA3DA00633257 /* Complete_CreateStudy.json */; };
+		08A72F9B2CAEA3DA00633257 /* Complete_SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = 08A72F982CAEA3DA00633257 /* Complete_SignIn.json */; };
+		08A72F9E2CAEA81200633257 /* PendingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A72F9D2CAEA81200633257 /* PendingDTO.swift */; };
 		08B098E02CA5DFCF00653F72 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */; };
 		08B098E12CA5DFCF00653F72 /* ProfileInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */; };
 		08B098E22CA5DFCF00653F72 /* StudySetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B098DD2CA5DFCF00653F72 /* StudySetView.swift */; };
@@ -277,6 +283,12 @@
 		088C0E6E2CABB42F00FF2533 /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
 		08A72F892CADAB7200633257 /* ArchiveFileInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveFileInfoVO.swift; sourceTree = "<group>"; };
 		08A72F8B2CADF0C700633257 /* GetProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileUseCase.swift; sourceTree = "<group>"; };
+		08A72F922CAEA28800633257 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
+		08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinStudyCompleteAlert.swift; sourceTree = "<group>"; };
+		08A72F962CAEA3DA00633257 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
+		08A72F972CAEA3DA00633257 /* Complete_CreateStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_CreateStudy.json; sourceTree = "<group>"; };
+		08A72F982CAEA3DA00633257 /* Complete_SignIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_SignIn.json; sourceTree = "<group>"; };
+		08A72F9D2CAEA81200633257 /* PendingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingDTO.swift; sourceTree = "<group>"; };
 		08B098DB2CA5DFCF00653F72 /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		08B098DC2CA5DFCF00653F72 /* ProfileInfoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoListView.swift; sourceTree = "<group>"; };
 		08B098DD2CA5DFCF00653F72 /* StudySetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudySetView.swift; sourceTree = "<group>"; };
@@ -574,6 +586,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08A72F9C2CAEA80200633257 /* Pending */ = {
+			isa = PBXGroup;
+			children = (
+				08A72F9D2CAEA81200633257 /* PendingDTO.swift */,
+			);
+			path = Pending;
 			sourceTree = "<group>";
 		};
 		08B5094E2CAD8DBA008480B9 /* Archive */ = {
@@ -968,6 +988,7 @@
 		C695BDFA2C64CB7F009DEC3C /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				08A72F9C2CAEA80200633257 /* Pending */,
 				08B5094E2CAD8DBA008480B9 /* Archive */,
 				0863307F2CA68AC400F1775B /* ErrorResponseDTO.swift */,
 				08E51E632CA5525E00547086 /* Calendar */,
@@ -1099,6 +1120,9 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				08A72F972CAEA3DA00633257 /* Complete_CreateStudy.json */,
+				08A72F982CAEA3DA00633257 /* Complete_SignIn.json */,
+				08A72F962CAEA3DA00633257 /* Splash.json */,
 				082539592C9C6F4100632582 /* CodeCheck.json */,
 				C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */,
 			);
@@ -1162,6 +1186,7 @@
 		C6CF227B2CA46EB800988748 /* JoinStudy */ = {
 			isa = PBXGroup;
 			children = (
+				08A72F942CAEA2F400633257 /* JoinStudyCompleteAlert.swift */,
 				C6CF22772CA412B900988748 /* JoinStudyCustomAlert.swift */,
 				C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */,
 			);
@@ -1182,6 +1207,7 @@
 		C6F2DA352CABD45E002023B6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				08A72F922CAEA28800633257 /* SafeAreaInsets.swift */,
 				C6934BBC2C821A1F006AA652 /* SetNavigationBar.swift */,
 				C6FA55DE2C906F5400E537D7 /* TimeAgo.swift */,
 				C6F2DA362CABD477002023B6 /* RoundedCorner.swift */,
@@ -1496,12 +1522,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08A72F9B2CAEA3DA00633257 /* Complete_SignIn.json in Resources */,
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
 				0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
+				08A72F992CAEA3DA00633257 /* Splash.json in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
+				08A72F9A2CAEA3DA00633257 /* Complete_CreateStudy.json in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
 				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
 				C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */,
@@ -1529,6 +1558,7 @@
 				08B509742CAD90CB008480B9 /* CreateCommentUseCase.swift in Sources */,
 				08B098E42CA5DFCF00653F72 /* MypageSettingListView.swift in Sources */,
 				C6F98F332CA997F600F0D8E8 /* GetStudyPostingUseCase.swift in Sources */,
+				08A72F952CAEA2F400633257 /* JoinStudyCompleteAlert.swift in Sources */,
 				C6F2DA392CABEE98002023B6 /* CreateCommentUseCase.swift in Sources */,
 				C6934BB32C808330006AA652 /* CreateStudyViewModel.swift in Sources */,
 				C6F074392CA6DC6800A37501 /* FullStudyInfoVO.swift in Sources */,
@@ -1577,6 +1607,7 @@
 				08B509322CAD881E008480B9 /* FullStudyInfoVO.swift in Sources */,
 				08B098F82CA5E09500653F72 /* HeaderComponent.swift in Sources */,
 				C6F98F4D2CAA98A900F0D8E8 /* ArchiveViewModel.swift in Sources */,
+				08A72F9E2CAEA81200633257 /* PendingDTO.swift in Sources */,
 				C6F2DA222CAAE2D1002023B6 /* GetPostDetailUseCase.swift in Sources */,
 				C6934BC22C822066006AA652 /* SISCategoryView.swift in Sources */,
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
@@ -1746,6 +1777,7 @@
 				C6934BBD2C821A1F006AA652 /* SetNavigationBar.swift in Sources */,
 				C6FA56022C95510F00E537D7 /* CalendarViewModel.swift in Sources */,
 				C6F2DA242CAAF70D002023B6 /* CommentCell.swift in Sources */,
+				08A72F932CAEA29C00633257 /* SafeAreaInsets.swift in Sources */,
 				C62781032C8C775400065F98 /* UserInfoDTO.swift in Sources */,
 				C62781002C8C72C900065F98 /* UserAPI.swift in Sources */,
 			);

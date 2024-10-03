@@ -18,7 +18,6 @@ struct EnterCodeDTO: Encodable{
     let code: Int
 }
 
-
 //Server to Client
 struct CreateCodeResponseDTO: Decodable{
     let code: Int
@@ -32,6 +31,7 @@ struct GetStatusResponseDTO: Decodable{
     let ttl: Int
     let code: Int?
     let isManager: Bool
+    let status: Bool
 }
 
 struct GetAttendRecordDTO: Decodable{

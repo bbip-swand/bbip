@@ -11,8 +11,10 @@ import SwiftUI
 
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
+    @StateObject var attendviewModel = DIContainer.shared.makeAttendViewModel()
     @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
-    @StateObject private var attendviewModel = DIContainer.shared.makeAttendViewModel()
+    @StateObject private var createcodeviewModel = DIContainer.shared.createAttendCodeViewModel()
+    @StateObject private var calendarviewModel = DIContainer.shared.makeCalendarVieModel()
     @State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
@@ -31,15 +33,18 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                switch selectedTab {
-                case .userHome:
-                    UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
-                    UserHomeView(viewModel: viewModel, selectedTab: $selectedTab)
-                case .studyHome(let studyId, _):
-                    StudyHomeView(studyId: studyId)
-                case .calendar:
-                    CalendarView()
+                Group {
+                    switch selectedTab {
+                    case .userHome:
+                        UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
+                        UserHomeView(viewModel: viewModel, selectedTab: $selectedTab)
+                    case .studyHome(let studyId, _):
+                        StudyHomeView(studyId: studyId, attendviewModel: attendviewModel)
+                    case .calendar:
+                        CalendarView()
+                    }
                 }
+                .environmentObject(attendviewModel)
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
@@ -76,6 +81,8 @@ struct MainHomeView: View {
                 CreateCodeOnboardingView(studyId: studyId, session: session)
             case .calendar:
                 CalendarView()
+            case .entercode:
+                AttendanceCertificationView(attendviewModel: attendviewModel, remainingTime: $attendviewModel.remainingTime)
             default:
                 EmptyView()
             }

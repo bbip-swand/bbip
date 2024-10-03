@@ -3,26 +3,24 @@ import SwiftUI
 import Combine
 
 struct AttendRecordView: View {
+    @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
+    var code: Int?
     @State private var timer: AnyCancellable?
-    @StateObject private var viewModel = DIContainer.shared.makeAttendViewModel()
+
     @State private var isRefresh: Bool = false
-    var studyId: String
-    var code: Int
     private var completion: (() -> Void)?
     
-    // `remainingTime`을 `Binding`으로 받도록 수정
+     
     init(
-        code: Int,
         remainingTime: Binding<Int>,
-        attendstatusData: GetStatusVO?,
+        code: Int?,
         completion: (() -> Void)? = nil
     ) {
-        self._remainingTime = remainingTime // `Binding`을 `_`와 함께 사용하여 초기화
-        self.completion = completion
-        self.studyId = attendstatusData?.studyId ?? ""
+        self._remainingTime = remainingTime
         self.code = code
+        self.completion = completion
         setNavigationBarAppearance(forDarkView: true)
     }
     
@@ -32,7 +30,7 @@ struct AttendRecordView: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    private func startTimer() {
+   private func startTimer() {
         formattedTime = formatTime(remainingTime)
         
         timer?.cancel()
@@ -72,9 +70,6 @@ struct AttendRecordView: View {
                             Text(formattedTime)
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
-                                .onAppear(){
-                                    startTimer()
-                                }
                         }
                     }
                     Spacer().frame(width: 19)
@@ -90,9 +85,9 @@ struct AttendRecordView: View {
                                 .font(.bbip(.caption1_m16))
                                 .foregroundStyle(.mainWhite)
                             
-                            Text(String(code))
-                                .font(.bbip(.caption1_m16))
-                                .foregroundStyle(.mainWhite)
+//                            Text(String(code))
+//                                .font(.bbip(.caption1_m16))
+//                                .foregroundStyle(.mainWhite)
                         }
                         .padding(.horizontal, 20)
                     }
@@ -109,8 +104,8 @@ struct AttendRecordView: View {
                     .padding(.bottom, 12)
                 
                 // 경기참가한 사람들의 studyEntryCard 필요
-                ForEach(0..<viewModel.records.filter { $0.status == .attended }.count, id: \.self) { index in
-                    let record = viewModel.records.filter { $0.status == .attended }[index]
+                ForEach(0..<attendviewModel.records.filter { $0.status == .attended }.count, id: \.self) { index in
+                    let record = attendviewModel.records.filter { $0.status == .attended }[index]
                     studyEntryCard(vo: record)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 8)
@@ -133,8 +128,8 @@ struct AttendRecordView: View {
                 
                 
                 // 경기 미참여한 사람들의 studyEntryCard 필요
-                ForEach(0..<viewModel.records.filter { $0.status == .absent }.count, id: \.self) {index in
-                    let record = viewModel.records.filter { $0.status == .absent }[index]
+                ForEach(0..<attendviewModel.records.filter { $0.status == .absent }.count, id: \.self) {index in
+                    let record = attendviewModel.records.filter { $0.status == .absent }[index]
                     studyEntryCard(vo: record)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 8)
@@ -147,14 +142,14 @@ struct AttendRecordView: View {
         .navigationBarTitleDisplayMode(.inline)
         .background(.gray9)
         .onAppear {
-            viewModel.getAttendRecord(studyId: studyId)
+//            attendviewModel.getAttendRecord(studyId: studyId)
             startTimer()
         }
         .onDisappear {
             timer?.cancel()
         }
         .refreshable {
-            viewModel.getAttendRecord(studyId: studyId)
+//            attendviewModel.getAttendRecord(studyId: studyId)
             isRefresh = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation { isRefresh = false }

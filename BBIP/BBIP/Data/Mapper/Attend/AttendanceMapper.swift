@@ -48,7 +48,8 @@ struct GetStatusMapper{
             startTime: startTimeUTC,
             ttl: dto.ttl,
             code: code,
-            isManager: dto.isManager
+            isManager: dto.isManager,
+            status: dto.status
         )
     }
 }

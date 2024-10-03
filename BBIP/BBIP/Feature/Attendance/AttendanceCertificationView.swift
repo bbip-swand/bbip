@@ -2,15 +2,21 @@ import SwiftUI
 import Combine
 
 struct AttendanceCertificationView: View {
-    @StateObject var viewModel = DIContainer.shared.makeAttendViewModel()
+    @ObservedObject var attendviewModel: AttendanceCertificationViewModel
     @FocusState private var focusedIndex: Int?
     
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     @Binding var remainingTime: Int
-    @Binding var studyId: String
-    @Binding var session: Int
+
     
+    init(
+        attendviewModel: AttendanceCertificationViewModel,
+        remainingTime: Binding<Int>
+    ) {
+        self._remainingTime = remainingTime
+        self.attendviewModel = attendviewModel
+    }
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
@@ -71,9 +77,7 @@ struct AttendanceCertificationView: View {
                     Text(formattedTime)
                         .font(.bbip(.title1_sb42))
                         .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
-                        .onAppear {
-                            startTimer()
-                        }
+                    
                 }
             }
             
@@ -81,17 +85,17 @@ struct AttendanceCertificationView: View {
                 HStack(spacing: 12) {
                     ForEach(0..<4, id: \.self) { index in
                         CustomTextFieldComponent(
-                            text: $viewModel.codeDigits[index],
-                            showInvalidCodeWarning: $viewModel.showInvalidCodeWarning,
+                            text: $attendviewModel.codeDigits[index],
+                            showInvalidCodeWarning: $attendviewModel.showInvalidCodeWarning,
                             focusedField: $focusedIndex,
                             index: index,
                             font: .bbip(.title1_sb42),
-                            viewModel: viewModel
+                            viewModel: attendviewModel
                         )
                         .customFieldStyle(
                             isFocused: focusedIndex == index,
-                            isWrong: viewModel.showInvalidCodeWarning,
-                            isFilled: !viewModel.codeDigits[index].isEmpty
+                            isWrong: attendviewModel.showInvalidCodeWarning,
+                            isFilled: !attendviewModel.codeDigits[index].isEmpty
                         )
                     }
                     
@@ -112,12 +116,12 @@ struct AttendanceCertificationView: View {
             }
             
             MainButton(text: "파이트!", enable: remainingTime != 0 ? true : false) {
-                viewModel.attendVO = AttendVO(
-                    studyId: studyId,
-                    session: session,
-                    code: viewModel.combinedCode
+                let attendVO = AttendVO(
+                    studyId: attendviewModel.studyId,
+                    session: attendviewModel.session,
+                    code: attendviewModel.combinedCode
                 )
-                viewModel.enterCode()
+                attendviewModel.enterCode(vo: attendVO)
             }
             .padding(.bottom, 22)
         }
@@ -129,7 +133,7 @@ struct AttendanceCertificationView: View {
         .onTapGesture {
             focusedIndex = nil
         }
-        .navigationDestination(isPresented: $viewModel.showAttendanceDone){
+        .navigationDestination(isPresented: $attendviewModel.showAttendanceDone){
             AttendanceDoneView()
         }
         .onDisappear(){
@@ -137,13 +141,14 @@ struct AttendanceCertificationView: View {
         }
         .onAppear(){
             setNavigationBarAppearance(forDarkView: true)
+            startTimer()
             
         }
     }
     
     private func createWarningLabel() -> some View {
         HStack(spacing: 6) {
-            if viewModel.showInvalidCodeWarning {
+            if attendviewModel.showInvalidCodeWarning {
                 WarningLabel(errorText: "코드가 올바르지 않습니다.")
             }
         }

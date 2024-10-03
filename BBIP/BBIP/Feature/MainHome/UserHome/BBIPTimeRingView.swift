@@ -113,7 +113,8 @@ struct BBIPTimeRingView: View {
 }
 
 struct ActivatedBBIPTimeRingView: View {
-    @StateObject private var attendviewModel = DIContainer.shared.makeAttendViewModel()
+    @EnvironmentObject var attendviewModel: AttendanceCertificationViewModel
+    @EnvironmentObject var appState: AppStateManager
     @State private var progress: Double = 0
     @Binding var remainingTime: Int
     @Binding var studyId: String
@@ -122,15 +123,16 @@ struct ActivatedBBIPTimeRingView: View {
     @State private var timer: AnyCancellable?
     @State private var showCircle: Bool = false
     @State private var shakeStick: Bool = false
-    @State private var showAttendanceCertificationView: Bool = false
+    @State private var showDisabled: Bool = false
     @State private var showAttendRecordView: Bool = false
     private let initialTime: Int = 600 // for test
     private var studyTitle: String
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
-    @State private var attendstatusData: GetStatusVO?
-
+    @State var code: Int?
+    
+    
     init(
         studyTitle: String,
         remainingTime: Binding<Int>,
@@ -144,16 +146,16 @@ struct ActivatedBBIPTimeRingView: View {
         self._remainingTime = remainingTime
         self.completion = completion
     }
-
+    
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
         let seconds = seconds % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
-
+    
     private func startTimer() {
         formattedTime = formatTime(remainingTime)
-
+        
         timer?.cancel()
         timer = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
@@ -164,15 +166,15 @@ struct ActivatedBBIPTimeRingView: View {
                     return
                 }
                 remainingTime -= 1
-                progress = Double(remainingTime) / Double(attendstatusData?.ttl ?? 600)
+                progress = Double(remainingTime) / Double(attendviewModel.getStatusData?.ttl ?? 600)
                 formattedTime = formatTime(remainingTime)
-
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     if !showCircle { showCircle = true }
                 }
             }
     }
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             GeometryReader { geometry in
@@ -180,18 +182,18 @@ struct ActivatedBBIPTimeRingView: View {
                 let angle = Angle(degrees: progress * 360 - 90)
                 let xOffset = cos(angle.radians) * radius
                 let yOffset = sin(angle.radians) * radius
-
+                
                 ZStack {
                     Circle()
                         .foregroundStyle(.primary3)
-
+                    
                     Group {
                         Circle()
                             .stroke(
                                 .primary2,
                                 style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                             )
-
+                        
                         Circle()
                             .trim(from: 0, to: progress)
                             .stroke(
@@ -202,7 +204,7 @@ struct ActivatedBBIPTimeRingView: View {
                             .animation(.easeInOut(duration: 0.25), value: progress)
                     }
                     .padding(18)
-
+                    
                     Circle()
                         .foregroundStyle(.mainWhite)
                         .frame(width: endCircleSize, height: endCircleSize)
@@ -214,9 +216,12 @@ struct ActivatedBBIPTimeRingView: View {
                 .overlay {
                     VStack(spacing: 5) {
                         Text(studyTitle)
+                            .frame(maxWidth: 180)
                             .font(.bbip(.title3_m20))
                             .foregroundStyle(.mainWhite)
-
+                            .lineLimit(1) // 한 줄로 제한
+                            .truncationMode(.tail)
+                        
                         Text(formattedTime)
                             .font(.bbip(.title1_sb42))
                             .foregroundStyle(.mainWhite)
@@ -231,28 +236,40 @@ struct ActivatedBBIPTimeRingView: View {
                     .offset(x: 30, y: 62)
                     .unredacted()
             }
-
+            
             Button {
-                print("isManager: \(String(describing: attendstatusData?.isManager))")
-                // 출석 인증 버튼을 눌렀을 때의 로직
-                if attendstatusData?.isManager == true {
-                    showAttendRecordView = true
-                    showAttendanceCertificationView = false
-                } else {
-                    showAttendanceCertificationView = true
-                    showAttendRecordView = false
+//                print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
+                print("isAttend: \(String(describing: attendviewModel.getStatusData?.status))")
+               
+                    print("isManager: \(String(describing: attendviewModel.getStatusData?.isManager))")
+                
+                if let isManager = attendviewModel.getStatusData?.isManager{
+                    if isManager == true {
+                        showAttendRecordView = true
+                        
+                    }else{ //팀원일때
+                        if let isAttend = attendviewModel.getStatusData?.status{
+                            if isAttend == true{
+                                showDisabled = true
+                            }else{
+                                appState.push(.entercode)
+                                showDisabled = true
+                            }
+                        }
+                    }
                 }
-                timer?.cancel()
             } label: {
+                
                 RoundedRectangle(cornerRadius: 10)
-                    .foregroundStyle(.primary3)
+                    .foregroundStyle(showDisabled ?  .gray3 : .primary3)
                     .frame(width: 130, height: 43)
                     .overlay {
                         Text("출석인증")
                             .font(.bbip(.body2_b14))
-                            .foregroundStyle(.mainWhite)
+                            .foregroundStyle(showDisabled ?  .gray5 : .mainWhite)
                     }
             }
+            .disabled(showDisabled)
             .buttonStyle(PlainButtonStyle())
             .background( // hide stick image
                 RoundedRectangle(cornerRadius: 10)
@@ -263,22 +280,25 @@ struct ActivatedBBIPTimeRingView: View {
         .onAppear {
             // 출석 상태 데이터를 가져오는 함수 호출
             attendviewModel.getStatusAttend()
-            // 데이터가 업데이트되면 반영하도록 구독 설정
-            attendviewModel.$getStatusData
-                .receive(on: DispatchQueue.main)
-                .sink { statusData in
-                            self.attendstatusData = statusData
-                        }
-                .store(in: &attendviewModel.cancellables)
+            code = attendviewModel.getStatusData?.code
+            
+            if let isAttend = attendviewModel.getStatusData?.status{
+                if isAttend == true{
+                    showDisabled = true
+                }
+            }
+        }
+        .onDisappear {
+            timer?.cancel()
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
         .navigationDestination(isPresented: $showAttendRecordView) {
-            AttendRecordView(code: attendstatusData?.code ?? 0, remainingTime: $remainingTime, attendstatusData: attendstatusData)
+            
+            AttendRecordView(remainingTime: $attendviewModel.remainingTime, code: code)
+            
         }
-        .navigationDestination(isPresented: $showAttendanceCertificationView) {
-            AttendanceCertificationView(remainingTime: $remainingTime, studyId: $studyId, session: $session)
-        }
+        
     }
 }
 

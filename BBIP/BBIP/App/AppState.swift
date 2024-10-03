@@ -24,6 +24,7 @@ enum MainHomeViewDestination: Hashable {
     case SIS            // study into setup
     case completeSIS    // sis endPoing
     case createCode(studyId: String, session: Int)
+    case entercode
     case calendar
     // MARK: - StudyHome
     case setLocation(prevLocation:String, studyId: String, session: Int)

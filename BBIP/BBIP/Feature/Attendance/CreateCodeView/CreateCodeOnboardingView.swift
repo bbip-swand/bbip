@@ -50,6 +50,8 @@ struct CreateCodeOnboardingView: View{
                 .padding(.bottom,97)
             
             MainButton(text: "코드 생성하기", enable: true){
+                print("studyId: \(studyId)")
+                print("session: \(session)")
                 viewModel.createCode(attendVO: .init(studyId: studyId, session: session, code: 0))  // 코드 생성 호출
             }
             .padding(.bottom,22)
