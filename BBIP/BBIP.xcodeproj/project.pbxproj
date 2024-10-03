@@ -114,6 +114,8 @@
 		C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22772CA412B900988748 /* JoinStudyCustomAlert.swift */; };
 		C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */; };
 		C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */; };
+		C6E62E9A2CAE84CA000A8580 /* Complete_CreateStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = C6E62E982CAE84CA000A8580 /* Complete_CreateStudy.json */; };
+		C6E62E9B2CAE84CA000A8580 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = C6E62E992CAE84CA000A8580 /* Splash.json */; };
 		C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */; };
 		C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */; };
 		C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F074362CA6D98D00A37501 /* Error+Extension.swift */; };
@@ -309,6 +311,8 @@
 		C6CF22772CA412B900988748 /* JoinStudyCustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyCustomAlert.swift; sourceTree = "<group>"; };
 		C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyUseCase.swift; sourceTree = "<group>"; };
 		C6CF227C2CA46ECE00988748 /* JoinStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStudyViewModel.swift; sourceTree = "<group>"; };
+		C6E62E982CAE84CA000A8580 /* Complete_CreateStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_CreateStudy.json; sourceTree = "<group>"; };
+		C6E62E992CAE84CA000A8580 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		C6F074322CA6CF0A00A37501 /* FullStudyInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStudyInfoDTO.swift; sourceTree = "<group>"; };
 		C6F074342CA6CFE700A37501 /* StudyMemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyMemberDTO.swift; sourceTree = "<group>"; };
 		C6F074362CA6D98D00A37501 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -849,6 +853,8 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				C6E62E982CAE84CA000A8580 /* Complete_CreateStudy.json */,
+				C6E62E992CAE84CA000A8580 /* Splash.json */,
 				082539592C9C6F4100632582 /* CodeCheck.json */,
 				C6FA559F2C8EDF0700E537D7 /* BBIPLoading.json */,
 			);
@@ -1240,9 +1246,11 @@
 			files = (
 				C695BE0F2C64CD59009DEC3C /* Launch Screen.storyboard in Resources */,
 				0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */,
+				C6E62E9A2CAE84CA000A8580 /* Complete_CreateStudy.json in Resources */,
 				C62780E02C8886F000065F98 /* GoogleService-Info.plist in Resources */,
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
+				C6E62E9B2CAE84CA000A8580 /* Splash.json in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
@@ -1576,6 +1584,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BBIP/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Photo Library Usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1619,6 +1628,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BBIP/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Photo Library Usage";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

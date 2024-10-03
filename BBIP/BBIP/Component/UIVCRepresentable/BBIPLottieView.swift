@@ -32,7 +32,7 @@ struct BBIPLottieView: UIViewRepresentable {
         
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         lottieView.loopMode = loopMode
-        lottieView.contentMode = .scaleAspectFit
+        lottieView.contentMode = .scaleAspectFill
         lottieView.play(completion: { finished in
             if finished {
                 completion?()
