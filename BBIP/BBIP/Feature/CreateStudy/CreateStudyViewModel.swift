@@ -163,13 +163,15 @@ class CreateStudyViewModel: ObservableObject {
 
     // 시작일로부터 주차 계산해 마감일 계산
     func calculateDeadline() {
-        let addedWeeks = Calendar.current.date(
+        if let addedWeeks = Calendar.current.date(
             byAdding: .weekOfYear,
             value: weekCount,
             to: startDate
-        )
-        deadlineDate = addedWeeks
-        periodIsSelected = true
+        ) {
+            // 1일을 뺌 (7N - 1)
+            deadlineDate = Calendar.current.date(byAdding: .day, value: -1, to: addedWeeks)
+            periodIsSelected = true
+        }
     }
     
     func initalWeeklyContentData() {

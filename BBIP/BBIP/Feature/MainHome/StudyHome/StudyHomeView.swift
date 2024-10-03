@@ -133,7 +133,7 @@ struct StudyHomeView: View {
                 .frame(height: 320)
                 .overlay(alignment: .bottomTrailing) {
                     Image("boxing_ring")
-                        .offset(y: 37)
+                        .offset(y: 43.5)
                         .zIndex(1)
                 }
             VStack(spacing: 0) {
