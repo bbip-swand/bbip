@@ -20,6 +20,7 @@ struct StudyHomeView: View {
     
     init(studyId: String) {
         self.studyId = studyId
+        print(studyId)
     }
     
     var body: some View {
@@ -52,9 +53,10 @@ struct StudyHomeView: View {
                         
                         studyMember
                     }
-                    .frame(height: 1100)
+                    .padding(.bottom, 150)
                     
-                    Spacer()
+//                    Spacer()
+//                        .frame(minHeight: 200)
                 }
             }
             .padding(.top, 42)
@@ -219,6 +221,7 @@ struct StudyHomeView: View {
                         Text(vo.location ?? "미정")
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
+                            .frame(maxWidth: 150, maxHeight: 20, alignment: .leading)
                     } else {
                         Text("place")
                             .foregroundStyle(.gray2)
