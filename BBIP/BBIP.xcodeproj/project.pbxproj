@@ -48,6 +48,7 @@
 		C62781142C8C94A300065F98 /* CreateUserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */; };
 		C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781152C8C951100065F98 /* UserInfoVO.swift */; };
 		C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781172C8C98B000065F98 /* UserInfoMapper.swift */; };
+		C63B34842CAE98F300461AE9 /* Complete_SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = C63B34832CAE98F300461AE9 /* Complete_SignIn.json */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -246,6 +247,7 @@
 		C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserInfoUseCase.swift; sourceTree = "<group>"; };
 		C62781152C8C951100065F98 /* UserInfoVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVO.swift; sourceTree = "<group>"; };
 		C62781172C8C98B000065F98 /* UserInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMapper.swift; sourceTree = "<group>"; };
+		C63B34832CAE98F300461AE9 /* Complete_SignIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_SignIn.json; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -853,6 +855,7 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				C63B34832CAE98F300461AE9 /* Complete_SignIn.json */,
 				C6E62E982CAE84CA000A8580 /* Complete_CreateStudy.json */,
 				C6E62E992CAE84CA000A8580 /* Splash.json */,
 				082539592C9C6F4100632582 /* CodeCheck.json */,
@@ -1253,6 +1256,7 @@
 				C6E62E9B2CAE84CA000A8580 /* Splash.json in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C61A47292C6686760016986D /* WantedSans-Medium.otf in Resources */,
+				C63B34842CAE98F300461AE9 /* Complete_SignIn.json in Resources */,
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
 				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
 				C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */,

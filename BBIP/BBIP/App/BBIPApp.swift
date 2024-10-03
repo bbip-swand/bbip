@@ -32,7 +32,7 @@ struct SplashView: View {
     private let userStateManager = UserStateManager()
     
     var body: some View {
-        BBIPLottieView(assetName: "Splash", loopMode: .playOnce) {
+        BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce) {
             userStateManager.updateIsExistingUser {
                 withAnimation { showSplash = false }
             }

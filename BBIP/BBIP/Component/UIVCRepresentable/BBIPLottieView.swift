@@ -12,17 +12,20 @@ import Lottie
 struct BBIPLottieView: UIViewRepresentable {
     private let asset: String
     private let loopMode: LottieLoopMode
+    private let contentMode: UIView.ContentMode
     private let withBackground: Bool
     private var completion: (() -> Void)?
     
     init(
         assetName: String,
         withBackground: Bool = false,
+        contentMode: UIView.ContentMode = .scaleAspectFit,
         loopMode: LottieLoopMode = .repeat(.infinity),
         completion: (() -> Void)? = nil
     ) {
         self.asset = assetName
         self.withBackground = withBackground
+        self.contentMode = contentMode
         self.loopMode = loopMode
         self.completion = completion
     }
@@ -32,7 +35,7 @@ struct BBIPLottieView: UIViewRepresentable {
         
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         lottieView.loopMode = loopMode
-        lottieView.contentMode = .scaleAspectFill
+        lottieView.contentMode = contentMode
         lottieView.play(completion: { finished in
             if finished {
                 completion?()
