@@ -42,7 +42,7 @@ struct FullStudyInfoMapper {
             studyPeriodString: periodString,
             daysOfWeek: dto.daysOfWeek,
             studyTimes: studyTimes,
-            studyDescription: dto.studyDescription,
+            studyDescription: dto.studyDescription.isEmpty ? "-" : dto.studyDescription,
             studyContents: dto.studyContents,
             studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,

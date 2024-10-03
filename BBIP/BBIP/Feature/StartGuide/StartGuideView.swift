@@ -12,7 +12,7 @@ struct StartGuideView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Spacer().frame(height: 92)
+            Spacer()
             
             Group {
                 Text("스터디 팀장이 되어")

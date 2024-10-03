@@ -15,6 +15,7 @@ struct SISWeeklyContentView: View {
         VStack(spacing: 0) {
             EditPeriodButton(viewModel: viewModel) {
                 viewModel.goEditPeriod = true
+                hideKeyboard()
             }
             .padding(.top, 166)
             .padding(.horizontal, 20)

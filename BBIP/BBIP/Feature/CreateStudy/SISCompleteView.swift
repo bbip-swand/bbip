@@ -57,11 +57,12 @@ struct SISCompleteView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 20)
             
-            BBIPLottieView(assetName: "BBIPLoading") // 임시
+            BBIPLottieView(assetName: "Complete_CreateStudy", contentMode: .scaleAspectFill)
+                .frame(width: UIScreen.main.bounds.width - 50)
             
             ShareLink(item: URL(string: "https://bbip.site/join-study/\(studyInviteCode)")!) {
                 Text("공유하기")
-                    .font(.bbip(.body1_b16))
+                    .font(.bbip(.button1_m20))
                     .foregroundColor(.mainWhite)
                     .frame(width: UIScreen.main.bounds.width - 40, height: 56)
                     .background(RoundedRectangle(cornerRadius: 12).fill(Color.primary3))
@@ -81,4 +82,8 @@ struct SISCompleteView: View {
             }
         }
     }
+}
+
+#Preview {
+    SISCompleteView(studyId: "", studyInviteCode: "")
 }
