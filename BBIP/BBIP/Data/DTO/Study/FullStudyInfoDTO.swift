@@ -19,7 +19,6 @@ struct FullStudyInfoDTO: Decodable {
     let studyContents: [String]
     let studyMembers: [StudyMemberDTO]
     let pendingDate: String
-    let pendingDateIndex: Int
     let studyInviteCode: String
     let session: Int
     let isManager: Bool

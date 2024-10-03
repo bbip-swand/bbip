@@ -21,10 +21,6 @@ struct FullStudyInfoMapper {
             " ~ " +
             dto.studyEndDate.replacingOccurrences(of: "-", with: ".")
         }
-        var pendingDateTimeStr: String {
-            let times = dto.studyTimes[dto.pendingDateIndex]
-            return "\(times.startTime) ~ \(times.endTime)"
-        }
         
         let studyMembers = dto.studyMembers.map { member in
             let interests = member.interest.compactMap { StudyCategory.from(int: Int($0)!) }
@@ -50,7 +46,6 @@ struct FullStudyInfoMapper {
             studyContents: dto.studyContents,
             studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,
-            pendingDateTimeStr: pendingDateTimeStr, 
             inviteCode: dto.studyInviteCode,
             session: dto.session,
             isManager: dto.isManager,

@@ -194,8 +194,8 @@ struct StudyHomeView: View {
                         .renderingMode(.template)
                         .foregroundColor(.gray6)
                     
-                    if let dateStr = viewModel.fullStudyInfo?.pendingDateStr {
-                        Text(dateStr + " / " + viewModel.fullStudyInfo!.pendingDateTimeStr)
+                    if let pendingDateStr = viewModel.fullStudyInfo?.pendingDateStr {
+                        Text(pendingDateStr)
                             .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray2)
                     } else {
