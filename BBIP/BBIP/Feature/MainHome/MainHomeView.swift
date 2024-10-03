@@ -50,6 +50,13 @@ struct MainHomeView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
             .edgesIgnoringSafeArea(.bottom)
         }
+        .overlay {
+            JoinStudyCompleteAlert()
+                .onTapGesture {
+                    appState.showJoinSuccessAlert = false
+                }
+                .opacity(appState.showJoinSuccessAlert ? 1 : 0)
+        }
         .onAppear {
             print("mainHome OnAppear")
             appState.setLightMode()

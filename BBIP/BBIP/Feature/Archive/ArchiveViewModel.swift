@@ -10,6 +10,7 @@ import Combine
 
 final class ArchiveViewModel: ObservableObject {
     @Published var archivedFileInfo: [ArchivedFileInfoVO]?
+    @Published var isLoading: Bool = false
     
     private let getArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -32,6 +33,7 @@ final class ArchiveViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.archivedFileInfo = response
+                self.isLoading = false
             }
             .store(in: &cancellables)
     }

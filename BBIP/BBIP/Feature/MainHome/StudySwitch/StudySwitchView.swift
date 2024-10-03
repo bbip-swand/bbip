@@ -66,6 +66,7 @@ private struct StudySwitchViewCell: View {
                         Text(study.studyName)
                             .font(.bbip(.body1_sb16))
                             .foregroundStyle(.mainBlack)
+                            .frame(height: 20)
                         
                         CapsuleView(title: study.category.rawValue, type: .fill)
                         

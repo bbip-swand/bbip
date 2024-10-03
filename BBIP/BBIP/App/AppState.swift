@@ -37,6 +37,7 @@ final class AppStateManager: ObservableObject {
     // DeepLink
     @Published var showDeepLinkAlert: Bool = false
     @Published var showJoinFailAlert: Bool = false
+    @Published var showJoinSuccessAlert: Bool = false
     @Published var deepLinkAlertData: DeepLinkAlertData?
     
     func setDeepLinkAlertData(_ data: DeepLinkAlertData) {
