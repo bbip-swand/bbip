@@ -26,13 +26,13 @@ struct StudyDetailView: View {
 private extension StudyDetailView {
     // MARK: - Study Image Section
     var studyImageSection: some View {
-        VStack {
+        VStack(spacing: 0) {
             LoadableImageView(imageUrl: vo.studyImageURL, size: 124)
-                .padding(.top, 30)
-                .padding(.bottom, 30)
                 .overlay(
                     Circle().stroke(Color.gray5, lineWidth: 1)
                 )
+                .padding(.top, 30)
+                .padding(.bottom, 20)
             
             Text(vo.studyName)
                 .font(.bbip(family: .Bold, size: 20))

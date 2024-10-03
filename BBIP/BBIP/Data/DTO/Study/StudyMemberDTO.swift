@@ -11,6 +11,6 @@ import Foundation
 struct StudyMemberDTO: Decodable {
     let memberName: String
     let isManager: Bool
-    let memberImageURL: String?
+    let memberImageUrl: String?
     let interest: [String]
 }

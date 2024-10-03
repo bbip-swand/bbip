@@ -9,6 +9,7 @@ import Foundation
 
 struct FullStudyInfoMapper {
     func toVO(dto: FullStudyInfoDTO) -> FullStudyInfoVO {
+        print(dto.studyMembers)
         let studyTimes = dto.studyTimes.map { dtoTime in
             return StudyTime(
                 startTime: dtoTime.startTime,
@@ -27,7 +28,7 @@ struct FullStudyInfoMapper {
             return StudyMemberVO(
                 memberName: member.memberName,
                 isManager: member.isManager,
-                memberImageURL: member.memberImageURL,
+                memberImageURL: member.memberImageUrl,
                 interest: interests
             )
         }
@@ -42,7 +43,7 @@ struct FullStudyInfoMapper {
             studyPeriodString: periodString,
             daysOfWeek: dto.daysOfWeek,
             studyTimes: studyTimes,
-            studyDescription: dto.studyDescription,
+            studyDescription: dto.studyDescription.isEmpty ? "-" : dto.studyDescription,
             studyContents: dto.studyContents,
             studyMembers: studyMembers,
             pendingDateStr: dto.pendingDate,
