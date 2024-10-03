@@ -46,6 +46,7 @@ struct JoinStudyCustomAlert: View {
                 Text(inviteData.studyName)
                     .font(.bbip(.title3_sb20))
                     .padding(.vertical, 10)
+                    .foregroundStyle(.mainBlack)
                 
                 Text(inviteData.studyDescription ?? "")
                     .font(.bbip(.caption2_m12))
