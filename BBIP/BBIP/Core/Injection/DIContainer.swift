@@ -39,6 +39,9 @@ class DIContainer {
     private lazy var createUserInfoUseCase: CreateUserInfoUseCaseProtocol = CreateUserInfoUseCase(
         repository: userRepository
     )
+    private lazy var getProfileUseCase: GetProfileUseCaseProtocol = GetProfileUseCase(
+        repository: userRepository
+    )
     
     
     // MARK: - Study
@@ -64,6 +67,9 @@ class DIContainer {
         repository: studyRepository
     )
     private lazy var getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol = GetOngoingStudyInfoUseCase(
+        repository: studyRepository
+    )
+    private lazy var getFinishedStudyInfoUseCase: GetFinishedStudyInfoUseCaseProtocol = GetFinishedStudyInfoUseCase(
         repository: studyRepository
     )
     private lazy var joinStudyUseCase: JoinStudyUseCaseProtocol = JoinStudyUseCase(
@@ -162,6 +168,14 @@ class DIContainer {
         return PostingDetailViewModel(
             getPostDetailUseCase: getPostDetailUseCase,
             createCommentUseCase: createCommentUseCase
+        )
+    }
+    
+    func makeMyPageViewModel() -> MyPageViewModel {
+        return MyPageViewModel(
+            getProfileUseCase: getProfileUseCase,
+            getFinishedStudyUseCase: getFinishedStudyInfoUseCase,
+            getOngoingStudyUseCase: getOngoingStudyInfoUseCase
         )
     }
 }
