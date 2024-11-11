@@ -88,14 +88,14 @@ struct MypageView: View {
             }
         }
         .navigationDestination(isPresented: $showDetail) {
-            //            ProfileDetailView(
-            //                userName: mypageviewModel.profileData?.userName ?? "티니핑",
-            //                profileImageUrl: mypageviewModel.profileData?.profileImageUrl ?? "profile_default",
-            //                parsedArea: mypageviewModel.parsedArea,
-            //                birthYear: mypageviewModel.profileData?.birthYear ?? "0000",
-            //                parsedOccupation: mypageviewModel.parsedOccupation,
-            //                parsedInterests: mypageviewModel.parsedInterests
-            //            )
+            ProfileDetailView(
+                userName: myPageViewModel.profileData?.userName ?? "Unknown",
+                profileImageUrl: myPageViewModel.profileData?.profileImageUrl ?? "profile_default",
+                parsedArea: myPageViewModel.parsedArea,
+                parsedOccupation: myPageViewModel.parsedOccupation,
+                parsedInterests: myPageViewModel.parsedInterests,
+                birthYear: myPageViewModel.profileData?.birthYear ?? "0000"
+            )
         }
     }
     

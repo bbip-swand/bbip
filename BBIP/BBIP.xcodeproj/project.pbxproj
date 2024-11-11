@@ -56,6 +56,7 @@
 		C64C28252CE220A700131B70 /* OccupationCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28242CE220A700131B70 /* OccupationCategory.swift */; };
 		C64C28272CE23ACC00131B70 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28262CE23AAC00131B70 /* SettingListView.swift */; };
 		C64C28292CE244E800131B70 /* MyStudyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28282CE244E800131B70 /* MyStudyStatusView.swift */; };
+		C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C282A2CE2511900131B70 /* ProfileDetailView.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -261,6 +262,7 @@
 		C64C28242CE220A700131B70 /* OccupationCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccupationCategory.swift; sourceTree = "<group>"; };
 		C64C28262CE23AAC00131B70 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		C64C28282CE244E800131B70 /* MyStudyStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudyStatusView.swift; sourceTree = "<group>"; };
+		C64C282A2CE2511900131B70 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -1124,9 +1126,10 @@
 		C6FA559A2C8EC00B00E537D7 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				C64C28282CE244E800131B70 /* MyStudyStatusView.swift */,
 				C6FA559D2C8EC02600E537D7 /* MypageView.swift */,
+				C64C282A2CE2511900131B70 /* ProfileDetailView.swift */,
 				C64C28202CE21C7200131B70 /* MyPageVIewModel.swift */,
+				C64C28282CE244E800131B70 /* MyStudyStatusView.swift */,
 				C64C28262CE23AAC00131B70 /* SettingListView.swift */,
 			);
 			path = Mypage;
@@ -1313,6 +1316,7 @@
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */,
+				C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */,
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
