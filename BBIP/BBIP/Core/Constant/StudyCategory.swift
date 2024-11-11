@@ -32,5 +32,3 @@ extension StudyCategory {
         return allCategories[int]
     }
 }
-
-

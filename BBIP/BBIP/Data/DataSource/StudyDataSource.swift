@@ -30,6 +30,14 @@ final class StudyDataSource {
             .eraseToAnyPublisher()
     }
     
+    /// 진행 완료된 스터디 정보 조회
+    func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoDTO], Error>{
+        provider.requestPublisher(.getFinishedStudy)
+            .map(\.data)
+            .decode(type: [StudyInfoDTO].self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+    
     /// 스터디 단건 조회 (StudyHome)
     func getFullStudyInfo(studyId: String) -> AnyPublisher<FullStudyInfoDTO, Error> {
         provider.requestPublisher(.getFullStudyInfo(studyId: studyId))

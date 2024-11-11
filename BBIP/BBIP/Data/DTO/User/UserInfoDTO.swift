@@ -10,7 +10,7 @@ import Foundation
 // 유저 정보 생성 및 수정 시 사용
 struct UserInfoDTO: Codable {
     let name: String
-    let profileImageUrl: String
+    let profileImageUrl: String?
     let location: [String]
     let interest: [Int]
     let occupation: Int

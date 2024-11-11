@@ -50,6 +50,13 @@
 		C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62781172C8C98B000065F98 /* UserInfoMapper.swift */; };
 		C63B34842CAE98F300461AE9 /* Complete_SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = C63B34832CAE98F300461AE9 /* Complete_SignIn.json */; };
 		C63B34862CAEDA0E00461AE9 /* Complete_CreateStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = C63B34852CAEDA0E00461AE9 /* Complete_CreateStudy.json */; };
+		C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C281E2CE2177D00131B70 /* GetProfileUseCase.swift */; };
+		C64C28212CE21C7600131B70 /* MyPageVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28202CE21C7200131B70 /* MyPageVIewModel.swift */; };
+		C64C28232CE21DF800131B70 /* GetFinishedStudyInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28222CE21DE400131B70 /* GetFinishedStudyInfoUseCase.swift */; };
+		C64C28252CE220A700131B70 /* OccupationCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28242CE220A700131B70 /* OccupationCategory.swift */; };
+		C64C28272CE23ACC00131B70 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28262CE23AAC00131B70 /* SettingListView.swift */; };
+		C64C28292CE244E800131B70 /* MyStudyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28282CE244E800131B70 /* MyStudyStatusView.swift */; };
+		C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C282A2CE2511900131B70 /* ProfileDetailView.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -249,6 +256,13 @@
 		C62781172C8C98B000065F98 /* UserInfoMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoMapper.swift; sourceTree = "<group>"; };
 		C63B34832CAE98F300461AE9 /* Complete_SignIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Complete_SignIn.json; sourceTree = "<group>"; };
 		C63B34852CAEDA0E00461AE9 /* Complete_CreateStudy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Complete_CreateStudy.json; path = ../../../../../../KHU_Dev/BBIP/lottie/Complete_CreateStudy.json; sourceTree = "<group>"; };
+		C64C281E2CE2177D00131B70 /* GetProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileUseCase.swift; sourceTree = "<group>"; };
+		C64C28202CE21C7200131B70 /* MyPageVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVIewModel.swift; sourceTree = "<group>"; };
+		C64C28222CE21DE400131B70 /* GetFinishedStudyInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFinishedStudyInfoUseCase.swift; sourceTree = "<group>"; };
+		C64C28242CE220A700131B70 /* OccupationCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccupationCategory.swift; sourceTree = "<group>"; };
+		C64C28262CE23AAC00131B70 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
+		C64C28282CE244E800131B70 /* MyStudyStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudyStatusView.swift; sourceTree = "<group>"; };
+		C64C282A2CE2511900131B70 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -473,6 +487,7 @@
 			children = (
 				C627810D2C8C843B00065F98 /* SignUpUseCase.swift */,
 				C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */,
+				C64C281E2CE2177D00131B70 /* GetProfileUseCase.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -480,6 +495,7 @@
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				C64C28242CE220A700131B70 /* OccupationCategory.swift */,
 				C668E9C92C7ABC2D00298B52 /* AreaData.swift */,
 				C61EDBB02C68B17C00E8FF83 /* OnboardingContent.swift */,
 				C6A10AD52C6C8D2E001AA74E /* UserInfoSetupContent.swift */,
@@ -562,6 +578,7 @@
 				C69445972C9D595D003945CC /* CreateStudyUseCase.swift */,
 				C6F7008F2CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift */,
 				C6CF226F2CA2F32F00988748 /* GetOngoingStudyUseCase.swift */,
+				C64C28222CE21DE400131B70 /* GetFinishedStudyInfoUseCase.swift */,
 				C6CF22792CA462A400988748 /* JoinStudyUseCase.swift */,
 				C6F0743C2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift */,
 			);
@@ -1110,6 +1127,10 @@
 			isa = PBXGroup;
 			children = (
 				C6FA559D2C8EC02600E537D7 /* MypageView.swift */,
+				C64C282A2CE2511900131B70 /* ProfileDetailView.swift */,
+				C64C28202CE21C7200131B70 /* MyPageVIewModel.swift */,
+				C64C28282CE244E800131B70 /* MyStudyStatusView.swift */,
+				C64C28262CE23AAC00131B70 /* SettingListView.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1286,6 +1307,7 @@
 				082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */,
 				C695CB5C2C7F061A00BB3952 /* UISJobView.swift in Sources */,
 				C6FA55932C8DCD5E00E537D7 /* BBIPLottieView.swift in Sources */,
+				C64C28232CE21DF800131B70 /* GetFinishedStudyInfoUseCase.swift in Sources */,
 				C6934BBB2C81FD61006AA652 /* TabViewProgressBar.swift in Sources */,
 				C695BE0D2C64CCA0009DEC3C /* AppDelegate.swift in Sources */,
 				C6F074332CA6CF0A00A37501 /* FullStudyInfoDTO.swift in Sources */,
@@ -1294,6 +1316,7 @@
 				C6A10AD02C6C7D5E001AA74E /* UserInfoSetupView.swift in Sources */,
 				C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */,
 				C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */,
+				C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */,
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
@@ -1306,6 +1329,7 @@
 				C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */,
 				C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
+				C64C28252CE220A700131B70 /* OccupationCategory.swift in Sources */,
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
@@ -1371,6 +1395,7 @@
 				C6F98F522CAAB90800F0D8E8 /* QuickLookPreview.swift in Sources */,
 				C6CF226A2CA2EF3300988748 /* CreateStudyDTO.swift in Sources */,
 				C695CB662C7F160200BB3952 /* UserDefaultManager.swift in Sources */,
+				C64C28292CE244E800131B70 /* MyStudyStatusView.swift in Sources */,
 				C6F98F302CA94E1B00F0D8E8 /* StudyDetailView.swift in Sources */,
 				C6934BC82C8220E1006AA652 /* SISDescriptionView.swift in Sources */,
 				C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */,
@@ -1382,6 +1407,7 @@
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
 				C6F2DA182CAACF50002023B6 /* PostingDetailViewModel.swift in Sources */,
 				C6F2DA162CAACF1E002023B6 /* PostingDetailView.swift in Sources */,
+				C64C28272CE23ACC00131B70 /* SettingListView.swift in Sources */,
 				C6A10AD22C6C86BE001AA74E /* BackButtonStyle.swift in Sources */,
 				C62781162C8C951100065F98 /* UserInfoVO.swift in Sources */,
 				C6F074412CA717CC00A37501 /* StudyProgressBar.swift in Sources */,
@@ -1394,6 +1420,7 @@
 				C6F98F482CAA941800F0D8E8 /* ArchiveRepository.swift in Sources */,
 				C695CB4E2C7DE9E000BB3952 /* UISInterestView.swift in Sources */,
 				C6F2DA502CADD57A002023B6 /* JoinStudyCompleteAlert.swift in Sources */,
+				C64C28212CE21C7600131B70 /* MyPageVIewModel.swift in Sources */,
 				C6934BB92C81FC6A006AA652 /* Binding+Extension.swift in Sources */,
 				C6989E9B2C9AB2C6003CE4D5 /* TimePickerView.swift in Sources */,
 				C6934BC42C8220A6006AA652 /* SISPeriodView.swift in Sources */,
@@ -1406,6 +1433,7 @@
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
+				C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,
@@ -1581,7 +1609,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1625,7 +1653,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
