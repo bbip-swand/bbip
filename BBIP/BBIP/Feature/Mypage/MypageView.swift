@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct MypageView: View {
-    @StateObject var mypageviewModel = DIContainer.shared.makeMyPageViewModel()
+    @StateObject var myPageViewModel = DIContainer.shared.makeMyPageViewModel()
     @State private var showDetail: Bool = false
-    @State private var showStudying: Bool = false
-    @State private var showStudied: Bool = false
-    //    @State private var settinglist = SettingList.MypageSettingList()
-    @State var ongoingStudyCount: Int = 0
-    @State var finishedStudyCount: Int = 0
+    @State private var showStudyStatus: Bool = false
+    @State private var selectedIndex: Int = 0 // For MyStudyStatusView, 1 = Ongoing, 2 = Finished
+    
+    @State private var settinglistVO = ServiceInfo.MypageSettingList()
     
     init() {
         setNavigationBarAppearance()
     }
     
     private func loadData() {
-        mypageviewModel.getProfileInfo()
-        mypageviewModel.getOngoingStudyInfo()
-        mypageviewModel.getFinishedStudyInfo()
+        myPageViewModel.getProfileInfo()
+        myPageViewModel.getOngoingStudyInfo()
+        myPageViewModel.getFinishedStudyInfo()
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            if mypageviewModel.profileData == nil {
+            if myPageViewModel.profileData == nil {
                 ProgressView()
             } else {
                 VStack(spacing: 0) {
                     MypageProfileView.padding(.top, 26)
                     MypageStudyView.padding(.top, 24)
-                    MypageSettingListView
+                    ServiceInfoListView.padding(.top, 28)
                 }
                 .containerRelativeFrame([.horizontal, .vertical])
                 .background(.gray1)
@@ -51,18 +50,18 @@ struct MypageView: View {
     // MARK: MypageProfileView
     var MypageProfileView: some View {
         HStack(spacing: 0) {
-            LoadableImageView(imageUrl: mypageviewModel.profileData?.profileImageUrl, size: 80)
+            LoadableImageView(imageUrl: myPageViewModel.profileData?.profileImageUrl, size: 80)
                 .radiusBorder(cornerRadius: 40)
                 .padding(.leading, 26)
             
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    Text(mypageviewModel.profileData?.userName ?? "이름없음" )
+                    Text(myPageViewModel.profileData?.userName ?? "이름없음" )
                         .font(.bbip(.title3_m20))
                         .foregroundStyle(.mainBlack)
                         .padding(.trailing, 17)
                     
-                    Text(mypageviewModel.parsedOccupation)
+                    Text(myPageViewModel.parsedOccupation)
                         .font(.bbip(.caption3_r12))
                         .foregroundStyle(.gray7)
                     
@@ -72,7 +71,7 @@ struct MypageView: View {
                 .padding(.bottom, 10)
                 
                 HStack(spacing: 5) {
-                    ForEach(mypageviewModel.parsedInterests.prefix(3), id: \.self) { interest in
+                    ForEach(myPageViewModel.parsedInterests.prefix(3), id: \.self) { interest in
                         CapsuleView(title: interest, type: .normal)
                     }
                     Spacer()
@@ -100,7 +99,7 @@ struct MypageView: View {
         }
     }
     
-    //MARK: MypageStudyView
+    // MARK: MypageStudyView
     var MypageStudyView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -115,30 +114,33 @@ struct MypageView: View {
             HStack(spacing: 11) {
                 MyStudyDetailButton(
                     title: "진행 중인 스터디",
-                    count: mypageviewModel.ongoingStudyCount,
+                    count: myPageViewModel.ongoingStudyCount,
                     iconName: "mypage_punch",
-                    action: { showStudying = true }
+                    action: {
+                        selectedIndex = 0
+                        showStudyStatus = true
+                    }
                 )
                 
                 MyStudyDetailButton(
                     title: "종료된 스터디",
-                    count: finishedStudyCount,
+                    count: myPageViewModel.finishedStudyCount,
                     iconName: "mypage_belt",
-                    action: { showStudied = true }
+                    action: {
+                        selectedIndex = 1
+                        showStudyStatus = true
+                    }
                 )
             }
             .padding(.top, 12)
         }
-        .navigationDestination(isPresented: $showStudying) {
-            //            StudySetView(initialIndex: 0, viewModel: mypageviewModel) // 진행 중인 스터디로 초기화
-        }
-        .navigationDestination(isPresented: $showStudied) {
-            //            StudySetView(initialIndex: 1, viewModel: mypageviewModel) // 종료된 스터디로 초기화
+        .navigationDestination(isPresented: $showStudyStatus) {
+            MyStudyStatusView(initialIndex: selectedIndex, viewModel: myPageViewModel)
         }
     }
     
-    //MARK: MypageSettingListView
-    var MypageSettingListView: some View {
+    // MARK: ServiceInfoListView
+    var ServiceInfoListView: some View {
         ZStack {
             Rectangle()
                 .foregroundColor(.mainWhite)
@@ -149,13 +151,11 @@ struct MypageView: View {
                 Spacer()
                     .frame(height: 28)
                 
-                //                ForEach(settinglist) { settinglist in
-                //                    SettingListRow(settinglist: settinglist)
-                //                        .listRowInsets(EdgeInsets())
-                //                        .padding(.leading,28)
-                //                        .padding(.trailing,28)
-                //                        .padding(.bottom,15)
-                //                }
+                ForEach(settinglistVO) { data in
+                    ServiceInfoListRow(data: data)
+                        .padding(.horizontal, 28)
+                        .padding(.bottom, 20)
+                }
                 
                 Spacer()
                 
@@ -164,6 +164,7 @@ struct MypageView: View {
                     .foregroundStyle(.gray5)
                     .padding(.bottom, 64)
             }
+            .padding(.top, 28)
         }
     }
 }
