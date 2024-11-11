@@ -90,9 +90,9 @@ struct UserHomeView: View {
                 Text("게시판")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
-                    .opacity(0) // hide swand
                 
                 Spacer()
+                
                 Button {
                     //
                 } label: {
@@ -103,6 +103,7 @@ struct UserHomeView: View {
                     }
                     .foregroundStyle(.gray7)
                 }
+                .opacity(0) // NEXT VERSION
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 12)
