@@ -18,4 +18,15 @@ struct UserInfoMapper {
             birthYear: Int(vo.birthYear)!
         )
     }
+    
+    func toVO(dto: UserInfoDTO) -> UserInfoVO {
+        return UserInfoVO(
+            selectedArea: dto.location ,
+            selectedInterestIndex: dto.interest,
+            userName: dto.name,
+            profileImageUrl: dto.profileImageUrl ?? "profile_default",
+            birthYear: String(dto.birthYear),
+            selectedJobIndex: [dto.occupation]
+        )
+    }
 }

@@ -13,6 +13,7 @@ protocol UserRepository {
     func resign() -> AnyPublisher<Bool, Error>
     func createUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
     func updateUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error>
+    func getUserProfile() -> AnyPublisher<UserInfoVO, Error>
 }
 
 final class UserRepositoryImpl: UserRepository {
@@ -46,6 +47,14 @@ final class UserRepositoryImpl: UserRepository {
     func updateUserInfo(userInfoVO: UserInfoVO) -> AnyPublisher<Bool, Error> {
         let dto = mapper.toDTO(vo: userInfoVO)
         return dataSource.updateUserInfo(userInfoDTO: dto)
+            .eraseToAnyPublisher()
+    }
+    
+    func getUserProfile() -> AnyPublisher<UserInfoVO, Error> {
+        dataSource.getUserInfo()
+            .map { dto in
+                return self.mapper.toVO(dto: dto)
+            }
             .eraseToAnyPublisher()
     }
 }

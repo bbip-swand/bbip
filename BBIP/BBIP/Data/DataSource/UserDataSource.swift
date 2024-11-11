@@ -105,4 +105,23 @@ final class UserDataSource {
             }
         }
     }
+    
+    func getUserInfo() -> AnyPublisher<UserInfoDTO, Error>{
+        provider.requestPublisher(.getUserInfo)
+            .tryMap { response in
+                guard (200...299).contains(response.statusCode) else {
+                    throw NSError(
+                        domain: "Get UserInfo Error",
+                        code: response.statusCode,
+                        userInfo: [NSLocalizedDescriptionKey: "[UserDataSource] getUserInfo() failed with status code \(response.statusCode)"]
+                    )
+                }
+                return response.data
+            }
+            .decode(type: UserInfoDTO.self, decoder: JSONDecoder())
+            .mapError { error in
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
 }
