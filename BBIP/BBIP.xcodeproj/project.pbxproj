@@ -64,6 +64,7 @@
 		C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284B2CE37D3800131B70 /* CalendarRepository.swift */; };
 		C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */; };
 		C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28502CE37E2800131B70 /* ScheduleVO.swift */; };
+		C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -277,6 +278,7 @@
 		C64C284B2CE37D3800131B70 /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
 		C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMapper.swift; sourceTree = "<group>"; };
 		C64C28502CE37E2800131B70 /* ScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVO.swift; sourceTree = "<group>"; };
+		C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlyScheduleUseCase.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -518,6 +520,14 @@
 			isa = PBXGroup;
 			children = (
 				C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C64C28522CE3813200131B70 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -876,6 +886,7 @@
 				C69445962C9D590C003945CC /* Study */,
 				C6F700842CA158B6000CCC80 /* Posting */,
 				C6F98F4E2CAA98FD00F0D8E8 /* Archive */,
+				C64C28522CE3813200131B70 /* Calendar */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1442,6 +1453,7 @@
 				C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */,
 				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
+				C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */,
 				C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,

@@ -8,9 +8,16 @@
 import Foundation
 import SwiftUI
 
-class CalendarViewModel: ObservableObject {
+final class CalendarViewModel: ObservableObject {
     @Published var vo: [CalendarVO] = mock()
     @Published var selectedDate: Date = Date()
+    
+    private let getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol
+    
+    init(getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol) {
+        self.getMonthlyScheduleUseCase = getMonthlyScheduleUseCase
+    }
+    
 }
 
 extension CalendarViewModel {
