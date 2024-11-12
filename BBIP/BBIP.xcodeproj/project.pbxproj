@@ -1212,10 +1212,10 @@
 		C6FA55FD2C9545CF00E537D7 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */,
 				C6FA56052C956D3700E537D7 /* CalendarView.swift */,
 				C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */,
 				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
+				C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";

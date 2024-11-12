@@ -11,7 +11,6 @@ import Combine
 final class CalendarViewModel: ObservableObject {
     @Published var vo: [ScheduleVO]?
     @Published var selectedDate: Date = Date()
-    @Published var isLoading: Bool = false
     
     private let getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -21,8 +20,6 @@ final class CalendarViewModel: ObservableObject {
     }
     
     func fetch(date: Date) {
-        isLoading = true
-        
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
@@ -37,8 +34,7 @@ final class CalendarViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
-                self.vo = response
-                self.isLoading = false
+                withAnimation { self.vo = response }
             }
             .store(in: &cancellables)
     }

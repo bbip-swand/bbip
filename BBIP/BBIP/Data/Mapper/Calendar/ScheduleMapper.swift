@@ -33,8 +33,8 @@ struct ScheduleMapper {
             scheduleId: dto.scheduleId,
             studyName: dto.studyName,
             title: dto.title,
-            startDate: formattedStartTime,
-            endDate: formattedEndTime,
+            startDate: dto.startDate,
+            endDate: dto.endDate,
             showAtHome: dto.isHomeView,
             iconIndex: dto.icon,
             formattedDateRange: formattedDateRange
