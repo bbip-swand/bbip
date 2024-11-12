@@ -61,6 +61,9 @@
 		C64C28462CE3779200131B70 /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28452CE3778E00131B70 /* ScheduleDTO.swift */; };
 		C64C28482CE3787100131B70 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28472CE3787100131B70 /* CalendarAPI.swift */; };
 		C64C284A2CE37C1F00131B70 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28492CE37C1700131B70 /* CalendarDataSource.swift */; };
+		C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284B2CE37D3800131B70 /* CalendarRepository.swift */; };
+		C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */; };
+		C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28502CE37E2800131B70 /* ScheduleVO.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -271,6 +274,9 @@
 		C64C28452CE3778E00131B70 /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
 		C64C28472CE3787100131B70 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
 		C64C28492CE37C1700131B70 /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
+		C64C284B2CE37D3800131B70 /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
+		C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMapper.swift; sourceTree = "<group>"; };
+		C64C28502CE37E2800131B70 /* ScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVO.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -508,6 +514,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		C64C284D2CE37DCE00131B70 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +584,7 @@
 		C69445942C9D5616003945CC /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				C64C28502CE37E2800131B70 /* ScheduleVO.swift */,
 				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
 			);
 			path = Calendar;
@@ -796,6 +811,7 @@
 				C6F700812C9EF8A3000CCC80 /* Study */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
 				C6F98F492CAA948100F0D8E8 /* Archive */,
+				C64C284D2CE37DCE00131B70 /* Calendar */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -838,6 +854,7 @@
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
 				C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */,
+				C64C284B2CE37D3800131B70 /* CalendarRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1455,6 +1472,7 @@
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
+				C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
@@ -1485,8 +1503,10 @@
 				C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */,
 				C64C284A2CE37C1F00131B70 /* CalendarDataSource.swift in Sources */,
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
+				C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
+				C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
