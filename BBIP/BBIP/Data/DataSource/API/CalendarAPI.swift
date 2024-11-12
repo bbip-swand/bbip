@@ -18,11 +18,11 @@ enum CalendarAPI {
 extension CalendarAPI: BaseAPI {
     var path: String {
         switch self {
-        case .getMonthlySchedule(let year, let month):
-            return "/calendar/list/\(year)/\(month)"
-        case .getUpcommingSchedule:
+        case .getMonthlySchedule:
+            return "/calendar/list/"
+        case .getUpcommingSchedule:	
             return "/calendar/schedule/upcoming"
-        case .createSchedule(let dto):
+        case .createSchedule:
             return "calendar/create"
         case .updateschedule(let dto):
             return "/calendar/update/\(dto.scheduleId)"
@@ -42,7 +42,10 @@ extension CalendarAPI: BaseAPI {
     
     var task: Moya.Task {
         switch self {
-        case .getMonthlySchedule, .getUpcommingSchedule:
+        case .getMonthlySchedule(let year, let month):
+            let param = ["year": year, "month": month]
+            return .requestParameters(parameters: param, encoding: URLEncoding.queryString)
+        case .getUpcommingSchedule:
             return .requestPlain
         case .createSchedule(let dto):
             return .requestJSONEncodable(dto)

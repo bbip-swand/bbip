@@ -11,10 +11,10 @@ import FSCalendar
 struct BBIPCalendar: UIViewRepresentable {
     @Binding var currentMonthTitle: String
     @Binding var selectedDate: Date
-    @State var vo: [CalendarVO]
+    @State var vo: [ScheduleVO]
     
     init(
-        vo: [CalendarVO],
+        vo: [ScheduleVO],
         selectedDate: Binding<Date>,
         currentMonthTitle: Binding<String>
     ) {
@@ -97,7 +97,7 @@ struct BBIPCalendar: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-            return parent.vo.first(where: { Calendar.current.isDate($0.date, inSameDayAs: date) })?.events.count ?? 0
+            return 0
         }
         
         func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {

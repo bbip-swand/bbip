@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @ObservedObject var viewModel: CalendarViewModel = .init()
+    @ObservedObject var viewModel: CalendarViewModel = DIContainer.shared.makeCalendarViewModel()
     
     @State var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
@@ -37,7 +37,7 @@ struct CalendarView: View {
             
             
             BBIPCalendar(
-                vo: viewModel.vo,
+                vo: viewModel.vo ?? [],
                 selectedDate: $selectedDate,
                 currentMonthTitle: $currentMonthTitle
             )
@@ -50,6 +50,9 @@ struct CalendarView: View {
                 .frame(height: 1)
             
             SelectedDateEventView(selectedDate: selectedDate)
+        }
+        .onAppear {
+            viewModel.fetch(date: selectedDate)
         }
     }
 }
