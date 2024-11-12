@@ -115,6 +115,18 @@ class DIContainer {
         repository: archiveRepository
     )
     
+    // MARK: - Calendar
+    private let calendarDataSource = CalendarDataSource()
+    private let scheduleMapper = ScheduleMapper()
+    private lazy var calendarRepository: CalendarRepository = CalendarRepositoryImpl(
+        dataSource: calendarDataSource,
+        mapper: scheduleMapper
+    )
+    
+    private lazy var getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol = GetMonthlyScheduleUseCase(
+        repository: calendarRepository
+    )
+    
     // MARK: - ViewModels
     // Login
     func makeLoginViewModel() -> LoginViewModel {
@@ -171,11 +183,19 @@ class DIContainer {
         )
     }
     
+    // MyPage
     func makeMyPageViewModel() -> MyPageViewModel {
         return MyPageViewModel(
             getProfileUseCase: getProfileUseCase,
             getFinishedStudyUseCase: getFinishedStudyInfoUseCase,
             getOngoingStudyUseCase: getOngoingStudyInfoUseCase
+        )
+    }
+    
+    // Calendar
+    func makeCalendarViewModel() -> CalendarViewModel {
+        return CalendarViewModel(
+            getMonthlyScheduleUseCase: getMonthlyScheduleUseCase
         )
     }
 }

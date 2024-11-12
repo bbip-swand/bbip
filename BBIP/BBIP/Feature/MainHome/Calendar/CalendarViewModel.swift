@@ -5,34 +5,37 @@
 //  Created by 이건우 on 9/14/24.
 //
 
-import Foundation
 import SwiftUI
+import Combine 
 
-class CalendarViewModel: ObservableObject {
-    @Published var vo: [CalendarVO] = mock()
+final class CalendarViewModel: ObservableObject {
+    @Published var vo: [ScheduleVO]?
     @Published var selectedDate: Date = Date()
-}
-
-extension CalendarViewModel {
-    static func mock() -> [CalendarVO] {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+    
+    private let getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol) {
+        self.getMonthlyScheduleUseCase = getMonthlyScheduleUseCase
+    }
+    
+    func fetch(date: Date) {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
         
-        return [
-            CalendarVO(date: formatter.date(from: "2024/09/11")!, events: [
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00"),
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00")
-            ]),
-            CalendarVO(date: formatter.date(from: "2024/09/15")!, events: [
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00"),
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00")
-            ]),
-            CalendarVO(date: formatter.date(from: "2024/09/20")!, events: [
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00")
-            ]),
-            CalendarVO(date: formatter.date(from: "2024/10/03")!, events: [
-                CalendarVO.StudyEvent(studyName: "포트폴리오 스터디", eventTitle: "포트폴리오 2차 제출", eventTime: "09:00")
-            ]),
-        ]
+        getMonthlyScheduleUseCase.excute(year: year, month: month)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                withAnimation { self.vo = response }
+            }
+            .store(in: &cancellables)
     }
 }

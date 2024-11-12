@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftUIIntrospect
 
 struct CalendarView: View {
-    @ObservedObject var viewModel: CalendarViewModel = .init()
+    @ObservedObject var viewModel: CalendarViewModel = DIContainer.shared.makeCalendarViewModel()
     
     @State var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
@@ -35,12 +36,21 @@ struct CalendarView: View {
             }
             .frame(height: 42)
             
-            
-            BBIPCalendar(
-                vo: viewModel.vo,
-                selectedDate: $selectedDate,
-                currentMonthTitle: $currentMonthTitle
-            )
+            Group {
+                if let scheduleData = viewModel.vo {
+                    BBIPCalendar(
+                        vo: scheduleData,
+                        selectedDate: $selectedDate,
+                        currentMonthTitle: $currentMonthTitle
+                    )
+                } else {
+                    BBIPCalendar(
+                        vo: [],
+                        selectedDate: $selectedDate,
+                        currentMonthTitle: $currentMonthTitle
+                    )
+                }
+            }
             .frame(height: 280)
             .padding(.vertical, 18)
             
@@ -49,13 +59,23 @@ struct CalendarView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 1)
             
-            SelectedDateEventView(selectedDate: selectedDate)
+            Group {
+                if let scheduleData = viewModel.vo {
+                    SelectedDateEventView(selectedDate: selectedDate, schedules: scheduleData)
+                } else {
+                    SelectedDateEventView(selectedDate: selectedDate, schedules: [])
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetch(date: selectedDate)
         }
     }
 }
 
 private struct SelectedDateEventView: View {
     var selectedDate: Date
+    var schedules: [ScheduleVO]
     
     private func formattedDate(for date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -71,11 +91,20 @@ private struct SelectedDateEventView: View {
         return weekdayFormatter.string(from: date)
     }
     
+    private func schedulesForSelectedDate() -> [ScheduleVO] {
+        let calendar = Calendar.current
+        return schedules.filter { schedule in
+            return calendar.isDate(selectedDate, inSameDayAs: schedule.startDate) ||
+            calendar.isDate(selectedDate, inSameDayAs: schedule.endDate) ||
+            (selectedDate >= schedule.startDate && selectedDate <= schedule.endDate)
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.gray1
             
-            VStack {
+            VStack(spacing: 12) {
                 HStack(spacing: 5) {
                     Text(formattedDate(for: selectedDate))
                         .monospacedDigit()
@@ -87,11 +116,28 @@ private struct SelectedDateEventView: View {
                     Spacer()
                 }
                 .foregroundStyle(.black)
+                .padding(.horizontal, 20)
                 
+                if schedulesForSelectedDate().isEmpty {
+                    Spacer()
+                    Image("calendar_placeholder")
+                        .padding(.bottom, 92) // tabbar size
+                } else {
+                    ScrollView {
+                        VStack(spacing: 8) {
+                            ForEach(schedulesForSelectedDate(), id: \.scheduleId) { schedule in
+                                ScheduleCardView(schedule: schedule)
+                            }
+                            .padding(.horizontal, 20)
+                        }
+                        .padding(.bottom, 100)
+                    }
+                    .bbipShadow1()
+                    .scrollIndicators(.never)
+                }
                 Spacer()
             }
             .padding(.vertical, 22)
-            .padding(.horizontal, 20)
         }
     }
 }

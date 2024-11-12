@@ -57,6 +57,14 @@
 		C64C28272CE23ACC00131B70 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28262CE23AAC00131B70 /* SettingListView.swift */; };
 		C64C28292CE244E800131B70 /* MyStudyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28282CE244E800131B70 /* MyStudyStatusView.swift */; };
 		C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C282A2CE2511900131B70 /* ProfileDetailView.swift */; };
+		C64C282D2CE2EEEC00131B70 /* ScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */; };
+		C64C28462CE3779200131B70 /* ScheduleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28452CE3778E00131B70 /* ScheduleDTO.swift */; };
+		C64C28482CE3787100131B70 /* CalendarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28472CE3787100131B70 /* CalendarAPI.swift */; };
+		C64C284A2CE37C1F00131B70 /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28492CE37C1700131B70 /* CalendarDataSource.swift */; };
+		C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284B2CE37D3800131B70 /* CalendarRepository.swift */; };
+		C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */; };
+		C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28502CE37E2800131B70 /* ScheduleVO.swift */; };
+		C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -263,6 +271,14 @@
 		C64C28262CE23AAC00131B70 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		C64C28282CE244E800131B70 /* MyStudyStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudyStatusView.swift; sourceTree = "<group>"; };
 		C64C282A2CE2511900131B70 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCardView.swift; sourceTree = "<group>"; };
+		C64C28452CE3778E00131B70 /* ScheduleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDTO.swift; sourceTree = "<group>"; };
+		C64C28472CE3787100131B70 /* CalendarAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarAPI.swift; sourceTree = "<group>"; };
+		C64C28492CE37C1700131B70 /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
+		C64C284B2CE37D3800131B70 /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
+		C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMapper.swift; sourceTree = "<group>"; };
+		C64C28502CE37E2800131B70 /* ScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVO.swift; sourceTree = "<group>"; };
+		C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlyScheduleUseCase.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -492,6 +508,30 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		C64C28442CE3776C00131B70 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C64C28452CE3778E00131B70 /* ScheduleDTO.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C64C284D2CE37DCE00131B70 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C64C28522CE3813200131B70 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +594,7 @@
 		C69445942C9D5616003945CC /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				C64C28502CE37E2800131B70 /* ScheduleVO.swift */,
 				C6FA56032C9552C900E537D7 /* CalendarVO.swift */,
 			);
 			path = Calendar;
@@ -767,6 +808,7 @@
 				C694459B2C9D5B19003945CC /* Study */,
 				C6F700712C9ED0A9000CCC80 /* Posting */,
 				C6F98F402CAA929900F0D8E8 /* Archive */,
+				C64C28442CE3776C00131B70 /* Calendar */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -779,6 +821,7 @@
 				C6F700812C9EF8A3000CCC80 /* Study */,
 				C6F700822C9EF8B3000CCC80 /* Posting */,
 				C6F98F492CAA948100F0D8E8 /* Archive */,
+				C64C284D2CE37DCE00131B70 /* Calendar */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -792,6 +835,7 @@
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
 				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
 				C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */,
+				C64C28492CE37C1700131B70 /* CalendarDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -807,6 +851,7 @@
 				C69445992C9D5A3E003945CC /* StudyAPI.swift */,
 				C6F7006F2C9EC248000CCC80 /* PostingAPI.swift */,
 				C6F98F432CAA930800F0D8E8 /* ArchiveAPI.swift */,
+				C64C28472CE3787100131B70 /* CalendarAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -819,6 +864,7 @@
 				C69445A22C9D655C003945CC /* StudyRepository.swift */,
 				C6F700782C9EEF30000CCC80 /* PostingRepository.swift */,
 				C6F98F472CAA941800F0D8E8 /* ArchiveRepository.swift */,
+				C64C284B2CE37D3800131B70 /* CalendarRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -840,6 +886,7 @@
 				C69445962C9D590C003945CC /* Study */,
 				C6F700842CA158B6000CCC80 /* Posting */,
 				C6F98F4E2CAA98FD00F0D8E8 /* Archive */,
+				C64C28522CE3813200131B70 /* Calendar */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1168,6 +1215,7 @@
 				C6FA56052C956D3700E537D7 /* CalendarView.swift */,
 				C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */,
 				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
+				C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1327,6 +1375,7 @@
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
 				C6F98F3C2CAA82DA00F0D8E8 /* DocumentPicker.swift in Sources */,
 				C6F98F3A2CAA7F5F00F0D8E8 /* ArchivedFileCardView.swift in Sources */,
+				C64C28462CE3779200131B70 /* ScheduleDTO.swift in Sources */,
 				C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
 				C64C28252CE220A700131B70 /* OccupationCategory.swift in Sources */,
@@ -1343,6 +1392,7 @@
 				C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */,
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
 				C62780EC2C8AEE4800065F98 /* RequestLoginUseCase.swift in Sources */,
+				C64C282D2CE2EEEC00131B70 /* ScheduleCardView.swift in Sources */,
 				C6F2DA372CABD477002023B6 /* RoundedCorner.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C69445982C9D595D003945CC /* CreateStudyUseCase.swift in Sources */,
@@ -1357,6 +1407,7 @@
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */,
 				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,
+				C64C28482CE3787100131B70 /* CalendarAPI.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C6F2DA3B2CAC25AD002023B6 /* SetStudyLocationView.swift in Sources */,
 				C62781052C8C786900065F98 /* SignUpDTO.swift in Sources */,
@@ -1402,6 +1453,7 @@
 				C6F700792C9EEF31000CCC80 /* PostingRepository.swift in Sources */,
 				C6FA560B2C95968900E537D7 /* StudySwitchView.swift in Sources */,
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
+				C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */,
 				C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
@@ -1432,6 +1484,7 @@
 				C695CB522C7DEB4600BB3952 /* GridButtonContent.swift in Sources */,
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
+				C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
@@ -1460,9 +1513,12 @@
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
 				C6FA55BC2C902F3200E537D7 /* BulletnboardCell.swift in Sources */,
 				C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */,
+				C64C284A2CE37C1F00131B70 /* CalendarDataSource.swift in Sources */,
 				C62780CF2C87119D00065F98 /* BBIPShadowStyle.swift in Sources */,
+				C64C284C2CE37D3F00131B70 /* CalendarRepository.swift in Sources */,
 				C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */,
 				C62780F62C8AFE2000065F98 /* LoginDTO.swift in Sources */,
+				C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */,
 				C6934BCA2C822121006AA652 /* SISWeeklyContentView.swift in Sources */,
 				C6934BB72C81F8D0006AA652 /* CreateStudyContent.swift in Sources */,
 				C6CF22722CA3237400988748 /* LoadableImageView.swift in Sources */,
@@ -1541,6 +1597,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Debug;
 		};
@@ -1596,7 +1654,9 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Release;
 		};
@@ -1609,7 +1669,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1653,7 +1713,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;

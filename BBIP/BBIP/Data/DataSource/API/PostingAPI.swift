@@ -47,9 +47,8 @@ extension PostingAPI: BaseAPI {
             return .requestPlain
         case .createPosting(let dto):
             return .requestJSONEncodable(dto)
-        case .createComment(let postingId, let content):
+        case .createComment(_, let content):
             let param = ["content": content]
-            print(param)
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
