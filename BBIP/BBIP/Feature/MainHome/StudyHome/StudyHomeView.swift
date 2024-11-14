@@ -456,7 +456,7 @@ extension StudyHomeView {
             dateFormatter.locale = Locale(identifier: "ko_KR")
             dateFormatter.dateFormat = "M월 d일 (E)"
             
-            if var parsedDate = dateFormatter.date(from: truncatedString) {
+            if let parsedDate = dateFormatter.date(from: truncatedString) {
                 // 현재 연도 설정
                 let currentYear = Calendar.current.component(.year, from: Date())
                 var dateComponents = Calendar.current.dateComponents([.month, .day], from: parsedDate)

@@ -33,7 +33,7 @@ struct MainHomeView: View {
                 case .studyHome(let studyId, _):
                     StudyHomeView(studyId: studyId)
                 case .calendar:
-                    CalendarView()
+                    CalendarView(ongoingStudyData: viewModel.ongoingStudyData)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
