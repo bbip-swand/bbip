@@ -13,7 +13,6 @@ struct CalendarView: View {
     @State private var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
     @State private var showAddScheduleView: Bool = false
-    @State private var refreshTrigger = UUID()
     
     private var ongoingStudyData: [StudyInfoVO]?
     

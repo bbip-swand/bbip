@@ -60,9 +60,7 @@ class AddScheculeViewModel: ObservableObject {
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
-            } receiveValue: { [weak self] response in
-                guard let self = self else { return }
-                print(response)
+            } receiveValue: {
             }
             .store(in: &cancellables)
     }
