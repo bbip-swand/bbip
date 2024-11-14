@@ -10,15 +10,21 @@ import SwiftUIIntrospect
 
 struct CalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel = DIContainer.shared.makeCalendarViewModel()
-    
-    @State var selectedDate = Date()
+    @State private var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
+    @State private var showAddScheduleView: Bool = false
+    
+    private var ongoingStudyData: [StudyInfoVO]?
     
     private func updateCurrentMonthTitle() {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy.MM"
         currentMonthTitle = formatter.string(from: Date())
+    }
+    
+    init(ongoingStudyData: [StudyInfoVO]? = nil) {
+        self.ongoingStudyData = ongoingStudyData
     }
     
     var body: some View {
@@ -33,6 +39,13 @@ struct CalendarView: View {
                     .padding(.leading, 20)
                 
                 Spacer()
+                
+                Button {
+                    showAddScheduleView = true
+                } label: {
+                    Image("calendar_add")
+                        .padding(.trailing, 28)
+                }
             }
             .frame(height: 42)
             
@@ -66,6 +79,9 @@ struct CalendarView: View {
                     SelectedDateEventView(selectedDate: selectedDate, schedules: [])
                 }
             }
+        }
+        .navigationDestination(isPresented: $showAddScheduleView) {
+            AddScheduleView(ongoingStudyData: ongoingStudyData)
         }
         .onAppear {
             viewModel.fetch(date: selectedDate)

@@ -11,7 +11,7 @@ struct ScheduleMapper {
     func toVO(dto: ScheduleDTO) -> ScheduleVO {
         let timeFormatter = DateFormatter.customFormatter(format: "HH:mm")
         let dateTimeFormatter = DateFormatter.customFormatter(format: "MM/dd HH:mm")
-        let dateFormatter = DateFormatter.customFormatter(format: "MM/dd")
+        _ = DateFormatter.customFormatter(format: "MM/dd")
         
         // 포맷팅된 startDate와 endDate
         let formattedStartTime = timeFormatter.string(from: dto.startDate)

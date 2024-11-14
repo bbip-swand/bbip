@@ -65,6 +65,8 @@
 		C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */; };
 		C64C28512CE37E2C00131B70 /* ScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28502CE37E2800131B70 /* ScheduleVO.swift */; };
 		C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */; };
+		C64C28582CE5ED9500131B70 /* AddScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28572CE5ED8E00131B70 /* AddScheduleView.swift */; };
+		C64C285A2CE5FE3900131B70 /* AddScheculeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28592CE5FE3300131B70 /* AddScheculeViewModel.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -279,6 +281,8 @@
 		C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleMapper.swift; sourceTree = "<group>"; };
 		C64C28502CE37E2800131B70 /* ScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVO.swift; sourceTree = "<group>"; };
 		C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlyScheduleUseCase.swift; sourceTree = "<group>"; };
+		C64C28572CE5ED8E00131B70 /* AddScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleView.swift; sourceTree = "<group>"; };
+		C64C28592CE5FE3300131B70 /* AddScheculeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheculeViewModel.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -1212,9 +1216,11 @@
 		C6FA55FD2C9545CF00E537D7 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
 				C6FA56052C956D3700E537D7 /* CalendarView.swift */,
 				C6FA56012C95510F00E537D7 /* CalendarViewModel.swift */,
-				C6FA55FB2C9545C600E537D7 /* BBIPCalendar.swift */,
+				C64C28572CE5ED8E00131B70 /* AddScheduleView.swift */,
+				C64C28592CE5FE3300131B70 /* AddScheculeViewModel.swift */,
 				C64C282C2CE2EEEC00131B70 /* ScheduleCardView.swift */,
 			);
 			path = Calendar;
@@ -1366,10 +1372,12 @@
 				C6F98F422CAA92B300F0D8E8 /* ArchivedFileInfoDTO.swift in Sources */,
 				C64C282B2CE2511900131B70 /* ProfileDetailView.swift in Sources */,
 				C6CF22762CA40FCF00988748 /* DeepLinkAlertData.swift in Sources */,
+				C64C28582CE5ED9500131B70 /* AddScheduleView.swift in Sources */,
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
+				C64C285A2CE5FE3900131B70 /* AddScheculeViewModel.swift in Sources */,
 				C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */,
 				C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */,
 				C6934BB52C8083D5006AA652 /* StudyInfoSetupView.swift in Sources */,
