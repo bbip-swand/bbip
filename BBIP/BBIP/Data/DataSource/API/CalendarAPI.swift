@@ -11,8 +11,8 @@ import Moya
 enum CalendarAPI {
     case getMonthlySchedule(year: Int, month: Int)
     case getUpcommingSchedule                       // for main view
-    case createSchedule(dto: ScheduleDTO)
-    case updateschedule(dto: ScheduleDTO)
+    case createSchedule(dto: ScheduleFormDTO)
+    case updateschedule(dto: ScheduleFormDTO)
 }
 
 extension CalendarAPI: BaseAPI {
@@ -25,7 +25,7 @@ extension CalendarAPI: BaseAPI {
         case .createSchedule:
             return "calendar/create"
         case .updateschedule(let dto):
-            return "/calendar/update/\(dto.scheduleId)"
+            return "/calendar/update/\(dto.title)"
         }
     }
     

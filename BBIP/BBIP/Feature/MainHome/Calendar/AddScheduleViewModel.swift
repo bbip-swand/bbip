@@ -23,12 +23,8 @@ class AddScheculeViewModel: ObservableObject {
     
     @Published var canAddSchedule: Bool = false
     
+    private let createScheduleUseCase: CreateScheduleUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        setupCanAddScheduleBinding()
-        setupShowHomeBinding()
-    }
     
     /// 서버 형식, ISO 8601 format
     var startDateTimeString: String? {
@@ -38,6 +34,37 @@ class AddScheculeViewModel: ObservableObject {
     /// 서버 형식, ISO 8601 format
     var endDateTimeString: String? {
         formattedDateString(from: combineDateAndTime(date: endDate, time: endTime))
+    }
+    
+    init(createScheduleUseCase: CreateScheduleUseCaseProtocol) {
+        self.createScheduleUseCase = createScheduleUseCase
+        
+        setupCanAddScheduleBinding()
+        setupShowHomeBinding()
+    }
+    
+    func addSchedule() {
+        let dto = ScheduleFormDTO(
+            studyId: selectedStudyId,
+            title: scheduleTitle,
+            startDate: startDateTimeString!,
+            endDate: endDateTimeString!,
+            isHomeView: showHome,
+            icon: iconType
+        )
+        createScheduleUseCase.execute(dto: dto)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                print(response)
+            }
+            .store(in: &cancellables)
     }
     
     /// 완료 버튼 활성화 여부 sink

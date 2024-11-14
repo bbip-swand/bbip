@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddScheduleView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: AddScheculeViewModel = .init()
+    @StateObject var viewModel: AddScheculeViewModel = DIContainer.shared.makeAddScheduleViewModel()
     
     @State private var showStartDatePicker: Bool = false
     @State private var showEndDatePicker: Bool = false
@@ -76,7 +76,8 @@ extension AddScheduleView {
             Spacer()
             
             Button {
-                // add schedule
+                viewModel.addSchedule()
+                dismiss()
             } label: {
                 Text("완료")
                     .font(.bbip(.button2_m16))

@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftUIIntrospect
 
 struct CalendarView: View {
-    @ObservedObject var viewModel: CalendarViewModel = DIContainer.shared.makeCalendarViewModel()
+    @StateObject var viewModel: CalendarViewModel = DIContainer.shared.makeCalendarViewModel()
     @State private var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
     @State private var showAddScheduleView: Bool = false
+    @State private var refreshTrigger = UUID()
     
     private var ongoingStudyData: [StudyInfoVO]?
     

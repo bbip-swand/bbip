@@ -126,6 +126,12 @@ class DIContainer {
     private lazy var getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol = GetMonthlyScheduleUseCase(
         repository: calendarRepository
     )
+    private lazy var createScheduleUseCase: CreateScheduleUseCaseProtocol = CreateScheduleUseCase(
+        repository: calendarRepository
+    )
+    private lazy var updateScheduleUseCase: UpdateScheduleUseCaseProtocol = UpdateScheduleUseCase(
+        repository: calendarRepository
+    )
     
     // MARK: - ViewModels
     // Login
@@ -196,6 +202,12 @@ class DIContainer {
     func makeCalendarViewModel() -> CalendarViewModel {
         return CalendarViewModel(
             getMonthlyScheduleUseCase: getMonthlyScheduleUseCase
+        )
+    }
+    
+    func makeAddScheduleViewModel() -> AddScheculeViewModel {
+        return AddScheculeViewModel(
+            createScheduleUseCase: createScheduleUseCase
         )
     }
 }

@@ -67,6 +67,9 @@
 		C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */; };
 		C64C28582CE5ED9500131B70 /* AddScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C28572CE5ED8E00131B70 /* AddScheduleView.swift */; };
 		C64C285C2CE61D3300131B70 /* AddScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64C285B2CE61D2C00131B70 /* AddScheduleViewModel.swift */; };
+		C6516E452CE62F7000FCFAF2 /* ScheduleFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E442CE62F6E00FCFAF2 /* ScheduleFormDTO.swift */; };
+		C6516E472CE6311900FCFAF2 /* CreateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */; };
+		C6516E4B2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -283,6 +286,9 @@
 		C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlyScheduleUseCase.swift; sourceTree = "<group>"; };
 		C64C28572CE5ED8E00131B70 /* AddScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleView.swift; sourceTree = "<group>"; };
 		C64C285B2CE61D2C00131B70 /* AddScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewModel.swift; sourceTree = "<group>"; };
+		C6516E442CE62F6E00FCFAF2 /* ScheduleFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormDTO.swift; sourceTree = "<group>"; };
+		C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleUseCase.swift; sourceTree = "<group>"; };
+		C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateScheduleUseCase.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -516,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C28452CE3778E00131B70 /* ScheduleDTO.swift */,
+				C6516E442CE62F6E00FCFAF2 /* ScheduleFormDTO.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -532,6 +539,8 @@
 			isa = PBXGroup;
 			children = (
 				C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */,
+				C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */,
+				C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1405,10 +1414,12 @@
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C69445982C9D595D003945CC /* CreateStudyUseCase.swift in Sources */,
 				C69445922C9D55DF003945CC /* CreateStudyInfoVO.swift in Sources */,
+				C6516E472CE6311900FCFAF2 /* CreateScheduleUseCase.swift in Sources */,
 				C6934BC62C8220B2006AA652 /* SISProfileView.swift in Sources */,
 				C695CB6A2C7F209000BB3952 /* LoginViewModel.swift in Sources */,
 				08469F492C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift in Sources */,
 				C6F7008E2CA27235000CCC80 /* CurrentWeekStudyInfoMapper.swift in Sources */,
+				C6516E4B2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift in Sources */,
 				C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
@@ -1495,6 +1506,7 @@
 				C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */,
+				C6516E452CE62F7000FCFAF2 /* ScheduleFormDTO.swift in Sources */,
 				C6CF227D2CA46ECE00988748 /* JoinStudyViewModel.swift in Sources */,
 				C62781092C8C814000065F98 /* UserRepository.swift in Sources */,
 				C6CF226C2CA2EFAB00988748 /* StudyTime.swift in Sources */,

@@ -10,6 +10,8 @@ import Combine
 
 protocol CalendarRepository {
     func getMonthlySchedule(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error>
+    func createSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
+    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error>
 }
 
 final class CalendarRepositoryImpl: CalendarRepository {
@@ -23,7 +25,7 @@ final class CalendarRepositoryImpl: CalendarRepository {
         self.dataSource = dataSource
         self.mapper = mapper
     }
-    
+
     func getMonthlySchedule(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error> {
         dataSource.getMonthlySchedule(year: year, month: month)
             .map { [weak self] dto in
@@ -31,5 +33,13 @@ final class CalendarRepositoryImpl: CalendarRepository {
                 return dto.map { self.mapper.toVO(dto: $0) }
             }
             .eraseToAnyPublisher()
+    }
+
+    func createSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        dataSource.createSchedule(dto: dto)
+    }
+
+    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        dataSource.updateSchedule(dto: dto)
     }
 }

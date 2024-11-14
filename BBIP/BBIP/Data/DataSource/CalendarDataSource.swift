@@ -23,4 +23,24 @@ final class CalendarDataSource {
             }
             .eraseToAnyPublisher()
     }
+    
+    func createSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        provider.requestPublisher(.createSchedule(dto: dto))
+            .map { _ in () } // 성공 시 Void 반환
+            .mapError { error in
+                print("Error: \(error.localizedDescription)")
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
+        provider.requestPublisher(.updateschedule(dto: dto))
+            .map { _ in () } // 성공 시 Void 반환
+            .mapError { error in
+                print("Error: \(error.localizedDescription)")
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
 }
