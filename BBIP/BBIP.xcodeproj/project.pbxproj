@@ -70,6 +70,10 @@
 		C6516E452CE62F7000FCFAF2 /* ScheduleFormDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E442CE62F6E00FCFAF2 /* ScheduleFormDTO.swift */; };
 		C6516E472CE6311900FCFAF2 /* CreateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */; };
 		C6516E4B2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */; };
+		C6516EA92CEB30FF00FCFAF2 /* AttendanceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EA82CEB30FF00FCFAF2 /* AttendanceAPI.swift */; };
+		C6516EB02CEB329B00FCFAF2 /* AttendanceStatusDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EAF2CEB329500FCFAF2 /* AttendanceStatusDTO.swift */; };
+		C6516EB22CEB32B800FCFAF2 /* AttendanceRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EB12CEB32B200FCFAF2 /* AttendanceRecordDTO.swift */; };
+		C6516EB42CEB34CE00FCFAF2 /* AttendanceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EB32CEB34C500FCFAF2 /* AttendanceDataSource.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -289,6 +293,10 @@
 		C6516E442CE62F6E00FCFAF2 /* ScheduleFormDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormDTO.swift; sourceTree = "<group>"; };
 		C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleUseCase.swift; sourceTree = "<group>"; };
 		C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateScheduleUseCase.swift; sourceTree = "<group>"; };
+		C6516EA82CEB30FF00FCFAF2 /* AttendanceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceAPI.swift; sourceTree = "<group>"; };
+		C6516EAF2CEB329500FCFAF2 /* AttendanceStatusDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceStatusDTO.swift; sourceTree = "<group>"; };
+		C6516EB12CEB32B200FCFAF2 /* AttendanceRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRecordDTO.swift; sourceTree = "<group>"; };
+		C6516EB32CEB34C500FCFAF2 /* AttendanceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDataSource.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -543,6 +551,15 @@
 				C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C6516EAA2CEB31BF00FCFAF2 /* Attendance */ = {
+			isa = PBXGroup;
+			children = (
+				C6516EAF2CEB329500FCFAF2 /* AttendanceStatusDTO.swift */,
+				C6516EB12CEB32B200FCFAF2 /* AttendanceRecordDTO.swift */,
+			);
+			path = Attendance;
 			sourceTree = "<group>";
 		};
 		C668E9CB2C7ABC5B00298B52 /* Constant */ = {
@@ -816,6 +833,7 @@
 		C695BDFA2C64CB7F009DEC3C /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				C6516EAA2CEB31BF00FCFAF2 /* Attendance */,
 				C62780EE2C8AF2E800065F98 /* Login */,
 				C62781012C8C76A000065F98 /* User */,
 				C694459B2C9D5B19003945CC /* Study */,
@@ -845,6 +863,7 @@
 				C695BDFD2C64CB97009DEC3C /* API */,
 				C62780F72C8AFF0C00065F98 /* AuthDataSource.swift */,
 				C62781062C8C798F00065F98 /* UserDataSource.swift */,
+				C6516EB32CEB34C500FCFAF2 /* AttendanceDataSource.swift */,
 				C694459E2C9D6003003945CC /* StudyDataSource.swift */,
 				C6F700742C9ED526000CCC80 /* PostingDataSource.swift */,
 				C6F98F452CAA93AF00F0D8E8 /* ArchiveDataSource.swift */,
@@ -856,6 +875,7 @@
 		C695BDFD2C64CB97009DEC3C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C6516EA82CEB30FF00FCFAF2 /* AttendanceAPI.swift */,
 				C6F3017E2C8DB42F00D7FC59 /* AccessTokenPlugin.swift */,
 				C6F3017C2C8D9A0C00D7FC59 /* AWSS3API.swift */,
 				C62780F32C8AFBC600065F98 /* BaseAPI.swift */,
@@ -1385,6 +1405,7 @@
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
+				C6516EB02CEB329B00FCFAF2 /* AttendanceStatusDTO.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */,
 				C6CF227A2CA462A400988748 /* JoinStudyUseCase.swift in Sources */,
@@ -1448,6 +1469,7 @@
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
+				C6516EB42CEB34CE00FCFAF2 /* AttendanceDataSource.swift in Sources */,
 				C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */,
 				C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
@@ -1474,6 +1496,7 @@
 				C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */,
 				C64C28542CE3814000131B70 /* GetMonthlyScheduleUseCase.swift in Sources */,
 				C6F7008A2CA1C282000CCC80 /* JSONDecoder+Extension.swift in Sources */,
+				C6516EB22CEB32B800FCFAF2 /* AttendanceRecordDTO.swift in Sources */,
 				C695CB622C7F13E600BB3952 /* LoginView.swift in Sources */,
 				C62781072C8C798F00065F98 /* UserDataSource.swift in Sources */,
 				C6F2DA182CAACF50002023B6 /* PostingDetailViewModel.swift in Sources */,
@@ -1531,6 +1554,7 @@
 				C694459F2C9D6003003945CC /* StudyDataSource.swift in Sources */,
 				C6B00C152C590A0E009AC4E2 /* BBIPApp.swift in Sources */,
 				C62780FA2C8B099900065F98 /* AuthRepository.swift in Sources */,
+				C6516EA92CEB30FF00FCFAF2 /* AttendanceAPI.swift in Sources */,
 				C6FA55BC2C902F3200E537D7 /* BulletnboardCell.swift in Sources */,
 				C6CF22702CA2F32F00988748 /* GetOngoingStudyUseCase.swift in Sources */,
 				C64C284A2CE37C1F00131B70 /* CalendarDataSource.swift in Sources */,
@@ -1689,7 +1713,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1733,7 +1757,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 38;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
