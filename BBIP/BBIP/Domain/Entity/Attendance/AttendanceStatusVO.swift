@@ -1,17 +1,16 @@
 //
-//  AttendanceStatusDTO.swift
+//  AttendanceStatusVO.swift
 //  BBIP
 //
 //  Created by 이건우 on 11/18/24.
 //
 
-struct AttendanceStatusDTO: Decodable {
+struct AttendanceStatusVO {
     let studyName: String
     let studyId: String
     let session: Int
-    let startTime: String
-    let ttl: Int
+    let remainingTime: Int
     let code: Int
     let isManager: Bool
-    let status: Bool
+    let isAttended: Bool
 }
