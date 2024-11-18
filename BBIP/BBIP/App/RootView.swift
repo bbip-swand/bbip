@@ -10,10 +10,6 @@ import SwiftUI
 struct RootView: View {
     @StateObject private var appStateManager = AppStateManager()
     
-    init() {
-        removeScrollEdgeAppearance()
-    }
-    
     var body: some View {
         Group {
             switch appStateManager.state {

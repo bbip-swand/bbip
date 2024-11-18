@@ -5,7 +5,6 @@ struct StudyDetailView: View {
     
     init(vo: FullStudyInfoVO) {
         self.vo = vo
-        setNavigationBarAppearance()
     }
     
     var body: some View {
@@ -20,6 +19,9 @@ struct StudyDetailView: View {
         .navigationTitle("스터디 정보")
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray1)
+        }
     }
 }
 

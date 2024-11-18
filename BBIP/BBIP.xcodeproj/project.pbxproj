@@ -86,6 +86,8 @@
 		C6516ECD2CEB6C5900FCFAF2 /* CreateCodeOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516ECC2CEB6C4B00FCFAF2 /* CreateCodeOnboardingView.swift */; };
 		C6516ECF2CEB6E5400FCFAF2 /* CreateCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516ECE2CEB6E5400FCFAF2 /* CreateCodeView.swift */; };
 		C6516ED32CEB6FEC00FCFAF2 /* CreateCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516ED22CEB6FE800FCFAF2 /* CreateCodeViewModel.swift */; };
+		C6516ED52CEB866E00FCFAF2 /* AttendRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516ED42CEB866E00FCFAF2 /* AttendRecordView.swift */; };
+		C6516ED72CEB8A7200FCFAF2 /* AttendanceRecordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516ED62CEB8A6900FCFAF2 /* AttendanceRecordsViewModel.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -321,6 +323,8 @@
 		C6516ECC2CEB6C4B00FCFAF2 /* CreateCodeOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeOnboardingView.swift; sourceTree = "<group>"; };
 		C6516ECE2CEB6E5400FCFAF2 /* CreateCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeView.swift; sourceTree = "<group>"; };
 		C6516ED22CEB6FE800FCFAF2 /* CreateCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCodeViewModel.swift; sourceTree = "<group>"; };
+		C6516ED42CEB866E00FCFAF2 /* AttendRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendRecordView.swift; sourceTree = "<group>"; };
+		C6516ED62CEB8A6900FCFAF2 /* AttendanceRecordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceRecordsViewModel.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -1306,6 +1310,8 @@
 				C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */,
 				C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */,
 				082539562C9C6E7900632582 /* AttendanceDoneView.swift */,
+				C6516ED42CEB866E00FCFAF2 /* AttendRecordView.swift */,
+				C6516ED62CEB8A6900FCFAF2 /* AttendanceRecordsViewModel.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -1474,6 +1480,7 @@
 				C6F700772C9EED44000CCC80 /* PostDTO.swift in Sources */,
 				C6A10AD62C6C8D2E001AA74E /* UserInfoSetupContent.swift in Sources */,
 				C6FA56092C95920C00E537D7 /* UserHomeView.swift in Sources */,
+				C6516ED72CEB8A7200FCFAF2 /* AttendanceRecordsViewModel.swift in Sources */,
 				C6516EB02CEB329B00FCFAF2 /* AttendanceStatusDTO.swift in Sources */,
 				C61EDBB12C68B17C00E8FF83 /* OnboardingContent.swift in Sources */,
 				C6F2DA1A2CAAD56E002023B6 /* CommentDTO.swift in Sources */,
@@ -1515,6 +1522,7 @@
 				C6F98F462CAA93AF00F0D8E8 /* ArchiveDataSource.swift in Sources */,
 				C6FA55EC2C91566C00E537D7 /* MainHomeViewModel.swift in Sources */,
 				C6934BCC2C822147006AA652 /* SISCompleteView.swift in Sources */,
+				C6516ED52CEB866E00FCFAF2 /* AttendRecordView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */,
 				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,

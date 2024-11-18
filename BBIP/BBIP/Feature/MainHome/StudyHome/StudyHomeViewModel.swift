@@ -12,18 +12,23 @@ final class StudyHomeViewModel: ObservableObject {
     @Published var isFullInfoLoaded: Bool = false
     @Published var fullStudyInfo: FullStudyInfoVO?
     @Published var studyBulletnData: RecentPostVO?
+    @Published var attendaceStatus: AttendanceStatusVO?
+    @Published var isAttendanceStart: Bool = false
     
     // UseCases
     private let getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol
     private let getStudyPostingUseCase: GetStudyPostingUseCaseProtocol
+    private let getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
     init(
         getFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol,
-        getStudyPostingUseCase: GetStudyPostingUseCaseProtocol
+        getStudyPostingUseCase: GetStudyPostingUseCaseProtocol,
+        getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
     ) {
         self.getFullStudyInfoUseCase = getFullStudyInfoUseCase
         self.getStudyPostingUseCase = getStudyPostingUseCase
+        self.getAttendanceStatusUseCase = getAttendanceStatusUseCase
     }
     
     func reloadFullStudyInfo(studyId: String) {
@@ -69,7 +74,20 @@ final class StudyHomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func isManager() -> Bool {
-        return fullStudyInfo?.isManager ?? false
+    func getAttendanceStatus() {
+        getAttendanceStatusUseCase.execute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.attendaceStatus = response
+                self.isAttendanceStart = true
+            }
+            .store(in: &cancellables)
     }
 }

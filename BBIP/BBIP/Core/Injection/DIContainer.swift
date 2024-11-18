@@ -198,6 +198,13 @@ class DIContainer {
         )
     }
     
+    // Attendance Records
+    func makeAttendanceRecordsViewModel() -> AttendanceRecordsViewModel {
+        return .init(
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
     // CreateStudy
     func makeCreateStudyViewModel() -> CreateStudyViewModel {
         return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
@@ -212,7 +219,8 @@ class DIContainer {
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
         return StudyHomeViewModel(
             getFullStudyInfoUseCase: getFullStudyInfoUseCase,
-            getStudyPostingUseCase: getStudyPostingUseCase
+            getStudyPostingUseCase: getStudyPostingUseCase,
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase
         )
     }
     

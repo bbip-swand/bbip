@@ -13,10 +13,6 @@ struct StudyInfoSetupView: View {
     @StateObject private var createStudyViewModel = DIContainer.shared.makeCreateStudyViewModel()
     @State private var selectedIndex: Int = .zero
     
-    init() {
-        setNavigationBarAppearance(forDarkView: true)
-    }
-    
     var body: some View {
         ZStack() {
             TabView(selection: $selectedIndex) {
@@ -77,6 +73,7 @@ struct StudyInfoSetupView: View {
             }
         }
         .onAppear {
+            setNavigationBarAppearance(forDarkView: true)
             appState.setDarkMode()
         }
         .navigationTitle("생성하기")

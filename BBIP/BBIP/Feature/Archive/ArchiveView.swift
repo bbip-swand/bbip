@@ -60,6 +60,7 @@ struct ArchiveView: View {
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
         .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray1)
             viewModel.getArchivedFile(studyId: studyId)
         }
         .toolbar {
