@@ -16,11 +16,27 @@ struct StudyHomeView: View {
     @State private var showArchiveView: Bool = false
     @State private var showCheckLocationView: Bool = false
     
+    @State private var showAttendanceRecordView: Bool = false
+    
     private let studyId: String
     
     init(studyId: String) {
         self.studyId = studyId
-        print(studyId)
+    }
+    
+    private func handleAttendanceButton() {
+//        if let studyinfoVO = viewModel.fullStudyInfo {
+//            if studyinfoVO.isManager {
+//                if viewModel.isAttendanceStart {
+//                    showAttendanceRecordView = true
+//                } else {
+//                    appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+//                }
+//            } else {
+//                appState.push(.entercode)
+//            }
+//        }
+        showAttendanceRecordView = true
     }
     
     var body: some View {
@@ -54,9 +70,6 @@ struct StudyHomeView: View {
                         studyMember
                     }
                     .padding(.bottom, 150)
-                    
-//                    Spacer()
-//                        .frame(minHeight: 200)
                 }
             }
             .padding(.top, 42)
@@ -81,6 +94,7 @@ struct StudyHomeView: View {
         .onAppear {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
+            viewModel.getAttendanceStatus()
         }
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)
@@ -95,6 +109,11 @@ struct StudyHomeView: View {
         }
         .navigationDestination(isPresented: $showCheckLocationView) {
             CheckStudyLocationView(location: viewModel.fullStudyInfo?.location, isManager: false)
+        }
+        .navigationDestination(isPresented: $showAttendanceRecordView) {
+            if let attendaceStatus = viewModel.attendaceStatus {
+                AttendanceRecordView(remainingTime: attendaceStatus.remainingTime, studyId: studyId, code: attendaceStatus.code)
+            }
         }
     }
     
@@ -244,7 +263,7 @@ struct StudyHomeView: View {
         HStack {
             VStack(spacing: 12) {
                 Button {
-                    // go attendance
+                    handleAttendanceButton()
                 } label: {
                     Image("studyHome_attendance")
                         .resizable()

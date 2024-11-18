@@ -44,6 +44,30 @@ class DIContainer {
     )
     
     
+    // MARK: - Attendance
+    private let attendanceDataSource = AttendanceDataSource()
+    private let attendanceStatusMapper = AttendanceStatusMapper()
+    private let attendanceRecordMapper = AttendanceRecordMapper()
+    private lazy var attendanceRepository: AttendanceRepository = AttendanceRepositoryImpl(
+        dataSource: attendanceDataSource,
+        statusMapper: attendanceStatusMapper,
+        recordMapper: attendanceRecordMapper
+    )
+    
+    private lazy var getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol = GetAttendanceStatusUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol = GetAttendanceRecordsUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var createAttendanceCodeUseCase: CreateAttendanceCodeUseCaseProtocol = CreateAttendanceCodeUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var submitAttendanceUseCase: SubmitAttendanceCodeUseCaseProtocol = SubmitAttendanceCodeUseCase(
+        repository: attendanceRepository
+    )
+    
+    
     // MARK: - Study
     private let studyDataSource = StudyDataSource()
     
@@ -156,6 +180,31 @@ class DIContainer {
         )
     }
     
+    // Attendance Certification
+    func makeAttendanceCertificationViewModel() -> AttendanceCertificationViewModel {
+        return .init(
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+            submitAttendanceCodeUseCase: submitAttendanceUseCase,
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
+    // Create Code
+    func makeCreateCodeViewModel() -> CreateCodeViewModel {
+        return .init(
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+            createAttendanceCodeUseCase: createAttendanceCodeUseCase,
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
+    // Attendance Records
+    func makeAttendanceRecordsViewModel() -> AttendanceRecordsViewModel {
+        return .init(
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
     // CreateStudy
     func makeCreateStudyViewModel() -> CreateStudyViewModel {
         return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
@@ -170,7 +219,8 @@ class DIContainer {
     func makeStudyHomeViewModel() -> StudyHomeViewModel {
         return StudyHomeViewModel(
             getFullStudyInfoUseCase: getFullStudyInfoUseCase,
-            getStudyPostingUseCase: getStudyPostingUseCase
+            getStudyPostingUseCase: getStudyPostingUseCase,
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase
         )
     }
     
@@ -205,6 +255,7 @@ class DIContainer {
         )
     }
     
+    // Add Schedule (need fix), crud
     func makeAddScheduleViewModel() -> AddScheculeViewModel {
         return AddScheculeViewModel(
             createScheduleUseCase: createScheduleUseCase

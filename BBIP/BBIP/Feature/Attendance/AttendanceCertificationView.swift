@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 struct AttendanceCertificationView: View {
-    @ObservedObject private var viewModel: AttendanceCertificationViewModel = .init()
+    @ObservedObject private var viewModel: AttendanceCertificationViewModel = DIContainer.shared.makeAttendanceCertificationViewModel()
     @FocusState private var focusedIndex: Int?
     
     @State private var timer: AnyCancellable?

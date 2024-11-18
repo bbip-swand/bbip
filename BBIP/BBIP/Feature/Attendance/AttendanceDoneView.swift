@@ -10,10 +10,6 @@ import SwiftUI
 struct AttendanceDoneView: View{
     @State private var gohome: Bool = false
     
-    init() {
-        setNavigationBarAppearance()
-    }
-    
     var body : some View{
         VStack(spacing:0){
             Text("라운드 준비 완료!")
@@ -41,6 +37,9 @@ struct AttendanceDoneView: View{
         .background(.gray9)
         .navigationDestination(isPresented: $gohome){
             MainHomeView()
+        }
+        .onAppear {
+            setNavigationBarAppearance()
         }
     }
 }

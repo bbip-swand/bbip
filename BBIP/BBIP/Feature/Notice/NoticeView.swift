@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct NoticeView: View {
-    
-    init() {
-        setNavigationBarAppearance()
-    }
-    
     var body: some View {
         Text("This is Mypage View")
             .navigationTitle("알림")
             .navigationBarTitleDisplayMode(.inline)
             .backButtonStyle()
+            .onAppear {
+                setNavigationBarAppearance()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

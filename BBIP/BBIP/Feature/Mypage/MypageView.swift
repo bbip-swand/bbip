@@ -15,10 +15,6 @@ struct MypageView: View {
     
     @State private var settinglistVO = ServiceInfo.MypageSettingList()
     
-    init() {
-        setNavigationBarAppearance()
-    }
-    
     private func loadData() {
         myPageViewModel.getProfileInfo()
         myPageViewModel.getOngoingStudyInfo()
@@ -43,6 +39,7 @@ struct MypageView: View {
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
         .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray1)
             loadData()
         }
     }
