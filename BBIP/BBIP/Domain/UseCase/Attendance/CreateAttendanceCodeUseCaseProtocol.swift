@@ -12,9 +12,9 @@ protocol CreateAttendanceCodeUseCaseProtocol {
 }
 
 final class CreateAttendanceCodeUseCase: CreateAttendanceCodeUseCaseProtocol {
-    private let repository: AttnedanceRepository
+    private let repository: AttendanceRepository
     
-    init(repository: AttnedanceRepository) {
+    init(repository: AttendanceRepository) {
         self.repository = repository
     }
     

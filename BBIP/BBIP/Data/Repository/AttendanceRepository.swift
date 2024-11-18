@@ -7,14 +7,14 @@
 
 import Combine
 
-protocol AttnedanceRepository {
+protocol AttendanceRepository {
     func getAttendanceStatus() -> AnyPublisher<AttendanceStatusVO, AttendanceError>
     func getAttendanceRecords(studyId: String) ->  AnyPublisher<[AttendanceRecordVO], AttendanceError>
     func createAttendanceCode(studyId: String, session: Int) -> AnyPublisher<Int, AttendanceError>
     func submitAttendanceCode(studyId: String, code: Int) -> AnyPublisher<Bool, AttendanceError>
 }
 
-final class AttendanceRepositoryImpl: AttnedanceRepository {
+final class AttendanceRepositoryImpl: AttendanceRepository {
     private let dataSource: AttendanceDataSource
     private let statusMapper: AttendanceStatusMapper
     private let recordMapper: AttendanceRecordMapper

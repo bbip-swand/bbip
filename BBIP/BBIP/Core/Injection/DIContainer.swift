@@ -44,6 +44,30 @@ class DIContainer {
     )
     
     
+    // MARK: - Attendance
+    private let attendanceDataSource = AttendanceDataSource()
+    private let attendanceStatusMapper = AttendanceStatusMapper()
+    private let attendanceRecordMapper = AttendanceRecordMapper()
+    private lazy var attendanceRepository: AttendanceRepository = AttendanceRepositoryImpl(
+        dataSource: attendanceDataSource,
+        statusMapper: attendanceStatusMapper,
+        recordMapper: attendanceRecordMapper
+    )
+    
+    private lazy var getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol = GetAttendanceStatusUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol = GetAttendanceRecordsUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var createAttendanceUseCase: GetAttendanceStatusUseCaseProtocol = GetAttendanceStatusUseCase(
+        repository: attendanceRepository
+    )
+    private lazy var submitAttendanceUseCase: SubmitAttendanceCodeUseCaseProtocol = SubmitAttendanceCodeUseCase(
+        repository: attendanceRepository
+    )
+    
+    
     // MARK: - Study
     private let studyDataSource = StudyDataSource()
     
@@ -156,6 +180,15 @@ class DIContainer {
         )
     }
     
+    // Attendance
+    func makeAttendanceCertificationViewModel() -> AttendanceCertificationViewModel {
+        return .init(
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+            submitAttendanceCodeUseCase: submitAttendanceUseCase,
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
     // CreateStudy
     func makeCreateStudyViewModel() -> CreateStudyViewModel {
         return CreateStudyViewModel(createStudyInfoUseCase: createStudyUseCase)
@@ -205,6 +238,7 @@ class DIContainer {
         )
     }
     
+    // Add Schedule (need fix), crud
     func makeAddScheduleViewModel() -> AddScheculeViewModel {
         return AddScheculeViewModel(
             createScheduleUseCase: createScheduleUseCase

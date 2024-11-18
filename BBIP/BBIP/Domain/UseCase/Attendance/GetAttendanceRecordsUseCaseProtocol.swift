@@ -12,9 +12,9 @@ protocol GetAttendanceRecordsUseCaseProtocol {
 }
 
 final class GetAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol {
-    private let repository: AttnedanceRepository
+    private let repository: AttendanceRepository
     
-    init(repository: AttnedanceRepository) {
+    init(repository: AttendanceRepository) {
         self.repository = repository
     }
     
