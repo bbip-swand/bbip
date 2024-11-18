@@ -60,7 +60,7 @@ class DIContainer {
     private lazy var getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol = GetAttendanceRecordsUseCase(
         repository: attendanceRepository
     )
-    private lazy var createAttendanceUseCase: GetAttendanceStatusUseCaseProtocol = GetAttendanceStatusUseCase(
+    private lazy var createAttendanceCodeUseCase: CreateAttendanceCodeUseCaseProtocol = CreateAttendanceCodeUseCase(
         repository: attendanceRepository
     )
     private lazy var submitAttendanceUseCase: SubmitAttendanceCodeUseCaseProtocol = SubmitAttendanceCodeUseCase(
@@ -180,11 +180,20 @@ class DIContainer {
         )
     }
     
-    // Attendance
+    // Attendance Certification
     func makeAttendanceCertificationViewModel() -> AttendanceCertificationViewModel {
         return .init(
             getAttendanceStatusUseCase: getAttendanceStatusUseCase,
             submitAttendanceCodeUseCase: submitAttendanceUseCase,
+            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+        )
+    }
+    
+    // Create Code
+    func makeCreateCodeViewModel() -> CreateCodeViewModel {
+        return .init(
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+            createAttendanceCodeUseCase: createAttendanceCodeUseCase,
             getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
         )
     }

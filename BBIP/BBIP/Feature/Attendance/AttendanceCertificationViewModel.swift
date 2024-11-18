@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+/// 출결 인증을 위한 VM, 스터디원 & 홈 화면용
 final class AttendanceCertificationViewModel: ObservableObject {
     // MARK: - Code
     @Published var codeDigits: [String] = ["", "", "", ""]

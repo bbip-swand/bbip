@@ -20,7 +20,6 @@ struct StudyHomeView: View {
     
     init(studyId: String) {
         self.studyId = studyId
-        print(studyId)
     }
     
     var body: some View {
@@ -54,9 +53,6 @@ struct StudyHomeView: View {
                         studyMember
                     }
                     .padding(.bottom, 150)
-                    
-//                    Spacer()
-//                        .frame(minHeight: 200)
                 }
             }
             .padding(.top, 42)
@@ -244,7 +240,9 @@ struct StudyHomeView: View {
         HStack {
             VStack(spacing: 12) {
                 Button {
-                    // go attendance
+                    if let vo = viewModel.fullStudyInfo, viewModel.isManager() {
+                        appState.push(.createCode(studyId: studyId, session: vo.session))
+                    }
                 } label: {
                     Image("studyHome_attendance")
                         .resizable()

@@ -67,6 +67,8 @@ struct MainHomeView: View {
                 StartCreateStudyView()
             case .setLocation(let prevLocation, let studyId, let session):
                 SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
+            case .createCode (let studyId, let session):
+                CreateCodeOnboardingView(studyId: studyId, session: session)
             default:
                 EmptyView()
             }

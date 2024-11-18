@@ -68,4 +68,8 @@ final class StudyHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func isManager() -> Bool {
+        return fullStudyInfo?.isManager ?? false
+    }
 }
