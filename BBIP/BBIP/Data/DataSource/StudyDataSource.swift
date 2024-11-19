@@ -49,7 +49,15 @@ final class StudyDataSource {
             }
             .eraseToAnyPublisher()
     }
-
+    
+    // MARK: - GET pendingstudy
+    func getPendingStudy() -> AnyPublisher<PendingStudyDTO, Error>{
+        provider.requestPublisher(.getPendingStudy)
+            .map(\.data)
+            .decode(type: PendingStudyDTO.self, decoder: JSONDecoder.yyyyMMddDecoder())
+            .eraseToAnyPublisher()
+    }
+        
     
     // MARK: - POST
     /// 스터디 생성
