@@ -9,7 +9,6 @@ import Foundation
 
 struct FullStudyInfoMapper {
     func toVO(dto: FullStudyInfoDTO) -> FullStudyInfoVO {
-        print(dto.studyMembers)
         let studyTimes = dto.studyTimes.map { dtoTime in
             return StudyTime(
                 startTime: dtoTime.startTime,

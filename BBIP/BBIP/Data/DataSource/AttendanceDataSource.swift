@@ -28,8 +28,7 @@ final class AttendanceDataSource {
             }
             .decode(type: AttendanceStatusDTO.self, decoder: JSONDecoder())
             .mapError { error in
-                error.handleDecodingError()
-                return AttendanceError.decodingError
+                return error as! AttendanceError
             }
             .eraseToAnyPublisher()
     }
@@ -41,7 +40,7 @@ final class AttendanceDataSource {
             .decode(type: [AttendanceRecordDTO].self, decoder: JSONDecoder())
             .mapError { error in
                 error.handleDecodingError()
-                return AttendanceError.decodingError
+                return error as! AttendanceError
             }
             .eraseToAnyPublisher()
     }
