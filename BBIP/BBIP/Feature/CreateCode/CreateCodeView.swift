@@ -75,7 +75,7 @@ struct CreateCodeView: View {
                             .cornerRadius(12)
                     }
                 } else {
-                    ForEach(0...4, id: \.self) { digit in
+                    ForEach(0...3, id: \.self) { digit in
                         Text("-")
                             .font(.bbip(.title1_sb42))
                             .foregroundColor(.mainWhite)

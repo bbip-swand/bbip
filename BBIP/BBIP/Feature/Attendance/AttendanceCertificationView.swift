@@ -7,11 +7,158 @@ struct AttendanceCertificationView: View {
     
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
+    
     @Binding var remainingTime: Int
-    @State private var showAttendanceDone: Bool = false
+    var studyName: String = ""
+    var studyId: String = ""
     
+    private var submitButtonEnableState: Bool {
+        viewModel.isAllEntered() && remainingTime != 0 ? true : false
+    }
     
-    var studyName: String = "StudyName"
+    var body: some View {
+        VStack(spacing: 0) {
+            headerSection
+            
+            if remainingTime == 0 {
+                expiredSessionView
+            } else {
+                activeSessionView
+            }
+            
+            Spacer()
+            
+            if remainingTime == 0 {
+                Text("라운드가 이미 시작되었습니다.")
+                    .font(.bbip(.body1_m16))
+                    .foregroundStyle(.gray6)
+                    .padding(.bottom, 20)
+            }
+            
+            MainButton(text: "파이트!", enable: submitButtonEnableState) {
+                viewModel.submitCode(studyId: studyId)
+            }
+            .padding(.bottom, 22)
+        }
+        .backButtonStyle(isReversal: true)
+        .background(.gray9)
+        .ignoresSafeArea(.keyboard)
+        .onTapGesture {
+            focusedIndex = nil
+        }
+        .navigationDestination(isPresented: $viewModel.showDoneView) {
+            AttendanceDoneView()
+        }
+        .onAppear {
+            startTimer()
+        }
+        .onDisappear {
+            stopTimer()
+        }
+    }
+    
+    private var headerSection: some View {
+        VStack(spacing: 12) {
+            Image("glove")
+                .resizable()
+                .frame(width: 32, height: 32)
+                .padding(.top, 22)
+            
+            Text("출석 인증 코드 입력")
+                .foregroundStyle(.mainWhite)
+                .font(.bbip(.title4_sb24))
+            
+            Text("생성된 4자리 코드를 입력하세요")
+                .foregroundStyle(.gray6)
+                .font(.bbip(.caption1_m16))
+                .padding(.bottom, remainingTime == 0 ? 41 : 48)
+        }
+    }
+    
+    private var expiredSessionView: some View {
+        VStack(spacing: 8) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.gray8)
+                
+                Text(studyName)
+                    .font(.bbip(.title3_sb20))
+                    .foregroundColor(.mainWhite)
+            }
+            .frame(maxWidth: .infinity, maxHeight: 34)
+            .padding(.horizontal, 38)
+            
+            RoundedRectangle(cornerRadius: 12)
+                .frame(height: 70)
+                .foregroundStyle(.gray8)
+                .overlay(
+                    HStack(spacing: 15) {
+                        Image("alarm")
+                            .renderingMode(.template)
+                            .foregroundColor(.primary3)
+                        
+                        Text(formattedTime)
+                            .font(.bbip(.title1_sb42))
+                            .foregroundStyle(.primary3)
+                    }
+                )
+                .padding(.horizontal, 38)
+        }
+    }
+    
+    private var activeSessionView: some View {
+        VStack(spacing: 20) {
+            RoundedRectangle(cornerRadius: 12)
+                .frame(height: 70)
+                .foregroundStyle(.gray8)
+                .overlay(
+                    HStack(spacing: 15) {
+                        Image("alarm")
+                            .renderingMode(.template)
+                            .foregroundColor(.mainWhite)
+                        
+                        Text(formattedTime)
+                            .font(.bbip(.title1_sb42))
+                            .foregroundStyle(.mainWhite)
+                    }
+                )
+                .padding(.horizontal, 38)
+            
+            codeInputSection
+            
+            if viewModel.isWrongCode || !viewModel.errorMessage.isEmpty {
+                WarningLabel(errorText: "\(viewModel.errorMessage)")
+                    .padding(.top, 4)
+            }
+        }
+    }
+    
+    private var codeInputSection: some View {
+        HStack(spacing: 12) {
+            ForEach(0..<4, id: \.self) { index in
+                AttendanceSubmitTextFeild(
+                    text: $viewModel.codeDigits[index],
+                    isWrongCode: $viewModel.isWrongCode,
+                    focusedField: $focusedIndex,
+                    index: index,
+                    font: .bbip(.title1_sb42),
+                    isFocused: focusedIndex == index,
+                    isFilled: !viewModel.codeDigits[index].isEmpty,
+                    onTextChange: { index, newValue in
+                        let nextIndex = viewModel.handleTextFieldChange(index: index, newValue: newValue)
+                        if viewModel.isAllEntered() {
+                            focusedIndex = nil
+                            return nil
+                        } else {
+                            focusedIndex = nextIndex
+                            return nextIndex
+                        }
+                    }
+                )
+            }
+        }
+        .padding(.horizontal, 38)
+    }
     
     private func formatTime(_ seconds: Int) -> String {
         let minutes = seconds / 60
@@ -20,169 +167,23 @@ struct AttendanceCertificationView: View {
     }
     
     private func startTimer() {
-        if timer == nil {
-            formattedTime = formatTime(remainingTime)
-            
-            timer = Timer.publish(every: 1, on: .main, in: .common)
-                .autoconnect()
-                .sink { _ in
-                    guard remainingTime > 0 else {
-                        timer?.cancel()
-                        timer = nil // 타이머가 종료되었으므로 nil로 설정
-                        return
-                    }
-                    remainingTime -= 1
-                    formattedTime = formatTime(remainingTime)
+        formattedTime = formatTime(remainingTime)
+        timer?.cancel()
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+            .autoconnect()
+            .sink { _ in
+                guard remainingTime > 0 else {
+                    formattedTime = "00:00"
+                    timer?.cancel()
+                    return
                 }
-        }
+                remainingTime -= 1
+                formattedTime = formatTime(remainingTime)
+            }
     }
     
     private func stopTimer() {
         timer?.cancel()
         timer = nil
     }
-    
-    //    init(remainingTime: Int) {
-    //        self.remainingTime = $remainingTime
-    //    }
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            Image("glove")
-                .resizable()
-                .frame(width: 32, height: 32)
-                .padding(.top, remainingTime == 0 ? 22 : 50)
-                .padding(.bottom, remainingTime == 0 ? 12 : 20)
-            
-            Text("출석 인증 코드 입력")
-                .foregroundStyle(.mainWhite)
-                .font(.bbip(.title4_sb24))
-                .padding(.bottom, 12)
-            
-            Text("생성된 4자리 코드를 입력하세요")
-                .foregroundStyle(.gray6)
-                .font(.bbip(.caption1_m16))
-                .padding(.bottom, remainingTime == 0 ? 41 : 48)
-            
-            if remainingTime == 0 {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .foregroundColor(.gray8)
-                    
-                    Text(studyName)
-                        .font(.bbip(.title3_sb20))
-                        .foregroundColor(.mainWhite)
-                }
-                .frame(maxWidth: .infinity, maxHeight: 34)
-                .padding(.horizontal, 38)
-                .padding(.bottom, 8)
-            }
-            
-            ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .frame(height: 70)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.gray8)
-                    .padding(.horizontal, 38)
-                
-                HStack(spacing: 15) {
-                    Image("alarm")
-                        .renderingMode(.template)
-                        .foregroundColor(remainingTime == 0 ? .primary3 : .mainWhite)
-                    
-                    Text(formattedTime)
-                        .font(.bbip(.title1_sb42))
-                        .foregroundStyle(remainingTime == 0 ? .primary3 : .mainWhite)
-                        .onAppear {
-                            startTimer()
-                        }
-                        .onDisappear {
-                            stopTimer()
-                        }
-                }
-            }
-            
-            if remainingTime != 0 {
-                HStack(spacing: 12) {
-                    Spacer(minLength: 38)
-                    ForEach(0..<4, id: \.self) { index in
-                        CustomTextFieldComponent(
-                            text: $viewModel.codeDigits[index],
-                            isRight: $viewModel.isRight,
-                            focusedField: $focusedIndex,
-                            index: index,
-                            font: .bbip(.title1_sb42),
-                            viewModel: viewModel
-                        )
-                        .customFieldStyle(
-                            isFocused: focusedIndex == index,
-                            isRight: viewModel.isRight,
-                            isComplete: viewModel.isComplete(),
-                            isFilled: !viewModel.codeDigits[index].isEmpty
-                        )
-                    }
-                    Spacer(minLength: 39)
-                }
-                .padding(.top, 20)
-                
-                createWarningLabel()
-            }
-            
-            Spacer()
-            
-            if remainingTime == 0 {
-                Text("라운드가 이미 시작되었습니다.")
-                    .font(.bbip(family: .Medium, size:16))
-                    .foregroundStyle(.gray6)
-                    .padding(.bottom, 20)
-            }
-            
-            MainButton(text: "파이트!", enable: remainingTime != 0 ? true : false) {
-                //TODO: 출석코드 검사로직 + 시간 체크로직 수정필요
-                if viewModel.isRight {
-                    showAttendanceDone = true
-                } else {
-                    // Handle incorrect code case
-                }
-            }
-            .padding(.bottom, 22)
-        }
-        .backButtonStyle(isReversal: true)
-        .containerRelativeFrame([.horizontal, .vertical])
-        .background(.gray9)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            focusedIndex = nil
-        }
-        .navigationDestination(isPresented: $showAttendanceDone){
-            AttendanceDoneView()
-        }
-    }
-    
-    private func createWarningLabel() -> some View {
-        HStack(spacing: 6) {
-            if viewModel.isComplete() && !viewModel.isRight {
-                WarningLabel(errorText: "코드가 올바르지 않습니다.")
-            }
-        }
-        .foregroundStyle(.primary3)
-        .frame(maxWidth: .infinity)
-        .frame(height: 23)
-        .padding(.top, 23)
-    }
 }
-
-fileprivate extension View {
-    func customFieldStyle(isFocused: Bool, isRight: Bool, isComplete: Bool, isFilled: Bool) -> some View {
-        self
-            .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(
-                        (isComplete && !isRight) || isFocused || isFilled ? .primary3 : Color.clear,
-                        lineWidth: 2
-                    )
-            )
-    }
-}
-

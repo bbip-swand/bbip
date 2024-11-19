@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		082539502C9C6BF700632582 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825394F2C9C6BF700632582 /* CustomTextField.swift */; };
+		082539502C9C6BF700632582 /* AttendanceSubmitTextFeild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */; };
 		082539572C9C6E7900632582 /* AttendanceDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082539562C9C6E7900632582 /* AttendanceDoneView.swift */; };
 		0825395A2C9C6F4100632582 /* CodeCheck.json in Resources */ = {isa = PBXBuildFile; fileRef = 082539592C9C6F4100632582 /* CodeCheck.json */; };
 		08368B9C2C6E5AE1008EB44B /* UISProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */; };
@@ -245,7 +245,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0825394F2C9C6BF700632582 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceSubmitTextFeild.swift; sourceTree = "<group>"; };
 		082539562C9C6E7900632582 /* AttendanceDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceDoneView.swift; sourceTree = "<group>"; };
 		082539592C9C6F4100632582 /* CodeCheck.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CodeCheck.json; sourceTree = "<group>"; };
 		08368B9B2C6E5AE1008EB44B /* UISProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISProfileView.swift; sourceTree = "<group>"; };
@@ -771,7 +771,7 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				0825394F2C9C6BF700632582 /* CustomTextField.swift */,
+				0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
 				C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */,
 				C695CB4F2C7DE9FB00BB3952 /* GridButtonView.swift */,
@@ -1525,7 +1525,7 @@
 				C6516ED52CEB866E00FCFAF2 /* AttendRecordView.swift in Sources */,
 				C6934BB12C808321006AA652 /* StartCreateStudyView.swift in Sources */,
 				C6F2DA4E2CADD1E0002023B6 /* SafeAreaInsets.swift in Sources */,
-				082539502C9C6BF700632582 /* CustomTextField.swift in Sources */,
+				082539502C9C6BF700632582 /* AttendanceSubmitTextFeild.swift in Sources */,
 				C64C28482CE3787100131B70 /* CalendarAPI.swift in Sources */,
 				C6934BBF2C821F0A006AA652 /* UIColor+Extension.swift in Sources */,
 				C6F2DA3B2CAC25AD002023B6 /* SetStudyLocationView.swift in Sources */,

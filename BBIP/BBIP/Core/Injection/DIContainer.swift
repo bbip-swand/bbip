@@ -183,9 +183,7 @@ class DIContainer {
     // Attendance Certification
     func makeAttendanceCertificationViewModel() -> AttendanceCertificationViewModel {
         return .init(
-            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
-            submitAttendanceCodeUseCase: submitAttendanceUseCase,
-            getAttendanceRecordsUseCase: getAttendanceRecordsUseCase
+            submitAttendanceCodeUseCase: submitAttendanceUseCase
         )
     }
     
