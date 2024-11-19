@@ -14,4 +14,19 @@ struct PendingStudyVO {
     let studyTime: String
     let leftDays: Int
     let place: String
+    let totalWeeks: Int
+}
+
+extension PendingStudyVO {
+    static func mock() -> Self {
+        return .init(
+            studyId: "1",
+            studyName: "placeholder",
+            studyWeek: 1,
+            studyTime: "12:00 ~ 13:00",
+            leftDays: 1,
+            place: "placeholder",
+            totalWeeks: 1
+        )
+    }
 }

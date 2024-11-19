@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainHomeView: View {
     @EnvironmentObject var appState: AppStateManager
-    @StateObject private var viewModel = DIContainer.shared.makeMainHomeViewModel()
+    @StateObject private var userHomeViewModel = DIContainer.shared.makeUserHomeViewModel()
     @State private var selectedTab: MainHomeTab = .userHome
     @State private var hasLoaded: Bool = false
     
@@ -29,18 +29,18 @@ struct MainHomeView: View {
                 switch selectedTab {
                 case .userHome:
                     UserHomeNavBar(showDot: $hasNotice, tabState: selectedTab)
-                    UserHomeView(viewModel: viewModel, selectedTab: $selectedTab)
+                    UserHomeView(viewModel: userHomeViewModel, selectedTab: $selectedTab)
                 case .studyHome(let studyId, _):
                     StudyHomeView(studyId: studyId)
                 case .calendar:
-                    CalendarView(ongoingStudyData: viewModel.ongoingStudyData)
+                    CalendarView(ongoingStudyData: userHomeViewModel.ongoingStudyData)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
             
             BBIPTabView(
                 selectedTab: $selectedTab,
-                ongoingStudyData: $viewModel.ongoingStudyData
+                ongoingStudyData: $userHomeViewModel.ongoingStudyData
             )
             .frame(maxHeight: .infinity, alignment: .bottom)
             .edgesIgnoringSafeArea(.bottom)
@@ -55,7 +55,7 @@ struct MainHomeView: View {
         .onAppear {
             print("mainHome OnAppear")
             appState.setLightMode()
-            viewModel.loadHomeData()
+//            userHomeViewModel.loadHomeData()
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
@@ -69,8 +69,8 @@ struct MainHomeView: View {
                 SetStudyLocationView(prevLocation: prevLocation, studyId: studyId, session: session)
             case .createCode (let studyId, let session):
                 CreateCodeOnboardingView(studyId: studyId, session: session)
-            case .entercode:
-                AttendanceCertificationView(remainingTime: <#T##Binding<Int>#>)
+            case .entercode(let remainingTime, let studyId, let studyName):
+                AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
             default:
                 EmptyView()
             }

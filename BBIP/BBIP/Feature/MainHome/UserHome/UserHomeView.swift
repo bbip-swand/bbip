@@ -8,50 +8,21 @@
 import SwiftUI
 
 struct UserHomeView: View {
-    @StateObject var viewModel: MainHomeViewModel
-    
-    @State private var timeRingStart: Bool = false
+    @StateObject var viewModel: UserHomeViewModel
     @State private var isRefresh: Bool = false
     @Binding var selectedTab: MainHomeTab
     
     var body: some View {
         ScrollView {
-            Group {
-                if let homeBulletnData = viewModel.homeBulletnData {
-                    NoticeBannerView(postVO: homeBulletnData.filter({ $0.postType == .notice }).first)
-                } else {
-                    NoticeBannerView(postVO: .placeholderVO())
-                        .redacted(reason: .placeholder)
-                }
-            }
-            .padding(.top, 22)
-            .padding(.bottom, 35)
-           
+            notice
+                .padding(.top, 22)
+                .padding(.bottom, 35)
             
-            if timeRingStart {
-                ActivatedBBIPTimeRingView(
-                    studyTitle: "TOEIC / IELTS",
-                    remainingTime: 20) {
-                        withAnimation { timeRingStart = false }
-                    }
-            } else {
-                BBIPTimeRingView(
-                    progress: 0.4,
-                    vo: .init(
-                        leftDay: 0,
-                        title: "TOEIC / IELTS",
-                        time: "18:00 - 20:00",
-                        location: "예대 4층"
-                    )
-                )
-                .redacted(reason: isRefresh ? .placeholder : [])
-                .onTapGesture {
-                    withAnimation { timeRingStart = true }
-                }
-            }
-            
+            timeRing
+                .padding(.bottom, 36)
+                .id(viewModel.attendanceStatus?.remainingTime)
+                        
             mainBulletn
-                .padding(.top, 36)
                 .padding(.bottom, 32)
             
             currentWeekStudy
@@ -81,6 +52,53 @@ struct UserHomeView: View {
             scrollView.backgroundColor = .gray1
             scrollView.refreshControl?.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             scrollView.refreshControl?.tintColor = .primary3
+        }
+        .onAppear {
+            print("userHome OnAppear")
+            viewModel.loadHomeData()
+        }
+    }
+    
+    var notice: some View {
+        Group {
+            if let homeBulletnData = viewModel.homeBulletnData {
+                NoticeBannerView(postVO: homeBulletnData.filter({ $0.postType == .notice }).first)
+            } else {
+                NoticeBannerView(postVO: .placeholderVO())
+                    .redacted(reason: .placeholder)
+            }
+        }
+    }
+    
+    var timeRing: some View {
+        Group {
+            if let pendingStudyData = viewModel.pendingStudyData {
+                if viewModel.isAttendanceStarted {
+                    if let attendanceStatus = viewModel.attendanceStatus {
+                        if !attendanceStatus.isManager && attendanceStatus.isAttended {
+                            // 출석 완료
+                            BBIPTimeRingView(vo: pendingStudyData, isAttended: true)
+                                .redacted(reason: isRefresh ? .placeholder : [])
+                        } else {
+                            // 출석 진행 중 (팀장은 항상 activated)
+                            ActivatedBBIPTimeRingView(vo: attendanceStatus) {
+                                withAnimation { viewModel.isAttendanceStarted = false }
+                            }
+                        }
+                    }
+                } else {
+                    // 출석 중이 아닐 떄
+                    BBIPTimeRingView(vo: pendingStudyData)
+                        .redacted(reason: isRefresh ? .placeholder : [])
+                        .onTapGesture {
+                            selectedTab = .studyHome(studyId: pendingStudyData.studyId, studyName: pendingStudyData.studyName)
+                        }
+                }
+            } else {
+                // placeholder
+                BBIPTimeRingView(vo: .mock())
+                    .redacted(reason: .placeholder)
+            }
         }
     }
     
