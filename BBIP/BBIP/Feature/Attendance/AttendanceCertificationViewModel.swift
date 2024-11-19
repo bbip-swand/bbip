@@ -12,64 +12,62 @@ import Combine
 final class AttendanceCertificationViewModel: ObservableObject {
     // MARK: - Code
     @Published var codeDigits: [String] = ["", "", "", ""]
-    @Published var isRight: Bool = true
     @Published var combinedCode: String = ""
+    @Published var isWrongCode: Bool = false
+    @Published var showDoneView: Bool = false
+    @Published var errorMessage: String = .init()
     
-    private let getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol
     private let submitAttendanceCodeUseCase: SubmitAttendanceCodeUseCaseProtocol
-    private let getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol
     var cancellables = Set<AnyCancellable>()
     
-    init(getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol,
-         submitAttendanceCodeUseCase: SubmitAttendanceCodeUseCaseProtocol,
-         getAttendanceRecordsUseCase: GetAttendanceRecordsUseCaseProtocol
-    ) {
-        self.getAttendanceStatusUseCase = getAttendanceStatusUseCase
+    init(submitAttendanceCodeUseCase: SubmitAttendanceCodeUseCaseProtocol) {
         self.submitAttendanceCodeUseCase = submitAttendanceCodeUseCase
-        self.getAttendanceRecordsUseCase = getAttendanceRecordsUseCase
     }
     
+    func submitCode(studyId: String) {
+        guard let code = Int(combinedCode) else { return }
+        submitAttendanceCodeUseCase.execute(studyId: studyId, code: code)
+            .receive(on: DispatchQueue.main)
+            .sink { result in
+                switch result {
+                case .finished: break
+                case .failure(let error):
+                    self.isWrongCode = error == .invalidCode
+                    self.errorMessage = error.errorMessage
+                }
+            } receiveValue: { isCorrectCode in
+                print(isCorrectCode)
+                self.isWrongCode = !isCorrectCode
+                self.showDoneView = isCorrectCode
+            }
+            .store(in: &cancellables)
+    }
+    
+    func isAllEntered() -> Bool {
+        return codeDigits.allSatisfy { $0.count == 1 }
+    }
+}
+
+extension AttendanceCertificationViewModel {
     func handleTextFieldChange(index: Int, newValue: String) -> Int? {
         if newValue.isEmpty {
             return moveToPreviousField(index: index)
         } else {
             codeDigits[index] = String(newValue.prefix(1))
             updateCombinedCode()
-            
-            if isComplete() {
-                validateYear() //TODO:  모든 입력이 완료되었을 때 유효성 검사(api 연결해야함) - 현재는 생년검사와 동일한 로직
-            }
             return moveToNextField(index: index)
         }
     }
     
-    
-    func moveToNextField(index: Int) -> Int? {
+    private func moveToNextField(index: Int) -> Int? {
         return (index < 3) ? index + 1 : nil
     }
     
-    
-    func moveToPreviousField(index: Int) -> Int? {
+    private func moveToPreviousField(index: Int) -> Int? {
         return (index > 0) ? index - 1 : 0
     }
     
-    func isComplete() -> Bool {
-        return codeDigits.allSatisfy { $0.count == 1 }
-    }
-    
-    //TODO: 여기도 로직 바뀌어야 함
-    func validateYear() {
-        let yearString = codeDigits.joined()
-        if let year = Int(yearString), (1950...Calendar.current.component(.year, from: Date())).contains(year) {
-            isRight = true
-        } else {
-            isRight = false
-        }
-    }
-    
-    func updateCombinedCode() {
+    private func updateCombinedCode() {
         combinedCode = codeDigits.joined()
     }
-    
-    
 }

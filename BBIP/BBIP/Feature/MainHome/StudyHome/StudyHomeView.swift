@@ -25,18 +25,17 @@ struct StudyHomeView: View {
     }
     
     private func handleAttendanceButton() {
-//        if let studyinfoVO = viewModel.fullStudyInfo {
-//            if studyinfoVO.isManager {
-//                if viewModel.isAttendanceStart {
-//                    showAttendanceRecordView = true
-//                } else {
-//                    appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
-//                }
-//            } else {
-//                appState.push(.entercode)
-//            }
-//        }
-        showAttendanceRecordView = true
+        if let studyinfoVO = viewModel.fullStudyInfo {
+            if studyinfoVO.isManager {
+                if viewModel.isAttendanceStart {
+                    showAttendanceRecordView = true
+                } else {
+                    appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+                }
+            } else {
+                appState.push(.entercode)
+            }
+        }
     }
     
     var body: some View {

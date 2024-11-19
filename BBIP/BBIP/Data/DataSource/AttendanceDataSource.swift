@@ -102,7 +102,7 @@ final class AttendanceDataSource {
     }
 }
 
-enum AttendanceError: Error {
+enum AttendanceError: Error, Equatable {
     case attendanceNotFound
     case invalidCode
     case timeout
@@ -115,7 +115,7 @@ enum AttendanceError: Error {
         case .attendanceNotFound:
             return "진행 중인 출석을 찾을 수 없습니다"
         case .invalidCode:
-            return "올바르지 않은 코드입니다"
+            return "코드가 올바르지 않습니다"
         case .timeout:
             return "출석 인증 시간이 초과되었습니다"
         case .encodingError:
