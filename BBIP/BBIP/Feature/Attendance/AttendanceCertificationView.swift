@@ -8,9 +8,19 @@ struct AttendanceCertificationView: View {
     @State private var timer: AnyCancellable?
     @State private var formattedTime: String = "00:00"
     
-    @Binding var remainingTime: Int
-    var studyName: String = ""
-    var studyId: String = ""
+    @State private var remainingTime: Int
+    private var studyName: String
+    private var studyId: String
+    
+    init(
+        remainingTime: Int,
+        studyId: String,
+        studyName: String
+    ) {
+        self.remainingTime = remainingTime
+        self.studyId = studyId
+        self.studyName = studyName
+    }
     
     private var submitButtonEnableState: Bool {
         viewModel.isAllEntered() && remainingTime != 0 ? true : false

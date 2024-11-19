@@ -81,7 +81,7 @@ final class StudyHomeViewModel: ObservableObject {
                 switch completion {
                 case .finished: break
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print(error.errorMessage)
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }

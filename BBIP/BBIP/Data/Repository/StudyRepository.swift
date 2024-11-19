@@ -15,6 +15,7 @@ protocol StudyRepository {
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error>
     func getFinishedStudyInfo() -> AnyPublisher<[StudyInfoVO], Error>
+    func getPendingStudy() -> AnyPublisher<PendingStudyVO, Error>
 }
 
 final class StudyRepositoryImpl: StudyRepository {
@@ -23,19 +24,22 @@ final class StudyRepositoryImpl: StudyRepository {
     private let createStudyInfoMapper: CreateStudyInfoMapper
     private let currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper
     private let fullStudyInfoMapper: FullStudyInfoMapper
+    private let pendingStudyMapper: PendingStudyMapper
 
     init(
         dataSource: StudyDataSource,
         studyInfoMapper: StudyInfoMapper,
         createStudyInfoMapper: CreateStudyInfoMapper,
         currentWeekStudyInfoMapper: CurrentWeekStudyInfoMapper,
-        fullStudyInfoMapper: FullStudyInfoMapper
+        fullStudyInfoMapper: FullStudyInfoMapper,
+        pendingStudyMapper : PendingStudyMapper
     ) {
         self.dataSource = dataSource
         self.studyInfoMapper = studyInfoMapper
         self.createStudyInfoMapper = createStudyInfoMapper
         self.currentWeekStudyInfoMapper = currentWeekStudyInfoMapper
         self.fullStudyInfoMapper = fullStudyInfoMapper
+        self.pendingStudyMapper = pendingStudyMapper
     }
     
     func getCurrentWeekStudyInfo() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {
@@ -70,7 +74,6 @@ final class StudyRepositoryImpl: StudyRepository {
             }
             .eraseToAnyPublisher()
     }
-
     
     func createStudy(vo: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         let dto = createStudyInfoMapper.toDTO(vo: vo)
@@ -81,6 +84,12 @@ final class StudyRepositoryImpl: StudyRepository {
     
     func joinStudy(studyId: String) -> AnyPublisher<Bool, Error> {
         dataSource.joinStudy(studyId: studyId)
+            .eraseToAnyPublisher()
+    }
+    
+    func getPendingStudy() -> AnyPublisher<PendingStudyVO, any Error> {
+        dataSource.getPendingStudy()
+            .map { return self.pendingStudyMapper.toVO(dto: $0)}
             .eraseToAnyPublisher()
     }
 }

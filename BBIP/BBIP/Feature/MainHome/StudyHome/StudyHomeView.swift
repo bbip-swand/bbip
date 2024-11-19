@@ -33,7 +33,9 @@ struct StudyHomeView: View {
                     appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
                 }
             } else {
-                appState.push(.entercode)
+                if let attendaceStatus = viewModel.attendaceStatus {
+                    appState.push(.entercode(remainingTime: attendaceStatus.remainingTime, studyId: studyId, studyName: attendaceStatus.studyName))
+                }
             }
         }
     }

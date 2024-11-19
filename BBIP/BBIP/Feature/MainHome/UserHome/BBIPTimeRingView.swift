@@ -9,22 +9,21 @@ import SwiftUI
 import Combine
 
 struct BBIPTimeRingView: View {
-    @State private var progress: Double
-    private var vo: ImpendingStudyVO
+    private var progress: Double
+    private var isAttended: Bool
+    private var vo: PendingStudyVO
     
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     
-    init(
-        progress: Double,
-        vo: ImpendingStudyVO
-    ) {
-        self.progress = progress
+    init(vo: PendingStudyVO, isAttended: Bool = false) {
         self.vo = vo
+        self.isAttended = isAttended
+        self.progress = vo.totalWeeks > 0 ? Double(vo.studyWeek) / Double(vo.totalWeeks) : 0
     }
     
     private var ddayLabel: String {
-        vo.leftDay == .zero ? "TODAY" : "D-\(vo.leftDay)"
+        vo.leftDays == .zero ? "TODAY" : "D-\(vo.leftDays)"
     }
     
     private var contentBody: some View {
@@ -32,16 +31,16 @@ struct BBIPTimeRingView: View {
             CapsuleView(title: ddayLabel, type: .timeRing)
                 .padding(.bottom, 20)
             
-            Text(vo.title)
+            Text(vo.studyName)
                 .font(.bbip(.title4_sb24))
                 .foregroundStyle(.mainWhite)
                 .padding(.bottom, 12)
             
             Group {
-                Text(vo.time)
+                Text(vo.studyTime)
                     .padding(.bottom, 2)
                 
-                Text(vo.location ?? "장소 미정")
+                Text(vo.place)
             }
             .font(.bbip(.body2_m14))
             .foregroundStyle(.gray5)
@@ -98,7 +97,7 @@ struct BBIPTimeRingView: View {
                 .foregroundStyle(.gray3)
                 .frame(width: 130, height: 43)
                 .overlay {
-                    Text("출석인증")
+                    Text(isAttended ? "출석완료" : "출석인증")
                         .font(.bbip(.body2_b14))
                         .foregroundStyle(.gray5)
                 }
@@ -109,27 +108,27 @@ struct BBIPTimeRingView: View {
 }
 
 struct ActivatedBBIPTimeRingView: View {
+    @EnvironmentObject var appState: AppStateManager
     @State private var progress: Double = 0
     @State private var remainingTime: Int
     @State private var formattedTime: String = "00:00"
     @State private var timer: AnyCancellable?
     @State private var showCircle: Bool = false
-    @State private var shakeStick: Bool = false
-    @State private var showAttendanceCertificationView: Bool = false
     
-    private let initialTime: Int = 60 // for test
-    private var studyTitle: String
+    @State private var showAttendanceRecordView: Bool = false
+    
+    private let initialTime: Int = 60 * 10 // 출결 제한시간은 10분
     private var lineWidth: CGFloat = 8
     private var endCircleSize: CGFloat = 18
     private var completion: (() -> Void)?
+    private var attendanceStatus: AttendanceStatusVO
     
     init(
-        studyTitle: String,
-        remainingTime: Int,
+        vo: AttendanceStatusVO,
         completion: (() -> Void)? = nil
     ) {
-        self.studyTitle = studyTitle
-        self.remainingTime = remainingTime
+        self.attendanceStatus = vo
+        self.remainingTime = vo.remainingTime
         self.completion = completion
     }
     
@@ -155,7 +154,7 @@ struct ActivatedBBIPTimeRingView: View {
                 progress = Double(remainingTime) / Double(initialTime)
                 formattedTime = formatTime(remainingTime)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                      if !showCircle { showCircle = true }
                 }
             }
@@ -187,7 +186,7 @@ struct ActivatedBBIPTimeRingView: View {
                                 style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
                             )
                             .rotationEffect(Angle(degrees: -90))
-                            .animation(.easeInOut(duration: 0.25), value: progress)
+                            .animation(.easeInOut(duration: 0.2), value: progress)
                     }
                     .padding(18)
                     
@@ -197,11 +196,10 @@ struct ActivatedBBIPTimeRingView: View {
                         .offset(x: xOffset, y: yOffset)
                         .opacity(showCircle ? 1 : 0)
                         .animation(.linear, value: showCircle)
-                        .animation(.easeInOut, value: progress)
                 }
                 .overlay {
                     VStack(spacing: 5) {
-                        Text(studyTitle)
+                        Text(attendanceStatus.studyName)
                             .font(.bbip(.title3_m20))
                             .foregroundStyle(.mainWhite)
                         
@@ -213,15 +211,27 @@ struct ActivatedBBIPTimeRingView: View {
                             }
                     }
                 }
+                
                 Image("timeRingStick_enable")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .offset(x: 30, y: 62)
                     .unredacted()
             }
+            
             Button {
-                showAttendanceCertificationView = true
                 timer?.cancel()
+                if attendanceStatus.isManager {
+                    showAttendanceRecordView = true
+                } else {
+                    appState.push(
+                        .entercode(
+                            remainingTime: attendanceStatus.remainingTime,
+                            studyId: attendanceStatus.studyId,
+                            studyName: attendanceStatus.studyName
+                        )
+                    )
+                }
             } label: {
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundStyle(.primary3)
@@ -241,28 +251,8 @@ struct ActivatedBBIPTimeRingView: View {
         }
         .frame(height: (UIScreen.main.bounds.width - 120) + 43 + 24)
         .padding(.horizontal, 60)
-        .navigationDestination(isPresented: $showAttendanceCertificationView) {
-            AttendanceCertificationView(remainingTime: $remainingTime)
+        .navigationDestination(isPresented: $showAttendanceRecordView) {
+            AttendanceRecordView(remainingTime: remainingTime, studyId: attendanceStatus.studyId, code: attendanceStatus.code)
         }
     }
-}
-
-#Preview {
-    
-    VStack(spacing: 40) {
-        BBIPTimeRingView(
-            progress: 0.4,
-            vo: ImpendingStudyVO(
-                leftDay: 0,
-                title: "TOEIC / IELTS",
-                time: "18:00 - 20:00",
-                location: "예대 4층")
-        )
-        
-//        AttendanceCertificationView(
-//            studyTitle: "TOEIC / IELTS",
-//            remainingTime: 40
-//        )
-    }
-    
 }

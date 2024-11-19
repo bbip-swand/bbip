@@ -9,7 +9,7 @@ struct AttendanceStatusVO {
     let studyName: String
     let studyId: String
     let session: Int
-    let remainingTime: Int
+    var remainingTime: Int
     let code: Int
     let isManager: Bool
     let isAttended: Bool
