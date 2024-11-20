@@ -98,6 +98,9 @@
 		C6516EF02CEDE99700FCFAF2 /* ShowAllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */; };
 		C6516EF22CEDEADF00FCFAF2 /* PostingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF12CEDEAD900FCFAF2 /* PostingListView.swift */; };
 		C6516EF42CEDECE900FCFAF2 /* EmptyPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */; };
+		C6516EF72CEDFB8400FCFAF2 /* CreatePostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF62CEDFB7F00FCFAF2 /* CreatePostingView.swift */; };
+		C6516EF92CEDFECD00FCFAF2 /* WeeklyStudyContentCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF82CEDFEBD00FCFAF2 /* WeeklyStudyContentCardView.swift */; };
+		C6516EFB2CEE026C00FCFAF2 /* WeeklyStudyContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -345,6 +348,9 @@
 		C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllButton.swift; sourceTree = "<group>"; };
 		C6516EF12CEDEAD900FCFAF2 /* PostingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingListView.swift; sourceTree = "<group>"; };
 		C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholderView.swift; sourceTree = "<group>"; };
+		C6516EF62CEDFB7F00FCFAF2 /* CreatePostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingView.swift; sourceTree = "<group>"; };
+		C6516EF82CEDFEBD00FCFAF2 /* WeeklyStudyContentCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentCardView.swift; sourceTree = "<group>"; };
+		C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListView.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -810,6 +816,7 @@
 				C6989E982C9A99F2003CE4D5 /* DayPickerView.swift */,
 				C6989E9A2C9AB2C6003CE4D5 /* TimePickerView.swift */,
 				C6CF22712CA3237400988748 /* LoadableImageView.swift */,
+				C6516EF82CEDFEBD00FCFAF2 /* WeeklyStudyContentCardView.swift */,
 				C695BDEC2C649FF0009DEC3C /* ViewModifier */,
 				C62780C02C85987C00065F98 /* UIVCRepresentable */,
 			);
@@ -1132,6 +1139,7 @@
 				C6F2DA152CAACF1E002023B6 /* PostingDetailView.swift */,
 				C6F2DA172CAACF50002023B6 /* PostingDetailViewModel.swift */,
 				C6F2DA232CAAF70D002023B6 /* CommentCell.swift */,
+				C6516EF62CEDFB7F00FCFAF2 /* CreatePostingView.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -1250,6 +1258,7 @@
 				C6F98F2F2CA94E1B00F0D8E8 /* StudyDetailView.swift */,
 				C6F2DA3A2CAC25AD002023B6 /* SetStudyLocationView.swift */,
 				C6F2DA3C2CAC2EB7002023B6 /* CheckStudyLocationView.swift */,
+				C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */,
 			);
 			path = StudyHome;
 			sourceTree = "<group>";
@@ -1524,6 +1533,7 @@
 				C6F98F442CAA930800F0D8E8 /* ArchiveAPI.swift in Sources */,
 				C62780F42C8AFBC600065F98 /* BaseAPI.swift in Sources */,
 				C64C28252CE220A700131B70 /* OccupationCategory.swift in Sources */,
+				C6516EFB2CEE026C00FCFAF2 /* WeeklyStudyContentListView.swift in Sources */,
 				C6FA55B42C8F294500E537D7 /* CurrentWeekStudyInfoVO.swift in Sources */,
 				C69445A72C9E96B0003945CC /* DIContainer.swift in Sources */,
 				C6989E992C9A99F2003CE4D5 /* DayPickerView.swift in Sources */,
@@ -1540,6 +1550,7 @@
 				C6FA55BA2C8FD9E600E537D7 /* ImpendingStudyVO.swift in Sources */,
 				C62780EC2C8AEE4800065F98 /* RequestLoginUseCase.swift in Sources */,
 				C64C282D2CE2EEEC00131B70 /* ScheduleCardView.swift in Sources */,
+				C6516EF92CEDFECD00FCFAF2 /* WeeklyStudyContentCardView.swift in Sources */,
 				C6F2DA372CABD477002023B6 /* RoundedCorner.swift in Sources */,
 				C61A47302C6687690016986D /* Font+Extension.swift in Sources */,
 				C69445982C9D595D003945CC /* CreateStudyUseCase.swift in Sources */,
@@ -1569,6 +1580,7 @@
 				C6F700972CA2DA77000CCC80 /* StudyHomeView.swift in Sources */,
 				C695CB642C7F154F00BB3952 /* AppState.swift in Sources */,
 				C61EDBAB2C679E1300E8FF83 /* MainButton.swift in Sources */,
+				C6516EF72CEDFB8400FCFAF2 /* CreatePostingView.swift in Sources */,
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C6516EB62CEB452E00FCFAF2 /* AttendanceRepository.swift in Sources */,
