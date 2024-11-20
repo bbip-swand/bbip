@@ -22,11 +22,11 @@ extension PendingStudyVO {
         return .init(
             studyId: "1",
             studyName: "placeholder",
-            studyWeek: 1,
+            studyWeek: 2,
             studyTime: "12:00 ~ 13:00",
             leftDays: 1,
             place: "placeholder",
-            totalWeeks: 1
+            totalWeeks: 5
         )
     }
 }
