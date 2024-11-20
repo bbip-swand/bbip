@@ -21,6 +21,7 @@ struct StudyInfoVO {
     let studyDescription: String
     let studyContents: [String]
     let currentWeek: Int
+    let isManager: Bool
     
     struct StudyTime: Codable {
         let startTime: String

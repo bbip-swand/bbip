@@ -18,7 +18,18 @@ final class CalendarDataSource {
             .map(\.data)
             .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
             .mapError { error in
-                print("Error: \(error.localizedDescription)")
+                error.handleDecodingError()
+                return error
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func getUpcommingSchedule() -> AnyPublisher<[ScheduleDTO], Error> {
+        return provider.requestPublisher(.getUpcommingSchedule)
+            .map(\.data)
+            .decode(type: [ScheduleDTO].self, decoder: JSONDecoder.iso8601WithMillisecondsDecoder())
+            .mapError { error in
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()
@@ -26,9 +37,9 @@ final class CalendarDataSource {
     
     func createSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
         provider.requestPublisher(.createSchedule(dto: dto))
-            .map { _ in () } // 성공 시 Void 반환
+            .map { _ in () }
             .mapError { error in
-                print("Error: \(error.localizedDescription)")
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()
@@ -36,9 +47,9 @@ final class CalendarDataSource {
     
     func updateSchedule(dto: ScheduleFormDTO) -> AnyPublisher<Void, Error> {
         provider.requestPublisher(.updateschedule(dto: dto))
-            .map { _ in () } // 성공 시 Void 반환
+            .map { _ in () }
             .mapError { error in
-                print("Error: \(error.localizedDescription)")
+                error.handleDecodingError()
                 return error
             }
             .eraseToAnyPublisher()

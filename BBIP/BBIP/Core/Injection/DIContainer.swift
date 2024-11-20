@@ -147,12 +147,17 @@ class DIContainer {
     // MARK: - Calendar
     private let calendarDataSource = CalendarDataSource()
     private let scheduleMapper = ScheduleMapper()
+    private let upcommingScheduleMapper = UpcommingScheduleMapper()
     private lazy var calendarRepository: CalendarRepository = CalendarRepositoryImpl(
         dataSource: calendarDataSource,
-        mapper: scheduleMapper
+        mapper: scheduleMapper,
+        upcommingMapper: upcommingScheduleMapper
     )
     
     private lazy var getMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol = GetMonthlyScheduleUseCase(
+        repository: calendarRepository
+    )
+    private lazy var getUpcommingScheduleUseCase: GetUpcommingScheduleUseCaseProtocol = GetUpcommingScheduleUseCase(
         repository: calendarRepository
     )
     private lazy var createScheduleUseCase: CreateScheduleUseCaseProtocol = CreateScheduleUseCase(
@@ -183,7 +188,8 @@ class DIContainer {
             getCurrentWeekStudyInfoUseCase: getCurrentWeekStudyInfoUseCase, 
             getOngoingStudyInfoUseCase: getOngoingStudyInfoUseCase,
             getPendingStudyUseCase: getPendingStudyUseCase,
-            getAttendanceStatusUseCase: getAttendanceStatusUseCase
+            getAttendanceStatusUseCase: getAttendanceStatusUseCase,
+            getUpcommingScheduleUseCase: getUpcommingScheduleUseCase
         )
     }
     

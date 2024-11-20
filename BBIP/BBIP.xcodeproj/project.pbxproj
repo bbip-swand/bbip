@@ -91,6 +91,8 @@
 		C6516EE02CECC95500FCFAF2 /* PendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EDF2CECC95500FCFAF2 /* PendingStudyVO.swift */; };
 		C6516EE22CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE12CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift */; };
 		C6516EE42CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE32CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift */; };
+		C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */; };
+		C6516EEA2CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE92CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift */; };
 		C6516EE62CECE7E300FCFAF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6516EE52CECE7E300FCFAF2 /* GoogleService-Info.plist */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
@@ -233,8 +235,8 @@
 		C6FA55E12C90800C00E537D7 /* NoticeBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */; };
 		C6FA55EC2C91566C00E537D7 /* UserHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EB2C91566C00E537D7 /* UserHomeViewModel.swift */; };
 		C6FA55EF2C9193D200E537D7 /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */; };
-		C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */; };
-		C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */; };
+		C6FA55F12C919A7400E537D7 /* UpcommingScheduleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F02C919A7400E537D7 /* UpcommingScheduleCardView.swift */; };
+		C6FA55F32C919D2100E537D7 /* UpcommingScheduleVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F22C919D2000E537D7 /* UpcommingScheduleVO.swift */; };
 		C6FA55F52C91A26300E537D7 /* BBIPGuideButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */; };
 		C6FA55F82C95360800E537D7 /* AttendanceCertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */; };
 		C6FA55FA2C9536D800E537D7 /* AttendanceCertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */; };
@@ -332,6 +334,8 @@
 		C6516EDF2CECC95500FCFAF2 /* PendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingStudyVO.swift; sourceTree = "<group>"; };
 		C6516EE12CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingStudyMapper.swift; sourceTree = "<group>"; };
 		C6516EE32CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingStudyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcommingScheduleUseCase.swift; sourceTree = "<group>"; };
+		C6516EE92CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcommingScheduleMapper.swift; sourceTree = "<group>"; };
 		C6516EE52CECE7E300FCFAF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
@@ -473,8 +477,8 @@
 		C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBannerView.swift; sourceTree = "<group>"; };
 		C6FA55EB2C91566C00E537D7 /* UserHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewModel.swift; sourceTree = "<group>"; };
 		C6FA55EE2C9193D200E537D7 /* MainHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHomeView.swift; path = BBIP/Feature/MainHome/MainHomeView.swift; sourceTree = SOURCE_ROOT; };
-		C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleCardView.swift; sourceTree = "<group>"; };
-		C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingScheduleVO.swift; sourceTree = "<group>"; };
+		C6FA55F02C919A7400E537D7 /* UpcommingScheduleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcommingScheduleCardView.swift; sourceTree = "<group>"; };
+		C6FA55F22C919D2000E537D7 /* UpcommingScheduleVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcommingScheduleVO.swift; sourceTree = "<group>"; };
 		C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBIPGuideButton.swift; sourceTree = "<group>"; };
 		C6FA55F72C95360800E537D7 /* AttendanceCertificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationView.swift; sourceTree = "<group>"; };
 		C6FA55F92C9536D800E537D7 /* AttendanceCertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceCertificationViewModel.swift; sourceTree = "<group>"; };
@@ -575,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C284E2CE37DD900131B70 /* ScheduleMapper.swift */,
+				C6516EE92CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -583,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */,
+				C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */,
 				C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */,
 				C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */,
 			);
@@ -691,7 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FA55B92C8FD9E600E537D7 /* ImpendingStudyVO.swift */,
-				C6FA55F22C919D2000E537D7 /* CommingScheduleVO.swift */,
+				C6FA55F22C919D2000E537D7 /* UpcommingScheduleVO.swift */,
 			);
 			path = UserHome;
 			sourceTree = "<group>";
@@ -1348,7 +1354,7 @@
 				C6FA55E02C90800C00E537D7 /* NoticeBannerView.swift */,
 				C6FA55B72C8FD29300E537D7 /* BBIPTimeRingView.swift */,
 				08469F482C7E044A00675792 /* CurrentWeekStudyInfoCardView.swift */,
-				C6FA55F02C919A7400E537D7 /* CommingScheduleCardView.swift */,
+				C6FA55F02C919A7400E537D7 /* UpcommingScheduleCardView.swift */,
 				C6FA55F42C91A26300E537D7 /* BBIPGuideButton.swift */,
 			);
 			path = UserHome;
@@ -1467,6 +1473,7 @@
 				C6FA55FC2C9545C600E537D7 /* BBIPCalendar.swift in Sources */,
 				C6F2DA1C2CAAE006002023B6 /* PostDetailVO.swift in Sources */,
 				C62781182C8C98B000065F98 /* UserInfoMapper.swift in Sources */,
+				C6516EEA2CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift in Sources */,
 				C6F7008C2CA2702D000CCC80 /* CurrentWeekStudyInfoDTO.swift in Sources */,
 				C6F98F332CA997F600F0D8E8 /* GetStudyPostingUseCase.swift in Sources */,
 				C6F2DA392CABEE98002023B6 /* CreateCommentUseCase.swift in Sources */,
@@ -1553,6 +1560,7 @@
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C6516EB62CEB452E00FCFAF2 /* AttendanceRepository.swift in Sources */,
+				C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */,
 				C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */,
 				C6516EBB2CEB49F500FCFAF2 /* AttendanceStatusMapper.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
@@ -1564,13 +1572,13 @@
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
 				C6FA55DF2C906F5400E537D7 /* TimeAgo.swift in Sources */,
 				C6516EB42CEB34CE00FCFAF2 /* AttendanceDataSource.swift in Sources */,
-				C6FA55F12C919A7400E537D7 /* CommingScheduleCardView.swift in Sources */,
+				C6FA55F12C919A7400E537D7 /* UpcommingScheduleCardView.swift in Sources */,
 				C6F074432CA721E800A37501 /* WeeklyStudyContentCell.swift in Sources */,
 				084C022D2C7F20F300E54D0C /* BBIPTabView.swift in Sources */,
 				C62780FE2C8B0A7E00065F98 /* LoginResponseMapper.swift in Sources */,
 				C6516ECD2CEB6C5900FCFAF2 /* CreateCodeOnboardingView.swift in Sources */,
 				C6F2DA1E2CAAE033002023B6 /* CommentVO.swift in Sources */,
-				C6FA55F32C919D2100E537D7 /* CommingScheduleVO.swift in Sources */,
+				C6FA55F32C919D2100E537D7 /* UpcommingScheduleVO.swift in Sources */,
 				C6FA56062C956D3700E537D7 /* CalendarView.swift in Sources */,
 				C6F98F502CAA991200F0D8E8 /* GetArchivedFileInfoUseCase.swift in Sources */,
 				C6F7007E2C9EF58E000CCC80 /* RecentPostMapper.swift in Sources */,
@@ -1817,7 +1825,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = "₩";
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1861,7 +1869,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = "₩";
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;

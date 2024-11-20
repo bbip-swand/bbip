@@ -19,7 +19,7 @@ struct AddScheduleView: View {
     private var ongoingStudyData: [StudyInfoVO]?
     
     init(ongoingStudyData: [StudyInfoVO]? = nil) {
-        self.ongoingStudyData = ongoingStudyData
+        self.ongoingStudyData = ongoingStudyData?.filter{ $0.isManager }
     }
     
     private func formattedDate(for date: Date) -> String {
@@ -252,7 +252,7 @@ extension AddScheduleView {
                     placeholderColor: .gray5,
                     valueColor: .mainBlack,
                     showPicker: showTimePicker,
-                    width: 69
+                    width: 75
                 )
                 .sheet(isPresented: showTimePicker) {
                     TimePickerView(

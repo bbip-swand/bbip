@@ -22,4 +22,5 @@ struct StudyInfoDTO: Decodable {
     let studyDescription: String?
     let studyContents: [String]?
     let currentWeek: Int
+    let isManager: Bool
 }

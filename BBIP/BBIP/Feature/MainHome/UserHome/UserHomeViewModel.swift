@@ -10,14 +10,13 @@ import Combine
 
 final class UserHomeViewModel: ObservableObject {
     
-    // mock data for test
-    @Published var commingScheduleData = CommingScheduleVO.generateMock()
-    
+    // VO
     @Published var homeBulletnData: RecentPostVO?
     @Published var currentWeekStudyData: [CurrentWeekStudyInfoVO]?
     @Published var ongoingStudyData: [StudyInfoVO]?
     @Published var pendingStudyData: PendingStudyVO?
     @Published var attendanceStatus: AttendanceStatusVO?
+    @Published var upcomingScheduleData: [UpcommingScheduleVO]?
     
     // Attendance
     @Published var isAttendanceStarted: Bool = false
@@ -29,6 +28,7 @@ final class UserHomeViewModel: ObservableObject {
     private let getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol          // 진행중인 스터디
     private let getPendingStudyUseCase: GetPendingStudyUseCaseProtocol                  // 가장 임박한 스터디
     private let getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol          // 출석 인증 유무 확인
+    private let getUpcommingScheduleUseCase: GetUpcommingScheduleUseCaseProtocol        // 다가오는 일정
     private var cancellables = Set<AnyCancellable>()
     
     init(
@@ -37,6 +37,7 @@ final class UserHomeViewModel: ObservableObject {
         getOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol,
         getPendingStudyUseCase: GetPendingStudyUseCaseProtocol,
         getAttendanceStatusUseCase: GetAttendanceStatusUseCaseProtocol,
+        getUpcommingScheduleUseCase: GetUpcommingScheduleUseCaseProtocol,
         cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     ) {
         self.getCurrentWeekPostUseCase = getCurrentWeekPostUseCase
@@ -44,12 +45,16 @@ final class UserHomeViewModel: ObservableObject {
         self.getOngoingStudyInfoUseCase = getOngoingStudyInfoUseCase
         self.getPendingStudyUseCase = getPendingStudyUseCase
         self.getAttendanceStatusUseCase = getAttendanceStatusUseCase
+        self.getUpcommingScheduleUseCase = getUpcommingScheduleUseCase
         self.cancellables = cancellables
     }
     
     private func clearData() {
         homeBulletnData = nil
         currentWeekStudyData = nil
+        ongoingStudyData = nil
+        pendingStudyData = nil
+        upcomingScheduleData = nil
     }
     
     func loadHomeData() {
@@ -115,18 +120,27 @@ final class UserHomeViewModel: ObservableObject {
                 switch completion {
                 case .finished: break
                 case .failure(let error):
-                    if error == .attendanceNotFound {
-                        print("진행 중인 출석 없음")
-                    } else {
-                        print(error.errorMessage)
-                    }
+                    print(error.errorMessage)
                 }
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.attendanceStatus = response
                 self.isAttendanceStarted = true
                 self.attendanceRemaningTime = response.remainingTime
-                print(response.remainingTime)
+            }
+            .store(in: &cancellables)
+        
+        getUpcommingScheduleUseCase.excute()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .finished: break
+                case .failure(let error):
+                    print("failed upcomming schedule: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] response in
+                guard let self = self else { return }
+                self.upcomingScheduleData = response
             }
             .store(in: &cancellables)
     }
@@ -135,7 +149,7 @@ final class UserHomeViewModel: ObservableObject {
         clearData()
         
         // for testing
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.loadHomeData()
         }
     }

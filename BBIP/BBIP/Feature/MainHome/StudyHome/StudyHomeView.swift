@@ -96,6 +96,7 @@ struct StudyHomeView: View {
             viewModel.requestFullStudyInfo(studyId: studyId)
             viewModel.getStudyPosting(studyId: studyId)
             viewModel.getAttendanceStatus()
+            print("studyId: \(studyId)")
         }
         .onChange(of: studyId) { _, newVal in
             viewModel.reloadFullStudyInfo(studyId: newVal)

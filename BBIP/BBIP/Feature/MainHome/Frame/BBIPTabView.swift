@@ -45,6 +45,7 @@ struct BBIPTabView : View {
             
             HStack() {
                 Button {
+                    HapticManager.shared.tok()
                     selectedTab = .userHome
                 } label: {
                     Image(selectedTab == .userHome ? "home_active" : "home_nonactive" )
@@ -59,6 +60,7 @@ struct BBIPTabView : View {
                 Spacer()
                 
                 Button {
+                    HapticManager.shared.tok()
                     selectedTab = .calendar
                 } label: {
                     Image(selectedTab == .calendar ? "calendar_active" : "calendar_nonactive")
@@ -72,6 +74,7 @@ struct BBIPTabView : View {
             }
             .overlay {
                 Button {
+                    HapticManager.shared.tongtong()
                     showSheet.toggle()
                 } label: {
                     Image("switch_button")
