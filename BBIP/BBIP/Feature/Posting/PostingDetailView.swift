@@ -41,6 +41,10 @@ struct PostingDetailView: View {
             }
             .keyboardHideable()
         }
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .mainWhite)
+            viewModel.getPostDetail(postingId: postId)
+        }
         .overlay(alignment: .bottom) {
             commentTextfieldArea
                 .bbipShadow1()
@@ -50,9 +54,6 @@ struct PostingDetailView: View {
         .backButtonStyle()
         .toolbar {
             // edit & removeable button
-        }
-        .onAppear {
-            viewModel.getPostDetail(postingId: postId)
         }
     }
 

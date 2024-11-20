@@ -12,8 +12,9 @@ func timeAgo(date: Date) -> String {
     calendar.locale = Locale(identifier: "ko_KR")
     calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
 
-    let now = Date().addingTimeInterval(9 * 60 * 60) // GMT 한국 현지 시간
+    // let now = Date().addingTimeInterval(9 * 60 * 60) // GMT 한국 현지 시간
     
+    let now = Date()
     let components = calendar.dateComponents([.second, .minute, .hour, .day, .weekOfYear], from: date, to: now)
     
     if let weeks = components.weekOfYear, weeks >= 3 {

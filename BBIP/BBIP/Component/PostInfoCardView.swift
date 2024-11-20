@@ -9,6 +9,7 @@ import SwiftUI
 
 /// 게시글 전체보기에서 사용되는 cardView
 struct PostInfoCardView: View {
+    @State private var showPostDetailView: Bool = false
     private let vo: PostVO
     
     init(vo: PostVO) {
@@ -45,12 +46,19 @@ struct PostInfoCardView: View {
             .font(.bbip(.caption3_r12))
             .foregroundStyle(.gray6)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(.mainWhite)
-                .bbipShadow1()
         )
+        .onTapGesture {
+            showPostDetailView = true
+        }
         .padding(.horizontal, 17)
+        .navigationDestination(isPresented: $showPostDetailView) {
+            PostingDetailView(postId: vo.postId)
+        }
+        
     }
 }

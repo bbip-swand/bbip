@@ -17,6 +17,7 @@ struct StudyHomeView: View {
     @State private var showCheckLocationView: Bool = false
     
     @State private var showAttendanceRecordView: Bool = false
+    @State private var showAllPostView: Bool = false
     
     private let studyId: String
     
@@ -115,6 +116,11 @@ struct StudyHomeView: View {
         .navigationDestination(isPresented: $showAttendanceRecordView) {
             if let attendaceStatus = viewModel.attendaceStatus {
                 AttendanceRecordView(remainingTime: attendaceStatus.remainingTime, studyId: studyId, code: attendaceStatus.code)
+            }
+        }
+        .navigationDestination(isPresented: $showAllPostView) {
+            if let postData = viewModel.studyBulletnData {
+                PostingListView(postData: postData)
             }
         }
     }
@@ -389,10 +395,14 @@ struct StudyHomeView: View {
                 Text("게시판")
                     .font(.bbip(.body1_b16))
                     .foregroundStyle(.gray8)
-                    .padding(.leading, 28)
                 
                 Spacer()
+                
+                ShowAllButton {
+                    showAllPostView = true
+                }
             }
+            .padding(.horizontal, 28)
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {

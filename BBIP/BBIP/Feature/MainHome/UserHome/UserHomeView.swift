@@ -111,15 +111,8 @@ struct UserHomeView: View {
                 
                 Spacer()
                 
-                Button {
-                    //
-                } label: {
-                    HStack(spacing: 4) {
-                        Text("전체보기")
-                            .font(.bbip(.body2_m14))
-                        Image("detail_rightArrow")
-                    }
-                    .foregroundStyle(.gray7)
+                ShowAllButton {
+                    
                 }
                 .opacity(0) // NEXT VERSION
             }

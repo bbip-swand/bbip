@@ -95,6 +95,9 @@
 		C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */; };
 		C6516EEA2CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE92CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift */; };
 		C6516EEE2CEDE11000FCFAF2 /* PostInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */; };
+		C6516EF02CEDE99700FCFAF2 /* ShowAllButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */; };
+		C6516EF22CEDEADF00FCFAF2 /* PostingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF12CEDEAD900FCFAF2 /* PostingListView.swift */; };
+		C6516EF42CEDECE900FCFAF2 /* EmptyPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -339,6 +342,9 @@
 		C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcommingScheduleUseCase.swift; sourceTree = "<group>"; };
 		C6516EE92CEDC32600FCFAF2 /* UpcommingScheduleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcommingScheduleMapper.swift; sourceTree = "<group>"; };
 		C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoCardView.swift; sourceTree = "<group>"; };
+		C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllButton.swift; sourceTree = "<group>"; };
+		C6516EF12CEDEAD900FCFAF2 /* PostingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingListView.swift; sourceTree = "<group>"; };
+		C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPlaceholderView.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -790,6 +796,8 @@
 		C695BDE22C649F0D009DEC3C /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				C6516EF32CEDECE900FCFAF2 /* EmptyPlaceholderView.swift */,
+				C6516EEF2CEDE99200FCFAF2 /* ShowAllButton.swift */,
 				C6516EED2CEDE10900FCFAF2 /* PostInfoCardView.swift */,
 				0825394F2C9C6BF700632582 /* AttendanceSubmitTextFeild.swift */,
 				C61EDBAA2C679E1300E8FF83 /* MainButton.swift */,
@@ -1120,6 +1128,7 @@
 			isa = PBXGroup;
 			children = (
 				C6FA55BB2C902F3200E537D7 /* BulletnboardCell.swift */,
+				C6516EF12CEDEAD900FCFAF2 /* PostingListView.swift */,
 				C6F2DA152CAACF1E002023B6 /* PostingDetailView.swift */,
 				C6F2DA172CAACF50002023B6 /* PostingDetailViewModel.swift */,
 				C6F2DA232CAAF70D002023B6 /* CommentCell.swift */,
@@ -1418,11 +1427,11 @@
 			};
 			buildConfigurationList = C6B00C0C2C590A0E009AC4E2 /* Build configuration list for PBXProject "BBIP" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ko,
 			);
 			mainGroup = C6B00C082C590A0E009AC4E2;
 			packageReferences = (
@@ -1570,6 +1579,7 @@
 				C62780DD2C884AAE00065F98 /* AWSS3Manager.swift in Sources */,
 				C6F2DA4C2CAD32A5002023B6 /* UserStateManager.swift in Sources */,
 				C61EDBAD2C68AA0500E8FF83 /* OnboardingViewModel.swift in Sources */,
+				C6516EF42CEDECE900FCFAF2 /* EmptyPlaceholderView.swift in Sources */,
 				C6F0743D2CA6E99E00A37501 /* GetFullStudyInfoUseCase.swift in Sources */,
 				C62780C22C8598AA00065F98 /* ImagePicker.swift in Sources */,
 				C6F700902CA27CC8000CCC80 /* GetCurrentWeekStudyInfoUseCase.swift in Sources */,
@@ -1615,6 +1625,7 @@
 				C6516ED32CEB6FEC00FCFAF2 /* CreateCodeViewModel.swift in Sources */,
 				C6F074412CA717CC00A37501 /* StudyProgressBar.swift in Sources */,
 				C6F074352CA6CFE700A37501 /* StudyMemberDTO.swift in Sources */,
+				C6516EF02CEDE99700FCFAF2 /* ShowAllButton.swift in Sources */,
 				C6516EC42CEB4D9500FCFAF2 /* GetAttendanceStatusUseCaseProtocol.swift in Sources */,
 				C695CB5A2C7EFBE900BB3952 /* WarningLabel.swift in Sources */,
 				C6F074372CA6D98D00A37501 /* Error+Extension.swift in Sources */,
@@ -1639,6 +1650,7 @@
 				C6F700862CA158ED000CCC80 /* GetCurrentWeekPostUseCase.swift in Sources */,
 				C6F2DA462CAD0CC7002023B6 /* StartGuideView.swift in Sources */,
 				C6516EE42CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift in Sources */,
+				C6516EF22CEDEADF00FCFAF2 /* PostingListView.swift in Sources */,
 				C64C284F2CE37DDD00131B70 /* ScheduleMapper.swift in Sources */,
 				C6FA55B82C8FD29300E537D7 /* BBIPTimeRingView.swift in Sources */,
 				C64C281F2CE2178600131B70 /* GetProfileUseCase.swift in Sources */,
