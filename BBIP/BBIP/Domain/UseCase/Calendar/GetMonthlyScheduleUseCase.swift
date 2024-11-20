@@ -5,7 +5,6 @@
 //  Created by 이건우 on 11/12/24.
 //
 
-import Foundation
 import Combine
 
 protocol GetMonthlyScheduleUseCaseProtocol {

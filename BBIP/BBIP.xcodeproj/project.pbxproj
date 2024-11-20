@@ -92,6 +92,7 @@
 		C6516EE02CECC95500FCFAF2 /* PendingStudyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EDF2CECC95500FCFAF2 /* PendingStudyVO.swift */; };
 		C6516EE22CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE12CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift */; };
 		C6516EE42CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE32CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift */; };
+		C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -333,6 +334,7 @@
 		C6516EDF2CECC95500FCFAF2 /* PendingStudyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingStudyVO.swift; sourceTree = "<group>"; };
 		C6516EE12CECC9EA00FCFAF2 /* GetPendingStudyMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingStudyMapper.swift; sourceTree = "<group>"; };
 		C6516EE32CECCB2200FCFAF2 /* GetPendingStudyUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPendingStudyUseCaseProtocol.swift; sourceTree = "<group>"; };
+		C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpcommingScheduleUseCase.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				C64C28532CE3813C00131B70 /* GetMonthlyScheduleUseCase.swift */,
+				C6516EE72CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift */,
 				C6516E462CE6311000FCFAF2 /* CreateScheduleUseCase.swift */,
 				C6516E4A2CE6318800FCFAF2 /* UpdateScheduleUseCase.swift */,
 			);
@@ -1553,6 +1556,7 @@
 				C695CB6D2C7F2C2C00BB3952 /* HapticManager.swift in Sources */,
 				C6FA55B62C8F317300E537D7 /* CapsuleView.swift in Sources */,
 				C6516EB62CEB452E00FCFAF2 /* AttendanceRepository.swift in Sources */,
+				C6516EE82CEDC05A00FCFAF2 /* GetUpcommingScheduleUseCase.swift in Sources */,
 				C6CF22782CA412B900988748 /* JoinStudyCustomAlert.swift in Sources */,
 				C6516EBB2CEB49F500FCFAF2 /* AttendanceStatusMapper.swift in Sources */,
 				C695CB542C7DF95D00BB3952 /* RadiusBorder.swift in Sources */,
