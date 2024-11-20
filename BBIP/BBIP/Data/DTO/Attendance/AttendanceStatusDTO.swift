@@ -11,7 +11,7 @@ struct AttendanceStatusDTO: Decodable {
     let session: Int
     let startTime: String
     let ttl: Int
-    let code: Int
+    let code: Int?
     let isManager: Bool
     let status: Bool
 }

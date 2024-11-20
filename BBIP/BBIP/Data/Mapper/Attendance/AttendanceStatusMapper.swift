@@ -23,7 +23,7 @@ struct AttendanceStatusMapper {
             studyId: dto.studyId,
             session: dto.session,
             remainingTime: remainingTime,
-            code: dto.code,
+            code: dto.code ?? -1,
             isManager: dto.isManager,
             isAttended: dto.status
         )
