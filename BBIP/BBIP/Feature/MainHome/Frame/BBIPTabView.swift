@@ -74,7 +74,7 @@ struct BBIPTabView : View {
             }
             .overlay {
                 Button {
-                    HapticManager.shared.tongtong()
+                    HapticManager.shared.tok()
                     showSheet.toggle()
                 } label: {
                     Image("switch_button")
