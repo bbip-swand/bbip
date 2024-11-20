@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct PostingListView: View {
-    private let postData: [PostVO]
+    @State private var showCreatePostingView: Bool = false
     
-    init(postData: [PostVO]) {
+    private let studyId: String
+    private let postData: [PostVO]
+    private let weeklyStudyContent: [String]
+    
+    init(
+        studyId: String,
+        postData: [PostVO],
+        weeklyStudyContent: [String]
+    ) {
+        self.studyId = studyId
         self.postData = postData
+        self.weeklyStudyContent = weeklyStudyContent
     }
     
     var body: some View {
@@ -20,7 +30,7 @@ struct PostingListView: View {
                 EmptyPlaceholderView(message: "아직 작성한 글이 없어요")
             } else {
                 ScrollView {
-                    VStack(spacing: 25) {
+                    VStack(spacing: 10) {
                         ForEach(0..<postData.count, id: \.self) { index in
                             PostInfoCardView(vo: postData[index])
                         }
@@ -36,12 +46,21 @@ struct PostingListView: View {
         .navigationTitle("게시판")
         .navigationBarTitleDisplayMode(.inline)
         .backButtonStyle()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showCreatePostingView = true
+                } label: {
+                    Image("write_posting")
+                        .padding(.trailing, 8)
+                }
+            }
+        }
+        .navigationDestination(isPresented: $showCreatePostingView) {
+            CreatePostingView(studyId: studyId, weeklyContent: weeklyStudyContent)
+        }
         .onAppear {
             setNavigationBarAppearance(backgroundColor: .gray1)
         }
     }
-}
-
-#Preview {
-    PostingListView(postData: [])
 }

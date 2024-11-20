@@ -119,11 +119,6 @@ struct StudyHomeView: View {
                 AttendanceRecordView(remainingTime: attendaceStatus.remainingTime, studyId: studyId, code: attendaceStatus.code)
             }
         }
-        .navigationDestination(isPresented: $showAllPostView) {
-            if let postData = viewModel.studyBulletnData {
-                PostingListView(postData: postData)
-            }
-        }
         .navigationDestination(isPresented: $showAllWeeklyContentView) {
             if let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
                 WeeklyStudyContentListView(weeklyStudyContent: weeklyStudyContent)
@@ -411,7 +406,10 @@ struct StudyHomeView: View {
                 Spacer()
                 
                 ShowAllButton {
-                    showAllPostView = true
+                    if let postData = viewModel.studyBulletnData,
+                       let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
+                        appState.push(.showPostingList(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent))
+                    }
                 }
                 .padding(.trailing, 20)
             }

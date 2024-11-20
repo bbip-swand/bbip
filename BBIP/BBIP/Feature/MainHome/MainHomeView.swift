@@ -55,7 +55,6 @@ struct MainHomeView: View {
         .onAppear {
             print("mainHome OnAppear")
             appState.setLightMode()
-//            userHomeViewModel.loadHomeData()
         }
         .navigationDestination(for: MainHomeViewDestination.self) { destination in
             switch destination {
@@ -71,6 +70,8 @@ struct MainHomeView: View {
                 CreateCodeOnboardingView(studyId: studyId, session: session)
             case .entercode(let remainingTime, let studyId, let studyName):
                 AttendanceCertificationView(remainingTime: remainingTime, studyId: studyId, studyName: studyName)
+            case .showPostingList(let studyId, let postData, let weeklyStudyContent):
+                PostingListView(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent)
             default:
                 EmptyView()
             }

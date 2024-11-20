@@ -14,4 +14,3 @@ struct CreatePostingDTO: Encodable {
     let content: String
     let isNotice: Bool
 }
-

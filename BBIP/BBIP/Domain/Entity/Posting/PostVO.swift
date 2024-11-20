@@ -15,7 +15,7 @@ enum PostType {
 /// UserHome 화면에서 보이는 게시판
 typealias RecentPostVO = [PostVO]
 
-struct PostVO: Equatable {
+struct PostVO: Equatable, Hashable {
     let postId: String
     let createdAt: Date
     let writer: String
