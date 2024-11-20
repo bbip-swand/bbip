@@ -8,7 +8,7 @@
 import Combine
 
 protocol GetUpcommingScheduleUseCaseProtocol {
-    func excute() -> AnyPublisher<[ScheduleVO], Error>
+    func excute() -> AnyPublisher<[UpcommingScheduleVO], Error>
 }
 
 final class GetUpcommingScheduleUseCase: GetUpcommingScheduleUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetUpcommingScheduleUseCase: GetUpcommingScheduleUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute() -> AnyPublisher<[ScheduleVO], Error> {
+    func excute() -> AnyPublisher<[UpcommingScheduleVO], Error> {
         repository.getUpcommingSchdule()
             .eraseToAnyPublisher()
     }

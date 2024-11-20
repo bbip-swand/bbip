@@ -197,8 +197,18 @@ struct UserHomeView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing: 8) {
-                    ForEach(0..<viewModel.commingScheduleData.count, id: \.self) { index in
-                        CommingScheduleCardView(vo: viewModel.commingScheduleData[index])
+                    if let data = viewModel.upcomingScheduleData {
+                        if data.isEmpty {
+                            UpcommingScheduleCardViewPlaceholder()
+                        } else {
+                            ForEach(0..<data.count, id: \.self) { index in
+                                UpcommingScheduleCardView(vo: data[index])
+                                    .onTapGesture { selectedTab = .calendar }
+                            }
+                        }
+                    } else {
+                        UpcommingScheduleCardView(vo: .placeholderVO())
+                            .redacted(reason: .placeholder)
                     }
                 }
                 .padding(.horizontal, 17)

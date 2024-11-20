@@ -252,7 +252,7 @@ extension AddScheduleView {
                     placeholderColor: .gray5,
                     valueColor: .mainBlack,
                     showPicker: showTimePicker,
-                    width: 69
+                    width: 75
                 )
                 .sheet(isPresented: showTimePicker) {
                     TimePickerView(
