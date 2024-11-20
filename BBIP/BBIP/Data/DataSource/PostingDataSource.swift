@@ -54,4 +54,13 @@ final class PostingDataSource {
             .mapError { $0 }
             .eraseToAnyPublisher()
     }
+    
+    func createPosting(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error> {
+        provider.requestPublisher(.createPosting(dto: dto))
+            .map { response in
+                return (200...299).contains(response.statusCode)
+            }
+            .mapError { $0 }
+            .eraseToAnyPublisher()
+    }
 }
