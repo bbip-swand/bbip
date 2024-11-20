@@ -57,5 +57,8 @@ struct CreateCodeOnboardingView: View {
         .navigationDestination(isPresented: $showCreateCodeView) {
             CreateCodeView(studyId: studyId, session: session)
         }
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray9)
+        }
     }
 }

@@ -76,6 +76,9 @@ struct StartCreateStudyView: View {
         .navigationDestination(isPresented: $showStudyInfoSetupView) {
             StudyInfoSetupView()
         }
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray9)
+        }
     }
 }
 

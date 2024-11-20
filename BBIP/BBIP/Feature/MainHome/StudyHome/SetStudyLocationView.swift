@@ -80,6 +80,9 @@ struct SetStudyLocationView: View {
         .navigationDestination(isPresented: $showLocationCheckView) {
             CheckStudyLocationView(location: locationText, isManager: true)
         }
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray1)
+        }
     }
 }
 

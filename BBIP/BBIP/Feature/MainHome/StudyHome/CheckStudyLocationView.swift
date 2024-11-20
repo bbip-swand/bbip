@@ -57,5 +57,8 @@ struct CheckStudyLocationView: View {
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
         .backButtonStyle(isReversal: true)
+        .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray9)
+        }
     }
 }
