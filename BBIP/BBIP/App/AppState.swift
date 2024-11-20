@@ -27,7 +27,8 @@ enum MainHomeViewDestination: Hashable {
     case entercode(remainingTime: Int, studyId: String, studyName: String)
     
     // MARK: - StudyHome
-    case createCode(studyId: String, session: Int)  
+    case createCode(studyId: String, session: Int)
+    case showPostingList(studyId: String, postData: RecentPostVO, weeklyStudyContent: [String])
     
     // MARK: - StudyHome
     case setLocation(prevLocation:String, studyId: String, session: Int)

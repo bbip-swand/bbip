@@ -16,6 +16,6 @@ struct UpcommingScheduleVO {
 
 extension UpcommingScheduleVO {
     static func placeholderVO() -> UpcommingScheduleVO {
-        .init(scheduleId: "", iconType: 0, leftDay: 0, description: "placeholder")
+        .init(scheduleId: "", iconType: 1, leftDay: 0, description: "placeholder")
     }
 }

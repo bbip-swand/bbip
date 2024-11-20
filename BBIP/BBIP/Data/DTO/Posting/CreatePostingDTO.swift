@@ -10,7 +10,7 @@ import Foundation
 struct CreatePostingDTO: Encodable {
     let studyId: String
     let title: String
+    let week: Int
     let content: String
     let isNotice: Bool
 }
-

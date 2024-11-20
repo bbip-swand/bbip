@@ -17,6 +17,8 @@ struct StudyHomeView: View {
     @State private var showCheckLocationView: Bool = false
     
     @State private var showAttendanceRecordView: Bool = false
+    @State private var showAllPostView: Bool = false
+    @State private var showAllWeeklyContentView: Bool = false
     
     private let studyId: String
     
@@ -115,6 +117,11 @@ struct StudyHomeView: View {
         .navigationDestination(isPresented: $showAttendanceRecordView) {
             if let attendaceStatus = viewModel.attendaceStatus {
                 AttendanceRecordView(remainingTime: attendaceStatus.remainingTime, studyId: studyId, code: attendaceStatus.code)
+            }
+        }
+        .navigationDestination(isPresented: $showAllWeeklyContentView) {
+            if let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
+                WeeklyStudyContentListView(weeklyStudyContent: weeklyStudyContent)
             }
         }
     }
@@ -351,6 +358,11 @@ struct StudyHomeView: View {
                     .padding(.leading, 11)
                 
                 Spacer()
+                
+                ShowAllButton {
+                    showAllWeeklyContentView = true
+                }
+                .padding(.trailing, 3)
             }
             
             if let fullStudyInfo = viewModel.fullStudyInfo {
@@ -392,6 +404,14 @@ struct StudyHomeView: View {
                     .padding(.leading, 28)
                 
                 Spacer()
+                
+                ShowAllButton {
+                    if let postData = viewModel.studyBulletnData,
+                       let weeklyStudyContent = viewModel.fullStudyInfo?.studyContents {
+                        appState.push(.showPostingList(studyId: studyId, postData: postData, weeklyStudyContent: weeklyStudyContent))
+                    }
+                }
+                .padding(.trailing, 20)
             }
             
             ScrollView(.horizontal) {

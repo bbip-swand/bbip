@@ -33,6 +33,7 @@ struct MyStudyStatusView: View {
                     withAnimation { selectedIndex = 1 }
                 }
             }
+            .background(Color.gray1)
             .animation(.easeInOut(duration: 0.1), value: selectedIndex)
 
             // Dynamic Content
@@ -69,7 +70,7 @@ fileprivate struct SwitchButton: View {
         Button(action: action) {
             ZStack {
                 Rectangle()
-                    .fill(.mainWhite)
+                    .fill(.gray1)
                     .frame(height: 54)
                     .overlay(
                         RoundedRectangle(cornerRadius: 1)
@@ -105,7 +106,7 @@ fileprivate struct StudyListView: View {
             }
             .background(.gray1)
         } else {
-            EmptyStudyView(message: emptyMessage)
+            EmptyPlaceholderView(message: emptyMessage, bottomPadding: 54)
         }
     }
 }
@@ -168,28 +169,5 @@ fileprivate struct StudyCardView: View {
                 .foregroundStyle(.gray7)
             }
         }
-    }
-}
-
-
-fileprivate struct EmptyStudyView: View {
-    let message: String
-
-    var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            Image("nostudy")
-                .resizable()
-                .frame(width: 80, height: 80)
-
-            Text(message)
-                .font(.bbip(.title3_sb20))
-                .foregroundStyle(.gray7)
-                .frame(maxWidth: .infinity)
-                .padding(.top, 23)
-                .padding(.bottom, 100)
-            Spacer()
-        }
-        .background(.gray1)
     }
 }

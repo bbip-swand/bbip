@@ -43,5 +43,7 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>프로필 사진 및 스터디의 대표 사진 첨부를 위한 앨범 사용 권한</string>
 </dict>
 </plist>
