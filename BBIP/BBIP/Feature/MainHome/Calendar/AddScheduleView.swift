@@ -19,7 +19,7 @@ struct AddScheduleView: View {
     private var ongoingStudyData: [StudyInfoVO]?
     
     init(ongoingStudyData: [StudyInfoVO]? = nil) {
-        self.ongoingStudyData = ongoingStudyData
+        self.ongoingStudyData = ongoingStudyData?.filter{ $0.isManager }
     }
     
     private func formattedDate(for date: Date) -> String {

@@ -56,6 +56,7 @@ struct CalendarView: View {
                         selectedDate: $selectedDate,
                         currentMonthTitle: $currentMonthTitle
                     )
+                    .id(scheduleData.count)
                 } else {
                     BBIPCalendar(
                         vo: [],

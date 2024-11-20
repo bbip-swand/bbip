@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+// TODO: - 수정 삭제가 되도록 바꿔야 하므로 view와 vm 모두 이름 변경 필요 ex) PostSchedule..?
 class AddScheculeViewModel: ObservableObject {
     @Published var selectedStudyName: String?
     @Published var selectedStudyId: String = ""

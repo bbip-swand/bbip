@@ -30,7 +30,8 @@ struct StudyInfoMapper {
             studyTimes: studyTimes,
             studyDescription: dto.studyDescription ?? "",
             studyContents: dto.studyContents ?? [], 
-            currentWeek: dto.currentWeek
+            currentWeek: dto.currentWeek,
+            isManager: dto.isManager
         )
     }
 }
