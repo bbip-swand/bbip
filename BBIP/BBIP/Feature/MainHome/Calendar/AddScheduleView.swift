@@ -232,7 +232,6 @@ extension AddScheduleView {
                                 date.wrappedValue = newValue
                             }
                         ),
-                        in: Date()...,
                         displayedComponents: .date
                     )
                     .datePickerStyle(GraphicalDatePickerStyle())

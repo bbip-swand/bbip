@@ -13,6 +13,7 @@ struct CalendarView: View {
     @State private var selectedDate = Date()
     @State private var currentMonthTitle: String = ""
     @State private var showAddScheduleView: Bool = false
+    @State private var calendarUpdateId = UUID()
     
     private var ongoingStudyData: [StudyInfoVO]?
     
@@ -56,7 +57,7 @@ struct CalendarView: View {
                         selectedDate: $selectedDate,
                         currentMonthTitle: $currentMonthTitle
                     )
-                    .id(scheduleData.count)
+                    .id(calendarUpdateId)
                 } else {
                     BBIPCalendar(
                         vo: [],
@@ -83,9 +84,11 @@ struct CalendarView: View {
         }
         .navigationDestination(isPresented: $showAddScheduleView) {
             AddScheduleView(ongoingStudyData: ongoingStudyData)
+                .onDisappear { calendarUpdateId = UUID() }
         }
         .onAppear {
             viewModel.fetch(date: selectedDate)
+            print("!!!!!!!!!!!!")
         }
     }
 }

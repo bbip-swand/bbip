@@ -9,13 +9,13 @@ import Foundation
 
 struct UpcommingScheduleMapper {
     func toVO(dto: ScheduleDTO) -> UpcommingScheduleVO {
-        let currentDate = Date()
+        let currentDate = Date().addingTimeInterval(60 * 60 * 9)
         let leftDay = Calendar.current.dateComponents([.day], from: currentDate, to: dto.startDate).day ?? 0
         
         return UpcommingScheduleVO(
             scheduleId: dto.scheduleId,
             iconType: dto.icon,
-            leftDay: leftDay,
+            leftDay: leftDay + 1,
             description: dto.title
         )
     }

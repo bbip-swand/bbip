@@ -97,8 +97,11 @@ struct BBIPCalendar: UIViewRepresentable {
         }
         
         func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+            let calendar = Calendar.current
             return self.parent.vo.filter { schedule in
-                date.addingTimeInterval(9 * 60 * 60) >= schedule.startDate && date.addingTimeInterval(9 * 60 * 60) <= schedule.endDate
+                calendar.isDate(date, inSameDayAs: schedule.startDate) ||
+                calendar.isDate(date, inSameDayAs: schedule.endDate) ||
+                (date >= schedule.startDate && date <= schedule.endDate)
             }.count
         }
         

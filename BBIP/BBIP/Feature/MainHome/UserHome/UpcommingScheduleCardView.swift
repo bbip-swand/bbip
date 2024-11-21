@@ -40,6 +40,8 @@ struct UpcommingScheduleCardView: View {
                 Text(vo.description)
                     .font(.bbip(.body2_m14))
                     .foregroundStyle(.gray7)
+                    .lineLimit(1)
+                    .frame(maxWidth: 95, alignment: .center)
             }
         }
     }

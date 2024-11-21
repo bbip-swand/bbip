@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduleVO: Equatable {
+struct ScheduleVO: Equatable, Hashable {
     let scheduleId: String
     let studyName: String
     let title: String
