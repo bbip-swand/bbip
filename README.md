@@ -1,6 +1,5 @@
 # BBIP_iOS 🥊
-
-<!-- ![bbip-thumbnail](https://github.com/user-attachments/assets/b3fd4a4e-9bf5-44f2-bdb4-36b9a03f30f5) -->
+![thumbnail](https://github.com/user-attachments/assets/6ccdb611-a852-4fd9-826b-68c2faec95e2)
 ![bbip-reflat](https://github.com/user-attachments/assets/efb534a7-9692-4410-b359-e64c9465fa78)
 
 
