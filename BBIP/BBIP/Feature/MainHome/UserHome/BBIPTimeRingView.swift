@@ -226,7 +226,7 @@ struct ActivatedBBIPTimeRingView: View {
                 } else {
                     appState.push(
                         .entercode(
-                            remainingTime: attendanceStatus.remainingTime,
+                            remainingTime: remainingTime,
                             studyId: attendanceStatus.studyId,
                             studyName: attendanceStatus.studyName
                         )
