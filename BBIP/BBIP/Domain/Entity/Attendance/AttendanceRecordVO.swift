@@ -5,7 +5,10 @@
 //  Created by 이건우 on 11/18/24.
 //
 
-struct AttendanceRecordVO {
+import Foundation
+
+struct AttendanceRecordVO: Identifiable {
+    let id: UUID = UUID()
     let session: Int
     let userName: String
     let profileImageUrl: String?

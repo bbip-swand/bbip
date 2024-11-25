@@ -46,7 +46,7 @@ struct AttendanceRecordView: View {
     }
     
     private func recordSection(title: String, records: [AttendanceRecordVO]) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .font(.bbip(.body1_sb16))
                 .foregroundStyle(.mainWhite)
@@ -57,9 +57,11 @@ struct AttendanceRecordView: View {
                     .font(.bbip(.caption2_m12))
                     .foregroundStyle(.gray6)
                     .padding(.leading, 26)
+                    .padding(.top, 6)
+                    .padding(.bottom, 12)
             }
             
-            ForEach(records, id: \.session) { record in
+            ForEach(records, id: \.id) { record in
                 StudyEntryCard(vo: record)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 8)

@@ -31,6 +31,7 @@ final class AttendanceRecordsViewModel: ObservableObject {
             } receiveValue: { [weak self] response in
                 guard let self = self else { return }
                 self.records = response
+                print(records?.description)
             }
             .store(in: &cancellables)
     }

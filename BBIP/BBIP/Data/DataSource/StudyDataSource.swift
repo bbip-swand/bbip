@@ -105,7 +105,6 @@ final class StudyDataSource {
         completion: @escaping (Result<Bool, Error>) -> Void
     ) {
         provider.request(.editStudyLocation(studyId: studyId, session: session, location: location)) { result in
-            print(studyId)
             switch result {
             case .success(let response):
                 let isSuccess = (200...299).contains(response.statusCode)
