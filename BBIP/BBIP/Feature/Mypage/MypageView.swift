@@ -146,9 +146,6 @@ struct MypageView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Spacer()
-                    .frame(height: 28)
-                
                 ForEach(settinglistVO) { data in
                     ServiceInfoListRow(data: data)
                         .padding(.horizontal, 28)
