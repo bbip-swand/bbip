@@ -24,7 +24,7 @@ struct AttendanceDoneView: View {
             
             Spacer()
             
-            BBIPLottieView(assetName: "CodeCheck", withBackground: false)
+            BBIPLottieView(assetName: "Complete_Attendance")
             
             Spacer()
             
@@ -36,7 +36,7 @@ struct AttendanceDoneView: View {
         .backButtonStyle(isReversal: true)
         .background(.gray9)
         .onAppear {
-            setNavigationBarAppearance()
+            setNavigationBarAppearance(backgroundColor: .gray9)
         }
     }
 }
