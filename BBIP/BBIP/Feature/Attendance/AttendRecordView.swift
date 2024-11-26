@@ -52,6 +52,7 @@ struct AttendanceRecordView: View {
                 .foregroundStyle(.mainWhite)
                 .padding(.leading, 26)
                 .padding(.bottom, 6)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             if title == "경기 미참여" {
                 Text("아직 인증하지 않은 팀원에게 연락해보세요")
