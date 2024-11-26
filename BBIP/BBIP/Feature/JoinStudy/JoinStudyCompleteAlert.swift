@@ -16,7 +16,7 @@ struct JoinStudyCompleteAlert: View {
                 Image("joinStudy_complete")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 140, height: 140)
+                    .frame(width: 144, height: 144)
                 Text("참여에 성공했어요!")
                     .font(.bbip(.title1_sb28))
                     .foregroundStyle(.mainWhite)
