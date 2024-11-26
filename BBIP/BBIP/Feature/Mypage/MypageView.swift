@@ -48,7 +48,7 @@ struct MypageView: View {
     var MypageProfileView: some View {
         HStack(spacing: 0) {
             LoadableImageView(imageUrl: myPageViewModel.profileData?.profileImageUrl, size: 80)
-                .radiusBorder(cornerRadius: 40)
+                .radiusBorder(cornerRadius: 40, color: .gray3)
                 .padding(.leading, 26)
             
             VStack(spacing: 0) {
@@ -129,6 +129,7 @@ struct MypageView: View {
                     }
                 )
             }
+            .padding(.horizontal, 16)
             .padding(.top, 12)
         }
         .navigationDestination(isPresented: $showStudyStatus) {
@@ -194,8 +195,9 @@ fileprivate struct MyStudyDetailButton: View {
                 HStack(spacing: 0) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(title)
-                            .font(.bbip(.body2_m14))
+                            .font(.bbip(.caption2_m12))
                             .foregroundStyle(.gray7)
+                            .lineLimit(1)
                         
                         HStack(spacing: 0) {
                             Text("\(count)")
@@ -216,6 +218,5 @@ fileprivate struct MyStudyDetailButton: View {
                 .padding(.horizontal, 19)
             }
         }
-        .frame(maxWidth: 175)
     }
 }

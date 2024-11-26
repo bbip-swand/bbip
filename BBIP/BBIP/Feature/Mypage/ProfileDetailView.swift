@@ -97,19 +97,17 @@ private extension ProfileDetailView {
     
     // Delete Account Section
     var deleteAccountSection: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray3, lineWidth: 1)
-                .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.mainWhite))
-                .frame(maxWidth: .infinity)
-                .frame(height: 30)
-                .padding(.horizontal, 137)
-            
-            Text("BBIP 탈퇴하기")
-                .font(.bbip(.button2_m16))
-                .foregroundStyle(.gray7)
-        }
-        .padding(.bottom, 64)
+        Text("BBIP 탈퇴하기")
+            .font(.bbip(.button2_m16))
+            .foregroundStyle(.gray7)
+            .padding(.horizontal, 14)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.gray3, lineWidth: 1)
+                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.mainWhite))
+                    .frame(height: 30)
+            )
+            .padding(.bottom, 64)
     }
     
     // Section Header
