@@ -15,7 +15,7 @@ struct UpcommingScheduleMapper {
         return UpcommingScheduleVO(
             scheduleId: dto.scheduleId,
             iconType: dto.icon,
-            leftDay: leftDay + 1,
+            leftDay: leftDay,
             description: dto.title
         )
     }

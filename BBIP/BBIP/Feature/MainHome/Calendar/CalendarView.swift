@@ -88,7 +88,6 @@ struct CalendarView: View {
         }
         .onAppear {
             viewModel.fetch(date: selectedDate)
-            print("!!!!!!!!!!!!")
         }
     }
 }

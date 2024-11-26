@@ -15,9 +15,9 @@ struct UpcommingScheduleCardView: View {
     }
     
     private var ddayText: String {
-        vo.leftDay == 0
+        vo.leftDay <= 0
         ? "D-Day"
-        : "D-\(vo.leftDay)"
+        : "D-\(vo.leftDay + 1)"
     }
     
     var body: some View {
