@@ -42,6 +42,9 @@ class DIContainer {
     private lazy var getProfileUseCase: GetProfileUseCaseProtocol = GetProfileUseCase(
         repository: userRepository
     )
+    private lazy var resignUseCase: ResignUseCaseProtocol = ResignUseCase(
+        repository: userRepository
+    )
     
     
     // MARK: - Attendance
@@ -265,7 +268,8 @@ class DIContainer {
         return MyPageViewModel(
             getProfileUseCase: getProfileUseCase,
             getFinishedStudyUseCase: getFinishedStudyInfoUseCase,
-            getOngoingStudyUseCase: getOngoingStudyInfoUseCase
+            getOngoingStudyUseCase: getOngoingStudyInfoUseCase,
+            resignUseCase: resignUseCase
         )
     }
     

@@ -23,7 +23,7 @@ struct CheckStudyLocationView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Spacer().frame(height: 18)
+            Spacer().frame(height: 60)
             Image("location_background")
             
             Text("이번 주차 장소는")
@@ -56,9 +56,6 @@ struct CheckStudyLocationView: View {
         }
         .containerRelativeFrame([.horizontal, .vertical])
         .background(.gray9)
-        .backButtonStyle(isReversal: true)
-        .onAppear {
-            setNavigationBarAppearance(backgroundColor: .gray9)
-        }
+        .toolbar(.hidden)
     }
 }

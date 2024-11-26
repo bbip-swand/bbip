@@ -62,7 +62,7 @@ struct PostingDetailView: View {
         Group {
             if let vo = viewModel.postDetailData {
                 HStack(alignment: .top, spacing: 12) {
-                    LoadableImageView(imageUrl: "", size: 36)
+                    LoadableImageView(imageUrl: vo.profileImageUrl, size: 36)
                     
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 9) {

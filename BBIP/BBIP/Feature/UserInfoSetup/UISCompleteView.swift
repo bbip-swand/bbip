@@ -21,7 +21,7 @@ struct UISCompleteView: View {
             
             Spacer()
             
-            BBIPLottieView(assetName: "Complete_SignIn", contentMode: .scaleAspectFit, loopMode: .playOnce)
+            BBIPLottieView(assetName: "Complete_SignIn", contentMode: .scaleAspectFit, loopMode: .autoReverse)
                 .frame(maxWidth: UIScreen.main.bounds.width - 132)
                 .frame(height: 260)
             
