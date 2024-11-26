@@ -40,7 +40,7 @@ struct StartGuideView: View {
                     .foregroundStyle(.gray7)
                     .padding(.bottom, 4)
                 
-                Text("새로운 스터디를 생성하고 팀원을 초대하세요")
+                Text("팀장에게 받은 초대 링크로 스터디에 참여하세요")
                     .font(.bbip(.caption1_m16))
                     .foregroundStyle(.gray6)
                     .padding(.bottom, 20)

@@ -132,6 +132,7 @@ struct MypageView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
+            .border(.red)
         }
         .navigationDestination(isPresented: $showStudyStatus) {
             MyStudyStatusView(initialIndex: selectedIndex, viewModel: myPageViewModel)
@@ -143,7 +144,6 @@ struct MypageView: View {
         ZStack {
             Rectangle()
                 .foregroundColor(.mainWhite)
-                .padding(.top, 29)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
@@ -220,4 +220,9 @@ fileprivate struct MyStudyDetailButton: View {
             }
         }
     }
+}
+
+#Preview {
+
+    
 }
