@@ -101,10 +101,10 @@
 		C6516EFD2CEE0BDD00FCFAF2 /* CreatePostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFC2CEE0BD700FCFAF2 /* CreatePostingViewModel.swift */; };
 		C6516EFF2CEE0D1E00FCFAF2 /* CreatePostingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFE2CEE0D1800FCFAF2 /* CreatePostingUseCase.swift */; };
 		C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516F5C2CF5FCBB00FCFAF2 /* ResignUseCase.swift */; };
-		C6516F5F2CF60E4100FCFAF2 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F5E2CF60E4100FCFAF2 /* Splash.json */; };
 		C6516F612CF60EBC00FCFAF2 /* Complete_SignIn.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F602CF60EBC00FCFAF2 /* Complete_SignIn.json */; };
 		C6516F632CF60EDD00FCFAF2 /* Complete_CreateStudy.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F622CF60EDD00FCFAF2 /* Complete_CreateStudy.json */; };
 		C6516F652CF6129000FCFAF2 /* Complete_Attendance.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F642CF6129000FCFAF2 /* Complete_Attendance.json */; };
+		C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = C6516F662CF61E5B00FCFAF2 /* Splash.json */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -354,10 +354,10 @@
 		C6516EFC2CEE0BD700FCFAF2 /* CreatePostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingViewModel.swift; sourceTree = "<group>"; };
 		C6516EFE2CEE0D1800FCFAF2 /* CreatePostingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingUseCase.swift; sourceTree = "<group>"; };
 		C6516F5C2CF5FCBB00FCFAF2 /* ResignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignUseCase.swift; sourceTree = "<group>"; };
-		C6516F5E2CF60E4100FCFAF2 /* Splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		C6516F602CF60EBC00FCFAF2 /* Complete_SignIn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Complete_SignIn.json; sourceTree = "<group>"; };
 		C6516F622CF60EDD00FCFAF2 /* Complete_CreateStudy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Complete_CreateStudy.json; sourceTree = "<group>"; };
 		C6516F642CF6129000FCFAF2 /* Complete_Attendance.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Complete_Attendance.json; sourceTree = "<group>"; };
+		C6516F662CF61E5B00FCFAF2 /* Splash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -1065,7 +1065,7 @@
 		C695BE032C64CBDE009DEC3C /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				C6516F5E2CF60E4100FCFAF2 /* Splash.json */,
+				C6516F662CF61E5B00FCFAF2 /* Splash.json */,
 				C6516F622CF60EDD00FCFAF2 /* Complete_CreateStudy.json */,
 				C6516F602CF60EBC00FCFAF2 /* Complete_SignIn.json */,
 				C6516F642CF6129000FCFAF2 /* Complete_Attendance.json */,
@@ -1477,6 +1477,7 @@
 				C61A472A2C6686760016986D /* WantedSans-Bold.otf in Resources */,
 				C61A472B2C6686760016986D /* WantedSans-Regular.otf in Resources */,
 				C6516F652CF6129000FCFAF2 /* Complete_Attendance.json in Resources */,
+				C6516F672CF61E5B00FCFAF2 /* Splash.json in Resources */,
 				C6B00C1C2C590A10009AC4E2 /* Preview Assets.xcassets in Resources */,
 				C6516F632CF60EDD00FCFAF2 /* Complete_CreateStudy.json in Resources */,
 				C6516F612CF60EBC00FCFAF2 /* Complete_SignIn.json in Resources */,
@@ -1484,7 +1485,6 @@
 				C61A472C2C6686760016986D /* WantedSans-SemiBold.otf in Resources */,
 				C6FA55A02C8EDF0700E537D7 /* BBIPLoading.json in Resources */,
 				C6B00C192C590A10009AC4E2 /* Assets.xcassets in Resources */,
-				C6516F5F2CF60E4100FCFAF2 /* Splash.json in Resources */,
 				C6516EE62CECE7E300FCFAF2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1865,7 +1865,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;
@@ -1909,7 +1909,7 @@
 				CODE_SIGN_ENTITLEMENTS = BBIP/BBIP.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"BBIP/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6JLYLDSW4U;

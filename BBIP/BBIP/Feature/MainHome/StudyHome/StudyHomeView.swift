@@ -32,7 +32,9 @@ struct StudyHomeView: View {
                 if viewModel.isAttendanceStart {
                     showAttendanceRecordView = true
                 } else {
-                    appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+                    if viewModel.attendaceStatus?.isAttended == false {
+                        appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+                    }
                 }
             } else {
                 if let attendaceStatus = viewModel.attendaceStatus {
