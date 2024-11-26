@@ -32,7 +32,9 @@ struct StudyHomeView: View {
                 if viewModel.isAttendanceStart {
                     showAttendanceRecordView = true
                 } else {
-                    appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+                    if viewModel.attendaceStatus?.isAttended == false {
+                        appState.push(.createCode(studyId: studyId, session: studyinfoVO.session))
+                    }
                 }
             } else {
                 if let attendaceStatus = viewModel.attendaceStatus, !attendaceStatus.isAttended {
@@ -288,7 +290,7 @@ struct StudyHomeView: View {
                 Button {
                     if let vo = viewModel.fullStudyInfo {
                         if vo.isManager {
-                            appState.push(.setLocation(prevLocation: vo.location ?? "", studyId: studyId, session: vo.session))
+                            appState.push(.setLocation(prevLocation: vo.location ?? "", studyId: studyId, session: vo.currentWeek))
                         } else {
                             showCheckLocationView = true
                         }
