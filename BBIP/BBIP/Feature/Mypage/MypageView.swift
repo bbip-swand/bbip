@@ -86,6 +86,7 @@ struct MypageView: View {
         }
         .navigationDestination(isPresented: $showDetail) {
             ProfileDetailView(
+                viewModel: myPageViewModel,
                 userName: myPageViewModel.profileData?.userName ?? "Unknown",
                 profileImageUrl: myPageViewModel.profileData?.profileImageUrl ?? "profile_default",
                 parsedArea: myPageViewModel.parsedArea,

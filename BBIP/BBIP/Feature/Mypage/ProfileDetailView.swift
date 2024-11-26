@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ProfileDetailView: View {
+    @EnvironmentObject var appState: AppStateManager
+    @ObservedObject var viewModel: MyPageViewModel
+    @State private var showWarningAlert: Bool = false
+    
     private let imageSize: CGFloat = 124
     
     var userName: String
@@ -37,6 +41,19 @@ struct ProfileDetailView: View {
         .backButtonStyle()
         .navigationTitle("내 정보 관리")
         .background(.gray1)
+        .alert(isPresented: $showWarningAlert) {
+            Alert(
+                title: Text("정말 탈퇴하시겠습니까?"),
+                message: Text("회원 탈퇴 시, 회원님이 생성한 스터디는\n모두 삭제됩니다. 삭제된 정보는 되돌릴 수 없습니다."),
+                primaryButton: .destructive(Text("네")) {
+                    viewModel.resign() {
+                        UserDefaultsManager.shared.clearUserData()
+                        withAnimation { appState.switchRoot(.onboarding) }
+                    }
+                },
+                secondaryButton: .cancel(Text("아니오"))
+            )
+        }
     }
 }
 
@@ -97,17 +114,21 @@ private extension ProfileDetailView {
     
     // Delete Account Section
     var deleteAccountSection: some View {
-        Text("BBIP 탈퇴하기")
-            .font(.bbip(.button2_m16))
-            .foregroundStyle(.gray7)
-            .padding(.horizontal, 14)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.gray3, lineWidth: 1)
-                    .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.mainWhite))
-                    .frame(height: 30)
-            )
-            .padding(.bottom, 64)
+        Button {
+            showWarningAlert = true
+        } label: {
+            Text("BBIP 탈퇴하기")
+                .font(.bbip(.button2_m16))
+                .foregroundStyle(.gray7)
+                .padding(.horizontal, 14)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray3, lineWidth: 1)
+                        .background(RoundedRectangle(cornerRadius: 12).foregroundColor(.mainWhite))
+                        .frame(height: 30)
+                )
+                .padding(.bottom, 64)
+        }
     }
     
     // Section Header

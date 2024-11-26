@@ -103,6 +103,7 @@
 		C6516EFB2CEE026C00FCFAF2 /* WeeklyStudyContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */; };
 		C6516EFD2CEE0BDD00FCFAF2 /* CreatePostingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFC2CEE0BD700FCFAF2 /* CreatePostingViewModel.swift */; };
 		C6516EFF2CEE0D1E00FCFAF2 /* CreatePostingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516EFE2CEE0D1800FCFAF2 /* CreatePostingUseCase.swift */; };
+		C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6516F5C2CF5FCBB00FCFAF2 /* ResignUseCase.swift */; };
 		C668E9C62C7AABA300298B52 /* TabViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */; };
 		C668E9C82C7AB0BE00298B52 /* UISActiveAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */; };
 		C668E9CA2C7ABC2D00298B52 /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C668E9C92C7ABC2D00298B52 /* AreaData.swift */; };
@@ -355,6 +356,7 @@
 		C6516EFA2CEE025D00FCFAF2 /* WeeklyStudyContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyContentListView.swift; sourceTree = "<group>"; };
 		C6516EFC2CEE0BD700FCFAF2 /* CreatePostingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingViewModel.swift; sourceTree = "<group>"; };
 		C6516EFE2CEE0D1800FCFAF2 /* CreatePostingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostingUseCase.swift; sourceTree = "<group>"; };
+		C6516F5C2CF5FCBB00FCFAF2 /* ResignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignUseCase.swift; sourceTree = "<group>"; };
 		C668E9C52C7AABA300298B52 /* TabViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeaderView.swift; sourceTree = "<group>"; };
 		C668E9C72C7AB0BE00298B52 /* UISActiveAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISActiveAreaView.swift; sourceTree = "<group>"; };
 		C668E9C92C7ABC2D00298B52 /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				C627810D2C8C843B00065F98 /* SignUpUseCase.swift */,
+				C6516F5C2CF5FCBB00FCFAF2 /* ResignUseCase.swift */,
 				C62781132C8C94A300065F98 /* CreateUserInfoUseCase.swift */,
 				C64C281E2CE2177D00131B70 /* GetProfileUseCase.swift */,
 			);
@@ -1686,6 +1689,7 @@
 				C62780F82C8AFF0C00065F98 /* AuthDataSource.swift in Sources */,
 				C6F98F2C2CA9354900F0D8E8 /* StudyMemberCell.swift in Sources */,
 				C6CF22682CA2E7AE00988748 /* StudyInfoVO.swift in Sources */,
+				C6516F5D2CF5FCC000FCFAF2 /* ResignUseCase.swift in Sources */,
 				C6FA559E2C8EC02600E537D7 /* MypageView.swift in Sources */,
 				C627810E2C8C843B00065F98 /* SignUpUseCase.swift in Sources */,
 				C695CB5E2C7F089C00BB3952 /* UISCompleteView.swift in Sources */,

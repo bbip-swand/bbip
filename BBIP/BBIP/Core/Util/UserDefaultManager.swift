@@ -58,5 +58,7 @@ final class UserDefaultsManager {
     // MARK: - Clear Data
     func clearUserData() {
         defaults.removeObject(forKey: UserDefaultKeys.isLoggedIn.rawValue)
+        defaults.removeObject(forKey: UserDefaultKeys.isNewUser.rawValue)
+        defaults.removeObject(forKey: UserDefaultKeys.accessToken.rawValue)
     }
 }
