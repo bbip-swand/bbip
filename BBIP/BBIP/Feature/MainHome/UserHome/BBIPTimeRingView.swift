@@ -196,6 +196,7 @@ struct ActivatedBBIPTimeRingView: View {
                         .offset(x: xOffset, y: yOffset)
                         .opacity(showCircle ? 1 : 0)
                         .animation(.linear, value: showCircle)
+                        .animation(.easeInOut(duration: 0.2), value: progress)
                 }
                 .overlay {
                     VStack(spacing: 5) {

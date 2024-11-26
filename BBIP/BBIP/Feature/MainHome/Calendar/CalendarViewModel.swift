@@ -24,7 +24,7 @@ final class CalendarViewModel: ObservableObject {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
         
-        getMonthlyScheduleUseCase.excute(year: year, month: month)
+        getMonthlyScheduleUseCase.execute(year: year, month: month)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

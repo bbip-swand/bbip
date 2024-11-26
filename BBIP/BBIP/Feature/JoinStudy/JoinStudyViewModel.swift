@@ -18,8 +18,9 @@ class JoinStudyViewModel: ObservableObject {
         self.joinStudyUseCase = joinStudyUseCase
     }
 
-    func joinStudy(studyId: String, handleError: @escaping () -> Void) {
-        joinStudyUseCase.excute(studyId: studyId)
+    /// completion closure type
+    func joinStudy(studyId: String, completion: @escaping (Bool) -> Void) {
+        joinStudyUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -30,11 +31,19 @@ class JoinStudyViewModel: ObservableObject {
             } receiveValue: { isSuccess in
                 if isSuccess {
                     print("스터디 참여 성공")
+                    completion(true)
                 } else {
                     print("이미 참여된 스터디입니다")
-                    handleError()
+                    completion(false)
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    /// publisher type
+    func joinStudy(studyId: String) -> AnyPublisher<Bool, Never> {
+        joinStudyUseCase.execute(studyId: studyId)
+            .catch { _ in Just(false) }
+            .eraseToAnyPublisher()
     }
 }

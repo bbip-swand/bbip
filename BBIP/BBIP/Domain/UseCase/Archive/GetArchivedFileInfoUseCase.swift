@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetArchivedFileInfoUseCaseProtocol {
-    func excute(studyId: String) -> AnyPublisher<[ArchivedFileInfoVO], Error>
+    func execute(studyId: String) -> AnyPublisher<[ArchivedFileInfoVO], Error>
 }
 
 final class GetArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol {
@@ -19,7 +19,7 @@ final class GetArchivedFileInfoUseCase: GetArchivedFileInfoUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(studyId: String) -> AnyPublisher<[ArchivedFileInfoVO], Error> {
+    func execute(studyId: String) -> AnyPublisher<[ArchivedFileInfoVO], Error> {
         repository.getArchivedFile(studyId: studyId)
             .eraseToAnyPublisher()
     }

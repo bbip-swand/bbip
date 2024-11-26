@@ -39,7 +39,7 @@ final class CreatePostingViewModel: ObservableObject {
         
         isUploading = true
         
-        createPostingUseCase.excute(dto: dto)
+        createPostingUseCase.execute(dto: dto)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {

@@ -74,7 +74,7 @@ final class MyPageViewModel : ObservableObject {
     }
     
     func getOngoingStudyInfo() {
-        getOngoingStudyUseCase.excute()
+        getOngoingStudyUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

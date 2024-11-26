@@ -8,7 +8,7 @@
 import Combine
 
 protocol CreatePostingUseCaseProtocol {
-    func excute(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error>
+    func execute(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error>
 }
 
 final class CreatePostingUseCase: CreatePostingUseCaseProtocol {
@@ -18,7 +18,7 @@ final class CreatePostingUseCase: CreatePostingUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error> {
+    func execute(dto: CreatePostingDTO) -> AnyPublisher<Bool, Error> {
         repository.createPosting(dto: dto)
             .eraseToAnyPublisher()
     }

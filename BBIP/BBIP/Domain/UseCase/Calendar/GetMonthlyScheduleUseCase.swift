@@ -8,7 +8,7 @@
 import Combine
 
 protocol GetMonthlyScheduleUseCaseProtocol {
-    func excute(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error>
+    func execute(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error>
 }
 
 final class  GetMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol {
@@ -18,7 +18,7 @@ final class  GetMonthlyScheduleUseCase: GetMonthlyScheduleUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error> {
+    func execute(year: Int, month: Int) -> AnyPublisher<[ScheduleVO], Error> {
         repository.getMonthlySchedule(year: year, month: month)
             .eraseToAnyPublisher()
     }

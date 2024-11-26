@@ -8,7 +8,7 @@
 import Combine
 
 protocol RequestLoginUseCaseProtocol {
-    func excute(identityToken: String) -> AnyPublisher<LoginVO, AuthError>
+    func execute(identityToken: String) -> AnyPublisher<LoginVO, AuthError>
 }
 
 final class RequestLoginUseCase: RequestLoginUseCaseProtocol {
@@ -18,7 +18,7 @@ final class RequestLoginUseCase: RequestLoginUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(identityToken: String) -> AnyPublisher<LoginVO, AuthError> {
+    func execute(identityToken: String) -> AnyPublisher<LoginVO, AuthError> {
         repository.requestLogin(identityToken: identityToken)
     }
 }

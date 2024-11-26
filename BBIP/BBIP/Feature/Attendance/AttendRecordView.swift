@@ -51,13 +51,13 @@ struct AttendanceRecordView: View {
                 .font(.bbip(.body1_sb16))
                 .foregroundStyle(.mainWhite)
                 .padding(.leading, 26)
+                .padding(.bottom, 6)
             
             if title == "경기 미참여" {
                 Text("아직 인증하지 않은 팀원에게 연락해보세요")
                     .font(.bbip(.caption2_m12))
                     .foregroundStyle(.gray6)
                     .padding(.leading, 26)
-                    .padding(.top, 6)
                     .padding(.bottom, 12)
             }
             

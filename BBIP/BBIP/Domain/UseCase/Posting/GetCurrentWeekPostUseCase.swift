@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetCurrentWeekPostUseCaseProtocol {
-    func excute() -> AnyPublisher<RecentPostVO, Error>
+    func execute() -> AnyPublisher<RecentPostVO, Error>
 }
 
 final class GetCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol {
@@ -19,7 +19,7 @@ final class GetCurrentWeekPostUseCase: GetCurrentWeekPostUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute() -> AnyPublisher<RecentPostVO, Error> {
+    func execute() -> AnyPublisher<RecentPostVO, Error> {
         repository.getCurrentWeekPost()
             .eraseToAnyPublisher()
     }

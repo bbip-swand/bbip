@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol GetPendingStudyUseCaseProtocol {
-    func excute() -> AnyPublisher<PendingStudyVO, Error>
+    func execute() -> AnyPublisher<PendingStudyVO, Error>
 }
 
 final class GetPendingStudyUseCase: GetPendingStudyUseCaseProtocol {
@@ -19,7 +19,7 @@ final class GetPendingStudyUseCase: GetPendingStudyUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute() -> AnyPublisher<PendingStudyVO, Error> {
+    func execute() -> AnyPublisher<PendingStudyVO, Error> {
         repository.getPendingStudy()
             .eraseToAnyPublisher()
     }

@@ -42,7 +42,7 @@ final class StudyHomeViewModel: ObservableObject {
     
     func requestFullStudyInfo(studyId: String) {
         isFullInfoLoaded = true
-        getFullStudyInfoUseCase.excute(studyId: studyId)
+        getFullStudyInfoUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -59,7 +59,7 @@ final class StudyHomeViewModel: ObservableObject {
     }
     
     func getStudyPosting(studyId: String) {
-        getStudyPostingUseCase.excute(studyId: studyId)
+        getStudyPostingUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

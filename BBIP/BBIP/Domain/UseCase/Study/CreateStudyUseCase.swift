@@ -8,7 +8,7 @@
 import Combine
 
 protocol CreateStudyUseCaseProtocol {
-    func excute(studyInfoVO: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
+    func execute(studyInfoVO: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error>
 }
 
 final class CreateStudyUseCase: CreateStudyUseCaseProtocol {
@@ -18,7 +18,7 @@ final class CreateStudyUseCase: CreateStudyUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(studyInfoVO: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
+    func execute(studyInfoVO: CreateStudyInfoVO) -> AnyPublisher<CreateStudyResponseDTO, Error> {
         repository.createStudy(vo: studyInfoVO)
             .eraseToAnyPublisher()
     }

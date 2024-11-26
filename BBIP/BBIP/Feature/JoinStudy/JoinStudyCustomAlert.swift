@@ -12,6 +12,7 @@ struct JoinStudyCustomAlert: View {
     @ObservedObject var viewModel: JoinStudyViewModel = DIContainer.shared.makeJoinStudyViewModel()
     @ObservedObject var appState: AppStateManager
     
+    @State private var cancellables = Set<AnyCancellable>()
     private let inviteData: DeepLinkAlertData
     private let calcWidth: CGFloat = UIScreen.main.bounds.width - 70
     
@@ -21,6 +22,15 @@ struct JoinStudyCustomAlert: View {
     ) {
         self.appState = appState
         self.inviteData = inviteData
+    }
+    
+    private func handleJoinStudy() {
+        if appState.state != .home {
+            UserDefaultsManager.shared.setIsExistingUser(true)
+            appState.switchRoot(.home)
+        }
+        withAnimation { appState.showDeepLinkAlert = false }
+        withAnimation { appState.showJoinSuccessAlert = true }
     }
     
     var body: some View {
@@ -70,16 +80,15 @@ struct JoinStudyCustomAlert: View {
                     }
                     
                     Button {
-                        viewModel.joinStudy(studyId: inviteData.studyId) {
-                            appState.showJoinFailAlert = true   // handle fail
-                        }
-                        // Handle StartGuideView!
-                        if appState.state != .home {
-                            UserDefaultsManager.shared.setIsExistingUser(true)
-                            appState.switchRoot(.home)
-                        }
-                        withAnimation { appState.showDeepLinkAlert = false }
-                        withAnimation { appState.showJoinSuccessAlert = true }
+                        viewModel.joinStudy(studyId: inviteData.studyId)
+                            .sink { isSuccess in
+                                if isSuccess {
+                                    handleJoinStudy()
+                                } else {
+                                    appState.showJoinFailAlert = true
+                                }
+                            }
+                            .store(in: &cancellables)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 12)

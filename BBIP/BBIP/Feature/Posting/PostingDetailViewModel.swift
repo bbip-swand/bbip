@@ -34,7 +34,7 @@ final class PostingDetailViewModel: ObservableObject {
     }
     
     func getPostDetail(postingId: String) {
-        getPostDetailUseCase.excute(postingId: postingId)
+        getPostDetailUseCase.execute(postingId: postingId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -50,7 +50,7 @@ final class PostingDetailViewModel: ObservableObject {
     }
     
     func createComment(postingId: String, commentContent: String) {
-        createCommentUseCase.excute(postingId: postingId, content: commentContent)
+        createCommentUseCase.execute(postingId: postingId, content: commentContent)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

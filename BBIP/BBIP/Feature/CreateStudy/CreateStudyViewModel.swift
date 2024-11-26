@@ -139,7 +139,7 @@ class CreateStudyViewModel: ObservableObject {
                     weeklyContent: weeklyContentData
                 )
                 
-                return self.createStudyInfoUseCase.excute(studyInfoVO: vo)
+                return self.createStudyInfoUseCase.execute(studyInfoVO: vo)
             }
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in

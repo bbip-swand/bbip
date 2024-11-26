@@ -8,7 +8,7 @@
 import Combine
 
 protocol JoinStudyUseCaseProtocol {
-    func excute(studyId: String) -> AnyPublisher<Bool, Error>
+    func execute(studyId: String) -> AnyPublisher<Bool, Error>
 }
 
 final class JoinStudyUseCase: JoinStudyUseCaseProtocol {
@@ -18,7 +18,7 @@ final class JoinStudyUseCase: JoinStudyUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(studyId: String) -> AnyPublisher<Bool, Error> {
+    func execute(studyId: String) -> AnyPublisher<Bool, Error> {
         repository.joinStudy(studyId: studyId)
             .eraseToAnyPublisher()
     }

@@ -22,7 +22,7 @@ final class ArchiveViewModel: ObservableObject {
     }
     
     func getArchivedFile(studyId: String) {
-        getArchivedFileInfoUseCase.excute(studyId: studyId)
+        getArchivedFileInfoUseCase.execute(studyId: studyId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

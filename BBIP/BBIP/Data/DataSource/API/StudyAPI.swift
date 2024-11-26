@@ -76,8 +76,4 @@ extension StudyAPI: BaseAPI {
             return .requestParameters(parameters: param, encoding: JSONEncoding.default)
         }
     }
-    
-    var validationType: ValidationType {
-        return .successCodes
-    }
 }

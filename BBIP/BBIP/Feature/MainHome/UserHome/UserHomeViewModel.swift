@@ -58,7 +58,7 @@ final class UserHomeViewModel: ObservableObject {
     }
     
     func loadHomeData() {
-        getCurrentWeekPostUseCase.excute()
+        getCurrentWeekPostUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -72,7 +72,7 @@ final class UserHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getCurrentWeekStudyInfoUseCase.excute()
+        getCurrentWeekStudyInfoUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -86,7 +86,7 @@ final class UserHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getOngoingStudyInfoUseCase.excute()
+        getOngoingStudyInfoUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -100,7 +100,7 @@ final class UserHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getPendingStudyUseCase.excute()
+        getPendingStudyUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -130,7 +130,7 @@ final class UserHomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-        getUpcommingScheduleUseCase.excute()
+        getUpcommingScheduleUseCase.execute()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

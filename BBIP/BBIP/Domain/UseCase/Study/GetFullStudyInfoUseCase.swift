@@ -8,7 +8,7 @@
 import Combine
 
 protocol GetFullStudyInfoUseCaseProtocol {
-    func excute(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error>
+    func execute(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error>
 }
 
 final class GetFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetFullStudyInfoUseCase: GetFullStudyInfoUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error> {
+    func execute(studyId: String) -> AnyPublisher<FullStudyInfoVO, Error> {
         repository.getFullStudyInfo(studyId: studyId)
             .eraseToAnyPublisher()
     }

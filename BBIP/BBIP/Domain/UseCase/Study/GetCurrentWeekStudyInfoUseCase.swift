@@ -8,7 +8,7 @@
 import Combine
 
 protocol GetCurrentWeekStudyInfoUseCaseProtocol {
-    func excute() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
+    func execute() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error>
 }
 
 final class GetCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetCurrentWeekStudyInfoUseCase: GetCurrentWeekStudyInfoUseCaseProtoc
         self.repository = repository
     }
     
-    func excute() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {
+    func execute() -> AnyPublisher<[CurrentWeekStudyInfoVO], Error> {
         repository.getCurrentWeekStudyInfo()
             .eraseToAnyPublisher()
     }

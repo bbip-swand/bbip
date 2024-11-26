@@ -8,7 +8,7 @@
 import Combine
 
 protocol CreateCommentUseCaseProtocol {
-    func excute(postingId: String, content: String) -> AnyPublisher<Bool, Error>
+    func execute(postingId: String, content: String) -> AnyPublisher<Bool, Error>
 }
 
 final class CreateCommentUseCase: CreateCommentUseCaseProtocol {
@@ -18,7 +18,7 @@ final class CreateCommentUseCase: CreateCommentUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute(postingId: String, content: String) -> AnyPublisher<Bool, Error> {
+    func execute(postingId: String, content: String) -> AnyPublisher<Bool, Error> {
         repository.createComment(postingId: postingId, content: content)
             .eraseToAnyPublisher()
     }

@@ -8,7 +8,7 @@
 import Combine
 
 protocol GetOngoingStudyInfoUseCaseProtocol {
-    func excute() -> AnyPublisher<[StudyInfoVO], Error>
+    func execute() -> AnyPublisher<[StudyInfoVO], Error>
 }
 
 final class GetOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetOngoingStudyInfoUseCase: GetOngoingStudyInfoUseCaseProtocol {
         self.repository = repository
     }
     
-    func excute() -> AnyPublisher<[StudyInfoVO], Error> {
+    func execute() -> AnyPublisher<[StudyInfoVO], Error> {
         repository.getOngoingStudyInfo()
             .eraseToAnyPublisher()
     }

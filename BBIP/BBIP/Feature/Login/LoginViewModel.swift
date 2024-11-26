@@ -51,7 +51,7 @@ final class LoginViewModel: ObservableObject {
     private func requestLogin(identityToken: String) {
         isLoading = true
         
-        requestLoginUseCase.excute(identityToken: identityToken)
+        requestLoginUseCase.execute(identityToken: identityToken)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 guard let self = self else { return }
