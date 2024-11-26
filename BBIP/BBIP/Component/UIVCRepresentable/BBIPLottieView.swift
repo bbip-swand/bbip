@@ -67,3 +67,7 @@ struct BBIPLottieView: UIViewRepresentable {
         
     }
 }
+
+#Preview {
+    BBIPLottieView(assetName: "Splash", contentMode: .scaleAspectFill, loopMode: .playOnce)
+}

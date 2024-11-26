@@ -55,7 +55,11 @@ struct CalendarView: View {
                     BBIPCalendar(
                         vo: scheduleData,
                         selectedDate: $selectedDate,
-                        currentMonthTitle: $currentMonthTitle
+                        currentMonthTitle: $currentMonthTitle,
+                        onMonthChange: { newMonth in
+                            // 달 변경 시 데이터를 다시 가져옵니다.
+                            viewModel.fetch(date: newMonth)
+                        }
                     )
                     .id(calendarUpdateId)
                 } else {

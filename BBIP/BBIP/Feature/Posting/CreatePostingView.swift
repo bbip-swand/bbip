@@ -79,7 +79,7 @@ extension CreatePostingView {
                 Text(viewModel.week == -1 ? "주차 선택" : "\(viewModel.week)주차")
                     .font(.bbip(.body2_m14))
                     .foregroundStyle(viewModel.week == -1 ? .gray5 : .mainBlack)
-                Image(systemName: "chevron.up")
+                Image(systemName: "chevron.down")
             }
             .padding(.vertical, 12)
             .padding(.horizontal, 14)

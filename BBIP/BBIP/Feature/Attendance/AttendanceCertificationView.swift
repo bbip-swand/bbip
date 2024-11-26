@@ -60,6 +60,7 @@ struct AttendanceCertificationView: View {
             AttendanceDoneView()
         }
         .onAppear {
+            setNavigationBarAppearance(backgroundColor: .gray9)
             startTimer()
         }
         .onDisappear {

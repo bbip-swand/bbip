@@ -11,17 +11,20 @@ import FSCalendar
 struct BBIPCalendar: UIViewRepresentable {
     @Binding var currentMonthTitle: String
     @Binding var selectedDate: Date
+    var onMonthChange: ((Date) -> Void)?
     
     @State private var vo: [ScheduleVO]
     
     init(
         vo: [ScheduleVO],
         selectedDate: Binding<Date>,
-        currentMonthTitle: Binding<String>
+        currentMonthTitle: Binding<String>,
+        onMonthChange: ((Date) -> Void)? = nil
     ) {
         self.vo = vo
         self._selectedDate = selectedDate
         self._currentMonthTitle = currentMonthTitle
+        self.onMonthChange = onMonthChange
     }
 
     func makeUIView(context: Context) -> FSCalendar {
@@ -125,6 +128,7 @@ struct BBIPCalendar: UIViewRepresentable {
             
             // 현재 월 텍스트 업데이트
             parent.currentMonthTitle = formatter.string(from: currentPage)
+            parent.onMonthChange?(currentPage)
             calendar.reloadData()
         }
     }
