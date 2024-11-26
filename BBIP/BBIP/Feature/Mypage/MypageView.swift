@@ -132,7 +132,6 @@ struct MypageView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
-            .border(.red)
         }
         .navigationDestination(isPresented: $showStudyStatus) {
             MyStudyStatusView(initialIndex: selectedIndex, viewModel: myPageViewModel)
