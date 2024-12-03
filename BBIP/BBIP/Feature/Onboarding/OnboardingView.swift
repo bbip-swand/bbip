@@ -30,7 +30,7 @@ struct OnboardingView: View {
                 .padding(.top, 110)
             
             Rectangle()
-                .frame(height: 160)
+                .frame(height: 136)
                 .foregroundStyle(
                     LinearGradient(
                         gradient: Gradient(colors: [Color.gray1, Color.clear]),
@@ -39,7 +39,6 @@ struct OnboardingView: View {
                     )
                 )
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .ignoresSafeArea(edges: /*@START_MENU_TOKEN@*/.bottom/*@END_MENU_TOKEN@*/)
             
             MainButton(text: "다음") {
                 withAnimation {
@@ -70,8 +69,10 @@ private struct OnboardingContentView: View {
     fileprivate var body: some View {
         ForEach(Array(onboardingViewModel.onboardingContents.enumerated()), id: \.element) { index, content in
             Image(onboardingViewModel.onboardingContents[index].imageName)
+                .resizable()
+                .scaledToFill()
                 .padding(.horizontal, 58)
-                .padding(.top, 230)
+                .padding(.top, 200)
                 .tag(index)
         }
     }
