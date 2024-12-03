@@ -30,6 +30,7 @@ final class LoginViewModel: ObservableObject {
         self.signUpUseCase = signUpUseCase
     }
     
+    /// BBIP 로직과 별개로 identity Token을 받기 위한 애플 로그인 절차
     func handleAppleLogin(result: Result<ASAuthorization, any Error>) {
         switch result {
         case .success(let authResults):
@@ -48,6 +49,7 @@ final class LoginViewModel: ObservableObject {
         }
     }
     
+    /// BBIP 로그인 요청
     private func requestLogin(identityToken: String) {
         isLoading = true
         
@@ -83,18 +85,9 @@ final class LoginViewModel: ObservableObject {
             }.store(in: &cancellables)
     }
     
-    private func handleError(_ error: AuthError) {
-        switch error {
-        case .notRegisted:
-            signInProcess()
-        case .unknownError:
-            print("[LoginViewModel] requestLogin() Unknown Error! :", error.localizedDescription)
-            self.isLoading = false
-        }
-    }
-    
+    /// BBIP 회원가입 처리
     private func signInProcess() {
-        guard let identityToken = identityToken, 
+        guard let identityToken = identityToken,
               let authorizationCode = authorizationCode else {
             print("[LoginViewModel] Missing token or authorization code")
             return
@@ -124,5 +117,15 @@ final class LoginViewModel: ObservableObject {
                 self.isLoading = false
             }
             .store(in: &cancellables)
+    }
+    
+    private func handleError(_ error: AuthError) {
+        switch error {
+        case .notRegisted:
+            signInProcess()
+        case .unknownError:
+            print("[LoginViewModel] requestLogin() Unknown Error! :", error.localizedDescription)
+            self.isLoading = false
+        }
     }
 }

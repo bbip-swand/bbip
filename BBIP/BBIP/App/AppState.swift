@@ -8,11 +8,24 @@
 import Foundation
 import SwiftUI
 
-enum AppState: String {
+enum AppState: Hashable {
     case onboarding
     case infoSetup
     case startGuide
     case home
+    
+    var rawValue: String {
+        switch self {
+        case .onboarding:
+            return "onboarding"
+        case .infoSetup:
+            return "infoSetup"
+        case .startGuide:
+            return "startGuide"
+        case .home:
+            return "home"
+        }
+    }
 }
 
 enum MainHomeViewDestination: Hashable {

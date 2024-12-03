@@ -87,7 +87,7 @@ private struct AppleSigninButton : View {
             .overlay {
                 SignInWithAppleButton(
                     onRequest: { request in
-                        request.requestedScopes = [.fullName, .email]
+                        request.requestedScopes = []
                     },
                     onCompletion: { result in
                         viewModel.handleAppleLogin(result: result)
